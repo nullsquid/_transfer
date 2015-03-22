@@ -58,11 +58,12 @@ public class InputCapture : MonoBehaviour {
 
 		//commandInputField.text = null;
 		commandInputField.text = "";
-
+		this.commandInputField.ActivateInputField();
 
 
 	}
-	
+	//i think that this whole region is going to go into input manager
+
 	#region command methods
 	void ComConnect(string name){
 		
@@ -86,9 +87,5 @@ public class InputCapture : MonoBehaviour {
 	}
 	//methods for file system//hierarchy
 	#endregion
-	void Update(){
-		if(commandInputField.isFocused == false){
-			commandInputField.Select();
-		}
-	}
+
 }
