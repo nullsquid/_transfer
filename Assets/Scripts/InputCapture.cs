@@ -17,9 +17,11 @@ public class InputCapture : MonoBehaviour {
 	[SerializeField]
 	private InputField commandInputField = null;
 	public commandState state = new commandState();
-	public string rawCommand;
-	//put the base command in the command variable
-	public string command;
+	//public string rawCommand;
+	//put the base command in the commandWithoutParam variable
+	public string commandWithoutParam;
+	public string newCommand;
+	public List<string> newParameters = new List<string>();
 
 	// Use this for initialization
 	void Start () {
@@ -27,33 +29,38 @@ public class InputCapture : MonoBehaviour {
 		submitEvent.AddListener(SubmitCommand);
 		commandInputField.onEndEdit = submitEvent;
 
+		newParameters.RemoveRange(0, newParameters.Count);
+
 	}
 
 	private void SubmitCommand(string command)
 	{
-		//Debug.Log(command);
 
-		/*switch(command){
-		case "help":
-			Debug.Log("Help");
-			state = commandState.help;
-			break;
-		case "search":
-			Debug.Log ("Search");
-			state = commandState.search;
-			break;
-		case "connect":
-			Debug.Log("connect");
-			state = commandState.connect;
-			break;
-		default:
-			Debug.Log("nope");
-			break;
-		}
-		//Debug.Log(state);
-		*/
-		rawCommand = command;
-		Debug.Log(rawCommand);
+		string[] fields;
+
+		newCommand = command;
+
+		char[] delimeter = {' '};
+		fields = newCommand.Split(delimeter);
+
+		commandWithoutParam = fields[0];
+		//if(fields.Length > 1){
+			for(int i = 1; i <= fields.Length - 1; i++){
+		
+				Debug.Log(i);
+				
+				newParameters.Add(fields[i]);
+
+			}
+			//fields[0].Remove();
+
+		//}
+
+		//commandInputField.text = null;
+		commandInputField.text = "";
+
+
+
 	}
 	
 	#region command methods
@@ -79,4 +86,9 @@ public class InputCapture : MonoBehaviour {
 	}
 	//methods for file system//hierarchy
 	#endregion
+	void Update(){
+		if(commandInputField.isFocused == false){
+			commandInputField.Select();
+		}
+	}
 }
