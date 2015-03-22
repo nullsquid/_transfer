@@ -18,11 +18,11 @@ public class TextManager : MonoBehaviour {
 	void Start () {
 		
 		//playerName = character.charName;
-		displayHeader.text = "CURRENTLY LOGGED IN AS " + playerName + ">>\n \nINPUT COMMAND OR TYPE 'HELP' FOR MORE OPTIONS>>";
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		displayHeader.text = "CURRENTLY LOGGED IN AS " + playerName + ">>\n \nINPUT COMMAND OR TYPE 'HELP' FOR MORE OPTIONS>>";
 
 	}
 

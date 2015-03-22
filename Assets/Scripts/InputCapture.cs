@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -13,7 +13,11 @@ public class InputCapture : MonoBehaviour {
 		submitEvent.AddListener(SubmitCommand);
 		commandInputField.onEndEdit = submitEvent;
 	}
-	
+
+	void Update(){
+
+	}
+
 	private void SubmitCommand(string command)
 	{
 		switch(command){
@@ -50,7 +54,9 @@ public class InputCapture : MonoBehaviour {
 	}
 	
 	void ComPackage(){
-		
+		//this is probably run also
+		//maybe lets you see what packages you have
 	}
+	//methods for file system//hierarchy
 	#endregion
 }

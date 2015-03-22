@@ -53,7 +53,7 @@ public class InputManager : MonoBehaviour{
 	/*public void HandleInput(string command){
 		Debug.Log(command);
 	}*/
-	public void OnSubmit(string command){
+	/*public void OnSubmit(string command){
 		//command.Replace("\n", "");
 		string newCommand = command.Replace ("\r", "").Replace("\n", ""); 
 		if(newCommand == "help"){
@@ -82,7 +82,8 @@ public class InputManager : MonoBehaviour{
 		Debug.Log(newCommand);
 
 
-	}
+	}*/
+
 
 
 
