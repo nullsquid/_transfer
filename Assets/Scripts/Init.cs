@@ -10,7 +10,7 @@ public class Init : MonoBehaviour {
 	#endregion
 
 	#region Name Replacement Variables
-	public string[] consonent = new string[21]{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"};
+	public string[] consonant = new string[21]{"b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"};
 	public string[] vowel = new string[5]{"a", "e", "i", "o", "u"};
 
 
@@ -147,7 +147,7 @@ public class Init : MonoBehaviour {
 
 	string NameGen(int cMin, int cMax, int vMin, int vMax){
 		string name;
-		name = consonent[Random.Range(cMin, cMax)].ToUpper()+vowel[Random.Range(vMin, vMax)].ToUpper()+consonent[Random.Range(cMin, cMax)].ToUpper()+consonent[Random.Range(cMin, cMax)].ToUpper();
+		name = consonant[Random.Range(cMin, cMax)].ToUpper()+vowel[Random.Range(vMin, vMax)].ToUpper()+consonant[Random.Range(cMin, cMax)].ToUpper()+consonant[Random.Range(cMin, cMax)].ToUpper();
 		return name;
 	}
 
