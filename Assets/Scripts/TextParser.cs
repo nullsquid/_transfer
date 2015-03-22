@@ -11,6 +11,7 @@ public class TextParser : MonoBehaviour {
 	//
 	//might be useful to have a different dictionary for each character
 	//public TextAsset textA = null;
+
 	public TextAsset textA = null;
 	public string readerA = @"E:\Games in Progress\_transfer\_transfer\Assets\test.txt";
 

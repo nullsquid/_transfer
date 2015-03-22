@@ -65,9 +65,8 @@ public class CharacterMananger : MonoBehaviour {
 		string[] identifiers = new string[10]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "0"};
 		//Debug.Log ("names is "+names.Length);
 		Character newCharacter = characterPrefab;
-		for(int i = 0; i <= characters.Length; i++){
+		for(int i = 0; i <= characters.Length - 1; i++){
 			newCharacter = Instantiate(characterPrefab, transform.position, transform.rotation) as Character;
-
 			newCharacter.charName = names[i];
 			newCharacter.gender = genders[i];
 			newCharacter.charID = identifiers[i];

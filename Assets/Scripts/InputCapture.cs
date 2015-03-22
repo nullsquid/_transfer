@@ -47,7 +47,7 @@ public class InputCapture : MonoBehaviour {
 		//if(fields.Length > 1){
 			for(int i = 1; i <= fields.Length - 1; i++){
 		
-				Debug.Log(i);
+				//Debug.Log(i);
 				
 				newParameters.Add(fields[i]);
 
