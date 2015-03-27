@@ -33,6 +33,19 @@ public class CharacterMananger : MonoBehaviour {
 	public string genderI;
 	public string gender0;
 
+	public PlayerCharacter charPlayer;
+	/*public Character charA;
+	public Character charB;
+	public Character charC;
+	public Character charD;
+	public Character charE;
+	public Character charF;
+	public Character charG;
+	public Character charH;
+	public Character charI;
+	public Character char0;
+	*/
+
 
 
 	// Use this for initialization
@@ -89,6 +102,8 @@ public class CharacterMananger : MonoBehaviour {
 				newCharacter.name = identifiers[i];
 				newCharacter.transform.parent = transform;
 				textM.playerName = newCharacter.charName;
+
+				charPlayer = newCharacter as PlayerCharacter;
 			}
 
 

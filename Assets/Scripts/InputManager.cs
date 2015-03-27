@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour{
 
 	public CharacterMananger cManager;
 	public PlayerCharacter player;
-	public string commandParam;
+	//public string commandParam;
 	public Character character;
 	public InputField field;
 	public Text inputText;
@@ -32,10 +32,12 @@ public class InputManager : MonoBehaviour{
 	//public commandState state = new commandState();
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
 		//during runtime, add optional parameters to list and then check
 		//to see if the parameter can do anything
+		//player = cManager.
+		//player = cManager.charPlayer;
 
 	}
 	
@@ -43,6 +45,10 @@ public class InputManager : MonoBehaviour{
 	void Update () {
 		newCommand = input.commandWithoutParam;
 		HandleInput(newCommand);
+		if(player == null){
+			player = cManager.charPlayer;
+		}
+		Debug.Log(player.KnownCharacters["MEMM"]);
 
 	}
 
@@ -56,11 +62,14 @@ public class InputManager : MonoBehaviour{
 			if(input.newParameters.Count == 0){
 				Debug.Log ("cannot comply");
 			}
+			//else if (player.KnownCharacters.
 			else if(player.KnownCharacters.ContainsKey(input.newParameters[0])){
 				Debug.Log ("it's MEMM!");
+				cManager.SendMessage("Connect");
 			}
 			else{
 				Debug.Log("It's not MEMM :( ");
+				Debug.Log(input.newParameters[0]);
 			}
 			break;
 		}
