@@ -29,13 +29,14 @@ public class InputCapture : MonoBehaviour {
 		submitEvent.AddListener(SubmitCommand);
 		commandInputField.onEndEdit = submitEvent;
 
-		newParameters.RemoveRange(0, newParameters.Count);
+		//newParameters.RemoveRange(0, newParameters.Count);
 
 	}
 
 	private void SubmitCommand(string command)
 	{
 
+		newParameters.Clear();
 		string[] fields;
 
 		newCommand = command;
