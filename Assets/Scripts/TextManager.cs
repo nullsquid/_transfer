@@ -23,7 +23,10 @@ public class TextManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		displayHeader.text = "CURRENTLY LOGGED IN AS " + playerName + ">>\n \nINPUT COMMAND OR TYPE 'HELP' FOR MORE OPTIONS>>";
-
+		/*if(input.newCommand == "help"){
+			Instantiate(displayText, displayHeader.transform.position - new Vector3(0, 100, 0), transform.rotation);
+			displayText.text = "let me help you";
+		}*/
 	}
 
 

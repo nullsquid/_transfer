@@ -8,6 +8,8 @@ public class CharacterMananger : MonoBehaviour {
 	public Character[] characters = new Character[10];
 	//public Character character;
 	public Character characterPrefab;
+	public PlayerCharacter pcPrefab;
+	//public PlayerCharacter pc;
 
 	public string nameA;
 	public string nameB;
@@ -65,21 +67,30 @@ public class CharacterMananger : MonoBehaviour {
 		string[] identifiers = new string[10]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "0"};
 		//Debug.Log ("names is "+names.Length);
 		Character newCharacter = characterPrefab;
+
 		for(int i = 0; i <= characters.Length - 1; i++){
-			newCharacter = Instantiate(characterPrefab, transform.position, transform.rotation) as Character;
-			newCharacter.charName = names[i];
-			newCharacter.gender = genders[i];
-			newCharacter.charID = identifiers[i];
-			newCharacter.name = identifiers[i];
-			newCharacter.transform.parent = transform;
-			if(init.playerCharacter == newCharacter.charID){
-				newCharacter.isPlayer = true;
-				textM.playerName = newCharacter.charName;
-				newCharacter.gameObject.AddComponent<PlayerCharacter>();
-			}
-			else{
+			if(init.playerCharacter != newCharacter.charID){
+				newCharacter = Instantiate(characterPrefab, transform.position, transform.rotation) as Character;
 				newCharacter.isPlayer = false;
+				newCharacter.charName = names[i];
+				newCharacter.gender = genders[i];
+				newCharacter.charID = identifiers[i];
+				newCharacter.pronoun = init.pronouns[newCharacter.charID];
+				newCharacter.name = identifiers[i];
+				newCharacter.transform.parent = transform;
 			}
+			else if(init.playerCharacter == newCharacter.charID){
+				newCharacter = Instantiate(pcPrefab, transform.position, transform.rotation) as PlayerCharacter;
+				newCharacter.isPlayer = true;
+				newCharacter.charName = names[i];
+				newCharacter.gender = genders[i];
+				newCharacter.charID = identifiers[i];
+				newCharacter.pronoun = init.pronouns[newCharacter.charID];
+				newCharacter.name = identifiers[i];
+				newCharacter.transform.parent = transform;
+
+			}
+
 
 			characters[i] = newCharacter;
 

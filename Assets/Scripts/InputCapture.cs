@@ -62,6 +62,9 @@ public class InputCapture : MonoBehaviour {
 
 
 	}
+	void Update(){
+		//commandInputField.text.ToUpper();
+	}
 	//i think that this whole region is going to go into input manager
 
 	#region command methods
