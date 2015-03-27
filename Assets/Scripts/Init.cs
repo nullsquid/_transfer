@@ -95,8 +95,7 @@ public class Init : MonoBehaviour {
 
 	}
 	void Initialization(){
-	//run at the start of the game
-	//
+
 
 	}
 

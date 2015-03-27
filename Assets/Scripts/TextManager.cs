@@ -16,7 +16,9 @@ public class TextManager : MonoBehaviour {
 	//}
 	// Use this for initialization
 	void Start () {
-		
+		//ISSUE:: Find player name; set player name
+
+		//playerName = 
 		//playerName = character.charName;
 	}
 	

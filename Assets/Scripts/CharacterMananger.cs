@@ -88,7 +88,7 @@ public class CharacterMananger : MonoBehaviour {
 				newCharacter.pronoun = init.pronouns[newCharacter.charID];
 				newCharacter.name = identifiers[i];
 				newCharacter.transform.parent = transform;
-
+				textM.playerName = newCharacter.charName;
 			}
 
 

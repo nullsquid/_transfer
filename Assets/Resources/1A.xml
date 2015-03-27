@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<?xml-stylesheet href="orders.xsl"?>
+
+<order id="ord123456">
+  <customer id="cust0921">
+    <first-name>Dare</first-name>
+    <last-name>Obasanjo</last-name>
+    <address>
+      <street>One Microsoft Way</street>
+      <city>Redmond</city>
+      <state>WA</state>
+      <zip>98052</zip>
+    </address>
+  </customer>
+  <items>
+    <compact-disc>
+      <price>16.95</price>
+      <artist>Nelly</artist>
+      <title>Nellyville</title>
+    </compact-disc>
+    <compact-disc>
+      <price>17.55</price>
+       <artist>Baby D</artist>
+       <title>Lil Chopper Toy</title>
+    </compact-disc>
+  </items>
+
+  <!--  Always go the extra mile for the customer -->
+  <special-instructions xmlns:html="http://www.w3.org/1999/xhtml/">
+    <html:p>If customer is not available at the address then attempt 
+      leave package at one of the following locations listed in order of 
+      which should be attempted first 
+    <html:ol>
+      <html:li>Next Door</html:li>
+      <html:li>Front Desk</html:li>
+      <html:li>On Doorstep</html:li>
+    </html:ol>
+    <html:b>Note</html:b> Remember to leave a note detailing where 
+      to pick up the package.
+    </html:p>
+  </special-instructions>
+</order>
