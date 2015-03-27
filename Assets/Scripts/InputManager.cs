@@ -32,7 +32,7 @@ public class InputManager : MonoBehaviour{
 	//public commandState state = new commandState();
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 
 		//during runtime, add optional parameters to list and then check
 		//to see if the parameter can do anything
@@ -65,7 +65,7 @@ public class InputManager : MonoBehaviour{
 			//else if (player.KnownCharacters.
 			else if(player.KnownCharacters.ContainsKey(input.newParameters[0])){
 				Debug.Log ("it's MEMM!");
-				cManager.SendMessage("Connect");
+				//cManager.SendMessage("Connect");
 			}
 			else{
 				Debug.Log("It's not MEMM :( ");
