@@ -95,49 +95,8 @@ public class Init : MonoBehaviour {
 
 	}
 	void Initialization(){
-	//run at the start of the game
-	//
-		switch(playerCharacter){
 
-		case "A":
-			//do something here
 
-			break;
-		case "B":
-			//do something here
-			//
-                break;
-		case "C":
-			//do something here
-			//
-                break;
-		case "D":
-			//do something here
-			//
-                break;
-		case "E":
-			//do something here
-			//
-                break;
-		case "F":
-			//do something here
-			//
-                break;
-		case "G":
-			//do something here
-			//
-                break;
-		case "H":
-			//do something here
-			//
-                break;
-		case "0":
-			//do something here
-			//
-                break;
-            default:
-			break;
-		}
 	}
 
 

@@ -16,7 +16,7 @@ public class Character : MonoBehaviour {
 	public float dispositionTowardsPlayer;
 	public bool hasMetPlayer;
 	public int level;
-	public Dictionary<string, Character> KnownCharacters = new Dictionary<string, Character>();
+	//public Dictionary<string, Character> KnownCharacters = new Dictionary<string, Character>();
 	#endregion
 
 	void Start(){
