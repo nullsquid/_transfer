@@ -21,8 +21,8 @@ public class InputManager : MonoBehaviour{
 	public InputField field;
 	public Text inputText;
 	public TextManager textManager;
-	public Canvas canvas;
-	public float padding = 5.0f;
+	//public Canvas canvas;
+	//public float padding = 5.0f;
 	public InputCapture input;
 	public string newCommand;
 
@@ -48,7 +48,7 @@ public class InputManager : MonoBehaviour{
 		if(player == null){
 			player = cManager.charPlayer;
 		}
-		Debug.Log(player.KnownCharacters["MEMM"]);
+//		Debug.Log(player.KnownCharacters["MEMM"]);
 
 	}
 
@@ -65,6 +65,10 @@ public class InputManager : MonoBehaviour{
 			//else if (player.KnownCharacters.
 			else if(player.KnownCharacters.ContainsKey(input.newParameters[0])){
 				Debug.Log ("it's MEMM!");
+				textManager.displayText.text = "It's MEMM!";
+
+				//newText = Instantiate(textManager.displayText, textManager.canvas.transform.position, transform.rotation) as GameObject;
+				//newText.transform.parent = textManager.canvas.transform;
 				//cManager.SendMessage("Connect");
 			}
 			else{

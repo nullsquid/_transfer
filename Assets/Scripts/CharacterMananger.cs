@@ -104,10 +104,13 @@ public class CharacterMananger : MonoBehaviour {
 				textM.playerName = newCharacter.charName;
 
 				charPlayer = newCharacter as PlayerCharacter;
+				Debug.Log(newCharacter);
 			}
 
 
 			characters[i] = newCharacter;
+			//Debug.Log (characters[i].charID);
+
 
 
 
