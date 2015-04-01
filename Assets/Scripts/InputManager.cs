@@ -41,7 +41,7 @@ public class InputManager : MonoBehaviour{
 		//player = FindObjectOfType<PlayerCharacter>();
 
 	}
-	
+	//need to set these variables at runtime
 	// Update is called once per frame
 	void Update () {
 		newCommand = input.commandWithoutParam;
