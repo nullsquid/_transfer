@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class CharacterMananger : MonoBehaviour {
 	public Init init;
 	public TextManager textM;
+	public InputManager inputM;
 	public Character[] characters = new Character[10];
 	//public Character character;
 	public Character characterPrefab;
@@ -105,6 +106,9 @@ public class CharacterMananger : MonoBehaviour {
 				textM.playerName = newCharacter.charName;
 
 				charPlayer = newCharacter as PlayerCharacter;
+				//GetComponent<InputManager>().player = charPlayer;
+				//gameObject.GetComponent<InputManager>().player = charPlayer as PlayerCharacter;
+				inputM.player = charPlayer;
 				Debug.Log(newCharacter);
 			}
 

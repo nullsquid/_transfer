@@ -38,6 +38,7 @@ public class InputManager : MonoBehaviour{
 		//to see if the parameter can do anything
 		//player = cManager.
 		//player = cManager.charPlayer;
+		//player = FindObjectOfType<PlayerCharacter>();
 
 	}
 	
