@@ -48,7 +48,7 @@ public class InputManager : MonoBehaviour{
 		if(player == null){
 			player = cManager.charPlayer;
 		}
-		Debug.Log(player.KnownCharacters["MEMM"]);
+		//Debug.Log(player.KnownCharacters["MEMM"]);
 
 	}
 
@@ -64,7 +64,7 @@ public class InputManager : MonoBehaviour{
 			}
 			//else if (player.KnownCharacters.
 			else if(player.KnownCharacters.ContainsKey(input.newParameters[0])){
-				Debug.Log ("it's MEMM!");
+				Debug.Log (player.KnownCharacters[input.newParameters[0]]);
 				//cManager.SendMessage("Connect");
 			}
 			else{

@@ -11,7 +11,7 @@ public class PlayerCharacter : Character {
 	void Start () {
 		//KnownCharacters.Add
 		//KnownCharacters.Add (GetComponentInParent<CharacterMananger>().nameI, GetComponent<Character>().charID);
-		KnownCharacters.Add ("MEMM", "I");
+		KnownCharacters.Add (GetComponentInParent<CharacterMananger>().nameI, "I");
 		//Debug.Log(KnownCharacters["MEMM"]);
 
 	}
