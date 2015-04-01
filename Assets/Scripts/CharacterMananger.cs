@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class CharacterMananger : MonoBehaviour {
 	public Init init;
 	public TextManager textM;
+	public InputManager inputM;
 	public Character[] characters = new Character[10];
 	//public Character character;
 	public Character characterPrefab;
@@ -92,6 +93,7 @@ public class CharacterMananger : MonoBehaviour {
 				newCharacter.name = identifiers[i];
 				newCharacter.transform.parent = transform;
 			}
+			//Bug: occasionally the player does not spawn
 			else if(init.playerCharacter == newCharacter.charID){
 				newCharacter = Instantiate(pcPrefab, transform.position, transform.rotation) as PlayerCharacter;
 				newCharacter.isPlayer = true;
@@ -104,10 +106,16 @@ public class CharacterMananger : MonoBehaviour {
 				textM.playerName = newCharacter.charName;
 
 				charPlayer = newCharacter as PlayerCharacter;
+				//GetComponent<InputManager>().player = charPlayer;
+				//gameObject.GetComponent<InputManager>().player = charPlayer as PlayerCharacter;
+				inputM.player = charPlayer;
+				Debug.Log(newCharacter);
 			}
 
 
 			characters[i] = newCharacter;
+			//Debug.Log (characters[i].charID);
+
 
 
 

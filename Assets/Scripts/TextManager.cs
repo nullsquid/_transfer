@@ -8,6 +8,7 @@ public class TextManager : MonoBehaviour {
 	public Text displayHeader;
 	public Text displayText;
 	public InputManager input;
+	public Canvas canvas;
 	public string playerName;
 	public CharacterMananger character;
 
