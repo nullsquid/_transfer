@@ -15,18 +15,13 @@ public class PlayerCharacter : Character {
 
 	void Start () {
 
-
-		//KnownCharacters.Add
-		//KnownCharacters.Add (GetComponentInParent<CharacterMananger>().nameI, GetComponent<Character>().charID);
 		KnownCharacters.Add ("MEMM", "I");
-		Debug.Log("Known characters:"+KnownCharacters.Count);
-		//Debug.Log("Yes");
+
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//Debug.Log(KnownCharacters["MEMM"]);
 
 	}
 }
