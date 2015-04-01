@@ -21,20 +21,7 @@ public class PlayerCharacter : Character {
 		KnownCharacters.Add ("MEMM", "I");
 		Debug.Log("Known characters:"+KnownCharacters.Count);
 		//Debug.Log("Yes");
-
-		dirSystem = Instantiate(dirPrefab, transform.position, transform.rotation) as Directory;
-		dirDocuments = Instantiate(dirPrefab, transform.position, transform.rotation) as Directory;
-		dirApps = Instantiate(dirPrefab, transform.position, transform.rotation) as Directory;
 		
-		dirSystem.transform.parent = transform;
-		dirDocuments.transform.parent = transform;
-		dirApps.transform.parent = transform;
-		
-		dirSystem.name = "System";
-		dirDocuments.name = "Documents";
-		dirApps.name = "Applications";
-
-		Debug.Log("Yes");
 	}
 	
 	// Update is called once per frame

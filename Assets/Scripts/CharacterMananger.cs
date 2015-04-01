@@ -92,6 +92,7 @@ public class CharacterMananger : MonoBehaviour {
 				newCharacter.name = identifiers[i];
 				newCharacter.transform.parent = transform;
 			}
+			//Bug: occasionally the player does not spawn
 			else if(init.playerCharacter == newCharacter.charID){
 				newCharacter = Instantiate(pcPrefab, transform.position, transform.rotation) as PlayerCharacter;
 				newCharacter.isPlayer = true;
