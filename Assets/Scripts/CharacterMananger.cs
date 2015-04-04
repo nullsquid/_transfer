@@ -83,6 +83,8 @@ public class CharacterMananger : MonoBehaviour {
 		Character newCharacter = characterPrefab;
 
 		for(int i = 0; i <= characters.Length - 1; i++){
+			Debug.Log("player is " + init.playerCharacter);
+		
 			if(init.playerCharacter != newCharacter.charID){
 				newCharacter = Instantiate(characterPrefab, transform.position, transform.rotation) as Character;
 				newCharacter.isPlayer = false;
@@ -110,6 +112,7 @@ public class CharacterMananger : MonoBehaviour {
 				//gameObject.GetComponent<InputManager>().player = charPlayer as PlayerCharacter;
 				inputM.player = charPlayer;
 				Debug.Log(newCharacter);
+				Debug.Log(newCharacter.charID);
 			}
 
 
