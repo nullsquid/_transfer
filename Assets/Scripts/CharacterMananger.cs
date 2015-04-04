@@ -10,6 +10,7 @@ public class CharacterMananger : MonoBehaviour {
 	//public Character character;
 	public Character characterPrefab;
 	public PlayerCharacter pcPrefab;
+	public PlayerCharacter charPlayer;
 	//public PlayerCharacter pc;
 
 	public string nameA;
@@ -34,7 +35,7 @@ public class CharacterMananger : MonoBehaviour {
 	public string genderI;
 	public string gender0;
 
-	public PlayerCharacter charPlayer;
+
 	/*public Character charA;
 	public Character charB;
 	public Character charC;
@@ -79,13 +80,16 @@ public class CharacterMananger : MonoBehaviour {
 		string[] names = new string[10]{nameA, nameB, nameC, nameD, nameE, nameF, nameG, nameH, nameI, name0};
 		string[] genders = new string[10]{genderA, genderB, genderC, genderD, genderE, genderF, genderG, genderH, genderI, gender0};
 		string[] identifiers = new string[10]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "0"};
-		//Debug.Log ("names is "+names.Length);
-		Character newCharacter = characterPrefab;
 
-		for(int i = 0; i <= characters.Length - 1; i++){
-			Debug.Log("player is " + init.playerCharacter);
-		
-			if(init.playerCharacter != newCharacter.charID){
+		//this is the problem!!!!!!!!!!
+		//AHHHHHH!!!!!!!!!!!!!!!!!
+		PlayerCharacter newPlayerCharacter;
+		Character newCharacter = null;
+		for(int i = 0; i <= (characters.Length - 1); i++){
+
+			characters[i] = newCharacter;
+			//newCharacter = characters[i];
+			//if(init.playerCharacter != newCharacter.charID){
 				newCharacter = Instantiate(characterPrefab, transform.position, transform.rotation) as Character;
 				newCharacter.isPlayer = false;
 				newCharacter.charName = names[i];
@@ -94,9 +98,17 @@ public class CharacterMananger : MonoBehaviour {
 				newCharacter.pronoun = init.pronouns[newCharacter.charID];
 				newCharacter.name = identifiers[i];
 				newCharacter.transform.parent = transform;
-			}
-			//Bug: occasionally the player does not spawn
-			else if(init.playerCharacter == newCharacter.charID){
+				//Debug.Log("NPC IS " + newCharacter.charID);
+			//}
+
+			//////////////////////////////////////////////////////
+			//TEMPORARILY REMOVED PLAYER SPAWN IN ORDER TO GET THE 
+			//CHARACTER ARRAY TO POPULATE CORRECTLY
+			//////////////////////////////////////////////////////
+			//////////////////////////////////////////////////////
+			/// 
+			/// 
+			/*else if(init.playerCharacter == newCharacter.charID){
 				newCharacter = Instantiate(pcPrefab, transform.position, transform.rotation) as PlayerCharacter;
 				newCharacter.isPlayer = true;
 				newCharacter.charName = names[i];
@@ -106,17 +118,18 @@ public class CharacterMananger : MonoBehaviour {
 				newCharacter.name = identifiers[i];
 				newCharacter.transform.parent = transform;
 				textM.playerName = newCharacter.charName;
-
-				charPlayer = newCharacter as PlayerCharacter;
+				//newCharacter = charPlayer;
+				charPlayer = newPlayerCharacter as PlayerCharacter;
+				Debug.Log (newPlayerCharacter + " is new player");
 				//GetComponent<InputManager>().player = charPlayer;
 				//gameObject.GetComponent<InputManager>().player = charPlayer as PlayerCharacter;
 				inputM.player = charPlayer;
 				Debug.Log(newCharacter);
-				Debug.Log(newCharacter.charID);
-			}
+			}*/
 
 
-			characters[i] = newCharacter;
+
+			//Debug.Log("new character is " + newCharacter.charID);
 			//Debug.Log (characters[i].charID);
 
 

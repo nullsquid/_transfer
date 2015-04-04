@@ -52,6 +52,7 @@ public class InputManager : MonoBehaviour{
 //		Debug.Log(player.KnownCharacters["MEMM"]);
 
 	}
+//		Debug.Log(player.KnownCharacters["MEMM"]);
 
 	public void HandleInput(string command){
 		switch(command){
@@ -79,7 +80,7 @@ public class InputManager : MonoBehaviour{
 			break;
 		}
 	}
-
+//		Debug.Log(player.KnownCharacters["MEMM"]);
 
 
 
