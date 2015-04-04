@@ -13,10 +13,15 @@ public class PlayerCharacter : Character {
 
 	void Start () {
 
+		//KnownCharacters.Add
+		//KnownCharacters.Add (GetComponentInParent<CharacterMananger>().nameI, GetComponent<Character>().charID);
+		KnownCharacters.Add (GetComponentInParent<CharacterMananger>().nameI, "I");
+		//Debug.Log(KnownCharacters["MEMM"]);
+
+
 		//KnownCharacters.Add ("MEMM", "I");
 		charManager = FindObjectOfType<CharacterMananger>();
-		//EncounterOtherCharacter("MEMM");
-		//EncounterOtherCharacter("KIKK");
+
 		
 	}
 	

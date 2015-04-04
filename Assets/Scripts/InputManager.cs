@@ -49,10 +49,9 @@ public class InputManager : MonoBehaviour{
 		if(player == null){
 			player = cManager.charPlayer;
 		}
-//		Debug.Log(player.KnownCharacters["MEMM"]);
+
 
 	}
-//		Debug.Log(player.KnownCharacters["MEMM"]);
 
 	public void HandleInput(string command){
 		switch(command){
@@ -66,11 +65,15 @@ public class InputManager : MonoBehaviour{
 			}
 			//else if (player.KnownCharacters.
 			else if(player.KnownCharacters.ContainsKey(input.newParameters[0])){
+
+				Debug.Log (player.KnownCharacters[input.newParameters[0]]);
+
 				Debug.Log ("it's MEMM!");
 				textManager.displayText.text = "It's MEMM!";
 
 				//newText = Instantiate(textManager.displayText, textManager.canvas.transform.position, transform.rotation) as GameObject;
 				//newText.transform.parent = textManager.canvas.transform;
+
 				//cManager.SendMessage("Connect");
 			}
 			else{
@@ -80,7 +83,7 @@ public class InputManager : MonoBehaviour{
 			break;
 		}
 	}
-//		Debug.Log(player.KnownCharacters["MEMM"]);
+
 
 
 

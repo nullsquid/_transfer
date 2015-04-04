@@ -84,26 +84,32 @@ public class CharacterMananger : MonoBehaviour {
 		//this is the problem!!!!!!!!!!
 		//AHHHHHH!!!!!!!!!!!!!!!!!
 		PlayerCharacter newPlayerCharacter;
-		Character newCharacter = null;
-		for(int i = 0; i <= (characters.Length - 1); i++){
 
-			characters[i] = newCharacter;
+		//change the characterprefab to something else//
+		Character newCharacter = characterPrefab;
+		//Character newCharacter = characters[null];
+		for(int i = 0; i <= (characters.Length - 1); i++){
+			//Character newCharacter = characters[i];
+			//characters[i] = newCharacter;
 			//newCharacter = characters[i];
 			//if(init.playerCharacter != newCharacter.charID){
-				newCharacter = Instantiate(characterPrefab, transform.position, transform.rotation) as Character;
-				newCharacter.isPlayer = false;
-				newCharacter.charName = names[i];
-				newCharacter.gender = genders[i];
-				newCharacter.charID = identifiers[i];
-				newCharacter.pronoun = init.pronouns[newCharacter.charID];
-				newCharacter.name = identifiers[i];
-				newCharacter.transform.parent = transform;
+				characters[i] = Instantiate(characterPrefab, transform.position, transform.rotation) as Character;
+				characters[i].isPlayer = false;
+				characters[i].charName = names[i];
+				characters[i].gender = genders[i];
+				characters[i].charID = identifiers[i];
+				characters[i].pronoun = init.pronouns[newCharacter.charID];
+				characters[i].name = identifiers[i];
+				characters[i].transform.parent = transform;
 				//Debug.Log("NPC IS " + newCharacter.charID);
 			//}
 
 			//////////////////////////////////////////////////////
 			//TEMPORARILY REMOVED PLAYER SPAWN IN ORDER TO GET THE 
 			//CHARACTER ARRAY TO POPULATE CORRECTLY
+			//
+			//ELEMENT 0 IN CHARACTERS ARRAY IS ALWAYS NULL
+			//AND PUSHES EVERYTHING ELSE UP 1 UNIT
 			//////////////////////////////////////////////////////
 			//////////////////////////////////////////////////////
 			/// 

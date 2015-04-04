@@ -34,6 +34,9 @@ public class Init : MonoBehaviour {
 		playerCharacter = allCharacters[Random.Range(0, (allCharacters.Length))];
 		Debug.Log("init player is " + playerCharacter);
 		//Initialization();
+
+		playerCharacter = allCharacters[Random.Range(0, allCharacters.Length)];
+
 		#region pronoun dictionary
 		pronouns.Add("A", PronounGen("A"));
 		pronouns.Add("B", PronounGen("B"));
@@ -95,10 +98,7 @@ public class Init : MonoBehaviour {
 		}
 
 	}
-	void Initialization(){
 
-
-	}
 
 
 
