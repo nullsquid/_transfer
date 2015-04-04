@@ -12,18 +12,16 @@ public class PlayerCharacter : Character {
 	// Use this for initialization
 
 	void Start () {
-<<<<<<< HEAD
+
 		//KnownCharacters.Add
 		//KnownCharacters.Add (GetComponentInParent<CharacterMananger>().nameI, GetComponent<Character>().charID);
 		KnownCharacters.Add (GetComponentInParent<CharacterMananger>().nameI, "I");
 		//Debug.Log(KnownCharacters["MEMM"]);
-=======
->>>>>>> 25b398a8c7fdbe9c11b0c392c51f9b3c1e8a221d
+
 
 		//KnownCharacters.Add ("MEMM", "I");
 		charManager = FindObjectOfType<CharacterMananger>();
-		//EncounterOtherCharacter("MEMM");
-		//EncounterOtherCharacter("KIKK");
+
 		
 	}
 	

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Init : MonoBehaviour {
 
 	#region Public Variables
-	public string[] allCharacters = new string[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "0"};
+	public string[] allCharacters = new string[10]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "0"};
 	public string playerCharacter;
 	#endregion
 
@@ -32,7 +32,7 @@ public class Init : MonoBehaviour {
 	void Start () {
 		//Debug.Log(characters[0]);
 		playerCharacter = allCharacters[Random.Range(0, allCharacters.Length)];
-		Initialization();
+
 		#region pronoun dictionary
 		pronouns.Add("A", PronounGen("A"));
 		pronouns.Add("B", PronounGen("B"));
@@ -94,10 +94,7 @@ public class Init : MonoBehaviour {
 		}
 
 	}
-	void Initialization(){
 
-
-	}
 
 
 

@@ -49,11 +49,7 @@ public class InputManager : MonoBehaviour{
 		if(player == null){
 			player = cManager.charPlayer;
 		}
-<<<<<<< HEAD
-		//Debug.Log(player.KnownCharacters["MEMM"]);
-=======
-//		Debug.Log(player.KnownCharacters["MEMM"]);
->>>>>>> 25b398a8c7fdbe9c11b0c392c51f9b3c1e8a221d
+
 
 	}
 
@@ -69,15 +65,15 @@ public class InputManager : MonoBehaviour{
 			}
 			//else if (player.KnownCharacters.
 			else if(player.KnownCharacters.ContainsKey(input.newParameters[0])){
-<<<<<<< HEAD
+
 				Debug.Log (player.KnownCharacters[input.newParameters[0]]);
-=======
+
 				Debug.Log ("it's MEMM!");
 				textManager.displayText.text = "It's MEMM!";
 
 				//newText = Instantiate(textManager.displayText, textManager.canvas.transform.position, transform.rotation) as GameObject;
 				//newText.transform.parent = textManager.canvas.transform;
->>>>>>> 25b398a8c7fdbe9c11b0c392c51f9b3c1e8a221d
+
 				//cManager.SendMessage("Connect");
 			}
 			else{
