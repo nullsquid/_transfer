@@ -25,6 +25,8 @@ public class InputManager : MonoBehaviour{
 	//public float padding = 5.0f;
 	public InputCapture input;
 	public string newCommand;
+	public Directory dirPrefab;
+	public bool canWriteCommand = true;
 
 
 	//public 
@@ -54,6 +56,7 @@ public class InputManager : MonoBehaviour{
 	}
 
 	public void HandleInput(string command){
+		//canWriteCommand = true;
 		switch(command){
 		case "help":
 			Debug.Log("Helping");
@@ -81,6 +84,19 @@ public class InputManager : MonoBehaviour{
 				Debug.Log(input.newParameters[0]);
 			}
 			break;
+		case "make": 
+			//int directoryCount;
+			//int newDirectoryCount;
+			Debug.Log("Making");
+			if(input.newParameters.Count == 0){
+				Debug.Log ("requires parameter: cannot comply");
+			}
+			else if (input.newParameters[0] == "dir"){
+				MakingState(input.newParameters[0]);
+			//IdleState();
+
+			}
+			break;
 		}
 	}
 
@@ -90,6 +106,7 @@ public class InputManager : MonoBehaviour{
 
 	public void IdleState(){
 		//textManager.displayText.text = "";
+		canWriteCommand = true;
 
 	}
 
@@ -103,4 +120,19 @@ public class InputManager : MonoBehaviour{
 	public void ConnectState(string connection){
 
 	}
+
+	public void MakingState(string newObject){
+
+		if(newObject == "dir"){
+		//	int dirCount = 0;
+		//	int newDirCount = 0;
+			if(canWriteCommand){
+				Directory newDir = Instantiate(dirPrefab, transform.position, transform.rotation) as Directory;
+				newDir.transform.parent = player.transform;
+				canWriteCommand = false;
+		}
+		
+		
+	}
+}
 }
