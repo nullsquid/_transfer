@@ -12,6 +12,7 @@ public class CharacterMananger : MonoBehaviour {
 	public PlayerCharacter pcPrefab;
 	public PlayerCharacter charPlayer;
 	//public PlayerCharacter pc;
+	
 
 	public string nameA;
 	public string nameB;
@@ -47,7 +48,7 @@ public class CharacterMananger : MonoBehaviour {
 	public Character charI;
 	public Character char0;
 	*/
-
+	int playerIndex;
 
 
 	// Use this for initialization
@@ -76,6 +77,7 @@ public class CharacterMananger : MonoBehaviour {
 		genderI = FindGender("I");
 		gender0 = FindGender("0");
 
+		playerIndex = Random.Range (0, characters.Length);
 
 		string[] names = new string[10]{nameA, nameB, nameC, nameD, nameE, nameF, nameG, nameH, nameI, name0};
 		string[] genders = new string[10]{genderA, genderB, genderC, genderD, genderE, genderF, genderG, genderH, genderI, gender0};
@@ -92,7 +94,8 @@ public class CharacterMananger : MonoBehaviour {
 			//Character newCharacter = characters[i];
 			//characters[i] = newCharacter;
 			//newCharacter = characters[i];
-			//if(init.playerCharacter != newCharacter.charID){
+			//if(init.playerCharacter != characters[i].charID){
+			if(i != playerIndex){
 				characters[i] = Instantiate(characterPrefab, transform.position, transform.rotation) as Character;
 				characters[i].isPlayer = false;
 				characters[i].charName = names[i];
@@ -101,6 +104,20 @@ public class CharacterMananger : MonoBehaviour {
 				characters[i].pronoun = init.pronouns[newCharacter.charID];
 				characters[i].name = identifiers[i];
 				characters[i].transform.parent = transform;
+			}
+			else if(i == playerIndex){
+				characters[i] = Instantiate(pcPrefab, transform.position, transform.rotation) as PlayerCharacter;
+				characters[i].isPlayer = true;
+				characters[i].charName = names[i];
+				characters[i].gender = genders[i];
+				characters[i].charID = identifiers[i];
+				characters[i].pronoun = init.pronouns[newCharacter.charID];
+				characters[i].name = identifiers[i];
+				characters[i].transform.parent = transform;
+				textM.playerName = characters[i].charName;
+				charPlayer = characters[i] as PlayerCharacter;
+				Debug.Log(charPlayer);
+			}
 				//Debug.Log("NPC IS " + newCharacter.charID);
 			//}
 
