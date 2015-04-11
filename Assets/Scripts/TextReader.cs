@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using SimpleJSON;
-//using JsonDotNet;
+
 
 public class TextReader : MonoBehaviour {
 	//public TextAsset text;
@@ -13,6 +13,8 @@ public class TextReader : MonoBehaviour {
 	public TextAsset _1D;
 	public TextAsset _1E;
 	public TextAsset _1F;
+
+	public TextAsset _9A;
 
 	//string N = JSON.Parse(text.text);
 	//string N = JSON.Parse(
