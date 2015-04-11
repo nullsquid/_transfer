@@ -34,8 +34,14 @@ public class InputManager : MonoBehaviour{
 	//public commandState state = new commandState();
 
 	// Use this for initialization
+	IEnumerator InputBuffer(){
+		if(!canWriteCommand){
+			yield return new WaitForSeconds(2f);
+			canWriteCommand = true;
+		}
+	}
 	void Start () {
-
+	//	StartCoroutine(InputBuffer());
 		//during runtime, add optional parameters to list and then check
 		//to see if the parameter can do anything
 		//player = cManager.
@@ -51,6 +57,7 @@ public class InputManager : MonoBehaviour{
 		if(player == null){
 			player = cManager.charPlayer;
 		}
+
 
 
 	}
@@ -92,8 +99,8 @@ public class InputManager : MonoBehaviour{
 				Debug.Log ("requires parameter: cannot comply");
 			}
 			else if (input.newParameters[0] == "dir"){
+
 				MakingState(input.newParameters[0]);
-			//IdleState();
 
 			}
 			break;
@@ -122,7 +129,7 @@ public class InputManager : MonoBehaviour{
 	}
 
 	public void MakingState(string newObject){
-
+	//	canWriteCommand = true;
 		if(newObject == "dir"){
 		//	int dirCount = 0;
 		//	int newDirCount = 0;
