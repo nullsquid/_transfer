@@ -15,6 +15,10 @@ public class TextReader : MonoBehaviour {
 	public TextAsset _1F;
 
 	public TextAsset _9A;
+	string W;
+	string[] responses = new string[2];
+
+	//public string[] test = new string[2];
 
 	//string N = JSON.Parse(text.text);
 	//string N = JSON.Parse(
@@ -26,9 +30,13 @@ public class TextReader : MonoBehaviour {
 		//int version = N["version"].Value;
 		Debug.Log(N["version"].Value);
 		//Parse()
+		//var W = JSONNode.Parse(_9A.text);
+		W = JSONNode.Parse(_9A.text);
+		//responses[0] = W["C"]["2"]["responses"];
 
 	}
 	void Update(){
+
 
 	}
 	void Parse(string text){
