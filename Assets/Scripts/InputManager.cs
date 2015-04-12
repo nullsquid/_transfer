@@ -25,6 +25,8 @@ public class InputManager : MonoBehaviour{
 	//public float padding = 5.0f;
 	public InputCapture input;
 	public string newCommand;
+	public Directory dirPrefab;
+	public bool canWriteCommand = true;
 
 
 	//public 
@@ -32,8 +34,14 @@ public class InputManager : MonoBehaviour{
 	//public commandState state = new commandState();
 
 	// Use this for initialization
+	IEnumerator InputBuffer(){
+		if(!canWriteCommand){
+			yield return new WaitForSeconds(2f);
+			canWriteCommand = true;
+		}
+	}
 	void Start () {
-
+	//	StartCoroutine(InputBuffer());
 		//during runtime, add optional parameters to list and then check
 		//to see if the parameter can do anything
 		//player = cManager.
@@ -49,11 +57,13 @@ public class InputManager : MonoBehaviour{
 		if(player == null){
 			player = cManager.charPlayer;
 		}
-//		Debug.Log(player.KnownCharacters["MEMM"]);
+
+
 
 	}
 
 	public void HandleInput(string command){
+		//canWriteCommand = true;
 		switch(command){
 		case "help":
 			Debug.Log("Helping");
@@ -65,16 +75,33 @@ public class InputManager : MonoBehaviour{
 			}
 			//else if (player.KnownCharacters.
 			else if(player.KnownCharacters.ContainsKey(input.newParameters[0])){
+
+				Debug.Log (player.KnownCharacters[input.newParameters[0]]);
+
 				Debug.Log ("it's MEMM!");
 				textManager.displayText.text = "It's MEMM!";
 
 				//newText = Instantiate(textManager.displayText, textManager.canvas.transform.position, transform.rotation) as GameObject;
 				//newText.transform.parent = textManager.canvas.transform;
+
 				//cManager.SendMessage("Connect");
 			}
 			else{
 				Debug.Log("It's not MEMM :( ");
 				Debug.Log(input.newParameters[0]);
+			}
+			break;
+		case "make": 
+			//int directoryCount;
+			//int newDirectoryCount;
+			Debug.Log("Making");
+			if(input.newParameters.Count == 0){
+				Debug.Log ("requires parameter: cannot comply");
+			}
+			else if (input.newParameters[0] == "dir"){
+
+				MakingState(input.newParameters[0]);
+
 			}
 			break;
 		}
@@ -86,6 +113,7 @@ public class InputManager : MonoBehaviour{
 
 	public void IdleState(){
 		//textManager.displayText.text = "";
+		canWriteCommand = true;
 
 	}
 
@@ -99,4 +127,19 @@ public class InputManager : MonoBehaviour{
 	public void ConnectState(string connection){
 
 	}
+
+	public void MakingState(string newObject){
+	//	canWriteCommand = true;
+		if(newObject == "dir"){
+		//	int dirCount = 0;
+		//	int newDirCount = 0;
+			if(canWriteCommand){
+				Directory newDir = Instantiate(dirPrefab, transform.position, transform.rotation) as Directory;
+				newDir.transform.parent = player.transform;
+				canWriteCommand = false;
+		}
+		
+		
+	}
+}
 }
