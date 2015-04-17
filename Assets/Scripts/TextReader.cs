@@ -15,6 +15,7 @@ public class TextReader : MonoBehaviour {
 	public TextAsset _1F;
 
 	public TextAsset _9A;
+	int blockNumber = 0;
 	string W;
 	string[] responses = new string[2];
 	string val;
@@ -31,6 +32,7 @@ public class TextReader : MonoBehaviour {
 		//Debug.Log(N);
 		//int version = N["version"].Value;
 		//Debug.Log(N["version"].Value);
+		Debug.Log(N["C"]["1"]["prompt"]);
 		Debug.Log(N["C"]["2"]["prompt"]);
 		Debug.Log(val);
 		//Parse()
