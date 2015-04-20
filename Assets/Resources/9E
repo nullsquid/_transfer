@@ -1,0 +1,35 @@
+{
+	"G":{
+			"1": {
+						"prompt": "Anyone out there?",
+						"responses":[
+							"Yes.",
+							"I don't want to talk to you."
+						]
+			}, 
+			
+			"2": {
+						"prompt": "What's going on?",
+						"responses":["I don't know."]
+			},
+
+			"3": {
+						"prompt": "What's going on?",
+						"responses":["I don't want to talk to you."]
+			},
+
+			"4": {
+						"prompt": "But you're right there.",
+						"responses":[
+							"I don't know what's going on.",
+							"I don't want to talk.",
+							"What do you want?"
+						]
+			}, 
+			
+			"5": {
+						"prompt": "Don't know. What happened?",
+						"responses":["I don't know."]
+			}
+	}
+}
