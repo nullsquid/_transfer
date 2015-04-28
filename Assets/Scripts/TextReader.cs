@@ -16,6 +16,7 @@ public class TextReader : MonoBehaviour {
 	public List<TextAsset> _2 = new List<TextAsset>();
 	public List<TextAsset> _1 = new List<TextAsset>();
 
+
 	int blockNumber = 0;
 	string W;
 	string[] responses = new string[2];
@@ -30,6 +31,7 @@ public class TextReader : MonoBehaviour {
 		Debug.Log(_9A["C"]["1"]["prompt"]);
 		//var N = JSONNode.Parse(_9A.text);
 		var W = JSONNode.Parse(_9[0].text);
+
 		//val = N["C"]["2"]["responses"][1];
 		//string N = JSON.Parse(text.text);
 		//Debug.Log(N);

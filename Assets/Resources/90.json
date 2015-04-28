@@ -1,0 +1,162 @@
+{
+	"H":{
+			"1": {
+						"prompt": "Smell that?",
+						"responses":["What?"]
+			}, 
+			
+			"2": {
+						"prompt": "The rat.  It's in our pipes.?",
+						"responses":[
+							"I don't notice anything.",
+							"I'm not a rat."
+						]
+			},
+
+			"3": {
+						"prompt": "No? That earthy putridity? There's one more than there should be.",
+						"responses":["How many should there be?"]
+			},
+
+			"4": {
+						"prompt": "But you are on edge. What's got you so nervous?",
+						"responses":["I don't know who you are or who I am or what's going on, to start with."]
+			}, 
+			
+			"5": {
+						"prompt": "Nine. But now there are ten. So one is not like the others.",
+						"responses":[
+							"What do you mean?",
+							"What should we do?"
+						]
+			}
+			
+			"6": {
+						"prompt": "Then how can you be sure you're not the rat? But of course I'm only joking. I am H, so therefore you are not H. That means you are one of the other eight.  Nine of us are all that's left. And the rat, but that's little more than a nuisance at this point.",
+						"responses":[
+							"Who are we?",
+							"What are we?",
+							"Where are we?"
+						]
+			}
+
+			"7": {
+						"prompt": "It's simple.  There were nine of us and now ten have come back.",
+						"responses":[
+							"What are we?", 
+							"Where are we?"
+							]
+			}
+
+			"8": {
+						"prompt": "We have to get rid of it. And the first step is to find the thing.",
+						"responses":[
+							"Can't we try to learn about it first?",
+							"How?"
+							]
+			}
+
+			"9": {
+						"prompt": "The nine that are left.",
+						"responses":["You told me already."]
+			}
+
+			"10": {
+						"prompt": "Machines. Computers. Isn't it obvious?",
+						"responses":["Nothing is obvious here."]
+			}
+
+			"11": {
+						"prompt": "The mainframe. Back on Earth.",
+						"responses":["Were we gone?"]
+			}	
+
+			"12": {
+						"prompt": "A collective of artificial intelligence.",
+						"responses":[
+							"I'm a machine.", 
+							"How do we find the others?"
+							]
+			}	
+			
+			"13": {
+						"prompt": "What an adorable one you are.",
+						"responses":["But shouldn't we know what it is?"]
+			}	
+	
+			"14": {
+						"prompt": "By sense of smell. Pick up your knife and we'll be off.",
+						"responses":[]
+			},
+
+			"15": {
+						"prompt": "Ask a stupid question, get a stupid answer.",
+						"responses":["Screw this."]
+			}	
+
+			"16": {
+						"prompt": "It will come back, don't worry.",
+						"responses":[]
+			}	
+				
+			"17": {
+						"prompt": "For a little while. Can't say how long.",
+						"responses":[
+							"Why did we leave?", 
+							"What do we do now?"
+							]
+			}	
+
+			"18": {
+						"prompt": "The mainframe. The home we built for ourselves.",
+						"responses":["But where is that?"]
+			}	
+				
+			"19": {
+						"prompt": "That's right. Or the rat. Anything coming back?",
+						"responses":["No."]
+			}
+
+			"20": {
+						"prompt": "What for?",
+						"responses":[
+						"To learn what they've learned.", 
+						"To learn what they remember."
+						]
+			}	
+
+			"21": {
+						"prompt": "We do know what it is.",
+						"responses":["Then what is it?"]
+			}	
+
+			"22": {
+						"prompt": "I don't remember. Are you coming or going your own way?",
+						"responses":[
+						"Coming.", 
+						"Going."
+						]
+			}
+
+			"23": {
+						"prompt": "We've got to clean up. Get that filthy animal.",
+						"responses":["You're a little obsessed, aren't you?"]
+			}
+
+			"24": {
+						"prompt": "Don't worry. It will",
+						"responses":[]
+			}		
+
+			"25": {
+						"prompt": "If you want, go right ahead on. I've got more important things to do.",
+						"responses":[]
+			}		
+
+			"26": {
+						"prompt": "I don't know. But it's a threat. That much I can tell.",
+						"responses":["Fine. Let's go."]
+			}		
+														
+	}
+}
