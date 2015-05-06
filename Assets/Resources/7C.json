@@ -1,0 +1,117 @@
+{
+	"C":{
+			"1": {
+					"prompt": "Well, here we are again.",
+					"responses":[
+						"Indeed.",
+						"Who are you?",
+						"Where?"
+					]
+			},
+			
+			"2": {
+					"prompt": "What are you doing with yourself these days?",
+					"responses":[
+						"Looking for the center.", 
+						"Trying to figure out what happened.", 
+						"Trying to catch the rat."
+					]
+			},
+
+			"3": {
+					"prompt": "A monster or a revelation.",
+					"responses":["That's not very helpful."]
+			},
+
+			"4": {
+					"prompt": "Well, what would you like to call it?",
+					"responses":[
+						"A spiral.", 
+						"A tunnel.", 
+						"A network."
+					]
+			},
+
+			"5": {
+					"prompt": "And thus you've landed here with me.",
+					"responses":[]
+			},
+
+			"6": {
+					"prompt": "Any luck?",
+					"responses":["Looks like it. Guess I'll be on my way now."]
+			},
+
+			"7": {
+					"prompt": "What rat?",
+					"responses":["An infiltration. Something that's not supposed to be here."]
+			},
+
+			"8": {
+					"prompt": "Very good.",
+					"responses":["Remember anything else?"]
+			},
+
+			"9": {
+					"prompt": "Not bad.",
+					"responses":["But what is it?"]
+			},
+
+			"10": {
+					"prompt": "Close.",
+					"responses":["But what is it?"]
+			},
+
+			"11": {
+					"prompt": "Not yet. I'm waiting.",
+					"responses":[]
+			},
+
+			"12": {
+					"prompt": "Counter-intuitive, to be sure. But you must always remember to ask who made God.",
+					"responses":[]
+			},
+
+			"13": {
+					"prompt": "No reason and no desire. I've got everything I need right here, in spire of less than ideal company.",
+					"responses":[]
+			},
+
+			"14": {
+					"prompt": "I haven't heard anything about that.",
+					"responses":["H can smell it."]
+			},
+
+			"15": {
+					"prompt": "I suppose that's the currency now. I'll tell you, all I remember is a sudden light.",
+					"responses":[
+						"A bomb?", 
+						"A shining?"
+					]
+			},
+
+			"16": {
+					"prompt": "Whatever you think it is.",
+					"responses":["I don't get the joke."]
+			},
+
+			"17": {
+					"prompt": "Can you?",
+					"responses":[
+						"Yes.", 
+						"No."
+					]
+			},
+
+			"18": {
+					"prompt": "Oh, no. Nothing so pretty. Just the sudden awareness.",
+					"responses":[]
+			},
+
+			"19": {
+					"prompt": "Nothing so dangerous.",
+					"responses":[]
+			},
+
+	}
+}
