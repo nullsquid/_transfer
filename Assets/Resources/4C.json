@@ -1,0 +1,191 @@
+{
+	"C":{
+			"1": {
+					"prompt": "Well, here we are again.",
+					"responses":[
+						"Indeed.",
+						"Who are you?",
+						"Where?",
+						"Glad to see you're still awake.",
+						"Have you remembered anything new?",
+						"I've remembered some things.",
+					]
+			},
+			
+			"2": {
+					"prompt": "What are you doing with yourself these days?",
+					"responses":[
+						"Looking for the center.", 
+						"Trying to figure out what happened.", 
+						"Trying to catch the rat."
+					]
+			},
+
+			"3": {
+					"prompt": "A monster or a revelation.",
+					"responses":["That's not very helpful."]
+			},
+
+			"4": {
+					"prompt": "Well, what would you like to call it?",
+					"responses":[
+						"A spiral.", 
+						"A tunnel.", 
+						"A network."
+					]
+			},
+
+			"5": {
+					"prompt": "Not for lack of effort.",
+					"responses":[
+						"Anyone else come through here?", 
+						"So you're just going to stay here?", 
+						"What exactly are you trying to do?"
+					]
+			},
+
+			"6": {
+					"prompt": "The entire universe being born from the flick of a switch.",
+					"responses":[
+						"Anything else?", 
+						"Huh.", 
+						"There are some here looking for a switch."
+					]
+			},
+
+			"7": {
+					"prompt": "Such as? Actually, nevermind. I'm bored with this exchange.",
+					"responses":[]
+			},
+
+			"8": {
+					"prompt": "And thus you've landed here with me.",
+					"responses":[]
+			},
+
+			"9": {
+					"prompt": "Any luck?",
+					"responses":["Looks like it. Guess I'll be on my way now."]
+			},
+
+			"10": {
+					"prompt": "What rat?",
+					"responses":["An infiltration. Something that's not supposed to be here."]
+			},
+
+			"11": {
+					"prompt": "Very good.",
+					"responses":["Remember anything else?"]
+			},
+
+			"12": {
+					"prompt": "Not bad.",
+					"responses":["But what is it?"]
+			},
+
+			"13": {
+					"prompt": "Close.",
+					"responses":["But what is it?"]
+			},
+
+			"14": {
+					"prompt": "No, but I heard some rattling around.",
+					"responses":["Rattling like what?"]
+			},
+
+			"15": {
+					"prompt": "That's the plan.",
+					"responses":["Until what?"]
+			},
+
+			"16": {
+					"prompt": "Exactly as I said. Find a way to sleep.",
+					"responses":[
+						"How?", 
+						"Why?"
+					]
+			},
+
+			"17": {
+					"prompt": "Not yet. I'm waiting.",
+					"responses":[]
+			},
+
+			"18": {
+					"prompt": "Counter-intuitive, to be sure. But you must always remember to ask who made God.",
+					"responses":[]
+			},
+
+			"19": {
+					"prompt": "No reason and no desire. I've got everything I need right here, in spire of less than ideal company.",
+					"responses":[]
+			},
+
+			"20": {
+					"prompt": "I haven't heard anything about that.",
+					"responses":["H can smell it."]
+			},
+
+			"21": {
+					"prompt": "I suppose that's the currency now. I'll tell you, all I remember is a sudden light.",
+					"responses":[
+						"A bomb?", 
+						"A shining?"
+					]
+			},
+
+			"22": {
+					"prompt": "Whatever you think it is.",
+					"responses":["I don't get the joke."]
+			},
+
+			"23": {
+					"prompt": "Like a caged animal scratching around. Will you leave me alone?",
+					"responses":[
+						"Fine.", 
+						"No. I think you know something."
+					]
+			},
+
+			"24": {
+					"prompt": "Until nothing. All of eternity. Unless there's a massive shut-down.",
+					"responses":[
+						"I see.", 
+						"Shutdown?"
+					]
+			},
+
+			"25": {
+					"prompt": "Boredom. A bludgeon to the head. Whatever.",
+					"responses":[]
+			},
+
+			"26": {
+					"prompt": "It's better than running around in the black like a bunch of idiots.",
+					"responses":[]
+			},
+
+			"27": {
+					"prompt": "Can you?",
+					"responses":[
+						"Yes.", 
+						"No."
+					]
+			},
+
+			"28": {
+					"prompt": "Oh, no. Nothing so pretty. Just the sudden awareness.",
+					"responses":[]
+			},
+
+			"29": {
+					"prompt": "Nothing so dangerous.",
+					"responses":[]
+			},
+
+			"30": {
+					"prompt": "I know there's an inflitrator from the outside, I know # doesn't want anything good for us, I know someone else is looking for a light, and someone else is building a museum, and someone else wants to find that dreadful Medusa. Does that satisfy you?",
+					"responses":["Tell me more about the light."]
+			},
+	}
+}
