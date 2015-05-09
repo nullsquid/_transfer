@@ -27,7 +27,43 @@ public class TextReader : MonoBehaviour {
 	//string N = JSON.Parse(
 	// Use this for initialization
 	void Start(){
+		#region 9 variables
 		var _9A = JSONNode.Parse(_9[0].text);
+		#endregion
+
+		#region 8 variables
+		//var _8A = JSONNode.Parse(_8[
+		var _8C = JSONNode.Parse(_8[2].text);
+		#endregion
+
+		#region 7 variables
+		var _7C = JSONNode.Parse(_7[2].text);
+		#endregion
+
+		#region 6 variables
+		var _6A = JSONNode.Parse(_6[0].text);
+		#endregion
+
+		#region 5 variables
+		var _5C = JSONNode.Parse(_5[2].text);
+		#endregion
+
+		#region 4 variables
+		var _4C = JSONNode.Parse(_4[2].text);
+		#endregion
+
+		#region 3 variables
+		var _3A = JSONNode.Parse(_3[0].text);
+		#endregion
+
+		#region 2 variables
+		var _2A = JSONNode.Parse(_2[0].text);
+		#endregion
+
+		#region 1 variables
+		var _1A = JSONNode.Parse(_1[0].text);
+		#endregion
+
 		Debug.Log(_9A["C"]["1"]["prompt"]);
 		//var N = JSONNode.Parse(_9A.text);
 		var W = JSONNode.Parse(_9[0].text);
