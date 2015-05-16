@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class TextManager : MonoBehaviour {
 
 	public TextAsset curText;
+	public TextReader reader;
 	public Text displayHeader;
 	public Text displayText;
 	public InputManager input;
@@ -18,7 +19,7 @@ public class TextManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//ISSUE:: Find player name; set player name
-
+		reader = GetComponent<TextReader>();
 		//playerName = 
 		//playerName = character.charName;
 	}
@@ -31,6 +32,6 @@ public class TextManager : MonoBehaviour {
 			displayText.text = "let me help you";
 		}*/
 	}
-
+	//Functions for getting data to their respective places??
 
 }

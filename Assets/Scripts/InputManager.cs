@@ -104,7 +104,14 @@ public class InputManager : MonoBehaviour{
 
 			}
 			break;
+		case "calc":
+			if(input.newParameters.Count == 0){
+				Debug.Log ("requires parameter: cannot comply");
+			}
+			//else if do math stuff
+			break;
 		}
+
 	}
 
 

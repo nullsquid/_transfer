@@ -1,0 +1,103 @@
+{
+	"G":{
+	"D":{
+			"1": {
+						"prompt": "I didn't get very far, but there's a passage here.",
+						"responses":[
+							"How big is this place?",
+							"Is someone there?",
+							"Where does it go?"
+						]
+			}, 
+			
+			"2": {
+						"prompt": "I'm not sure yet.  Seems vast. Do you want to stick together or split up?",
+						"responses":[
+							"Stick together.",
+							"Split up."
+						]
+			},
+
+			"3": {
+						"prompt": "I don't hear anything.",
+						"responses":[]
+			},
+
+			"4": {
+						"prompt": "Left.",
+						"responses":[
+							"Alright.",
+							"I thought you said we were going forward."
+						]
+			}, 
+			
+			"5": {
+						"prompt": "It's only D. Learned anything yet?",
+						"responses":[]
+			},			
+			
+			"6": {
+						"prompt": "Nothing yet. Unless something's come to you?",
+						"responses":["No."]
+			},
+
+			"7": {
+						"prompt": "Who remembers these things?",
+						"responses":[
+							"I remember them.",
+							"What exactly are we looking for?"
+						]
+			},
+
+			"8": {
+						"prompt": "What are you doing?",
+						"responses":["Trying to find the light"]
+			},
+
+			"9": {
+						"prompt": "Being pedantic will do you no good.",
+						"responses":[
+							"Yes, sir."
+							"No, sir."
+						]
+			},
+
+			"10": {
+						"prompt": "I told you. A light.",
+						"responses":["But what exactly does that mean?"]
+			},
+
+			"11": {
+						"prompt": "Look, somewhere, there's got to be a center, right? A place where everything is controlled. Thar's where everything we want will be. Memories, answers to who we are and what happened, all of that.",
+						"responses":[
+							"Not necessarily. It could be like a network.",
+							"That's right, sir.",
+							"What if that's where we started? How will we know it?"
+						]
+			},
+
+			"12": {
+						"prompt": "Even a network has a control center.",
+						"responses":[]
+			},
+
+			"13": {
+						"prompt": "Of course it's right",
+						"responses":["And then what?"]
+			},
+			
+			"14": {
+						"prompt": I'm starting to remember that everyone around me was an idiot.",
+						"responses":[
+							"I'm starting to remember that everyone was sarcastic.",
+							"Don't insult me."
+						]
+			},
+			
+			"15": {
+						"prompt": "And then we'll go from there.",
+						"responses":[]
+			}
+	}
+	}
+}

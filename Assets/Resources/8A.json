@@ -1,0 +1,88 @@
+{
+	"F":{
+			"1": {
+						"prompt": "",
+						"responses":[
+							"Where are we going?",
+							"How are we going to catch this thing?"
+						]
+			}, 
+			
+			"2": {
+						"prompt": "Down, up, it doesn't matter. Just watch out because it gets slippery.",
+						"responses":["What is this rat?"]
+			},
+
+			"3": {
+						"prompt": "We'll have a better chance if we split up. Up or down?",
+						"responses":[
+							"Down",
+							"Up."
+						]
+			},
+
+			"4": {
+						"prompt": "Either a human or a virus.",
+						"responses":[
+							"A human?",
+							"A virus?"
+						]
+			}, 
+			
+			"5": {
+						"prompt": "And you'll call for me if you find it first.",
+						"responses":["Yes."]
+			},			
+			
+			"6": {
+						"prompt": "And you'll call for me if you find it first.",
+						"responses":["Yes."]
+			},
+
+			"7": {
+						"prompt": "You must at least recall them. Wandered around for thousands of years on this stage that is the world.",
+						"responses":[
+							"Yes.",
+							"No."
+						]
+			},
+
+			"8": {
+						"prompt": "Designed by a human, of course.",
+						"responses":["Then what are we?"]
+			},
+
+			"9": {
+						"prompt": "Good. Remember, it might bite, but you're smarter.",
+						"responses":[]
+			},
+
+			"10": {
+						"prompt": "There weren't supposed to be any left.",
+						"responses":["That's why we have to catch whatever is down here."]
+			},
+
+			"11": {
+						"prompt": "Strutting and fretting right until the end?",
+						"responses":[
+							"Are they gone now?",
+							"I don't remember any of it."
+						]
+			},
+
+			"12": {
+						"prompt": "Machines. Also designed by a human. Or a few.",
+						"responses":[]
+			},
+
+			"13": {
+						"prompt": "Indeed.",
+						"responses":[]
+			},
+
+			"14": {
+						"prompt": "Not entirely, if that's what's gotten in. But there weren't supposed to be any left.",
+						"responses":[]
+			}
+	}
+}

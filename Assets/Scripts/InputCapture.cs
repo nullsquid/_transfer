@@ -85,6 +85,11 @@ public class InputCapture : MonoBehaviour {
 	void ComRun(){
 		
 	}
+
+	void ComSave(){
+
+	}
+
 	
 	void ComPackage(){
 		//this is probably run also
