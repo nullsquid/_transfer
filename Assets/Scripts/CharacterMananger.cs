@@ -90,6 +90,9 @@ public class CharacterMananger : MonoBehaviour {
 		//change the characterprefab to something else//
 		Character newCharacter = characterPrefab;
 		//Character newCharacter = characters[null];
+
+		//TODO: Create boolean to allow player character to be manually chosen by me
+		//TODO: Remove vestigial character choosing code
 		for(int i = 0; i <= (characters.Length - 1); i++){
 			//Character newCharacter = characters[i];
 			//characters[i] = newCharacter;
