@@ -107,5 +107,10 @@ public class Init : MonoBehaviour {
 	}
 
 	#endregion
+
+	public string[] CharacterToggle(){
+
+		return null;
+	}
 	
 }

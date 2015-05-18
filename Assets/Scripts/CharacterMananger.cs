@@ -7,7 +7,10 @@ public class CharacterMananger : MonoBehaviour {
 	public TextManager textM;
 	public InputManager inputM;
 	public Character[] characters = new Character[10];
+	//public booleans
+	public bool isLive;
 	//public Character character;
+	public int setPlayerIndex;
 	public Character characterPrefab;
 	public PlayerCharacter pcPrefab;
 	public PlayerCharacter charPlayer;
@@ -35,6 +38,8 @@ public class CharacterMananger : MonoBehaviour {
 	public string genderH;
 	public string genderI;
 	public string gender0;
+
+	//public booleans
 
 	
 	int playerIndex;
@@ -66,7 +71,12 @@ public class CharacterMananger : MonoBehaviour {
 		genderI = FindGender("I");
 		gender0 = FindGender("0");
 
-		playerIndex = Random.Range (0, characters.Length);
+		if(isLive){
+			playerIndex = Random.Range (0, characters.Length);
+		}
+		else if (!isLive){
+			playerIndex = setPlayerIndex;
+		}
 
 		string[] names = new string[10]{nameA, nameB, nameC, nameD, nameE, nameF, nameG, nameH, nameI, name0};
 		string[] genders = new string[10]{genderA, genderB, genderC, genderD, genderE, genderF, genderG, genderH, genderI, gender0};
@@ -80,8 +90,6 @@ public class CharacterMananger : MonoBehaviour {
 		Character newCharacter = characterPrefab;
 
 
-		//TODO: Create boolean to allow player character to be manually chosen by me
-		//TODO: Remove vestigial character choosing code
 		for(int i = 0; i <= (characters.Length - 1); i++){
 
 			if(i != playerIndex){
