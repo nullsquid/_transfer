@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+//TODO: add more specific control for who a player can be (for the prototype)
+//TODO: Get functionality out of start and into its own function(s)
 public class CharacterMananger : MonoBehaviour {
 	public Init init;
 	public TextManager textM;
 	public InputManager inputM;
+	public string[] possiblePlayers = new string[10];
 	public Character[] characters = new Character[10];
 	//public booleans
 	public bool isLive;
@@ -38,10 +40,8 @@ public class CharacterMananger : MonoBehaviour {
 	public string genderH;
 	public string genderI;
 	public string gender0;
-
-	//public booleans
-
 	
+
 	int playerIndex;
 
 
@@ -81,10 +81,6 @@ public class CharacterMananger : MonoBehaviour {
 		string[] names = new string[10]{nameA, nameB, nameC, nameD, nameE, nameF, nameG, nameH, nameI, name0};
 		string[] genders = new string[10]{genderA, genderB, genderC, genderD, genderE, genderF, genderG, genderH, genderI, gender0};
 		string[] identifiers = new string[10]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "0"};
-
-		//this is the problem!!!!!!!!!!
-		//AHHHHHH!!!!!!!!!!!!!!!!!
-		PlayerCharacter newPlayerCharacter;
 
 
 		Character newCharacter = characterPrefab;
