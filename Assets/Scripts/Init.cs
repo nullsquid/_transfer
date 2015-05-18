@@ -6,7 +6,7 @@ public class Init : MonoBehaviour {
 
 	#region Public Variables
 	public string[] allCharacters = new string[10]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "0"};
-	public string playerCharacter;
+
 	#endregion
 
 	#region Name Replacement Variables
@@ -25,17 +25,12 @@ public class Init : MonoBehaviour {
 	public string nameI;
 	public string name0;
 	#endregion
-	//public int thread;
+
 	public Dictionary <string, string> pronouns = new Dictionary<string, string>();
 
 	// Use this for initialization
 	void Start () {
-		//Debug.Log(characters[0]);
-		playerCharacter = allCharacters[Random.Range(0, (allCharacters.Length))];
-		Debug.Log("init player is " + playerCharacter);
-		//Initialization();
 
-		playerCharacter = allCharacters[Random.Range(0, allCharacters.Length)];
 
 		#region pronoun dictionary
 		pronouns.Add("A", PronounGen("A"));

@@ -36,18 +36,7 @@ public class CharacterMananger : MonoBehaviour {
 	public string genderI;
 	public string gender0;
 
-
-	/*public Character charA;
-	public Character charB;
-	public Character charC;
-	public Character charD;
-	public Character charE;
-	public Character charF;
-	public Character charG;
-	public Character charH;
-	public Character charI;
-	public Character char0;
-	*/
+	
 	int playerIndex;
 
 
@@ -87,17 +76,14 @@ public class CharacterMananger : MonoBehaviour {
 		//AHHHHHH!!!!!!!!!!!!!!!!!
 		PlayerCharacter newPlayerCharacter;
 
-		//change the characterprefab to something else//
+
 		Character newCharacter = characterPrefab;
-		//Character newCharacter = characters[null];
+
 
 		//TODO: Create boolean to allow player character to be manually chosen by me
 		//TODO: Remove vestigial character choosing code
 		for(int i = 0; i <= (characters.Length - 1); i++){
-			//Character newCharacter = characters[i];
-			//characters[i] = newCharacter;
-			//newCharacter = characters[i];
-			//if(init.playerCharacter != characters[i].charID){
+
 			if(i != playerIndex){
 				characters[i] = Instantiate(characterPrefab, transform.position, transform.rotation) as Character;
 				characters[i].isPlayer = false;
@@ -121,44 +107,6 @@ public class CharacterMananger : MonoBehaviour {
 				charPlayer = characters[i] as PlayerCharacter;
 				Debug.Log(charPlayer);
 			}
-				//Debug.Log("NPC IS " + newCharacter.charID);
-			//}
-
-			//////////////////////////////////////////////////////
-			//TEMPORARILY REMOVED PLAYER SPAWN IN ORDER TO GET THE 
-			//CHARACTER ARRAY TO POPULATE CORRECTLY
-			//
-			//ELEMENT 0 IN CHARACTERS ARRAY IS ALWAYS NULL
-			//AND PUSHES EVERYTHING ELSE UP 1 UNIT
-			//////////////////////////////////////////////////////
-			//////////////////////////////////////////////////////
-			/// 
-			/// 
-			/*else if(init.playerCharacter == newCharacter.charID){
-				newCharacter = Instantiate(pcPrefab, transform.position, transform.rotation) as PlayerCharacter;
-				newCharacter.isPlayer = true;
-				newCharacter.charName = names[i];
-				newCharacter.gender = genders[i];
-				newCharacter.charID = identifiers[i];
-				newCharacter.pronoun = init.pronouns[newCharacter.charID];
-				newCharacter.name = identifiers[i];
-				newCharacter.transform.parent = transform;
-				textM.playerName = newCharacter.charName;
-				//newCharacter = charPlayer;
-				charPlayer = newPlayerCharacter as PlayerCharacter;
-				Debug.Log (newPlayerCharacter + " is new player");
-				//GetComponent<InputManager>().player = charPlayer;
-				//gameObject.GetComponent<InputManager>().player = charPlayer as PlayerCharacter;
-				inputM.player = charPlayer;
-				Debug.Log(newCharacter);
-			}*/
-
-
-
-			//Debug.Log("new character is " + newCharacter.charID);
-			//Debug.Log (characters[i].charID);
-
-
 
 
 		}
