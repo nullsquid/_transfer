@@ -134,5 +134,10 @@ public class CharacterMananger : MonoBehaviour {
 		}
 	}
 
+	private string CreateCharacters(string[] thePlayers){
+
+		return null;
+	}
+
 
 }
