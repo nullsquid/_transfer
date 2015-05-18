@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 //TODO: add more specific control for who a player can be (for the prototype)
-//TODO: Get functionality out of start and into its own function(s)
+//TODO: Get functionality out of start and into its own function(s) :: modularize and genericize if possible
+//TODO: restructure how i find player => return a string rather than an index integer? So that i can control what characters come out
 public class CharacterMananger : MonoBehaviour {
 	public Init init;
 	public TextManager textM;
@@ -132,5 +133,6 @@ public class CharacterMananger : MonoBehaviour {
 			return (null);
 		}
 	}
+
 
 }
