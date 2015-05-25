@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Node : MonoBehaviour {
+public class MapNode : MonoBehaviour {
 
 	public List<Character> charactersHere = new List<Character>();
 	// Use this for initialization

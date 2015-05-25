@@ -144,9 +144,14 @@ public class InputManager : MonoBehaviour{
 				Directory newDir = Instantiate(dirPrefab, transform.position, transform.rotation) as Directory;
 				newDir.transform.parent = player.transform;
 				canWriteCommand = false;
+			}
+		
+		
 		}
-		
-		
 	}
-}
+
+	public int Response(int numOfResponse){
+
+		return 0;
+	}
 }
