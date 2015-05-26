@@ -16,6 +16,8 @@ public class TextReader : MonoBehaviour {
 	public List<TextAsset> _2 = new List<TextAsset>();
 	public List<TextAsset> _1 = new List<TextAsset>();
 
+	//List<string> 
+
 
 	int blockNumber = 0;
 	string W;
@@ -89,7 +91,13 @@ public class TextReader : MonoBehaviour {
 
 
 	}
-	void Parse(string text){
+	//require 9 files every time
+	//gets passed the character ID and loads all of the text associated with that character
+	void SetPathTemplate(string characterID){
 
+	}
+	//returns all of the text for prompts
+	string LoadText(){
+		return null;
 	}
 }
