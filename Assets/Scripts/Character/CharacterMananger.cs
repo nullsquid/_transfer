@@ -46,8 +46,7 @@ public class CharacterMananger : MonoBehaviour {
 	int playerIndex;
 
 
-	// Use this for initialization
-	void Start () {
+	void Awake () {//switch back to start if this doesn't work
 
 
 		nameA = init.nameA;

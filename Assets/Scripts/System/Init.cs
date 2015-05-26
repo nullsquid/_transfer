@@ -29,7 +29,7 @@ public class Init : MonoBehaviour {
 	public Dictionary <string, string> pronouns = new Dictionary<string, string>();
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 
 
 		#region pronoun dictionary

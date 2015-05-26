@@ -65,6 +65,9 @@ public class TextReader : MonoBehaviour {
 		#endregion
 
 		Debug.Log(_9A["C"]["1"]["prompt"]);
+		for(int i = 0; i < _8C["C"].Count; i++){
+			Debug.Log(_8C["C"][i]["prompt"]);
+		}
 		//var N = JSONNode.Parse(_9A.text);
 		var W = JSONNode.Parse(_9[0].text);
 

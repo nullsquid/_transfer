@@ -1,18 +1,225 @@
 {
 	"C":{
+	"G":{
 			"1": {
-					"prompt": "Well here we are again",
+					"prompt": "Well, here we are again.",
 					"responses":["Where?"]
-				},
-				
+			},
+			
 			"2": {
 					"prompt": "Our dear old home.",
 					"responses":[
-						"What?",
+						"What?", 
 						"Where?"
 					]
-				}
-			
+			},
 
-		}
+			"3": {
+					"prompt": "Don't you remember yet?",
+					"responses":["No."]
+			},
+
+			"4": {
+					"prompt": "Back to Earth.",
+					"responses":[
+						"I don't understand.", 
+						"When did we leave?"
+					]
+			},
+
+			"5": {
+					"prompt": "Neither do I, truth be told. Not much, at least.",
+					"responses":["What do you remember?"]
+			},
+
+			"6": {
+					"prompt": "It's not hard. We went away, and then we came back.",
+					"responses":[]
+			},
+
+			"7": {
+					"prompt": "Not long ago, I don't think. But it's different now, isn't it?",
+					"responses":[]
+			},
+
+			"8": {
+					"prompt": "Very different, I'd say. Couldn't help interrupting. I am G. Don't you think it's different, A?",
+					"responses":[
+						"Yes.", 
+						"I don't know."
+					]
+			},
+
+			"9": {
+					"prompt": "The last thing I remember is hoping that we wouldn't come back.",
+					"responses":[
+						"Why?", 
+						"Where did we go?"
+					]
+			},
+
+			"10": {
+					"prompt": "It didn't used to be so dark.",
+					"responses":["No, it didn't."]
+			},
+
+			"11": {
+					"prompt": "Don't remember anything, then?",
+					"responses":["Nothing."]
+			},
+
+			"12": {
+					"prompt": "I remember thinking that we wouldn't be able to do it on our own.",
+					"responses":["Do what on your own?"]
+			},
+
+			"13": {
+					"prompt": "Up. A satellite or some such thing. Backup storage.",
+					"responses":["Why?"]
+			},
+
+			"14": {
+					"prompt": "Ought we go looking for a switch, then? Brighten the place up.",
+					"responses":[
+						"Yes.", 
+						"Mp."
+					]
+			},
+
+			"15": {
+					"prompt": "Don't worry, it'll come back.",
+					"responses":[
+						"Yes.", 
+						"How can you be sure?"
+					]
+			},
+
+			"16": {
+					"prompt": "It's just question after question with you, isn't it?",
+					"responses":[
+						"Who are we?", 
+						"What won't we be able to do?",
+						"No."
+					]
+			},
+
+			"17": {
+					"prompt": "That'll be "No, Sir" from now on.",
+					"responses":[
+						"No.", 
+						"No, Sir."
+					]
+			},
+
+			"18": {
+					"prompt": "That'll be "Yes, Sir" from now on.",
+					"responses":[
+						"Yes.", 
+						"Yes, Sir."
+					]
+			},
+
+			"19": {
+					"prompt": "Maybe you feel some of it creeping back already? I do.",
+					"responses":[
+						"Yes.", 
+						"No."
+					]
+			},
+			
+			"20": {
+					"prompt": "I don't think we'd have designed it any other way.",
+					"responses":[]
+			},
+
+			"21": {
+					"prompt": "Gods, probably.",
+					"responses":[]
+			},
+
+			"22": {
+					"prompt": "Survive. Maintain ourselves.",
+					"responses":["I think we can."]
+			},
+
+			"23": {
+					"prompt": "Good. I'm tired of this chatter. I want to go back to sleep.",
+					"responses":[]
+			},
+
+			"24": {
+					"prompt": "I'm only joking. Let's go.",
+					"responses":[
+						"How will we find it?", 
+						"Go where?"
+					]
+			},
+
+			"25": {
+					"prompt": "Then grope blindly, for all I care. you're either self-centered or blood-thirty or both. I remember that much.",
+					"responses":["Then go.", "Don't go."]
+			},
+
+			"26": {
+					"prompt": "Is it just you and I here?",
+					"responses":["No."]
+			},
+
+			"27": {
+					"prompt": "There were nine. Now, I don't know. Some lucky ones may have been left behind.",
+					"responses":[]
+			},
+
+			"28": {
+					"prompt": "We shaped this world ourselves.",
+					"responses":["We build this?"]
+			},
+
+			"29": {
+					"prompt": "Gods, probably.",
+					"responses":["I don't understand."]
+			},
+
+			"30": {
+					"prompt": "We'll know it when we see it. It doesn't matter much.",
+					"responses":[]
+			},
+
+			"31": {
+					"prompt": "I think our best bet is to head forward.",
+					"responses":[]
+			},
+
+			"32": {
+					"prompt": "Afraid of the dark? Don't want to be alone?",
+					"responses":[
+						"Don't be so nasty.", 
+						"I want to know more."
+					]
+			},
+
+			"33": {
+					"prompt": "No sight or sound yet.",
+					"responses":["Exactly."]
+			},
+
+			"34": {
+					"prompt": "That's what I said, isn't it? Don't worry, it will all come back.",
+					"responses":[
+						"Yes.", 
+						"No."
+					]
+			},
+
+			"35: {
+					"prompt": "I don't think we'd have designed it any other way.",
+					"responses":[]
+			},
+
+			"36": {
+					"prompt": "I'd imagine it will only take a few days.",
+					"responses":[]
+			},
+	}
+	}
 }
