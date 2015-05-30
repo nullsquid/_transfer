@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ConvNode : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	public string prompt;
+	public List<string> responses = new List<string>();
+
+	public string LinkToNode(){
+		return null;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }

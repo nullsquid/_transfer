@@ -5,11 +5,12 @@ public class ConvTree : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		BuildTree();
+	}
+
+	void BuildTree(){
+
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }

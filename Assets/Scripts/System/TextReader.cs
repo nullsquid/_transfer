@@ -23,6 +23,7 @@ public class TextReader : MonoBehaviour {
 	string W;
 	string[] responses = new string[2];
 	string val;
+	public ConvNode convNodePrefab;
 	//public string[] test = new string[2];
 
 	//string N = JSON.Parse(text.text);
@@ -65,14 +66,33 @@ public class TextReader : MonoBehaviour {
 		#region 1 variables
 		var _1A = JSONNode.Parse(_1[0].text);
 		#endregion
-
-		Debug.Log(_9A["C"]["1"]["prompt"]);
+		ConvNode newConvNode;
+		Debug.Log("responses = " + _8C["C"]["1"]["responses"].Count);
+		//TODO figure out how to just get the top level ("C" in this case) child
+		Debug.Log(_8C.Children);
+		//Debug.Log(_9A["C"]["1"]["prompt"]);
+		for (int q = 0; q <= _8C.Count - 1; q++){
+		//	Debug.Log("q is " + q);
+		//	Debug.Log(_8C);
+		}
 		for(int i = 0; i < _8C["C"].Count; i++){
-			Debug.Log(_8C["C"][i]["prompt"]);
+			newConvNode = Instantiate(convNodePrefab, transform.position, transform.rotation) as ConvNode;
+			//this doesn't extend out to all things because filename
+			newConvNode.prompt = _8C["C"][i]["prompt"];
+		
+			for(int j = 0; j <= _8C["C"][i]["responses"].Count - 1; j++){
+				//newConvNode.responses[j] = _8C["C"][j]["responses"][j];
+				//newConvNode.responses[j] = "what";
+				//newConvNode.responses[j] = "what";
+				newConvNode.responses.Add(_8C["C"][i]["responses"][j]);
+				//Debug.Log("i = " + i + " j = " + j);
+				//Debug.Log(_8C["C"][i]["responses"].Count);
+				//Debug.Log("j = " + j);
+			}
 		}
 		//var N = JSONNode.Parse(_9A.text);
-		var W = JSONNode.Parse(_9[0].text);
-
+		//var W = JSONNode.Parse(_9[0].text);
+		//Debug.Log("W is " + W);
 		//val = N["C"]["2"]["responses"][1];
 		//string N = JSON.Parse(text.text);
 		//Debug.Log(N);
@@ -87,10 +107,8 @@ public class TextReader : MonoBehaviour {
 		//responses[0] = W["C"]["2"]["responses"];
 
 	}
-	void Update(){
 
 
-	}
 	//require 9 files every time
 	//gets passed the character ID and loads all of the text associated with that character
 	void SetPathTemplate(string characterID){
