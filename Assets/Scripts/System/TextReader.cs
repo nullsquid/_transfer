@@ -36,7 +36,8 @@ public class TextReader : MonoBehaviour {
 
 		#region 8 variables
 		//var _8A = JSONNode.Parse(_8[
-		var _8C = JSONNode.Parse(_8[2].text);
+		//JSONNode _8C = JSONNode.Parse(_8[2].text);
+		var _8C = JSON.Parse(_8[2].text);
 		#endregion
 
 		#region 7 variables
@@ -67,44 +68,20 @@ public class TextReader : MonoBehaviour {
 		var _1A = JSONNode.Parse(_1[0].text);
 		#endregion
 		ConvNode newConvNode;
-		Debug.Log("responses = " + _8C["C"]["1"]["responses"].Count);
+
 		//TODO figure out how to just get the top level ("C" in this case) child
-		Debug.Log(_8C.Children);
-		//Debug.Log(_9A["C"]["1"]["prompt"]);
-		for (int q = 0; q <= _8C.Count - 1; q++){
-		//	Debug.Log("q is " + q);
-		//	Debug.Log(_8C);
-		}
+		Debug.Log(_8C["Character"][0].Value);
+
 		for(int i = 0; i < _8C["C"].Count; i++){
 			newConvNode = Instantiate(convNodePrefab, transform.position, transform.rotation) as ConvNode;
 			//this doesn't extend out to all things because filename
 			newConvNode.prompt = _8C["C"][i]["prompt"];
 		
 			for(int j = 0; j <= _8C["C"][i]["responses"].Count - 1; j++){
-				//newConvNode.responses[j] = _8C["C"][j]["responses"][j];
-				//newConvNode.responses[j] = "what";
-				//newConvNode.responses[j] = "what";
 				newConvNode.responses.Add(_8C["C"][i]["responses"][j]);
-				//Debug.Log("i = " + i + " j = " + j);
-				//Debug.Log(_8C["C"][i]["responses"].Count);
-				//Debug.Log("j = " + j);
 			}
 		}
-		//var N = JSONNode.Parse(_9A.text);
-		//var W = JSONNode.Parse(_9[0].text);
-		//Debug.Log("W is " + W);
-		//val = N["C"]["2"]["responses"][1];
-		//string N = JSON.Parse(text.text);
-		//Debug.Log(N);
-		//int version = N["version"].Value;
-		//Debug.Log(N["version"].Value);
-		//Debug.Log(N["C"]["1"]["prompt"]);
-		//Debug.Log(N["C"]["2"]["prompt"]);
-		//Debug.Log(val);
-		//Parse()
-		//var W = JSONNode.Parse(_9A.text);
-		//W = JSONNode.Parse(_9A.text);
-		//responses[0] = W["C"]["2"]["responses"];
+
 
 	}
 
