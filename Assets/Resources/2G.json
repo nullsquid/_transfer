@@ -1,0 +1,50 @@
+{
+	"C" "D" "H":{
+			"1": {
+					"prompt": "We need to override the command system just before H initiates the firing. One of us will need to watch what H is doing while the other completes the override.",
+					"responses":[
+						"I'll override.",
+						"I'll watch."
+					]
+			},
+			
+			"2": {
+					"prompt": "Okay, I'll tell you when. Do you know the code?",
+					"responses":["Ansaldi."]
+			},
+
+			"3": {
+					"prompt": "Okay, I'll override when you tell me to.",
+					"responses":["Wait"]
+			},
+
+			"4": {
+					"prompt": "Good. Wait. Now!",
+					"responses":["Ansaldi"]
+			},
+
+			"5": {
+					"prompt": "You just need to input the code.",
+					"responses":[
+						"Wait", 
+						"Now."
+					]
+			},
+
+			"6": {
+					"prompt": "That's all.",
+					"responses":[
+						"Wait", 
+						"Now."
+					]
+			},
+
+			"7": {
+					"prompt": "That's all. You know what it is?",
+					"responses":[
+						"Now.",
+						"Wait"
+					]
+			}
+	}
+}

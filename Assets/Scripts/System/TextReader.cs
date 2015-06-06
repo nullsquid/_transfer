@@ -69,13 +69,21 @@ public class TextReader : MonoBehaviour {
 		#endregion
 		ConvNode newConvNode;
 
-		//TODO figure out how to just get the top level ("C" in this case) child
-		/*The following is how
+		foreach( var _8CChars in _8C.Keys )
+		{
+			Debug.Log(_8CChars);
+
+		}
+		/*The following is how to get the top level key:
+		 * 
 		foreach( var key in _8C.Keys )
 		{
 			Debug.Log(key);
 		}
+		
 		//TODO write this loop for all textassets==>maybe parse out the characters into either an array or dictionary
+
+		//TODO figure out how to best use the keys gotten this way>>
 		*/
 
 		//Debug.Log(_8C["Character"][0]);
