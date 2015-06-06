@@ -70,7 +70,15 @@ public class TextReader : MonoBehaviour {
 		ConvNode newConvNode;
 
 		//TODO figure out how to just get the top level ("C" in this case) child
-		Debug.Log(_8C["Character"][0].Value);
+		/*The following is how
+		foreach( var key in _8C.Keys )
+		{
+			Debug.Log(key);
+		}
+		//TODO write this loop for all textassets==>maybe parse out the characters into either an array or dictionary
+		*/
+
+		//Debug.Log(_8C["Character"][0]);
 
 		for(int i = 0; i < _8C["C"].Count; i++){
 			newConvNode = Instantiate(convNodePrefab, transform.position, transform.rotation) as ConvNode;

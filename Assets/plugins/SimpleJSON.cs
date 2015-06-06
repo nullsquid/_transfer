@@ -298,7 +298,8 @@ namespace SimpleJSON
 			
 			throw new NotImplementedException (token);
 		}
-		
+		//for getting keys
+		public virtual IEnumerable<string> Keys { get { yield break; } }
 		static void AddElement (JSONNode ctx, string token, string tokenName, bool tokenIsString)
 		{
 			if (tokenIsString) {
@@ -946,6 +947,14 @@ namespace SimpleJSON
 			foreach (string K in m_Dict.Keys) {
 				aWriter.Write (K);
 				m_Dict [K].Serialize (aWriter);
+			}
+		}
+		public override IEnumerable<string> Keys
+		{
+			get 
+			{
+				foreach(var key in m_Dict.Keys)
+					yield return key;
 			}
 		}
 	}
