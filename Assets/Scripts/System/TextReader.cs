@@ -17,7 +17,8 @@ public class TextReader : MonoBehaviour {
 	public List<TextAsset> _1 = new List<TextAsset>();
 
 	//List<string> 
-
+	public List<string> _9AChars = new List<string>();
+	public List<string> _8CChars = new List<string>();
 
 	int blockNumber = 0;
 	string W;
@@ -68,12 +69,20 @@ public class TextReader : MonoBehaviour {
 		var _1A = JSONNode.Parse(_1[0].text);
 		#endregion
 		ConvNode newConvNode;
-
-		foreach( var _8CChars in _8C.Keys )
+		#region get _9 characters
+		foreach(var key in _9A.Keys){
+			_9AChars.Add(key);
+		}
+		#endregion
+		#region get _8 characters
+		foreach( var key in _8C.Keys )
 		{
-			Debug.Log(_8CChars);
+
+			Debug.Log(key);
+			_8CChars.Add(key);
 
 		}
+		#endregion
 		/*The following is how to get the top level key:
 		 * 
 		foreach( var key in _8C.Keys )

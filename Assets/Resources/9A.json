@@ -1,6 +1,6 @@
 {
 	"C":{
-	"G":{
+	
 			"1": {
 					"prompt": "Well, here we are again.",
 					"responses":["Where?"]
@@ -221,5 +221,6 @@
 					"responses":[]
 			},
 	}
+	"G":{
 	}
 }
