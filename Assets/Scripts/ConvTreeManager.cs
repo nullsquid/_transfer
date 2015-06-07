@@ -5,11 +5,10 @@ public class ConvTreeManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		BuildTree();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	//add a playerID parameter
+	void BuildTree(){
+
 	}
 }
