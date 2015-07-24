@@ -4,15 +4,6 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using System.Collections.Generic;
 
-/*public enum commandState{
-	idle,
-	help,
-	connect,
-	find,
-	search,
-	clear,
-
-};*/
 public class InputManager : MonoBehaviour{
 
 
@@ -29,11 +20,10 @@ public class InputManager : MonoBehaviour{
 	public string newCommand;
 	public Directory dirPrefab;
 	public bool canWriteCommand = true;
-	public GameObject connectionInterface;
-	public GameObject normalInterface;
+	//public GameObject connectionInterface;
+	//public GameObject normalInterface;
 
-	bool connectionInterfaceExists = false;
-	private UnityAction someListener;
+	//bool connectionInterfaceExists = false;
 
 
 	//public 
@@ -48,18 +38,8 @@ public class InputManager : MonoBehaviour{
 		}
 	}
 	void Awake(){
-		someListener = new UnityAction(LoadConnectionInterface);
 	}
-
-	void Start () {
-	//	StartCoroutine(InputBuffer());
-		//during runtime, add optional parameters to list and then check
-		//to see if the parameter can do anything
-		//player = cManager.
-		//player = cManager.charPlayer;
-		//player = FindObjectOfType<PlayerCharacter>();
-
-	}
+	
 	//need to set these variables at runtime
 	// Update is called once per frame
 	void Update () {
@@ -73,13 +53,7 @@ public class InputManager : MonoBehaviour{
 
 	}
 
-	void OnEnable(){
-		EventManager.StartListening("connected", someListener);
-	}
 
-	void OnDisable(){
-		EventManager.StopListening("connected", someListener);
-	}
 
 	public void HandleInput(string command){
 		//canWriteCommand = true;
@@ -92,6 +66,9 @@ public class InputManager : MonoBehaviour{
 			if(input.newParameters.Count == 0){
 				Debug.Log ("cannot comply");
 			}
+			else if(input.newParameters[0] == "exit"){
+				EventManager.TriggerEvent("exitConnected");
+			}
 			//else if (player.KnownCharacters.
 			else if(player.KnownCharacters.ContainsKey(input.newParameters[0])){
 
@@ -100,11 +77,10 @@ public class InputManager : MonoBehaviour{
 				//rather than having everything up in here
 				Debug.Log ("it's MEMM!");
 				textManager.displayText.text = "It's MEMM!";
-				if(connectionInterfaceExists == false){
-				//	Invoke("LoadConnectionInterface", 0);
-					EventManager.TriggerEvent("test");
 
-				}
+				EventManager.TriggerEvent("connected");
+
+				
 
 				//newText = Instantiate(textManager.displayText, textManager.canvas.transform.position, transform.rotation) as GameObject;
 				//newText.transform.parent = textManager.canvas.transform;
@@ -160,10 +136,7 @@ public class InputManager : MonoBehaviour{
 
 	}
 
-	public void LoadConnectionInterface(){
-		Instantiate(connectionInterface, transform.position = Vector3.zero, transform.rotation);
-		connectionInterfaceExists = true;
-	}
+
 
 	public void MakingState(string newObject){
 	//	canWriteCommand = true;

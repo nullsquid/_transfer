@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HistoryController : MonoBehaviour {
+public class HistoryArchive : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

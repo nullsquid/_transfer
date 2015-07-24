@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class ConvTreeManager : MonoBehaviour {
@@ -9,6 +9,9 @@ public class ConvTreeManager : MonoBehaviour {
 	public ConvTree treePrefab;
 
 	PathEditor pathEditor;
+
+
+
 	public string player;
 	// Use this for initialization
 	void Start () {
@@ -20,7 +23,7 @@ public class ConvTreeManager : MonoBehaviour {
 	void MakeTree(string playerID){
 		switch(playerID){
 			case "A":
-				Debug.Log(playerID);
+				//Debug.Log(playerID);
 				//Instantiate(treePrefab
 				break;
 			case "C":
