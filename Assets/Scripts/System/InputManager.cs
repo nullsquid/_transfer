@@ -27,6 +27,8 @@ public class InputManager : MonoBehaviour{
 	public string newCommand;
 	public Directory dirPrefab;
 	public bool canWriteCommand = true;
+	public GameObject connectionInterface;
+	bool connectionInterfaceExists = false;
 
 
 	//public 
@@ -80,6 +82,10 @@ public class InputManager : MonoBehaviour{
 
 				Debug.Log ("it's MEMM!");
 				textManager.displayText.text = "It's MEMM!";
+				if(connectionInterfaceExists == false){
+					Invoke("LoadConnectionInterface", 0);
+
+				}
 
 				//newText = Instantiate(textManager.displayText, textManager.canvas.transform.position, transform.rotation) as GameObject;
 				//newText.transform.parent = textManager.canvas.transform;
@@ -133,6 +139,11 @@ public class InputManager : MonoBehaviour{
 
 	public void ConnectState(string connection){
 
+	}
+
+	public void LoadConnectionInterface(){
+		Instantiate(connectionInterface, transform.position = Vector3.zero, transform.rotation);
+		connectionInterfaceExists = true;
 	}
 
 	public void MakingState(string newObject){
