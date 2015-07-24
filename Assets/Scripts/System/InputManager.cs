@@ -28,6 +28,7 @@ public class InputManager : MonoBehaviour{
 	public Directory dirPrefab;
 	public bool canWriteCommand = true;
 	public GameObject connectionInterface;
+	public GameObject normalInterface;
 	bool connectionInterfaceExists = false;
 
 
