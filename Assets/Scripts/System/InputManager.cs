@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System.Collections.Generic;
 
 /*public enum commandState{
@@ -13,6 +14,7 @@ using System.Collections.Generic;
 
 };*/
 public class InputManager : MonoBehaviour{
+
 
 	public CharacterMananger cManager;
 	public PlayerCharacter player;
@@ -29,7 +31,9 @@ public class InputManager : MonoBehaviour{
 	public bool canWriteCommand = true;
 	public GameObject connectionInterface;
 	public GameObject normalInterface;
+
 	bool connectionInterfaceExists = false;
+	private UnityAction someListener;
 
 
 	//public 
@@ -43,6 +47,10 @@ public class InputManager : MonoBehaviour{
 			canWriteCommand = true;
 		}
 	}
+	void Awake(){
+		someListener = new UnityAction(LoadConnectionInterface);
+	}
+
 	void Start () {
 	//	StartCoroutine(InputBuffer());
 		//during runtime, add optional parameters to list and then check
@@ -65,6 +73,14 @@ public class InputManager : MonoBehaviour{
 
 	}
 
+	void OnEnable(){
+		EventManager.StartListening("connected", someListener);
+	}
+
+	void OnDisable(){
+		EventManager.StopListening("connected", someListener);
+	}
+
 	public void HandleInput(string command){
 		//canWriteCommand = true;
 		switch(command){
@@ -80,11 +96,13 @@ public class InputManager : MonoBehaviour{
 			else if(player.KnownCharacters.ContainsKey(input.newParameters[0])){
 
 				Debug.Log (player.KnownCharacters[input.newParameters[0]]);
-
+				//TODO should probably actually decouple this and send a message to another object that controls the interface
+				//rather than having everything up in here
 				Debug.Log ("it's MEMM!");
 				textManager.displayText.text = "It's MEMM!";
 				if(connectionInterfaceExists == false){
-					Invoke("LoadConnectionInterface", 0);
+				//	Invoke("LoadConnectionInterface", 0);
+					EventManager.TriggerEvent("test");
 
 				}
 
