@@ -10,7 +10,8 @@ public class ConvTreeManager : MonoBehaviour {
 
 	PathEditor pathEditor;
 
-	/*TODO write algorithm that 
+	/*TODO write recursive algorithm that 
+	 * 
 	 * sees currently processing JSON hub
 	 * creates node with appropriate data as child of tree
 	 * creates child nodes based on responses that are siblings of each other
