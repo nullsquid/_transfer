@@ -10,7 +10,19 @@ public class ConvTreeManager : MonoBehaviour {
 
 	PathEditor pathEditor;
 
-
+	/*TODO write algorithm that 
+	 * sees currently processing JSON hub
+	 * creates node with appropriate data as child of tree
+	 * creates child nodes based on responses that are siblings of each other
+	 * keeps going deeper until there is no more data for the tree
+	 * 
+	 * For traversal:
+	 * has value for current node
+	 * sees children
+	 * only allows selection of one of the children
+	 * moves to that node and displays data
+	 * 
+	 */
 
 	public string player;
 	// Use this for initialization
