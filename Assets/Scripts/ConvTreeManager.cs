@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ConvTreeManager : MonoBehaviour {
 
@@ -7,6 +8,12 @@ public class ConvTreeManager : MonoBehaviour {
 	public Init initializer;
 	public TextReader reader;
 	public ConvTree treePrefab;
+	//be able to look up the appropriate file by indexing it with a number
+	//maybe should go in the path editor?
+	//path editor will add to the dictionary based on the character that's selected
+	//taking the data from textreader
+	public Dictionary<int, string> indexedTextInSequence = new Dictionary<int, string>();
+	public int currentFileIndex;
 
 	PathEditor pathEditor;
 
