@@ -7,6 +7,11 @@ public class ConvNode : MonoBehaviour {
 	public string prompt;
 	public bool hasVisited;
 	public List<string> responses = new List<string>();
+
+	public int level;
+	public int decision;
+
+
 	public List<ConvNode> children = new List<ConvNode>();
 
 	List<ConvNode> nodeChildren = new List<ConvNode>();
