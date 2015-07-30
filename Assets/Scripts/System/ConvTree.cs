@@ -12,7 +12,7 @@ public class ConvTree : MonoBehaviour {
 	private Transform[] children;
 	// Use this for initialization
 	void Start () {
-		curLevel = 0;
+		curLevel = 1;
 		BuildTree();
 		//foreach(Transform child in transform){
 		//	branches.Add(child);
