@@ -23,6 +23,9 @@ public class InputManager : MonoBehaviour{
 	//public GameObject connectionInterface;
 	//public GameObject normalInterface;
 
+
+
+
 	//bool connectionInterfaceExists = false;
 
 
@@ -58,6 +61,9 @@ public class InputManager : MonoBehaviour{
 	public void HandleInput(string command){
 		//canWriteCommand = true;
 		switch(command){
+		case "0":
+
+			break;
 		case "help":
 			Debug.Log("Helping");
 			break;

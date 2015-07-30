@@ -1,16 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.Events;
 public class TreeTraversal : MonoBehaviour {
+
 	//HACK
 	//temporary until we can get the tree automatically
 	public ConvTree curTree;
+
 
 
 	//some way of getting the current conversation tree
 	/*
 	 * 
 	*/
+
+	void OnEnable(){
+		
+	}
+	
+	void OnDisable(){
+		
+	}
+	
+	void Awake(){
+		
+	}
 	void Update(){
 		FindNewNode(curTree);
 	}
