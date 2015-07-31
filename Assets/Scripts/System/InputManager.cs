@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using System.Collections.Generic;
-
+using System;
+using System.Linq;
 public class InputManager : MonoBehaviour{
 
 
@@ -22,6 +23,8 @@ public class InputManager : MonoBehaviour{
 	public bool canWriteCommand = true;
 	//public GameObject connectionInterface;
 	//public GameObject normalInterface;
+	//HACK
+	public TreeTraversal traversal;
 
 
 
@@ -40,28 +43,34 @@ public class InputManager : MonoBehaviour{
 			canWriteCommand = true;
 		}
 	}
-	void Awake(){
+	void Start(){
+		StartCoroutine("HandleInput", input.commandWithoutParam);
 	}
 	
 	//need to set these variables at runtime
 	// Update is called once per frame
 	void Update () {
-		newCommand = input.commandWithoutParam;
-		HandleInput(newCommand);
+		//newCommand = input.commandWithoutParam;
+		//HandleInput(newCommand);
 		if(player == null){
 			player = cManager.charPlayer;
 		}
-
+		Debug.Log(input.commandWithoutParam);
 
 
 	}
 
 
 
-	public void HandleInput(string command){
+	IEnumerator HandleInput(string command){
 		//canWriteCommand = true;
+
 		switch(command){
 		case "0":
+			int newCommandResponse;
+			if(Int32.TryParse(command, out newCommandResponse)){
+				traversal.ChooseNode(traversal.curTree, newCommandResponse);
+			}
 
 			break;
 		case "help":
@@ -118,7 +127,8 @@ public class InputManager : MonoBehaviour{
 			//else if do math stuff
 			break;
 		}
-
+		yield return null;
+		//yield return null;
 	}
 
 

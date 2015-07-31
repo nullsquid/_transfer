@@ -3,26 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public enum commandState{
-	idle,
-	help,
-	connect,
-	find,
-	search,
-    clear
-    
-};
+
 
 public class InputCapture : MonoBehaviour {
 	[SerializeField]
 	private InputField commandInputField = null;
-	public commandState state = new commandState();
+	//public commandState state = new commandState();
 	//public string rawCommand;
 	//put the base command in the commandWithoutParam variable
 	public string commandWithoutParam;
 	public string newCommand;
 	public List<string> newParameters = new List<string>();
 
+	void OnEnable(){
+
+	}
+
+	void OnDisable(){
+
+	}
+
+	void OnAwake(){
+
+	}
 	// Use this for initialization
 	void Start () {
 		InputField.SubmitEvent submitEvent = new InputField.SubmitEvent();

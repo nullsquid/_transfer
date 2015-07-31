@@ -26,10 +26,11 @@ public class TreeTraversal : MonoBehaviour {
 		
 	}
 	void Update(){
-		FindNewNode(curTree);
+
 	}
 	public int ChooseNode(ConvTree tree, int choice){
-
+	//	FindNewNode(curTree);
+		Debug.Log(choice);
 		return choice;
 	}
 	public ConvNode FindNewNode(ConvTree tree){
