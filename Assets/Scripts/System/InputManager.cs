@@ -64,7 +64,7 @@ public class InputManager : MonoBehaviour{
 
 	IEnumerator HandleInput(string command){
 		//canWriteCommand = true;
-
+		//yield return null;
 		switch(command){
 		case "0":
 			int newCommandResponse;
@@ -127,8 +127,8 @@ public class InputManager : MonoBehaviour{
 			//else if do math stuff
 			break;
 		}
+
 		yield return null;
-		//yield return null;
 	}
 
 
