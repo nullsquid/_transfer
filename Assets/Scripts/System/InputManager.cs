@@ -44,25 +44,25 @@ public class InputManager : MonoBehaviour{
 		}
 	}
 	void Start(){
-		StartCoroutine("HandleInput", input.commandWithoutParam);
+		//StartCoroutine("HandleInput", input.commandWithoutParam);
 	}
 	
 	//need to set these variables at runtime
 	// Update is called once per frame
 	void Update () {
-		//newCommand = input.commandWithoutParam;
-		//HandleInput(newCommand);
+		newCommand = input.commandWithoutParam;
+		HandleInput(newCommand);
 		if(player == null){
 			player = cManager.charPlayer;
 		}
-		Debug.Log(input.commandWithoutParam);
+		//Debug.Log(input.commandWithoutParam);
 
 
 	}
 
 
 
-	IEnumerator HandleInput(string command){
+	void HandleInput(string command){
 		//canWriteCommand = true;
 		//yield return null;
 		switch(command){
@@ -128,7 +128,7 @@ public class InputManager : MonoBehaviour{
 			break;
 		}
 
-		yield return null;
+	//	yield return null;
 	}
 
 
