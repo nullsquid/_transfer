@@ -30,23 +30,19 @@ public class TreeTraversal : MonoBehaviour {
 		//StartNode(curTree);
 
 	}
-	void Update(){
 
-	}
 	public int ChooseNode(ConvTree tree, int choice){
-		ConvNode newNode = FindNewNode(curTree);
-		//FindNewNode(curTree);
-		Debug.Log(newNode);
-//		Debug.Log(choice);
+
 		return choice;
 	}
 
-	public ConvNode FindNewNode(ConvTree tree){
+	public ConvNode FindNewNode(ConvTree tree, int decision){
 		for(int i = 0; i < tree.branches.Count; i++){
 			if(tree.branches[i] != null){
 				Debug.Log(tree.branches[i].GetComponent<ConvNode>().level);
 			}
 			if(tree.branches[i].GetComponent<ConvNode>().level == tree.curLevel){
+				if(tree.branches[i].GetComponent<ConvNode>().decision == decision){
 				tree.curNode = tree.branches[i].GetComponent<ConvNode>();
 				Debug.Log(tree.curNode);
 				//Debug.Log(tree.branches[i]);
@@ -58,12 +54,18 @@ public class TreeTraversal : MonoBehaviour {
 					return  newNode as ConvNode;
 
 				}*/
+				}
 			}
 		}
 		return null;
 	}
 
-	public ConvNode NodeChange(ConvTree tree){
+	public ConvNode NodeChange(ConvTree tree, int choice){
+		tree.curLevel += 1;
+
+		ConvNode newNode = FindNewNode(tree, choice);
+		tree.curNode = newNode;
+		Debug.Log(newNode);
 
 		return null;
 	}

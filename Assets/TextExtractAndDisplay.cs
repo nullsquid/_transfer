@@ -20,7 +20,8 @@ public class TextExtractAndDisplay : MonoBehaviour {
 		}
 	}
 	void Update(){
-		//if(
+		Debug.Log (curPrompt);
+		Debug.Log(curResponses);
 	}
 	//TODO trigger with an event
 	IEnumerator GetNewText(){

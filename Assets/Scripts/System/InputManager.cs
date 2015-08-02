@@ -71,9 +71,6 @@ public class InputManager : MonoBehaviour{
 	public IEnumerator HandleInput(string command){
 		//yield return new WaitForSeconds(0.1f);
 		yield return null;
-		if (command == null){
-			Debug.LogWarning("WHAT!!!!");
-		}
 		//canWriteCommand = true;
 		//yield return null;
 		Debug.Log("input");
@@ -82,7 +79,7 @@ public class InputManager : MonoBehaviour{
 		case "0":
 			int newCommandResponse;
 			if(Int32.TryParse(command, out newCommandResponse)){
-				traversal.ChooseNode(traversal.curTree, newCommandResponse);
+				traversal.NodeChange(traversal.curTree, newCommandResponse);
 			}
 
 			break;
