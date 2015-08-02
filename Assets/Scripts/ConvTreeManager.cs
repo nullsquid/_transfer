@@ -15,7 +15,7 @@ public class ConvTreeManager : MonoBehaviour {
 	public Dictionary<int, string> indexedTextInSequence = new Dictionary<int, string>();
 	public int currentFileIndex;
 
-	PathEditor pathEditor;
+	//PathEditor pathEditor;
 
 	/*TODO write recursive algorithm that 
 	 * 
@@ -35,7 +35,7 @@ public class ConvTreeManager : MonoBehaviour {
 	public string player;
 	// Use this for initialization
 	void Start () {
-		pathEditor = gameObject.GetComponent<PathEditor>();
+		//pathEditor = gameObject.GetComponent<PathEditor>();
 		player = characterM.charPlayer.charID;
 		MakeTree(player);
 

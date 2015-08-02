@@ -23,11 +23,12 @@ public class TreeTraversal : MonoBehaviour {
 	}
 	
 	void Awake(){
-		//ChooseNode(curTree, 0);
-		//FindNewNode(curTree);
+
 	}
 	void Start(){
 		//FindNewNode(curTree);
+		//StartNode(curTree);
+
 	}
 	void Update(){
 
@@ -66,6 +67,15 @@ public class TreeTraversal : MonoBehaviour {
 
 		return null;
 	}
+
+	/*public void StartNode(ConvTree tree){
+		if(tree.curNode == null){
+			Debug.Log("startnode is working");
+			FindNewNode(tree);
+		
+		}
+
+	}*/
 
 	//public
 

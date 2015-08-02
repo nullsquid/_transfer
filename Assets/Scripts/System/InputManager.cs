@@ -86,15 +86,15 @@ public class InputManager : MonoBehaviour{
 			}
 
 			break;
-		case "help":
+		case "HELP":
 			Debug.Log("Helping");
 			break;
-		case "connect":
+		case "CONNECT":
 			Debug.Log ("Connected");
 			if(input.newParameters.Count == 0){
 				Debug.Log ("cannot comply");
 			}
-			else if(input.newParameters[0] == "exit"){
+			else if(input.newParameters[0] == "EXIT"){
 				EventManager.TriggerEvent("exitConnected");
 			}
 			//else if (player.KnownCharacters.
@@ -120,20 +120,21 @@ public class InputManager : MonoBehaviour{
 				Debug.Log(input.newParameters[0]);
 			}
 			break;
-		case "make": 
+		case "MAKE": 
 			//int directoryCount;
 			//int newDirectoryCount;
 			Debug.Log("Making");
 			if(input.newParameters.Count == 0){
 				Debug.Log ("requires parameter: cannot comply");
 			}
-			else if (input.newParameters[0] == "dir"){
+			else if (input.newParameters[0] == "DIR"){
 
 				MakingState(input.newParameters[0]);
 
 			}
 			break;
-		case "calc":
+			//TODO make this convert string ToInt and then do the opperations on them
+		case "CALC":
 			if(input.newParameters.Count == 0){
 				Debug.Log ("requires parameter: cannot comply");
 			}

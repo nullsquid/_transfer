@@ -28,15 +28,24 @@ public class InputCapture : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
+		InputField.OnChangeEvent changeEvent = new InputField.OnChangeEvent();
 		InputField.SubmitEvent submitEvent = new InputField.SubmitEvent();
 		submitEvent.AddListener(SubmitCommand);
+		//changeEvent.AddListener(UpdateText);
 		commandInputField.onEndEdit = submitEvent;
 
 
 		//newParameters.RemoveRange(0, newParameters.Count);
 
 	}
+	void Update(){
+		//InputField.OnChangeEvent()
+		commandInputField.text = commandInputField.text.ToUpper();
 
+	}
+	void UpdateText(){
+
+	}
 	private void SubmitCommand(string command)
 	{
 
@@ -67,9 +76,9 @@ public class InputCapture : MonoBehaviour {
 
 
 	}
-	void Update(){
+	//void Update(){
 		//commandInputField.text.ToUpper();
-	}
+	//}
 	//i think that this whole region is going to go into input manager
 
 	#region command methods
