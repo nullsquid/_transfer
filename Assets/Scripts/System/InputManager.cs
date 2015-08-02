@@ -51,7 +51,12 @@ public class InputManager : MonoBehaviour{
 	// Update is called once per frame
 	void Update () {
 		newCommand = input.commandWithoutParam;
-		HandleInput(newCommand);
+		//HandleInput(newCommand);
+		if(Input.GetKeyUp(KeyCode.Return)){
+			StartCoroutine("HandleInput",newCommand);
+			//HandleInput(newCommand);
+
+		}
 		if(player == null){
 			player = cManager.charPlayer;
 		}
@@ -62,9 +67,16 @@ public class InputManager : MonoBehaviour{
 
 
 
-	void HandleInput(string command){
+	public IEnumerator HandleInput(string command){
+		//yield return new WaitForSeconds(0.1f);
+		yield return null;
+		if (command == null){
+			Debug.LogWarning("WHAT!!!!");
+		}
 		//canWriteCommand = true;
 		//yield return null;
+		Debug.Log("input");
+		Debug.Log(command);
 		switch(command){
 		case "0":
 			int newCommandResponse;
@@ -91,7 +103,7 @@ public class InputManager : MonoBehaviour{
 				//TODO should probably actually decouple this and send a message to another object that controls the interface
 				//rather than having everything up in here
 				Debug.Log ("it's MEMM!");
-				textManager.displayText.text = "It's MEMM!";
+				//textManager.displayText.text = "It's MEMM!";
 
 				EventManager.TriggerEvent("connected");
 
@@ -128,7 +140,8 @@ public class InputManager : MonoBehaviour{
 			break;
 		}
 
-	//	yield return null;
+		//yield return null;
+
 	}
 
 

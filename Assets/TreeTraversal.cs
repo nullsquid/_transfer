@@ -29,10 +29,11 @@ public class TreeTraversal : MonoBehaviour {
 
 	}
 	public int ChooseNode(ConvTree tree, int choice){
-	//	FindNewNode(curTree);
+		FindNewNode(curTree);
 		Debug.Log(choice);
 		return choice;
 	}
+
 	public ConvNode FindNewNode(ConvTree tree){
 		for(int i = 0; i <= tree.branches.Count; i++){
 			if(tree.branches[i].GetComponent<ConvNode>().level == tree.curLevel){
