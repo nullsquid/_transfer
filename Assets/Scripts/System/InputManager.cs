@@ -77,7 +77,7 @@ public class InputManager : MonoBehaviour{
 		//canWriteCommand = true;
 		//yield return null;
 		Debug.Log("input");
-		Debug.Log(command);
+		//Debug.Log(command);
 		switch(command){
 		case "0":
 			int newCommandResponse;

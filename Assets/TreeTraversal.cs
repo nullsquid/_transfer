@@ -24,6 +24,10 @@ public class TreeTraversal : MonoBehaviour {
 	
 	void Awake(){
 		//ChooseNode(curTree, 0);
+		//FindNewNode(curTree);
+	}
+	void Start(){
+		//FindNewNode(curTree);
 	}
 	void Update(){
 
@@ -37,11 +41,13 @@ public class TreeTraversal : MonoBehaviour {
 	}
 
 	public ConvNode FindNewNode(ConvTree tree){
-		for(int i = 1; i < tree.branches.Count; i++){
+		for(int i = 0; i < tree.branches.Count; i++){
 			if(tree.branches[i] != null){
 				Debug.Log(tree.branches[i].GetComponent<ConvNode>().level);
 			}
 			if(tree.branches[i].GetComponent<ConvNode>().level == tree.curLevel){
+				tree.curNode = tree.branches[i].GetComponent<ConvNode>();
+				Debug.Log(tree.curNode);
 				//Debug.Log(tree.branches[i]);
 				//TODO this logic looks fucked
 				/*if(tree.branches[i].GetComponent<ConvNode>().decision == ChooseNode(curTree, 0)){
