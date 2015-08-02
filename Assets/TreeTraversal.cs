@@ -39,7 +39,7 @@ public class TreeTraversal : MonoBehaviour {
 	public ConvNode FindNewNode(ConvTree tree){
 		for(int i = 1; i < tree.branches.Count; i++){
 			if(tree.branches[i] != null){
-				Debug.Log(tree.branches[i]);
+				Debug.Log(tree.branches[i].GetComponent<ConvNode>().level);
 			}
 			if(tree.branches[i].GetComponent<ConvNode>().level == tree.curLevel){
 				//Debug.Log(tree.branches[i]);
