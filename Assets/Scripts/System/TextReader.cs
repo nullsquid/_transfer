@@ -5,7 +5,7 @@ using SimpleJSON;
 
 
 public class TextReader : MonoBehaviour {
-
+	/*
 	public List<TextAsset> _9 = new List<TextAsset>();
 	public List<TextAsset> _8 = new List<TextAsset>();
 	public List<TextAsset> _7 = new List<TextAsset>();
@@ -94,7 +94,8 @@ public class TextReader : MonoBehaviour {
 
 		//TODO figure out how to best use the keys gotten this way>>
 		*/
-
+		
+		/*
 		//Debug.Log(_8C["Character"][0]);
 
 		for(int i = 0; i < _8C["C"].Count; i++){
@@ -106,11 +107,12 @@ public class TextReader : MonoBehaviour {
 				newConvNode.responses.Add(_8C["C"][i]["responses"][j]);
 			}
 		}
+		*/
 
 
 	}
 
-
+	/*
 	//require 9 files every time
 	//gets passed the character ID and loads all of the text associated with that character
 	void SetPathTemplate(string characterID){
@@ -120,4 +122,6 @@ public class TextReader : MonoBehaviour {
 	string LoadText(){
 		return null;
 	}
-}
+	*/
+	
+//}

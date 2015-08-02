@@ -52,6 +52,7 @@ public class InputManager : MonoBehaviour{
 	void Update () {
 		newCommand = input.commandWithoutParam;
 		//HandleInput(newCommand);
+		//HACK
 		if(Input.GetKeyUp(KeyCode.Return)){
 			StartCoroutine("HandleInput",newCommand);
 			//HandleInput(newCommand);
