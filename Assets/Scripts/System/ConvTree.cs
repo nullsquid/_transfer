@@ -11,7 +11,7 @@ public class ConvTree : MonoBehaviour {
 	public List<Transform> branches = new List<Transform>();
 	private Transform[] children;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		curLevel = 1;
 		//BuildTree();
 		//foreach(Transform child in transform){

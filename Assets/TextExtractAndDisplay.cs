@@ -12,10 +12,12 @@ public class TextExtractAndDisplay : MonoBehaviour {
 
 	}
 	void Start () {
-		//curPrompt = tree.curNode.prompt;
-		//for(int i = 0; i <= tree.curNode.responses.Count; i++){
-		//	curResponses.Add(tree.curNode.responses[i]);
-		//}
+		//TODO might need to change to describe as the starting node in the tree
+		//new variable or somesuch for the initial text
+		curPrompt = tree.curNode.prompt;
+		for(int i = 0; i < tree.curNode.responses.Count; i++){
+			curResponses.Add(tree.curNode.responses[i]);
+		}
 	}
 	void Update(){
 		//if(
