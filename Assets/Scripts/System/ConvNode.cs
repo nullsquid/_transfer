@@ -7,6 +7,8 @@ public class ConvNode : MonoBehaviour {
 	public string prompt;
 	public bool hasVisited;
 	public List<string> responses = new List<string>();
+	public ConvTree outLinkedTree;
+	//public Memory memory
 
 	public int level;
 	public int decision;
