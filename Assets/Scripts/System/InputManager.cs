@@ -77,6 +77,15 @@ public class InputManager : MonoBehaviour{
 		//Debug.Log(command);
 		switch(command){
 		case "0":
+		case "1":
+		case "2":
+		case "3":
+		case "4":
+		case "5":
+		case "6":
+		case "7":
+		case "8":
+		case "9":
 			int newCommandResponse;
 			if(Int32.TryParse(command, out newCommandResponse)){
 				traversal.NodeChange(traversal.curTree, newCommandResponse);

@@ -15,7 +15,11 @@ public class ConvNode : MonoBehaviour {
 	public List<ConvNode> children = new List<ConvNode>();
 
 	List<ConvNode> nodeChildren = new List<ConvNode>();
-
+	void Awake(){
+		foreach(Transform child in transform){
+			children.Add(child.gameObject.GetComponent<ConvNode>());
+		}
+	}
 	void OnEnable(){
 		//register an event to trigger a function that 
 		//creates the tree

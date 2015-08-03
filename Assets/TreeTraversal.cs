@@ -30,21 +30,19 @@ public class TreeTraversal : MonoBehaviour {
 		//StartNode(curTree);
 
 	}
-
-	public int ChooseNode(ConvTree tree, int choice){
-
-		return choice;
-	}
-
+	
 	public ConvNode FindNewNode(ConvTree tree, int decision){
+		tree.curLevel += 1;
+		//TODO likely problematic--if i hit 0 a bunch it just increments the level
+		//should probably look at the node's children and pick from them
 		for(int i = 0; i < tree.branches.Count; i++){
-			if(tree.branches[i] != null){
-				Debug.Log(tree.branches[i].GetComponent<ConvNode>().level);
-			}
-			if(tree.branches[i].GetComponent<ConvNode>().level == tree.curLevel){
-				if(tree.branches[i].GetComponent<ConvNode>().decision == decision){
-				tree.curNode = tree.branches[i].GetComponent<ConvNode>();
-				Debug.Log(tree.curNode);
+
+			if(tree.branches[i].gameObject.GetComponent<ConvNode>().level == (tree.curLevel)){
+				Debug.Log(tree.branches[i]);
+				if(tree.branches[i].gameObject.GetComponent<ConvNode>().decision == decision){
+					Debug.Log(tree.branches[i]);
+					return tree.branches[i].gameObject.GetComponent<ConvNode>() as ConvNode;
+				//Debug.Log(tree.curNode);
 				//Debug.Log(tree.branches[i]);
 				//TODO this logic looks fucked
 				/*if(tree.branches[i].GetComponent<ConvNode>().decision == ChooseNode(curTree, 0)){
@@ -55,19 +53,30 @@ public class TreeTraversal : MonoBehaviour {
 
 				}*/
 				}
+				else{
+					return null;
+				}
 			}
 		}
 		return null;
 	}
+	void Update(){
+		Debug.Log(curTree.curNode);
+	}
+	public void NodeChange(ConvTree tree, int choice){
 
-	public ConvNode NodeChange(ConvTree tree, int choice){
-		tree.curLevel += 1;
-
+		//if(tree.curNode.responses.Count <= choice){
+			
 		ConvNode newNode = FindNewNode(tree, choice);
-		tree.curNode = newNode;
-		Debug.Log(newNode);
+		//Debug.Log(newNode);
+			if(tree.curNode = null){
+				tree.curNode = newNode;
+				Debug.Log(newNode);
+			}
+			//return newNode;
+		//}
 
-		return null;
+		//return null;
 	}
 
 	/*public void StartNode(ConvTree tree){
