@@ -11,6 +11,13 @@ public class TextExtractAndDisplay : MonoBehaviour {
 		tree = GetComponent<TreeTraversal>().curTree;
 
 	}
+	void OnEnable(){
+
+	}
+
+	void OnDisable(){
+
+	}
 	void Start () {
 		//TODO might need to change to describe as the starting node in the tree
 		//new variable or somesuch for the initial text

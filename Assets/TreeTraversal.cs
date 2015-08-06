@@ -86,6 +86,7 @@ public class TreeTraversal : MonoBehaviour {
 		for(int i = 0; i < curNode.children.Count; i++){
 			if(curNode.children[i] != null && curNode.children[i].decision == choice){
 				tree.curNode = curNode.children[i];
+				Debug.Log(tree.curNode.prompt);
 			}
 		}
 	}
