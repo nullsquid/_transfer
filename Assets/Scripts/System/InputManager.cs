@@ -88,7 +88,7 @@ public class InputManager : MonoBehaviour{
 		case "9":
 			int newCommandResponse;
 			if(Int32.TryParse(command, out newCommandResponse)){
-				traversal.NodeChange(traversal.curTree, newCommandResponse);
+				traversal.LoadNewNode(traversal.curTree, newCommandResponse);
 			}
 
 			break;

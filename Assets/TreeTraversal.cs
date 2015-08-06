@@ -79,6 +79,22 @@ public class TreeTraversal : MonoBehaviour {
 		//return null;
 	}
 
+	public void LoadNewNode(ConvTree tree, int choice){
+		ConvNode curNode;
+		curNode = tree.curNode;
+
+		for(int i = 0; i < curNode.children.Count; i++){
+			if(curNode.children[i] != null && curNode.children[i].decision == choice){
+				tree.curNode = curNode.children[i];
+			}
+		}
+	}
+
+	public ConvTree LoadNewTree(){
+		return null;
+	}
+
+
 	/*public void StartNode(ConvTree tree){
 		if(tree.curNode == null){
 			Debug.Log("startnode is working");
