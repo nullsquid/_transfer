@@ -84,12 +84,16 @@ public class TreeTraversal : MonoBehaviour {
 		curNode = tree.curNode;
 
 		for(int i = 0; i < curNode.children.Count; i++){
-			if(curNode.children[i] != null && curNode.children[i].decision == choice){
+			//TODO see if finding by child index works better
+			//if(curNode.children[i] != null && curNode.children[i].decision == choice){
+			if(i == choice){
 				tree.curNode = curNode.children[i];
 				EventManager.TriggerEvent("getNewNodeText");
+				EventManager.TriggerEvent("getNewResponseText");
 				Debug.Log(tree.curNode.prompt);
 			}
 		}
+
 	}
 
 	public ConvTree LoadNewTree(){

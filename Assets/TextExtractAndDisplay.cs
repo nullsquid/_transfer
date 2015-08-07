@@ -13,19 +13,23 @@ public class TextExtractAndDisplay : MonoBehaviour {
 	public Text responses;
 
 	private UnityAction triggerNewNodeText;
+	private UnityAction triggerNewResponseText;
     
     // Use this for initialization
 	void Awake(){
 		tree = GetComponent<TreeTraversal>().curTree;
-		triggerNewNodeText = new UnityAction(GetNewText);
 
+		triggerNewNodeText = new UnityAction(GetNewText);
+		triggerNewResponseText = new UnityAction(GetNewResponses);
 	}
 	void OnEnable(){
 		EventManager.StartListening("getNewNodeText", triggerNewNodeText);
+		EventManager.StartListening("getNewResponseText", triggerNewResponseText);
 	}
 
 	void OnDisable(){
 		EventManager.StopListening("getNewNodeText", triggerNewNodeText);
+		EventManager.StopListening("getNewResponseText", triggerNewResponseText);
         
     }
 	void Start () {
@@ -55,16 +59,23 @@ public class TextExtractAndDisplay : MonoBehaviour {
 	}
 
 	private IEnumerator CoGetNewResponses(){
-		for(int i = 0; i<tree.curNode.responses.Count; i++){
-			Debug.Log(i);
-			//Debug.Log ("Responses " + i);
-			curResponses.Add (tree.curNode.responses[i]);
-			for(int j = 0; j < curResponses.Count; j++){
-				responses.text += j + ": " + curResponses[j] + " ";
-				//Debug.Log("responses " + i);
-            }
+		curResponses.RemoveAt(0);
+		responses.text = "";
+		//for(int i = 0; i < tree.curNode.responses.Count; i++){
+		foreach(string response in tree.curNode.responses){
+			//Debug.Log(response);
+			//Debug.Log ("Responses " + response);
+
+			curResponses.Add (response);
+
+			responses.text +=  tree.curNode.responses.IndexOf(response) + ": " + response;
+
 		}
-		/*for(int j = 0; j <= curResponses.Count; j++){
+
+		/*foreach(string newResponse in curResponses){
+			responses.text += ": " + newResponse;
+		}*/
+        /*for(int j = 0; j <= curResponses.Count; j++){
 			responses.text += j + ": " + curResponses[j];
 
 		}*/
