@@ -82,12 +82,30 @@ public class TextExtractAndDisplay : MonoBehaviour {
 		yield return null;
 	}
 	IEnumerator WaitToPrint(string newText){
+		float waitTime = 0;
 		EventManager.TriggerEvent("disableCommand");
 		responses.enabled = false;
-		yield return new WaitForSeconds(2.0f);
+		//mainText.text = mainText.text + "\n \n" + "...";
+		if(newText.Length <= 10){
+			waitTime = Random.Range(.5f, 1.5f);
+		}
+		else if(newText.Length > 10 && newText.Length <=30){
+			waitTime = Random.Range(1.5f, 3.0f);
+		}
+		else if (newText.Length >30 && newText.Length<=50){
+			waitTime = Random.Range(3.0f, 4.5f);
+		}
+		else if(newText.Length > 50){
+			waitTime = Random.Range(4.5f, 6.5f);
+		}
+
+		yield return new WaitForSeconds(waitTime);
 		responses.enabled = true;
 		EventManager.TriggerEvent("enableCommand");
 		EventManager.TriggerEvent("getNewResponseText");
+
+		//mainText.text.Replace("...", newText);
+		
 		mainText.text = mainText.text + "\n \n" + newText;
 	}
 
@@ -120,6 +138,7 @@ public class TextExtractAndDisplay : MonoBehaviour {
 
 	public void DisplayText(string newText){
 		mainText.text = mainText.text + "\n \n" + GetComponent<TreeTraversal>().lastChoice.ToUpper();
+
 		StartCoroutine(WaitToPrint(newText));
         
         //StartCoroutine(WaitToPrint(newText));
