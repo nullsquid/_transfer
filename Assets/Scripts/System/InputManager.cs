@@ -73,7 +73,7 @@ public class InputManager : MonoBehaviour{
 		yield return null;
 		//canWriteCommand = true;
 		//yield return null;
-		Debug.Log("input");
+//		Debug.Log("input");
 		//Debug.Log(command);
 		switch(command){
 		case "0":

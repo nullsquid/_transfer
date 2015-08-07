@@ -14,6 +14,7 @@ public class InterfaceElementController : MonoBehaviour {
 	#region eventlisteners
 	private UnityAction connectListener;
 	private UnityAction exitConnectListener;
+	private UnityAction addTextListener;
 	#endregion
 
 	public GameObject newConnectionInterface;
@@ -22,16 +23,19 @@ public class InterfaceElementController : MonoBehaviour {
 	void OnEnable(){
 		EventManager.StartListening("connected", connectListener);
 		EventManager.StartListening("exitConnected", exitConnectListener);
+		//EventManager.StartListening("addText", addTextListener);
 	}
 	
 	void OnDisable(){
 		EventManager.StopListening("connected", connectListener);
 		EventManager.StopListening("exitConnected", exitConnectListener);
+		//EventManager.StopListening("addText", addTextListener);
 	}
 
 	void Awake(){
 		connectListener = new UnityAction(LoadConnectionInterface);
 		exitConnectListener = new UnityAction(ExitConnectionInterface);
+
 
 	}
 
@@ -55,4 +59,13 @@ public class InterfaceElementController : MonoBehaviour {
 		connectionInterfaceExists = false;
 		Debug.Log("exit");
 	}
+
+	/*public void AddText(string newText){
+		//string theText = 
+		if(connectionInterfaceExists == true){
+
+			//string theText = connection.GetComponent<Text>().text;
+			//theText += "/n" + newText;
+		}
+	}*/
 }

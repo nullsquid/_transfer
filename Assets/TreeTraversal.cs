@@ -15,11 +15,10 @@ public class TreeTraversal : MonoBehaviour {
 	*/
 
 	void OnEnable(){
-		
+
 	}
 	
 	void OnDisable(){
-		
 	}
 	
 	void Awake(){
@@ -28,6 +27,7 @@ public class TreeTraversal : MonoBehaviour {
 	void Start(){
 		//FindNewNode(curTree);
 		//StartNode(curTree);
+
 
 	}
 	
@@ -61,7 +61,7 @@ public class TreeTraversal : MonoBehaviour {
 		return null;
 	}
 	void Update(){
-		Debug.Log(curTree.curNode);
+//		Debug.Log(curTree.curNode);
 	}
 	public void NodeChange(ConvTree tree, int choice){
 
@@ -86,6 +86,7 @@ public class TreeTraversal : MonoBehaviour {
 		for(int i = 0; i < curNode.children.Count; i++){
 			if(curNode.children[i] != null && curNode.children[i].decision == choice){
 				tree.curNode = curNode.children[i];
+				EventManager.TriggerEvent("getNewNodeText");
 				Debug.Log(tree.curNode.prompt);
 			}
 		}
