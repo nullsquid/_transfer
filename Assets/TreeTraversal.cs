@@ -6,7 +6,7 @@ public class TreeTraversal : MonoBehaviour {
 	//HACK
 	//temporary until we can get the tree automatically
 	public ConvTree curTree;
-
+	public string lastChoice;
 
 
 	//some way of getting the current conversation tree
@@ -82,7 +82,7 @@ public class TreeTraversal : MonoBehaviour {
 	public void LoadNewNode(ConvTree tree, int choice){
 		ConvNode curNode;
 		curNode = tree.curNode;
-
+		lastChoice = curNode.responses[choice];
 		for(int i = 0; i < curNode.children.Count; i++){
 			//TODO see if finding by child index works better
 			//if(curNode.children[i] != null && curNode.children[i].decision == choice){
@@ -90,7 +90,7 @@ public class TreeTraversal : MonoBehaviour {
 				tree.curNode = curNode.children[i];
 				EventManager.TriggerEvent("getNewNodeText");
 				EventManager.TriggerEvent("getNewResponseText");
-				Debug.Log(tree.curNode.prompt);
+				//Debug.Log(tree.curNode.prompt);
 			}
 		}
 

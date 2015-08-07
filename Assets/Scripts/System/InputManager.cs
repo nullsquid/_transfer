@@ -26,11 +26,31 @@ public class InputManager : MonoBehaviour{
 	//HACK
 	public TreeTraversal traversal;
 
+	private UnityAction commandEnableListener;
+	private UnityAction commandDisableListener;
 
 
-
+	void Awake(){
+		commandEnableListener = new UnityAction(EnableCommand);
+		commandDisableListener = new UnityAction(DisableCommand);
+	}
+	void OnEnable(){
+		EventManager.StartListening("enableCommand", commandEnableListener);
+		EventManager.StartListening("disableCommand", commandDisableListener);
+	}
+	void OnDisable(){
+		EventManager.StopListening("enableCommand", commandEnableListener);
+		EventManager.StopListening("disableCommand", commandDisableListener);
+	}
 	//bool connectionInterfaceExists = false;
+	public void DisableCommand(){
+		canWriteCommand = false;
+	}
 
+	public void EnableCommand(){
+		//input.enabled = true;
+		canWriteCommand = true;
+	}
 
 	//public 
 
@@ -75,6 +95,7 @@ public class InputManager : MonoBehaviour{
 		//yield return null;
 //		Debug.Log("input");
 		//Debug.Log(command);
+		if(canWriteCommand){
 		switch(command){
 		case "0":
 		case "1":
@@ -150,6 +171,7 @@ public class InputManager : MonoBehaviour{
 
 		//yield return null;
 
+		}
 	}
 
 

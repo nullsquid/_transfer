@@ -81,6 +81,16 @@ public class TextExtractAndDisplay : MonoBehaviour {
 		}*/
 		yield return null;
 	}
+	IEnumerator WaitToPrint(string newText){
+		EventManager.TriggerEvent("disableCommand");
+		responses.enabled = false;
+		yield return new WaitForSeconds(2.0f);
+		responses.enabled = true;
+		EventManager.TriggerEvent("enableCommand");
+		EventManager.TriggerEvent("getNewResponseText");
+		mainText.text = mainText.text + "\n \n" + newText;
+	}
+
 	private IEnumerator CoGetNewText(){
 
 		curPrompt = tree.curNode.prompt;
@@ -95,7 +105,7 @@ public class TextExtractAndDisplay : MonoBehaviour {
 	//TODO put "characters" list in nodes and make sure that the node knows who is speaking at a given time for replacement
 	public string NameReplace(string inText){
 		if(inText.Contains("Well")){
-			//return inText.Replace("Well", "bloop"); 
+			//return inText.Replace("Well", "bloop");
 			return inText;
 		}
 		return inText;
@@ -109,8 +119,13 @@ public class TextExtractAndDisplay : MonoBehaviour {
 	//TODO placeholder; this should probably go in a different class
 
 	public void DisplayText(string newText){
-		mainText.text = mainText.text + "\n" + newText;
-		//Debug.Log("new text is " + newText);
+		mainText.text = mainText.text + "\n \n" + GetComponent<TreeTraversal>().lastChoice.ToUpper();
+		StartCoroutine(WaitToPrint(newText));
+        
+        //StartCoroutine(WaitToPrint(newText));
+        
+        
+        //Debug.Log("new text is " + newText);
 	}
 
 }

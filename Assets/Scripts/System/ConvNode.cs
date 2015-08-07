@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class ConvNode : MonoBehaviour {
 
+	//TODO make prompt a list
+	//TODO make each sentence an item in that list
+	//TODO loop over and split on period to dynamically parse
 	public string prompt;
 	public bool hasVisited;
 	public List<string> responses = new List<string>();
