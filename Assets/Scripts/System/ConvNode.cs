@@ -8,9 +8,6 @@ public class ConvNode : MonoBehaviour {
 	public bool hasVisited;
 	public List<string> responses = new List<string>();
 	public ConvTree outLinkedTree;
-
-	public List<string> characterSpeaking = new List<string>();
-
 	//public Memory memory
 
 	public int level;
@@ -29,7 +26,7 @@ public class ConvNode : MonoBehaviour {
 
 	}
 
-	public string LinkToTree(){
+	public string LinkToNode(){
 		return null;
 	}
 
