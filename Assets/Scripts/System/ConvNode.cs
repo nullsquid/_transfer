@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class ConvNode : MonoBehaviour {
 
+	//TODO make prompt a list
+	//TODO make each sentence an item in that list
+	//TODO loop over and split on period to dynamically parse
 	public string prompt;
 	public bool hasVisited;
 	public List<string> responses = new List<string>();
@@ -17,7 +20,11 @@ public class ConvNode : MonoBehaviour {
 	public List<ConvNode> children = new List<ConvNode>();
 
 	List<ConvNode> nodeChildren = new List<ConvNode>();
-
+	void Awake(){
+		foreach(Transform child in transform){
+			children.Add(child.gameObject.GetComponent<ConvNode>());
+		}
+	}
 	void OnEnable(){
 		//register an event to trigger a function that 
 		//creates the tree

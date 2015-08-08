@@ -4,7 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 public class ConvTree : MonoBehaviour {
 
-	public PathEditor pathEditor;
+	//public PathEditor pathEditor;
 	public ConvNode curNode;
 	public int curLevel;
 	ConvNode startNode;
@@ -25,7 +25,7 @@ public class ConvTree : MonoBehaviour {
 			//branches.Add(child);
 		//}
 		branches.RemoveAt(0);
-		startNode = branches[0].GetComponent<ConvNode>() as ConvNode;
+		startNode = branches[0].gameObject.GetComponent<ConvNode>() as ConvNode;//.GetComponent<ConvNode>() as ConvNode;
 		curNode = startNode;
 	}
 

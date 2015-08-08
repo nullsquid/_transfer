@@ -26,11 +26,31 @@ public class InputManager : MonoBehaviour{
 	//HACK
 	public TreeTraversal traversal;
 
+	private UnityAction commandEnableListener;
+	private UnityAction commandDisableListener;
 
 
-
+	void Awake(){
+		commandEnableListener = new UnityAction(EnableCommand);
+		commandDisableListener = new UnityAction(DisableCommand);
+	}
+	void OnEnable(){
+		EventManager.StartListening("enableCommand", commandEnableListener);
+		EventManager.StartListening("disableCommand", commandDisableListener);
+	}
+	void OnDisable(){
+		EventManager.StopListening("enableCommand", commandEnableListener);
+		EventManager.StopListening("disableCommand", commandDisableListener);
+	}
 	//bool connectionInterfaceExists = false;
+	public void DisableCommand(){
+		canWriteCommand = false;
+	}
 
+	public void EnableCommand(){
+		//input.enabled = true;
+		canWriteCommand = true;
+	}
 
 	//public 
 
@@ -71,18 +91,25 @@ public class InputManager : MonoBehaviour{
 	public IEnumerator HandleInput(string command){
 		//yield return new WaitForSeconds(0.1f);
 		yield return null;
-		if (command == null){
-			Debug.LogWarning("WHAT!!!!");
-		}
 		//canWriteCommand = true;
 		//yield return null;
-		Debug.Log("input");
+//		Debug.Log("input");
 		//Debug.Log(command);
+		if(canWriteCommand){
 		switch(command){
 		case "0":
+		case "1":
+		case "2":
+		case "3":
+		case "4":
+		case "5":
+		case "6":
+		case "7":
+		case "8":
+		case "9":
 			int newCommandResponse;
 			if(Int32.TryParse(command, out newCommandResponse)){
-				traversal.ChooseNode(traversal.curTree, newCommandResponse);
+				traversal.LoadNewNode(traversal.curTree, newCommandResponse);
 			}
 
 			break;
@@ -144,6 +171,7 @@ public class InputManager : MonoBehaviour{
 
 		//yield return null;
 
+		}
 	}
 
 

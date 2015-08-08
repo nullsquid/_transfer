@@ -28,7 +28,7 @@ public class InputCapture : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		InputField.OnChangeEvent changeEvent = new InputField.OnChangeEvent();
+		//InputField.OnChangeEvent changeEvent = new InputField.OnChangeEvent();
 		InputField.SubmitEvent submitEvent = new InputField.SubmitEvent();
 		submitEvent.AddListener(SubmitCommand);
 		//changeEvent.AddListener(UpdateText);
