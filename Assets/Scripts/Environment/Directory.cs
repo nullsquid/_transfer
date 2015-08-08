@@ -4,15 +4,17 @@ using System.Collections.Generic;
 public class Directory : MonoBehaviour {
 
 	public string path;
-	private bool isVisible;
+	//private bool isVisible;
 	public List<string> files;
 	// Use this for initialization
 	void Start () {
-		isVisible = true;
+	//	isVisible = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+	
+
 	
 	}
 }

@@ -12,7 +12,8 @@ public class ConvNode : MonoBehaviour {
 	public List<string> responses = new List<string>();
 	public ConvTree outLinkedTree;
 	//public Memory memory
-
+	//public List<string> charactersInConversation = new List<string>();
+	public string characterTalking;
 	public int level;
 	public int decision;
 
