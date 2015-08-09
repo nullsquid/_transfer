@@ -63,7 +63,7 @@ public class Init : MonoBehaviour {
 	}
 	
 	#region Set Up
-
+	//TODO fix pronoun generator
 	string PronounGen(string charID){
 		int randNum = Random.Range(0, 4);
 		//Debug.Log(randNum);
@@ -84,9 +84,9 @@ public class Init : MonoBehaviour {
 			
 			return "it";
 		
-		case 4:
+		/*case 4:
 			return null;
-			
+		*/	
 		default:
 			Debug.LogWarning("Out of range");
 			return null;

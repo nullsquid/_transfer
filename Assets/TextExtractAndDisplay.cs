@@ -11,6 +11,8 @@ public class TextExtractAndDisplay : MonoBehaviour {
 	public InterfaceElementController displayInterface;
 	public Text mainText;
 	public Text responses;
+	public string speaker;
+	public CharacterMananger cManager;
 
 	private UnityAction triggerNewNodeText;
 	private UnityAction triggerNewResponseText;
@@ -105,8 +107,12 @@ public class TextExtractAndDisplay : MonoBehaviour {
 		EventManager.TriggerEvent("getNewResponseText");
 
 		//mainText.text.Replace("...", newText);
-		
-		mainText.text = mainText.text + "\n \n" + newText;
+		for(int i = 0; i < cManager.characters.Length; i++){
+			if(cManager.characters[i].charID == tree.curNode.characterTalking){
+				speaker = cManager.characters[i].charName;
+			}
+		}
+		mainText.text = mainText.text + "\n \n" + speaker + ": " + newText;
 	}
 
 	private IEnumerator CoGetNewText(){
@@ -114,7 +120,7 @@ public class TextExtractAndDisplay : MonoBehaviour {
 		curPrompt = tree.curNode.prompt;
 
 		DisplayText(NameReplace(curPrompt).ToUpper());
-		Debug.Log("cur prompt is " + curPrompt);
+		//Debug.Log("cur prompt is " + curPrompt);
 
 		yield return null;
 	}
@@ -122,9 +128,12 @@ public class TextExtractAndDisplay : MonoBehaviour {
 
 	//TODO put "characters" list in nodes and make sure that the node knows who is speaking at a given time for replacement
 	public string NameReplace(string inText){
-		if(inText.Contains("Well")){
-			//return inText.Replace("Well", "bloop");
-			return inText;
+		if(inText.Contains("%H")){
+			return inText.Replace("%H", cManager.nameH);
+
+		}
+		else if (inText.Contains("%F")){
+			return inText.Replace("%F", cManager.nameF);
 		}
 		return inText;
 	}
@@ -137,8 +146,9 @@ public class TextExtractAndDisplay : MonoBehaviour {
 	//TODO placeholder; this should probably go in a different class
 
 	public void DisplayText(string newText){
-		mainText.text = mainText.text + "\n \n" + GetComponent<TreeTraversal>().lastChoice.ToUpper();
-
+		if(GetComponent<TreeTraversal>().lastChoice != ""){
+			mainText.text = mainText.text + "\n \n" + cManager.charPlayer.charName +": " + GetComponent<TreeTraversal>().lastChoice.ToUpper();
+		}
 		StartCoroutine(WaitToPrint(newText));
         
         //StartCoroutine(WaitToPrint(newText));
@@ -146,5 +156,6 @@ public class TextExtractAndDisplay : MonoBehaviour {
         
         //Debug.Log("new text is " + newText);
 	}
+
 
 }
