@@ -10,7 +10,7 @@ public class ConvNode : MonoBehaviour {
 	public string prompt;
 	public bool hasVisited;
 	public List<string> responses = new List<string>();
-	public ConvTree outLinkedTree;
+	public List<ConvTree>outLinkedTrees = new List<ConvTree> ();
 	//public Memory memory
 	//public List<string> charactersInConversation = new List<string>();
 	public string characterTalking;
