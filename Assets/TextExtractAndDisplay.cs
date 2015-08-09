@@ -65,8 +65,7 @@ public class TextExtractAndDisplay : MonoBehaviour {
 		responses.text = "";
 		//for(int i = 0; i < tree.curNode.responses.Count; i++){
 		foreach(string response in tree.curNode.responses){
-			//Debug.Log(response);
-			//Debug.Log ("Responses " + response);
+
 
 			curResponses.Add (response);
 
@@ -74,13 +73,7 @@ public class TextExtractAndDisplay : MonoBehaviour {
 
 		}
 
-		/*foreach(string newResponse in curResponses){
-			responses.text += ": " + newResponse;
-		}*/
-        /*for(int j = 0; j <= curResponses.Count; j++){
-			responses.text += j + ": " + curResponses[j];
-
-		}*/
+	
 		yield return null;
 	}
 	IEnumerator WaitToPrint(string newText){
