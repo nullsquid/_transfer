@@ -17,6 +17,9 @@ public class TextExtractAndDisplay : MonoBehaviour {
 	private UnityAction triggerNewNodeText;
 	private UnityAction triggerNewResponseText;
     
+
+	ConvTree oldTree;
+	ConvTree newTree;
     // Use this for initialization
 	void Awake(){
 		tree = GetComponent<TreeTraversal>().curTree;
@@ -35,7 +38,7 @@ public class TextExtractAndDisplay : MonoBehaviour {
         
     }
 	void Start () {
-
+		//oldTree = tree;
 		//TODO might need to change to describe as the starting node in the tree
 		//new variable or somesuch for the initial text
 
@@ -48,8 +51,12 @@ public class TextExtractAndDisplay : MonoBehaviour {
 		GetNewResponses();
 	}
 	void Update(){
+
 		//Debug.Log (curPrompt);
 		//Debug.Log(curResponses);
+		//HACK
+		tree = GetComponent<TreeTraversal>().curTree;
+
 	}
 
 	//TODO trigger with an event
@@ -65,8 +72,7 @@ public class TextExtractAndDisplay : MonoBehaviour {
 		responses.text = "";
 		//for(int i = 0; i < tree.curNode.responses.Count; i++){
 		foreach(string response in tree.curNode.responses){
-			//Debug.Log(response);
-			//Debug.Log ("Responses " + response);
+
 
 			curResponses.Add (response);
 
@@ -74,13 +80,7 @@ public class TextExtractAndDisplay : MonoBehaviour {
 
 		}
 
-		/*foreach(string newResponse in curResponses){
-			responses.text += ": " + newResponse;
-		}*/
-        /*for(int j = 0; j <= curResponses.Count; j++){
-			responses.text += j + ": " + curResponses[j];
-
-		}*/
+	
 		yield return null;
 	}
 	IEnumerator WaitToPrint(string newText){

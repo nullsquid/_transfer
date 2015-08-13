@@ -83,10 +83,25 @@ public class TreeTraversal : MonoBehaviour {
 		ConvNode curNode;
 		curNode = tree.curNode;
 		lastChoice = curNode.responses[choice];
+		if(curNode.children.Count <= 0){
+			if(curNode.outLinkedTrees.Count > 0){
+			curTree = curNode.outLinkedTrees[0];
+			tree = curTree;
+			//TODO way to check if last node has finished all that it needs to
+			//probably by way of coroutine
+			curNode = tree.branches[1].gameObject.GetComponent<ConvNode>();
+			Debug.Log("new tree");
+			//curNode = tree.curNode;
+			}
+			else if (curNode.outLinkedTrees.Count <= 0){
+
+				Debug.Log("Game Over");
+			}
+		}
 		for(int i = 0; i < curNode.children.Count; i++){
 			//TODO see if finding by child index works better
 			//if(curNode.children[i] != null && curNode.children[i].decision == choice){
-
+			if(curNode.children.Count > 0){
 			if(i == choice){
 				if(curNode.children.Count > 0){
 				tree.curNode = curNode.children[i];
@@ -95,7 +110,18 @@ public class TreeTraversal : MonoBehaviour {
 				//Debug.Log(tree.curNode.prompt);
 				}
 			}
+			
+			}
+
+			//TODO need to fire this when the event triggers the next node to happen
+			/*if(curNode.children.Count == 0){
+				if(curNode.outLinkedTrees.Count == 1){
+
+
+				}
+			}*/
 		}
+	
 
 	}
 
