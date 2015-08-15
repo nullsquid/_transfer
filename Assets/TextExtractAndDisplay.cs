@@ -63,12 +63,14 @@ public class TextExtractAndDisplay : MonoBehaviour {
 	public void GetNewText(){
 		StartCoroutine("CoGetNewText");
 	}
+
 	public void GetNewResponses(){
 		StartCoroutine("CoGetNewResponses");
 	}
 
 	private IEnumerator CoGetNewResponses(){
-		curResponses.RemoveAt(0);
+		curResponses.Clear();
+		//curResponses.RemoveAt(0);
 		responses.text = "";
 		//for(int i = 0; i < tree.curNode.responses.Count; i++){
 		foreach(string response in tree.curNode.responses){

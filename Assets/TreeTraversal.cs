@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Events;
 public class TreeTraversal : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class TreeTraversal : MonoBehaviour {
 	/*
 	 * 
 	*/
+	public List<ConvTree> childTrees = new List<ConvTree>();
 
 	void OnEnable(){
 
@@ -23,63 +25,37 @@ public class TreeTraversal : MonoBehaviour {
 	
 	void Awake(){
 
+		foreach(Transform child in transform){
+			childTrees.Add (child.gameObject.GetComponent<ConvTree>());
+		}
+
 	}
+
+	public ConvTree LoadStartTree(string playerID){
+		ConvTree startingTree;
+		//send event here
+		switch(playerID){
+
+		}
+		return null;
+	}
+	public ConvTree LoadNewTree(){
+		//handle start tree
+		//handle switching tree
+		return null;
+    }
+
 	void Start(){
 		//FindNewNode(curTree);
 		//StartNode(curTree);
 
 
 	}
-	
-	public ConvNode FindNewNode(ConvTree tree, int decision){
-		tree.curLevel += 1;
-		//TODO likely problematic--if i hit 0 a bunch it just increments the level
-		//should probably look at the node's children and pick from them
-		for(int i = 0; i < tree.branches.Count; i++){
 
-			if(tree.branches[i].gameObject.GetComponent<ConvNode>().level == (tree.curLevel)){
-				Debug.Log(tree.branches[i]);
-				if(tree.branches[i].gameObject.GetComponent<ConvNode>().decision == decision){
-					Debug.Log(tree.branches[i]);
-					return tree.branches[i].gameObject.GetComponent<ConvNode>() as ConvNode;
-				//Debug.Log(tree.curNode);
-				//Debug.Log(tree.branches[i]);
-				//TODO this logic looks fucked
-				/*if(tree.branches[i].GetComponent<ConvNode>().decision == ChooseNode(curTree, 0)){
-					Debug.Log(tree.branches[i]);
-					ConvNode newNode = tree.branches[i].GetComponent<ConvNode>();
-					Debug.Log(newNode);
-					return  newNode as ConvNode;
-
-				}*/
-				}
-				else{
-					return null;
-				}
-			}
-		}
-		return null;
-	}
-	void Update(){
-//		Debug.Log(curTree.curNode);
-	}
-	public void NodeChange(ConvTree tree, int choice){
-
-		//if(tree.curNode.responses.Count <= choice){
-			
-		ConvNode newNode = FindNewNode(tree, choice);
-		//Debug.Log(newNode);
-			if(tree.curNode = null){
-				tree.curNode = newNode;
-				Debug.Log(newNode);
-			}
-			//return newNode;
-		//}
-
-		//return null;
-	}
 
 	public void LoadNewNode(ConvTree tree, int choice){
+		//if tree == null, call LoadTree
+		//if reached end of current tree, call LoadTree
 		ConvNode curNode;
 		curNode = tree.curNode;
 		lastChoice = curNode.responses[choice];
@@ -124,22 +100,55 @@ public class TreeTraversal : MonoBehaviour {
 	
 
 	}
+	/*public ConvNode FindNewNode(ConvTree tree, int decision){
+		tree.curLevel += 1;
+		//TODO likely problematic--if i hit 0 a bunch it just increments the level
+		//should probably look at the node's children and pick from them
+		for(int i = 0; i < tree.branches.Count; i++){
 
-	public ConvTree LoadNewTree(){
+			if(tree.branches[i].gameObject.GetComponent<ConvNode>().level == (tree.curLevel)){
+				Debug.Log(tree.branches[i]);
+				if(tree.branches[i].gameObject.GetComponent<ConvNode>().decision == decision){
+					Debug.Log(tree.branches[i]);
+					return tree.branches[i].gameObject.GetComponent<ConvNode>() as ConvNode;
+				//Debug.Log(tree.curNode);
+				//Debug.Log(tree.branches[i]);
+				//TODO this logic looks fucked
+				/*if(tree.branches[i].GetComponent<ConvNode>().decision == ChooseNode(curTree, 0)){
+					Debug.Log(tree.branches[i]);
+					ConvNode newNode = tree.branches[i].GetComponent<ConvNode>();
+					Debug.Log(newNode);
+					return  newNode as ConvNode;
 
-		return null;
-	}
-
-
-	/*public void StartNode(ConvTree tree){
-		if(tree.curNode == null){
-			Debug.Log("startnode is working");
-			FindNewNode(tree);
-		
+				}
+				}
+				else{
+					return null;
+				}
+			}
 		}
-
+		return null;
 	}*/
+	/*
+	public void NodeChange(ConvTree tree, int choice){
 
-	//public
+		//if(tree.curNode.responses.Count <= choice){
+			
+		ConvNode newNode = FindNewNode(tree, choice);
+		//Debug.Log(newNode);
+			if(tree.curNode = null){
+				tree.curNode = newNode;
+				Debug.Log(newNode);
+			}
+			//return newNode;
+		//}
+
+		//return null;
+	}
+*/
+
+
+
+	
 
 }
