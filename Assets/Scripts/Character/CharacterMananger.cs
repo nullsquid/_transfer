@@ -72,8 +72,29 @@ public class CharacterMananger : MonoBehaviour {
 		genderI = FindGender("I");
 		gender0 = FindGender("0");
 
+		//HACK need to modify for full version
 		if(isLive){
-			playerIndex = Random.Range (0, characters.Length);
+			int shortPlayerIndex;
+			shortPlayerIndex = Random.Range(0, 4);
+			Debug.Log(shortPlayerIndex);
+			switch(shortPlayerIndex){
+			case 0:
+				playerIndex = 0;
+				break;
+			case 1:
+				playerIndex = 4;
+				break;
+			case 2:
+				playerIndex = 8;
+				break;
+			case 3:
+				playerIndex = 9;
+				break;
+			/*case 4:
+
+				break;*/
+			}
+			//playerIndex = Random.Range (0, characters.Length);
 		}
 		else if (!isLive){
 			playerIndex = setPlayerIndex;
