@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine.Events;
 public class TextExtractAndDisplay : MonoBehaviour {
 	public ConvTree tree;
+	public ConvTree startTree;
 	public string curPrompt;
 	public string outText;
 	public List<string> curResponses = new List<string>();
@@ -38,12 +39,12 @@ public class TextExtractAndDisplay : MonoBehaviour {
         
     }
 	void Start () {
-		//oldTree = tree;
+
 		//TODO might need to change to describe as the starting node in the tree
 		//new variable or somesuch for the initial text
+		tree = GetComponent<TreeTraversal>().curTree;
 
 
-		curPrompt = tree.curNode.prompt;
 		for(int i = 0; i < tree.curNode.responses.Count; i++){
 			curResponses.Add(tree.curNode.responses[i]);
 		}
@@ -51,11 +52,13 @@ public class TextExtractAndDisplay : MonoBehaviour {
 		GetNewResponses();
 	}
 	void Update(){
-
+		//HACK probably want to put in a coroutine
+		curPrompt = tree.curNode.prompt;
 		//Debug.Log (curPrompt);
 		//Debug.Log(curResponses);
-		//HACK
-		tree = GetComponent<TreeTraversal>().curTree;
+		//HACK 
+		//the following line might be necessary but i'm not sure
+		//tree = GetComponent<TreeTraversal>().curTree;
 
 	}
 
