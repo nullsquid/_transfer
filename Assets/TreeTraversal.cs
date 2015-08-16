@@ -63,6 +63,8 @@ public class TreeTraversal : MonoBehaviour {
 		ConvNode curNode;
 		curNode = tree.curNode;
 		lastChoice = curNode.responses[choice];
+		//TODO put in its own function
+		/*
 		if(curNode.children.Count <= 0){
 			if(curNode.outLinkedTrees.Count > 0){
 			curTree = curNode.outLinkedTrees[0];
@@ -77,7 +79,8 @@ public class TreeTraversal : MonoBehaviour {
 
 				Debug.Log("Game Over");
 			}
-		}
+		}*/
+
 		for(int i = 0; i < curNode.children.Count; i++){
 			//TODO see if finding by child index works better
 			//if(curNode.children[i] != null && curNode.children[i].decision == choice){
@@ -101,6 +104,11 @@ public class TreeTraversal : MonoBehaviour {
 				}
 			}*/
 		}
+		if(curNode.children.Count <= 0){
+			curTree = LoadNewTree(curNode);
+			curNode = curTree.branches[0].GetComponent<ConvNode>();
+		}
+
 	
 
 	}
