@@ -8,6 +8,7 @@ public class TreeTraversal : MonoBehaviour {
 	//temporary until we can get the tree automatically
 	public ConvTree curTree;
 	public string lastChoice;
+	public CharacterMananger cManager;
 
 
 	//some way of getting the current conversation tree
@@ -30,14 +31,19 @@ public class TreeTraversal : MonoBehaviour {
 		}
 
 	}
+	void Start(){
+		cManager = GetComponent<ConvTreeManager>().characterM;
+		curTree = LoadStartTree(cManager.charPlayer.charID);
+
+	}
 
 	public ConvTree LoadStartTree(string playerID){
-		ConvTree startingTree;
+		GameObject startingTree;
 		//send event here
-		switch(playerID){
-
-		}
-		return null;
+		string startingTreeName = "9" + playerID + "_Tree";
+		startingTree = GameObject.Find(startingTreeName);
+		Debug.Log(startingTree + " is tree");
+		return startingTree.GetComponent<ConvTree>();
 	}
 	public ConvTree LoadNewTree(){
 		//handle start tree
@@ -45,12 +51,7 @@ public class TreeTraversal : MonoBehaviour {
 		return null;
     }
 
-	void Start(){
-		//FindNewNode(curTree);
-		//StartNode(curTree);
 
-
-	}
 
 
 	public void LoadNewNode(ConvTree tree, int choice){

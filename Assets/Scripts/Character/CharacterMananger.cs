@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Events;
 //TODO: add more specific control for who a player can be (for the prototype)
 //TODO: Get functionality out of start and into its own function(s) :: modularize and genericize if possible
 //TODO: restructure how i find player => return a string rather than an index integer? So that i can control what characters come out
@@ -45,9 +46,9 @@ public class CharacterMananger : MonoBehaviour {
 
 	int playerIndex;
 
+	private UnityAction sendCharacterListener;
 
 	void Awake () {//switch back to start if this doesn't work
-
 
 		nameA = init.nameA;
 		nameB = init.nameB;
@@ -118,7 +119,10 @@ public class CharacterMananger : MonoBehaviour {
 
 	}
 
-	string FindGender(string character){
+
+
+
+	public string FindGender(string character){
 		switch(init.pronouns[character]){
 		case "he":
 			return("male");
