@@ -43,7 +43,7 @@ public class TreeTraversal : MonoBehaviour {
 		string startingTreeName = "9" + playerID + "_Tree";
 		startingTree = GameObject.Find(startingTreeName);
 		Debug.Log(startingTree + " is tree");
-		return startingTree.GetComponent<ConvTree>();
+		return startingTree.GetComponent<ConvTree>() as ConvTree;
 	}
 	public ConvTree LoadNewTree(){
 		//handle start tree
