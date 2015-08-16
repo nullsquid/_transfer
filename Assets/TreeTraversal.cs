@@ -33,17 +33,19 @@ public class TreeTraversal : MonoBehaviour {
 	}
 	void Start(){
 		cManager = GetComponent<ConvTreeManager>().characterM;
+		//TODO make it only try for A E I 0
+		//TODO only roll characters A E I 0
 		curTree = LoadStartTree(cManager.charPlayer.charID);
 
 	}
 
 	public ConvTree LoadStartTree(string playerID){
-		GameObject startingTree;
+		ConvTree startingTree;
 		//send event here
 		string startingTreeName = "9" + playerID + "_Tree";
-		startingTree = GameObject.Find(startingTreeName);
+		startingTree = GameObject.Find(startingTreeName).GetComponent<ConvTree>() as ConvTree;
 		Debug.Log(startingTree + " is tree");
-		return startingTree.GetComponent<ConvTree>() as ConvTree;
+		return startingTree;
 	}
 	public ConvTree LoadNewTree(){
 		//handle start tree
