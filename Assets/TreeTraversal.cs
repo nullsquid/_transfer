@@ -33,8 +33,6 @@ public class TreeTraversal : MonoBehaviour {
 	}
 	void Start(){
 		cManager = GetComponent<ConvTreeManager>().characterM;
-		//TODO make it only try for A E I 0
-		//TODO only roll characters A E I 0
 		curTree = LoadStartTree(cManager.charPlayer.charID);
 
 	}
@@ -47,9 +45,12 @@ public class TreeTraversal : MonoBehaviour {
 		Debug.Log(startingTree + " is tree");
 		return startingTree;
 	}
-	public ConvTree LoadNewTree(){
-		//handle start tree
+	public ConvTree LoadNewTree(ConvNode node){
+
 		//handle switching tree
+		if(node.outLinkedTrees != null){
+			return node.outLinkedTrees[0];
+		}
 		return null;
     }
 
