@@ -112,6 +112,11 @@ public class TreeTraversal : MonoBehaviour {
 	
 
 	}
+	//TODO 
+	private IEnumerator CoConversationStep (ConvNode node){
+		yield return null;
+		//if(
+	}
 	/*public ConvNode FindNewNode(ConvTree tree, int decision){
 		tree.curLevel += 1;
 		//TODO likely problematic--if i hit 0 a bunch it just increments the level
