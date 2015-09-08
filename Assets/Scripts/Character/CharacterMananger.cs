@@ -6,6 +6,30 @@ using UnityEngine.Events;
 //TODO: Get functionality out of start and into its own function(s) :: modularize and genericize if possible
 //TODO: restructure how i find player => return a string rather than an index integer? So that i can control what characters come out
 public class CharacterMananger : MonoBehaviour {
+	private static CharacterMananger _instance;
+
+	public static CharacterMananger Instance{
+		get{
+			if(_instance == null){
+				_instance = GameObject.FindObjectOfType<CharacterMananger>();
+			}
+			return _instance;
+		}
+	}
+
+	public void GetCharacters(){
+
+	}
+
+	private void GetCharacterNames(){
+
+	}
+
+	private void GetCharacterGenders(){
+
+	}
+	/*
+
 	public Init init;
 	public TextManager textM;
 	public InputManager inputM;
@@ -90,9 +114,7 @@ public class CharacterMananger : MonoBehaviour {
 			case 3:
 				playerIndex = 9;
 				break;
-			/*case 4:
-
-				break;*/
+		
 			}
 			//playerIndex = Random.Range (0, characters.Length);
 		}
@@ -163,5 +185,6 @@ public class CharacterMananger : MonoBehaviour {
 		return null;
 	}
 
+*/
 
 }
