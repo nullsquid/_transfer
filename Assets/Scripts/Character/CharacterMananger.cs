@@ -19,7 +19,7 @@ public class CharacterMananger : MonoBehaviour {
 		}
 	}
 
-	private Character character;
+	public Character characterPrefab;
 
 	void Awake(){
 		if(_instance = null){
@@ -34,16 +34,24 @@ public class CharacterMananger : MonoBehaviour {
 		}
 	}
 
-	public void GetCharacters(){
-
+	public void GenCharacters(){
+		string[] identifiers = new string[10]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "0"};
+		for(int i = 0; i <= identifiers.Length; i++){
+			Character newCharacter;
+			newCharacter = Instantiate(characterPrefab, transform.position, transform.rotation) as Character;
+			newCharacter.charID = identifiers[i];
+			newCharacter.charName = GenCharacterName();
+			newCharacter.gender = GenCharacterGender();
+			newCharacter.pronoun = GenCharacterPronoun(newCharacter.gender);
+		}
 	}
 
-	private string GetCharacterName(){
+	private string GenCharacterName(){
 
 		return null;
 	}
 
-	private string GetCharacterGender(){
+	private string GenCharacterGender(){
 		int randNum = Random.Range(0, 3);
 		switch(randNum){
 		case 0:
@@ -58,7 +66,7 @@ public class CharacterMananger : MonoBehaviour {
 		return null;
 	}
 
-	private string GetCharacterPronoun(string gender){
+	private string GenCharacterPronoun(string gender){
 		switch(gender){
 		case "M":
 			return "he";
