@@ -6,14 +6,31 @@ using UnityEngine.Events;
 //TODO: Get functionality out of start and into its own function(s) :: modularize and genericize if possible
 //TODO: restructure how i find player => return a string rather than an index integer? So that i can control what characters come out
 public class CharacterMananger : MonoBehaviour {
+	
 	private static CharacterMananger _instance;
 
 	public static CharacterMananger Instance{
 		get{
 			if(_instance == null){
 				_instance = GameObject.FindObjectOfType<CharacterMananger>();
+				DontDestroyOnLoad(_instance.gameObject);
 			}
 			return _instance;
+		}
+	}
+
+	private Character character;
+
+	void Awake(){
+		if(_instance = null){
+			_instance = this;
+			DontDestroyOnLoad(this);
+		}
+
+		else{
+			if(this != _instance){
+				Destroy(this.gameObject);
+			}
 		}
 	}
 
@@ -21,15 +38,42 @@ public class CharacterMananger : MonoBehaviour {
 
 	}
 
-	private void GetCharacterNames(){
+	private string GetCharacterName(){
 
+		return null;
 	}
 
-	private void GetCharacterGenders(){
-
+	private string GetCharacterGender(){
+		int randNum = Random.Range(0, 3);
+		switch(randNum){
+		case 0:
+			return "M";
+		case 1:
+			return "F";
+		case 2:
+			return "Q";
+		case 3:
+			return "A";
+		}
+		return null;
 	}
+
+	private string GetCharacterPronoun(string gender){
+		switch(gender){
+		case "M":
+			return "he";
+		case "F":
+			return "she";
+		case "Q":
+			return "they";
+		case "A":
+			return "it";
+		}
+
+		return null;
+	}
+
 	/*
-
 	public Init init;
 	public TextManager textM;
 	public InputManager inputM;
@@ -72,7 +116,7 @@ public class CharacterMananger : MonoBehaviour {
 
 	private UnityAction sendCharacterListener;
 
-	void Awake () {//switch back to start if this doesn't work
+	void Start () {//switch back to start if this doesn't work
 
 		nameA = init.nameA;
 		nameB = init.nameB;
@@ -185,6 +229,6 @@ public class CharacterMananger : MonoBehaviour {
 		return null;
 	}
 
-*/
+	*/
 
 }
