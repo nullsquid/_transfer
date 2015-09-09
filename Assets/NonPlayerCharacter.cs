@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class NonPlayerCharacter : MonoBehaviour, IEncounterable {
 
-	public void AddToMemory(){
+	public void AddToplayerMemory(){
 
 	}
 }
