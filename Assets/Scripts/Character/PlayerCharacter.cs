@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class PlayerCharacter : Character {
+	/*
 	public Directory dirPrefab;
 	public File filePrefab;
 	public Character currentlyEngaged;
@@ -46,4 +47,5 @@ public class PlayerCharacter : Character {
 		Debug.Log(KnownCharacters.Count);
 
 	}
+	*/
 }

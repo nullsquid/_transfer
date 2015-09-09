@@ -79,7 +79,7 @@ public class InputManager : MonoBehaviour{
 
 		}
 		if(player == null){
-			player = cManager.charPlayer;
+			//player = cManager.charPlayer;
 		}
 		//Debug.Log(input.commandWithoutParam);
 
@@ -125,6 +125,7 @@ public class InputManager : MonoBehaviour{
 				EventManager.TriggerEvent("exitConnected");
 			}
 			//else if (player.KnownCharacters.
+				/*
 			else if(player.KnownCharacters.ContainsKey(input.newParameters[0])){
 
 				Debug.Log (player.KnownCharacters[input.newParameters[0]]);
@@ -141,7 +142,7 @@ public class InputManager : MonoBehaviour{
 				//newText.transform.parent = textManager.canvas.transform;
 
 				//cManager.SendMessage("Connect");
-			}
+			}*/
 			else{
 				Debug.Log("It's not MEMM :( ");
 				Debug.Log(input.newParameters[0]);

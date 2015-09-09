@@ -6,7 +6,7 @@ using UnityEngine.Events;
 //TODO: Get functionality out of start and into its own function(s) :: modularize and genericize if possible
 //TODO: restructure how i find player => return a string rather than an index integer? So that i can control what characters come out
 public class CharacterMananger : MonoBehaviour {
-	private UnityAction sendCharacterListener;
+	private UnityAction generateCharacterListener;
 	private static CharacterMananger _instance;
 
 	public static CharacterMananger Instance{
@@ -20,8 +20,17 @@ public class CharacterMananger : MonoBehaviour {
 	}
 
 	public Character characterPrefab;
+	void OnEnable(){
+		EventManager.StartListening("genCharacter", generateCharacterListener);
+	}
+
+	void OnDisable(){
+		EventManager.StopListening("genCharacter", generateCharacterListener);
+	}
 
 	void Awake(){
+		generateCharacterListener = new UnityAction(AddCharacter);
+
 		if(_instance = null){
 			_instance = this;
 			DontDestroyOnLoad(this);
@@ -32,17 +41,19 @@ public class CharacterMananger : MonoBehaviour {
 				Destroy(this.gameObject);
 			}
 		}
+
+
 	}
 	//TODO figure out where player character gen goes and how to deal with it in a not clunky manner
-	public void GenCharacter(){
+	public void AddCharacter(){
 		string[] identifiers = new string[10]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "0"};
 		for(int i = 0; i <= identifiers.Length; i++){
 			Character newCharacter;
 			newCharacter = Instantiate(characterPrefab, transform.position, transform.rotation) as Character;
-			newCharacter.charID = identifiers[i];
-			newCharacter.charName = GenCharacterName();
-			newCharacter.gender = GenCharacterGender();
-			newCharacter.pronoun = GenCharacterPronoun(newCharacter.gender);
+			newCharacter.ID = identifiers[i];
+			newCharacter.Name = GenCharacterName();
+			newCharacter.Gender = GenCharacterGender();
+			newCharacter.Pronoun = GenCharacterPronoun(newCharacter.Gender);
 		}
 	}
 

@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 public class Init : MonoBehaviour {
 
+	void Start(){
+		EventManager.TriggerEvent("genCharacterListener");
+	}
+	/*
 	#region Public Variables
 	public string[] allCharacters = new string[10]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "0"};
 
@@ -84,9 +88,9 @@ public class Init : MonoBehaviour {
 			
 			return "it";
 		
-		/*case 4:
+		case 4:
 			return null;
-		*/	
+
 		default:
 			Debug.LogWarning("Out of range");
 			return null;
@@ -112,5 +116,6 @@ public class Init : MonoBehaviour {
 
 		return null;
 	}
+	*/
 	
 }
