@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class PlayerCharacter : Character {
+    private List<Character> knownCharacters = new List<Character>();
+    
+    public void AddToList()
+    {
+
+
+    }
 	/*
 	public Directory dirPrefab;
 	public File filePrefab;

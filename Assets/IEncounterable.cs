@@ -3,6 +3,6 @@ using System.Collections;
 
 public interface IEncounterable {
 
-	void AddToplayerMemory();
+	Character AddToplayerMemory();
 	
 }
