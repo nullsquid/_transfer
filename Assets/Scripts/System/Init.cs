@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Init : MonoBehaviour {
-
+	//the ONLY start function that's run--makes things happen in the scene and initializes
 	void Start(){
-		EventManager.TriggerEvent("genCharacterListener");
+		EventManager.TriggerEvent("genCharacter");
 	}
 	/*
 	#region Public Variables
