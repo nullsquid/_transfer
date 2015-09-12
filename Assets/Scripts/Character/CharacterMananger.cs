@@ -31,7 +31,7 @@ public class CharacterMananger : MonoBehaviour {
 	void Awake(){
 		generateCharacterListener = new UnityAction(AddCharacter);
 
-		if(_instance = null){
+		if(_instance == null){
 			_instance = this;
 			DontDestroyOnLoad(this);
 		}
