@@ -4,12 +4,13 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.Events;
 public class TextExtractAndDisplay : MonoBehaviour {
+	/*
 	public ConvTree tree;
 	public ConvTree startTree;
 	public string curPrompt;
 	public string outText;
 	public List<string> curResponses = new List<string>();
-	public InterfaceElementController displayInterface;
+	//public InterfaceElementController displayInterface;
 	public Text mainText;
 	public Text responses;
 	public string speaker;
@@ -162,5 +163,5 @@ public class TextExtractAndDisplay : MonoBehaviour {
         //Debug.Log("new text is " + newText);
 	}
 
-
+	*/
 }

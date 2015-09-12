@@ -60,6 +60,9 @@ public abstract class Character : MonoBehaviour {
 	}
 
 	public bool IsPlayer{
+		get{
+			return _isPlayer;
+		}
 		set{
 			_isPlayer = value;
 		}
@@ -75,7 +78,7 @@ public abstract class Character : MonoBehaviour {
 				_dispositionTowardsPlayer = value;
 			}
 			else{
-				_dispositionTowardsPlayer = null;
+				//_dispositionTowardsPlayer = null;
 			}
 		}
 	}
@@ -89,7 +92,7 @@ public abstract class Character : MonoBehaviour {
 				_hasMetPlayer = value;
 			}
 			else{
-				_hasMetPlayer = null;
+				//_hasMetPlayer = null;
 			}
 		}
 	}

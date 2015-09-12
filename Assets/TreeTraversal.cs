@@ -33,7 +33,7 @@ public class TreeTraversal : MonoBehaviour {
 	}
 	void Start(){
 		cManager = GetComponent<ConvTreeManager>().characterM;
-		curTree = LoadStartTree(cManager.charPlayer.charID);
+		//curTree = LoadStartTree(cManager.charPlayer.charID);
 
 	}
 
