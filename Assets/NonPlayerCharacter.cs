@@ -16,6 +16,7 @@ public class NonPlayerCharacter : Character, IEncounterable {
             _haveEncounteredPlayer = value;
         }
     }
+    //this doesn't actually do what the method name implies
 	public Character AddToplayerMemory(){
         if (HaveEncounteredPlayer == false)
         {

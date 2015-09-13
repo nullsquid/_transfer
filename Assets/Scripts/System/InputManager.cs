@@ -6,8 +6,54 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 public class InputManager : MonoBehaviour{
+    private Queue<char> inputBuffer = new Queue<char>();
+    private char _inputString;
+    public string _newString;
+    public char InputString {
+        get {
+            return _inputString;
+        }
+        set {
+            _inputString = value;
+        }
 
+    }
+    public string NewString {
+        get {
+            return _newString;
+        }
+        set {
+            _newString = value;
+        }
+    }
 
+    void Update() {
+        NewString = KeyPressEvent();
+        Debug.Log(NewString);
+    }
+
+    //TODO put this in a coroutine?
+    string KeyPressEvent() {
+        inputBuffer.Enqueue(Input.inputString[0]);
+        
+        NewString += inputBuffer.Dequeue();
+        //BackspacePressEvent();
+
+        return NewString;
+    }
+
+    string BackspacePressEvent() {
+        if (Input.GetKeyDown(KeyCode.Backspace)) {
+            NewString = NewString.Remove(NewString.Length - 1, 1);
+            return NewString;
+        }
+        return NewString;
+    }
+
+    void ReturnPressEvent() {
+
+    }
+    /*
 	public CharacterMananger cManager;
 	public PlayerCharacter player;
 	//public string commandParam;
@@ -143,6 +189,7 @@ public class InputManager : MonoBehaviour{
 
 				//cManager.SendMessage("Connect");
 			}*/
+            /*
 			else{
 				Debug.Log("It's not MEMM :( ");
 				Debug.Log(input.newParameters[0]);
@@ -217,4 +264,5 @@ public class InputManager : MonoBehaviour{
 
 		return 0;
 	}
+    */
 }

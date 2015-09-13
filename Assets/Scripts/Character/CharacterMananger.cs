@@ -8,8 +8,10 @@ using UnityEngine.Events;
 public class CharacterMananger : MonoBehaviour {
 	private UnityAction generateCharacterListener;
 	private static CharacterMananger _instance;
+    public Character nonPlayerCharacterPrefab;
+    public Character playerCharacterPrefab;
 
-	public static CharacterMananger Instance{
+    public static CharacterMananger Instance{
 		get{
 			if(_instance == null){
 				_instance = GameObject.FindObjectOfType<CharacterMananger>();
@@ -19,7 +21,7 @@ public class CharacterMananger : MonoBehaviour {
 		}
 	}
 
-	public Character characterPrefab;
+	
 	void OnEnable(){
 		EventManager.StartListening("genCharacter", generateCharacterListener);
 	}
@@ -46,20 +48,34 @@ public class CharacterMananger : MonoBehaviour {
 	}
 	//TODO figure out where player character gen goes and how to deal with it in a not clunky manner
 	public void AddCharacter(){
+       
 		string[] identifiers = new string[10]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "0"};
-		for(int i = 0; i < identifiers.Length; i++){
-			Character newCharacter;
-			newCharacter = Instantiate(characterPrefab, transform.position, transform.rotation) as Character;
-			newCharacter.ID = identifiers[i];
-			newCharacter.Name = GenCharacterName();
-			newCharacter.Gender = GenCharacterGender();
-			newCharacter.Pronoun = GenCharacterPronoun(newCharacter.Gender);
-			newCharacter.transform.parent = gameObject.transform;
+        string playerCharacterIdentifier = GenPlayerCharacter(identifiers);
+        for (int i = 0; i < identifiers.Length; i++){
+            Character newCharacter;
+            if (identifiers[i] == playerCharacterIdentifier) {
+                newCharacter = Instantiate(playerCharacterPrefab, transform.position, transform.rotation) as Character;
+                newCharacter.ID = identifiers[i];
+                newCharacter.Name = GenCharacterName();
+                newCharacter.Gender = GenCharacterGender();
+                newCharacter.Pronoun = GenCharacterPronoun(newCharacter.Gender);
+                newCharacter.transform.parent = gameObject.transform;
+            }
+            else if (identifiers[i] != playerCharacterIdentifier) {
+                
+                newCharacter = Instantiate(nonPlayerCharacterPrefab, transform.position, transform.rotation) as Character;
+                newCharacter.ID = identifiers[i];
+                newCharacter.Name = GenCharacterName();
+                newCharacter.Gender = GenCharacterGender();
+                newCharacter.Pronoun = GenCharacterPronoun(newCharacter.Gender);
+                newCharacter.transform.parent = gameObject.transform;
+            }
 		}
 	}
 
-	public void GenPlayerCharacter(){
-
+	public string GenPlayerCharacter(string[] identifiers){
+        return identifiers[Random.Range(0, identifiers.Length)];
+        
 	}
 
 	private string GenCharacterName(){
