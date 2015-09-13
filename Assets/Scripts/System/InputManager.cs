@@ -9,6 +9,9 @@ public class InputManager : MonoBehaviour{
     private Queue<char> inputBuffer = new Queue<char>();
     private char _inputString;
     public string _newString;
+    private bool _canType;
+    private bool _canReturn;
+    public List<char> Text = new List<char>();
     public char InputString {
         get {
             return _inputString;
@@ -26,28 +29,73 @@ public class InputManager : MonoBehaviour{
             _newString = value;
         }
     }
-
+    
     void Update() {
-        NewString = KeyPressEvent();
-        Debug.Log(NewString);
+        //NewString = KeyPressEvent();
+        if (Input.anyKey) {
+            StartCoroutine("UpdateString");
+        }
+        //Debug.Log(NewString);
     }
 
+    IEnumerator UpdateString() {
+        
+        AddTextPressEvent();
+        BackspacePressEvent();
+        for (int i = NewString.Length; i < Text.Count; i++) {
+            
+            
+            yield return null;
+            
+            NewString += Text[i];
+            Debug.Log(NewString);
+        }
+        yield return NewString;
+    }
     //TODO put this in a coroutine?
     string KeyPressEvent() {
+        return null;
+    }
+
+    string AddTextPressEvent() {
         inputBuffer.Enqueue(Input.inputString[0]);
-        
-        NewString += inputBuffer.Dequeue();
-        //BackspacePressEvent();
+
+        Text.Add(inputBuffer.Dequeue());
 
         return NewString;
+
     }
 
     string BackspacePressEvent() {
+        // string rmCharString;
+        
+        char lastChar = Text[Text.Count - 1];
+        Debug.Log(lastChar);
         if (Input.GetKeyDown(KeyCode.Backspace)) {
-            NewString = NewString.Remove(NewString.Length - 1, 1);
+            for(int i = 0; i <= Text.Count; i++) {
+                if(Text[i] == lastChar) {
+                    Text.RemoveAt(i);
+                    
+                }
+            }
+            //Text.Remove(lastChar);
+            //Text.RemoveAt(Text.Last());
+            
             return NewString;
+
         }
+        /*
+        string modString = NewString;
+        if (Input.GetKeyDown(KeyCode.Backspace)) {
+            
+            modString = NewString.Remove(NewString.Count<char>() - 1, 1);
+            Debug.Log(modString);
+            return modString;
+        }
+        
         return NewString;
+        */
+        return null;
     }
 
     void ReturnPressEvent() {
