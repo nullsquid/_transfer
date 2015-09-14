@@ -31,15 +31,13 @@ public class InputManager : MonoBehaviour{
     }
     
     void Update() {
-        //NewString = KeyPressEvent();
+        
         if (Input.anyKey) {
             StartCoroutine("UpdateString");
         }
-        //Debug.Log(NewString);
     }
 
     IEnumerator UpdateString() {
-        
         AddTextPressEvent();
         BackspacePressEvent();
         for (int i = NewString.Length; i < Text.Count; i++) {
@@ -48,11 +46,11 @@ public class InputManager : MonoBehaviour{
             yield return null;
             
             NewString += Text[i];
-            Debug.Log(NewString);
+           
         }
         yield return NewString;
     }
-    //TODO put this in a coroutine?
+   
     string KeyPressEvent() {
         return null;
     }
@@ -67,34 +65,30 @@ public class InputManager : MonoBehaviour{
     }
 
     string BackspacePressEvent() {
-        // string rmCharString;
         
-        char lastChar = Text[Text.Count - 1];
-        Debug.Log(lastChar);
+        //Notes: when lastchar = index[0] it deletes from the front (expected)
+        //but NewString doesn't update
+        //Setting it to a way high number doesn't cause the string to be set until after that number is hit in the list
+        //(by backspacing)
+        char lastChar = Text[0];
         if (Input.GetKeyDown(KeyCode.Backspace)) {
+
             for(int i = 0; i <= Text.Count; i++) {
+
                 if(Text[i] == lastChar) {
+
                     Text.RemoveAt(i);
-                    
+                    Debug.Log(Text[i]);
+
                 }
+
             }
-            //Text.Remove(lastChar);
-            //Text.RemoveAt(Text.Last());
+
             
             return NewString;
 
         }
-        /*
-        string modString = NewString;
-        if (Input.GetKeyDown(KeyCode.Backspace)) {
-            
-            modString = NewString.Remove(NewString.Count<char>() - 1, 1);
-            Debug.Log(modString);
-            return modString;
-        }
-        
-        return NewString;
-        */
+      
         return null;
     }
 
