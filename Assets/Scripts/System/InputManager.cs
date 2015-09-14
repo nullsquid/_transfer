@@ -33,15 +33,28 @@ public class InputManager : MonoBehaviour{
     }
     
     void Update() {
-        
-       if (Input.anyKeyDown) {
-            //StartCoroutine("UpdateString");
-            //DirtyInput();
-            if (Input.GetKeyDown(KeyCode.Backspace)) {
+
+        //StartCoroutine("DirtyInput");
+        //StartCoroutine("DirtyInput");
+        //if (Input.GetKeyDown(KeyCode.D)) {
+        //StartCoroutine("UpdateString");
+        //DirtyInput();
+        if (Input.inputString == "\b") {
+           // if (Text.Count > 0) {
                 StartCoroutine("DirtyRemove");
-            }
+            //}
         }
+        if (Input.inputString != "\b" && Input.inputString != "\n") {
+            Text.Add(Input.inputString[0]);
+        //    StartCoroutine(DirtyInput(Input.inputString[0]));
+       }
         
+
+
+
+        //}
+
+
     }
     IEnumerator DirtyRemove() {
 
@@ -56,24 +69,9 @@ public class InputManager : MonoBehaviour{
      
 
     }
-    void DirtyInput() {
-        foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))) {
-            if (Input.GetKeyDown(vKey) != Input.GetKeyDown(KeyCode.Backspace)) {
-                //inputBuffer.Enqueue(Input.inputString[0]);
-                Text.Add(Input.inputString[0]);
-                _curChar = Text[Text.Count - 1];
-                Debug.Log(_curChar);
-            }
-            else if (Input.GetKeyDown(KeyCode.Backspace)) {
-                for(int i = Text.Count - 1; i > Text.Count; i--) {
-                    Debug.Log(i);
-                    if(i == Text.Count - 1) {
-                        Text.RemoveRange(Text[i], 1);
-                    }
-                }
-                
-            }
-        }
+    IEnumerator DirtyInput(char inKey) {
+        Text.Add(inKey);
+        yield return new WaitForEndOfFrame();
     }
     
     IEnumerator UpdateString() {
