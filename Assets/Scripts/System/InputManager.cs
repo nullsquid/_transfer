@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour{
     public string _newString;
     private bool _canType;
     private bool _canReturn;
+    private int _curIndex;
+    private int _curChar;
     public List<char> Text = new List<char>();
     public char InputString {
         get {
@@ -32,15 +34,52 @@ public class InputManager : MonoBehaviour{
     
     void Update() {
         
-        if (Input.anyKey) {
-            StartCoroutine("UpdateString");
+       if (Input.anyKeyDown) {
+            //StartCoroutine("UpdateString");
+            //DirtyInput();
+            if (Input.GetKeyDown(KeyCode.Backspace)) {
+                StartCoroutine("DirtyRemove");
+            }
+        }
+        
+    }
+    IEnumerator DirtyRemove() {
+
+        foreach(char letter in Text) {
+            if(letter == Text[Text.Count - 1]) {
+                Text.Remove(letter);
+                break;
+            }
+            yield return new WaitForEndOfFrame();
+            
+        }
+     
+
+    }
+    void DirtyInput() {
+        foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))) {
+            if (Input.GetKeyDown(vKey) != Input.GetKeyDown(KeyCode.Backspace)) {
+                //inputBuffer.Enqueue(Input.inputString[0]);
+                Text.Add(Input.inputString[0]);
+                _curChar = Text[Text.Count - 1];
+                Debug.Log(_curChar);
+            }
+            else if (Input.GetKeyDown(KeyCode.Backspace)) {
+                for(int i = Text.Count - 1; i > Text.Count; i--) {
+                    Debug.Log(i);
+                    if(i == Text.Count - 1) {
+                        Text.RemoveRange(Text[i], 1);
+                    }
+                }
+                
+            }
         }
     }
-
+    
     IEnumerator UpdateString() {
         AddTextPressEvent();
         BackspacePressEvent();
-        for (int i = NewString.Length; i < Text.Count; i++) {
+        /*for (int i = NewString.Length; i < Text.Count; i++) {
             
             
             yield return null;
@@ -48,7 +87,8 @@ public class InputManager : MonoBehaviour{
             NewString += Text[i];
            
         }
-        yield return NewString;
+        yield return NewString;*/
+        yield return null;
     }
    
     string KeyPressEvent() {
@@ -56,11 +96,14 @@ public class InputManager : MonoBehaviour{
     }
 
     string AddTextPressEvent() {
-        inputBuffer.Enqueue(Input.inputString[0]);
-
+        foreach (KeyCode vKey in System.Enum.GetValues(typeof(KeyCode))) {
+            if (Input.GetKeyDown(vKey) != Input.GetKeyDown(KeyCode.Backspace)) {
+                inputBuffer.Enqueue(Input.inputString[0]);
+            }
+        }
         Text.Add(inputBuffer.Dequeue());
 
-        return NewString;
+        return null;
 
     }
 
@@ -70,10 +113,10 @@ public class InputManager : MonoBehaviour{
         //but NewString doesn't update
         //Setting it to a way high number doesn't cause the string to be set until after that number is hit in the list
         //(by backspacing)
-        char lastChar = Text[0];
+        char lastChar = Text[Text.Count - 1];
         if (Input.GetKeyDown(KeyCode.Backspace)) {
 
-            for(int i = 0; i <= Text.Count; i++) {
+            for(int i = 0; i < Text.Count; i++) {
 
                 if(Text[i] == lastChar) {
 
@@ -91,10 +134,11 @@ public class InputManager : MonoBehaviour{
       
         return null;
     }
-
+    
     void ReturnPressEvent() {
 
     }
+    
     /*
 	public CharacterMananger cManager;
 	public PlayerCharacter player;
