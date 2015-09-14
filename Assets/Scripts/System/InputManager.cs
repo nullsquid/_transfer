@@ -34,19 +34,23 @@ public class InputManager : MonoBehaviour{
     
     void Update() {
 
-        //StartCoroutine("DirtyInput");
-        //StartCoroutine("DirtyInput");
-        //if (Input.GetKeyDown(KeyCode.D)) {
-        //StartCoroutine("UpdateString");
-        //DirtyInput();
+        
         if (Input.inputString == "\b") {
-           // if (Text.Count > 0) {
+            if (Text.Count > 0) {
                 StartCoroutine("DirtyRemove");
-            //}
+                StartCoroutine("UpdateString");
+            }
         }
-        if (Input.inputString != "\b" && Input.inputString != "\n") {
-            Text.Add(Input.inputString[0]);
-        //    StartCoroutine(DirtyInput(Input.inputString[0]));
+        else if (Input.GetKeyDown(KeyCode.Return)) {
+            //will probably be a coroutine
+            ReturnPressEvent();
+            StartCoroutine("UpdateString");
+        }
+        else {
+            //Text.Add(Input.inputString[0]);
+            //    StartCoroutine(DirtyInput(Input.inputString[0]));
+            StartCoroutine(DirtyInput());
+            StartCoroutine("UpdateString");
        }
         
 
@@ -55,6 +59,24 @@ public class InputManager : MonoBehaviour{
         //}
 
 
+    }
+    IEnumerator UpdateString() {
+       // while (Text.Count != 0) {
+            for (int i = NewString.Length; i < Text.Count; i++) {
+
+                NewString += Text[i];
+                if(NewString.Length > Text.Count) {
+                    for(int j = 0; j <= NewString.Length; j++) {
+                    NewString.Remove(Text.Count - 1);
+
+                    }
+                }
+                yield return new WaitForEndOfFrame();
+
+                
+
+            }
+        //}
     }
     IEnumerator DirtyRemove() {
 
@@ -69,27 +91,15 @@ public class InputManager : MonoBehaviour{
      
 
     }
-    IEnumerator DirtyInput(char inKey) {
-        Text.Add(inKey);
+    IEnumerator DirtyInput() {
+        Text.Add(Input.inputString[0]);
         yield return new WaitForEndOfFrame();
     }
     
-    IEnumerator UpdateString() {
-        AddTextPressEvent();
-        BackspacePressEvent();
-        /*for (int i = NewString.Length; i < Text.Count; i++) {
-            
-            
-            yield return null;
-            
-            NewString += Text[i];
-           
-        }
-        yield return NewString;*/
-        yield return null;
-    }
+    
    
     string KeyPressEvent() {
+        
         return null;
     }
 
@@ -107,10 +117,7 @@ public class InputManager : MonoBehaviour{
 
     string BackspacePressEvent() {
         
-        //Notes: when lastchar = index[0] it deletes from the front (expected)
-        //but NewString doesn't update
-        //Setting it to a way high number doesn't cause the string to be set until after that number is hit in the list
-        //(by backspacing)
+        
         char lastChar = Text[Text.Count - 1];
         if (Input.GetKeyDown(KeyCode.Backspace)) {
 
@@ -134,7 +141,7 @@ public class InputManager : MonoBehaviour{
     }
     
     void ReturnPressEvent() {
-
+        Text.Clear();
     }
     
     /*
