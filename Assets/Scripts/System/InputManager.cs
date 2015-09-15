@@ -34,8 +34,10 @@ public class InputManager : MonoBehaviour{
     
     void Update() {
 
-        
+        //TODO ALL OF THIS NEEDS TO BE OPTIMIZED
+        //So many loops and calls and coroutines ugh
         if (Input.inputString == "\b") {
+            NewString = "";
             if (Text.Count > 0) {
                 StartCoroutine("DirtyRemove");
                 StartCoroutine("UpdateString");
@@ -47,9 +49,8 @@ public class InputManager : MonoBehaviour{
             StartCoroutine("UpdateString");
         }
         else {
-            //Text.Add(Input.inputString[0]);
-            //    StartCoroutine(DirtyInput(Input.inputString[0]));
-            StartCoroutine(DirtyInput());
+            NewString = "";
+            StartCoroutine("DirtyInput");
             StartCoroutine("UpdateString");
        }
         
@@ -61,22 +62,20 @@ public class InputManager : MonoBehaviour{
 
     }
     IEnumerator UpdateString() {
-       // while (Text.Count != 0) {
-            for (int i = NewString.Length; i < Text.Count; i++) {
+        // while (Text.Count != 0) {
+        //NewString = "";
+        for (int i = 0; i < Text.Count; i++) {
+            //this routine has to fire after all the other ones go
+            NewString += Text[i];
+            Debug.Log(NewString);
+            //yield return new WaitForEndOfFrame();
+            yield return null;
+           // yield return new WaitForSeconds(.02f);
+            
 
-                NewString += Text[i];
-                if(NewString.Length > Text.Count) {
-                    for(int j = 0; j <= NewString.Length; j++) {
-                    NewString.Remove(Text.Count - 1);
 
-                    }
-                }
-                yield return new WaitForEndOfFrame();
-
-                
-
-            }
-        //}
+        }
+        
     }
     IEnumerator DirtyRemove() {
 
@@ -85,7 +84,7 @@ public class InputManager : MonoBehaviour{
                 Text.Remove(letter);
                 break;
             }
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(0.002f);
             
         }
      
@@ -93,7 +92,9 @@ public class InputManager : MonoBehaviour{
     }
     IEnumerator DirtyInput() {
         Text.Add(Input.inputString[0]);
-        yield return new WaitForEndOfFrame();
+
+        
+        yield return new WaitForSeconds(.04f);
     }
     
     
