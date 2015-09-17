@@ -32,15 +32,15 @@ public class InputManager : MonoBehaviour{
         }
     }
     
-    void Update() {
-
+    void FixedUpdate() {
+        _curIndex = Text.Count - 1;
         //TODO ALL OF THIS NEEDS TO BE OPTIMIZED
         //So many loops and calls and coroutines ugh
         if (Input.inputString == "\b") {
-            NewString = "";
+            //NewString = "";
             if (Text.Count > 0) {
                 StartCoroutine("DirtyRemove");
-                StartCoroutine("UpdateString");
+              //  StartCoroutine("UpdateString");
             }
         }
         else if (Input.GetKeyDown(KeyCode.Return)) {
@@ -49,9 +49,9 @@ public class InputManager : MonoBehaviour{
             StartCoroutine("UpdateString");
         }
         else {
-            NewString = "";
+            //NewString = "";
             StartCoroutine("DirtyInput");
-            StartCoroutine("UpdateString");
+            
        }
         
 
@@ -63,13 +63,15 @@ public class InputManager : MonoBehaviour{
     }
     IEnumerator UpdateString() {
         // while (Text.Count != 0) {
-        //NewString = "";
+        NewString = "";
+        
         for (int i = 0; i < Text.Count; i++) {
+            yield return new WaitForFixedUpdate();
             //this routine has to fire after all the other ones go
             NewString += Text[i];
             Debug.Log(NewString);
             //yield return new WaitForEndOfFrame();
-            yield return null;
+            
            // yield return new WaitForSeconds(.02f);
             
 
@@ -78,15 +80,23 @@ public class InputManager : MonoBehaviour{
         
     }
     IEnumerator DirtyRemove() {
-
-        foreach(char letter in Text) {
-            if(letter == Text[Text.Count - 1]) {
-                Text.Remove(letter);
-                break;
+        //Enumerator may not execute?
+        List<int> lettersToRemove = new List<int>();
+        foreach (char letter in Text) {
+            if (letter == Text[_curIndex]) {
+                lettersToRemove.Add(letter);
+                // yield return new WaitForFixedUpdate();
+                //break;
             }
-            yield return new WaitForSeconds(0.002f);
-            
         }
+         foreach(char toRemove in lettersToRemove) {
+            //removes all of a given letter
+            Text.Remove(toRemove);
+        }
+        yield return null;
+            //StartCoroutine("UpdateString");
+
+        
      
 
     }
@@ -94,7 +104,8 @@ public class InputManager : MonoBehaviour{
         Text.Add(Input.inputString[0]);
 
         
-        yield return new WaitForSeconds(.04f);
+        yield return null;
+        //StartCoroutine("UpdateString");
     }
     
     
