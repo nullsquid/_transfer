@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
+//using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Events;
+
+
 //TODO: add more specific control for who a player can be (for the prototype)
 //TODO: Get functionality out of start and into its own function(s) :: modularize and genericize if possible
 //TODO: restructure how i find player => return a string rather than an index integer? So that i can control what characters come out
@@ -59,6 +62,7 @@ public class CharacterMananger : MonoBehaviour {
                 newCharacter.Name = GenCharacterName();
                 newCharacter.Gender = GenCharacterGender();
                 newCharacter.Pronoun = GenCharacterPronoun(newCharacter.Gender);
+
                 newCharacter.transform.parent = gameObject.transform;
             }
             else if (identifiers[i] != playerCharacterIdentifier) {
@@ -95,7 +99,9 @@ public class CharacterMananger : MonoBehaviour {
 		case 3:
 			return "A";
 		}
-		return null;
+        
+        return null;
+        
 	}
 
 	private string GenCharacterPronoun(string gender){

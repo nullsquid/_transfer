@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections;
 
 public class NonPlayerCharacter : Character, IEncounterable {
+    void Update() {
+        Debug.Log(Gender);
+    }
     private bool _haveEncounteredPlayer = false;
     //TODO add event to trigger this from the player character class
     public bool HaveEncounteredPlayer
