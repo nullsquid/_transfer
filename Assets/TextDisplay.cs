@@ -11,7 +11,7 @@ public class TextDisplay : MonoBehaviour {
         if (e.type == EventType.keyDown)
         {
 
-            AddText(e);
+            ChangeText(e);
             //RemoveText(e);
             
             
@@ -21,12 +21,13 @@ public class TextDisplay : MonoBehaviour {
         
 
     }
-    void AddText(Event e)
+    void ChangeText(Event e)
     {
         if (e.keyCode != KeyCode.None)
         {
-            if (e.keyCode != KeyCode.Space || e.keyCode != KeyCode.Backspace)
+            if (e.keyCode != KeyCode.Space && e.keyCode != KeyCode.Backspace)
             {
+                if(e.keyCode >= KeyCode.A && e.keyCode <= KeyCode.Z)
                 //get only alphabetical characters
                 commandText.text += e.keyCode;
 
@@ -35,6 +36,10 @@ public class TextDisplay : MonoBehaviour {
             {
                 commandText.text += " ";
             }
+            else if (e.keyCode == KeyCode.Backspace)
+            {
+                RemoveText(e);
+            }
         }
     }
 
@@ -42,7 +47,10 @@ public class TextDisplay : MonoBehaviour {
     {
         if(e.keyCode == KeyCode.Backspace)
         {
-            
+            if (commandText.text.Length > 0)
+            {
+                commandText.text = commandText.text.Remove(commandText.text.Length - 1);
+            }
         }
     }
 }
