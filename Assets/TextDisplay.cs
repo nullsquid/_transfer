@@ -3,8 +3,17 @@ using System.Collections;
 
 public class TextDisplay : MonoBehaviour {
 
+    public string command;
+    public string commandPrompt;
     public TextMesh commandText;
 
+    private int promptLength;
+
+    void Start()
+    {
+        promptLength = commandPrompt.Length;
+        commandText.text = commandPrompt;
+    }
     void OnGUI()
     {
         Event e = Event.current;
@@ -27,14 +36,18 @@ public class TextDisplay : MonoBehaviour {
         {
             if (e.keyCode != KeyCode.Space && e.keyCode != KeyCode.Backspace)
             {
-                if(e.keyCode >= KeyCode.A && e.keyCode <= KeyCode.Z)
-                //get only alphabetical characters
-                commandText.text += e.keyCode;
+                if (e.keyCode >= KeyCode.A && e.keyCode <= KeyCode.Z)
+                {
+                    //get only alphabetical characters
+                    commandText.text += e.keyCode;
+                    command += e.keyCode;
+                }
 
             }
             else if (e.keyCode == KeyCode.Space)
             {
                 commandText.text += " ";
+                command += " ";
             }
             else if (e.keyCode == KeyCode.Backspace)
             {
@@ -47,9 +60,10 @@ public class TextDisplay : MonoBehaviour {
     {
         if(e.keyCode == KeyCode.Backspace)
         {
-            if (commandText.text.Length > 0)
+            if (commandText.text.Length > promptLength)
             {
                 commandText.text = commandText.text.Remove(commandText.text.Length - 1);
+                command = command.Remove(command.Length - 1);
             }
         }
     }
