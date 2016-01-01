@@ -2,15 +2,18 @@
 using System.Collections;
 
 public class TextDisplay : MonoBehaviour {
-
+    public string userName;
     public string command;
     public string commandPrompt;
+    public string prompt;
+    public GameObject[] historyLines;
     public TextMesh commandText;
 
     private int promptLength;
 
     void Start()
     {
+        commandPrompt = userName + prompt;
         promptLength = commandPrompt.Length;
         commandText.text = commandPrompt;
     }
@@ -66,5 +69,16 @@ public class TextDisplay : MonoBehaviour {
                 command = command.Remove(command.Length - 1);
             }
         }
+    }
+
+    void UserColor()
+    {
+        //Randomly color username to C, Y, M, on start
+
+    }
+
+    void ColorText()
+    {
+        //Color text on event
     }
 }
