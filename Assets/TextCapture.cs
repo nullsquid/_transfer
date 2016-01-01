@@ -59,43 +59,50 @@ public class TextCapture : MonoBehaviour {
                 Debug.Log("Connect");
                 break;
             case "HELP":
-                for(int i = 0; i < display.historyLines.Length; i++)
-                {
-                    switch (i)
-                    {
-                        case 0:
-                            display.historyLines[i].GetComponent<TextMesh>().text = "TO VIEW LOCATION: INPUT 'MAP'";
-                            break;
-                        case 1:
-                            display.historyLines[i].GetComponent<TextMesh>().text = "TO CALL ACTION: INPUT 'ACTION' FOLLOWED BY ACTION";
-                            break;
-                        case 2:
-                            display.historyLines[i].GetComponent<TextMesh>().text = "TO CALL OBJECT: INPUT 'OBJECT' FOLLOWED BY OBJECT ID";
-                            break;
-                        case 3:
-                            display.historyLines[i].GetComponent<TextMesh>().text = "TO RETRIEVE MEMORY: INPUT 'MEMORY'";
-                            break;
-                        case 4:
-                            display.historyLines[i].GetComponent<TextMesh>().text = "TO CHAT: INPUT 'CHAT' FOLLOWED BY USER ID";
-                            break;
-                        case 5:
-                            display.historyLines[i].GetComponent<TextMesh>().text = "TO SLEEP: INPUT 'SLEEP'";
-                            break;
-                        case 6:
-                            display.historyLines[i].GetComponent<TextMesh>().text = "TO SHUT DOWN: INPUT CONTROL + F4";
-                            break;
-
-
-
-
-
-                    }
-                }
+                StartCoroutine(DisplayHelpMenu());
                 break;
             default:
                 //cannot find appropriate command
                 break;
 
+        }
+    }
+    IEnumerator DisplayHelpMenu()
+    {
+        for (int i = 0; i < display.historyLines.Length; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    display.historyLines[i].GetComponent<TextMesh>().text = "TO VIEW LOCATION: INPUT 'MAP'";
+                    yield return new WaitForSeconds(.2f);
+                    break;
+                case 1:
+                    display.historyLines[i].GetComponent<TextMesh>().text = "TO CALL ACTION: INPUT 'ACTION' FOLLOWED BY ACTION";
+                    yield return new WaitForSeconds(.2f);
+                    break;
+                case 2:
+                    display.historyLines[i].GetComponent<TextMesh>().text = "TO CALL OBJECT: INPUT 'OBJECT' FOLLOWED BY OBJECT ID";
+                    yield return new WaitForSeconds(.2f);
+                    break;
+                case 3:
+                    display.historyLines[i].GetComponent<TextMesh>().text = "TO RETRIEVE MEMORY: INPUT 'MEMORY'";
+                    yield return new WaitForSeconds(.2f);
+                    break;
+                case 4:
+                    display.historyLines[i].GetComponent<TextMesh>().text = "TO CHAT: INPUT 'CHAT' FOLLOWED BY USER ID";
+                    yield return new WaitForSeconds(.2f);
+                    break;
+                case 5:
+                    display.historyLines[i].GetComponent<TextMesh>().text = "TO SLEEP: INPUT 'SLEEP'";
+                    yield return new WaitForSeconds(.2f);
+                    break;
+                case 6:
+                    display.historyLines[i].GetComponent<TextMesh>().text = "TO SHUT DOWN: INPUT CONTROL + F4";
+                    yield return new WaitForSeconds(.2f);
+                    break;
+
+            }
         }
     }
 }
