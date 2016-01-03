@@ -188,7 +188,7 @@ public class TextCapture : MonoBehaviour {
                 
                 default:
                     display.historyLines[0].GetComponent<TextMesh>().color = Color.red;
-                    display.historyLines[0].GetComponent<TextMesh>().text = "NO COMMAND '" + display.command +"' FOUND"; 
+                    display.historyLines[0].GetComponent<TextMesh>().text = "NO DEFINITION FOR COMMAND '" + display.command +"' FOUND"; 
                     break;
 
             }
