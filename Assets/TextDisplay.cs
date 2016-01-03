@@ -6,16 +6,28 @@ public class TextDisplay : MonoBehaviour {
     public string command;
     public string commandPrompt;
     public string prompt;
+    public string startupText_1;
+    public string startupText_2;
+    public string commandError = "ERROR: INPUT NOT RECGOGNIZED";
+    public bool canType = true;
     public GameObject[] historyLines;
     public TextMesh commandText;
+
+    public bool gameHasStarted = false;
 
     private int promptLength;
 
     void Start()
     {
+
         commandPrompt = userName + prompt;
         promptLength = commandPrompt.Length;
         commandText.text = commandPrompt;
+        for(int i = 0; i < historyLines.Length; i++)
+        {
+            historyLines[i].GetComponent<TextMesh>().color = Color.gray;
+        }
+        DisplayStartText();
     }
     void OnGUI()
     {
@@ -35,26 +47,29 @@ public class TextDisplay : MonoBehaviour {
     }
     void ChangeText(Event e)
     {
-        if (e.keyCode != KeyCode.None)
+        if (canType == true)
         {
-            if (e.keyCode != KeyCode.Space && e.keyCode != KeyCode.Backspace)
+            if (e.keyCode != KeyCode.None)
             {
-                if (e.keyCode >= KeyCode.A && e.keyCode <= KeyCode.Z)
+                if (e.keyCode != KeyCode.Space && e.keyCode != KeyCode.Backspace)
                 {
-                    //get only alphabetical characters
-                    commandText.text += e.keyCode;
-                    command += e.keyCode;
-                }
+                    if (e.keyCode >= KeyCode.A && e.keyCode <= KeyCode.Z)
+                    {
+                        //get only alphabetical characters
+                        commandText.text += e.keyCode;
+                        command += e.keyCode;
+                    }
 
-            }
-            else if (e.keyCode == KeyCode.Space)
-            {
-                commandText.text += " ";
-                command += " ";
-            }
-            else if (e.keyCode == KeyCode.Backspace)
-            {
-                RemoveText(e);
+                }
+                else if (e.keyCode == KeyCode.Space)
+                {
+                    commandText.text += " ";
+                    command += " ";
+                }
+                else if (e.keyCode == KeyCode.Backspace)
+                {
+                    RemoveText(e);
+                }
             }
         }
     }
@@ -81,4 +96,19 @@ public class TextDisplay : MonoBehaviour {
     {
         //Color text on event
     }
+
+    void DisplayStartText()
+    {
+
+        if(gameHasStarted == false)
+        {
+            Debug.Log("hello");
+            historyLines[1].GetComponent<TextMesh>().color = Color.green;
+            historyLines[1].GetComponent<TextMesh>().text = startupText_1;
+            historyLines[0].GetComponent<TextMesh>().color = Color.green;
+            historyLines[0].GetComponent<TextMesh>().text = startupText_2;
+        }
+    }
+
+    
 }
