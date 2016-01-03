@@ -278,42 +278,42 @@ public class TextCapture : MonoBehaviour {
                 if (display.historyLines[i] == display.historyLines[0])
                 {
                     display.historyLines[i].GetComponent<TextMesh>().text = "INITIALIZING oneirOS PATH";
-                    yield return new WaitForSeconds(.05f);
+                    yield return new WaitForSeconds(.02f);
                 }
                 else if (display.historyLines[i] == display.historyLines[1])
                 {
                     display.historyLines[i].GetComponent<TextMesh>().text = "PATH://oneirOS%ROOT/INIT";
-                    yield return new WaitForSeconds(.05f);
+                    yield return new WaitForSeconds(.02f);
                 }
                 else if (display.historyLines[i] == display.historyLines[2])
                 {
                     display.historyLines[i].GetComponent<TextMesh>().text = "ESTABLISHING REMOTE CONNECTION";
-                    yield return new WaitForSeconds(.05f);
+                    yield return new WaitForSeconds(.02f);
                 }
                 else if (display.historyLines[i] == display.historyLines[3])
                 {
                     display.historyLines[i].GetComponent<TextMesh>().text = "PATH://oneirOS%DATA/MASK";
-                    yield return new WaitForSeconds(.05f);
+                    yield return new WaitForSeconds(.02f);
                 }
                 else if (display.historyLines[i] == display.historyLines[4])
                 {
                     display.historyLines[i].GetComponent<TextMesh>().text = "COPYING MASK NEGATIVE";
-                    yield return new WaitForSeconds(.05f);
+                    yield return new WaitForSeconds(.02f);
                 }
                 else if (display.historyLines[i] == display.historyLines[5])
                 {
                     display.historyLines[i].GetComponent<TextMesh>().text = "ORIGIN DELTA CHECK";
-                    yield return new WaitForSeconds(.05f);
+                    yield return new WaitForSeconds(.02f);
                 }
                 else if (display.historyLines[i] == display.historyLines[6])
                 {
                     display.historyLines[i].GetComponent<TextMesh>().text = "PATH://oneirOS%ROOT/DELTA";
-                    yield return new WaitForSeconds(.05f);
+                    yield return new WaitForSeconds(.02f);
                 }
                 else if (display.historyLines[i] == display.historyLines[7])
                 {
                     display.historyLines[i].GetComponent<TextMesh>().text = "CLEANING UP...";
-                    yield return new WaitForSeconds(.05f);
+                    yield return new WaitForSeconds(.02f);
                 }
 
             }

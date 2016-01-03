@@ -3,8 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 public class CharacterGenerator : MonoBehaviour {
 
-	void GenerateCharacters()
-    {
+    public Character playerCharacter;
+    public string[] characterIDs;
+    public string[] playableCharacterIDs;
+    // Use this for initialization
+    void CharacterInitialization() {
+        
+
+    }
+
+
+
+    string ChoosePlayer() {
+        string playerID = playableCharacterIDs[Random.Range(0, playableCharacterIDs.Length)];
+        return playerID;
+    }
+
+
+    void PopulateAttributes() {
+
+    }
+
+    void GenerateNames() {
+
+    }
+
+    void GenerateGenders() {
 
     }
 
