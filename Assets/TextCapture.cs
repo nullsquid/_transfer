@@ -205,6 +205,7 @@ public class TextCapture : MonoBehaviour {
                     ExitGame();
                     break;
                 default:
+
                     display.historyLines[0].GetComponent<TextMesh>().color = Color.green;
                     display.historyLines[1].GetComponent<TextMesh>().color = Color.green;
 
