@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class PlayerCharacter : Character {
-	public Directory dirPrefab;
-	public File filePrefab;
+	public Transfer.System.Directory dirPrefab;
+	public Transfer.System.File filePrefab;
 	public Character currentlyEngaged;
 	public CharacterMananger charManager;
 	//<Character Name, Character ID>; use character manager to find out other info about the character in question

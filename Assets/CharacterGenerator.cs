@@ -6,6 +6,10 @@ public class CharacterGenerator : MonoBehaviour {
     public Character playerCharacter;
     public string[] characterIDs;
     public string[] playableCharacterIDs;
+    public string playerCharacterID;
+
+    public Character playerCharacterPrefab;
+    public Character nonPlayerCharacterPrefab;
     // Use this for initialization
     void CharacterInitialization() {
         
