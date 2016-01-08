@@ -5,6 +5,7 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using Transfer.System;
 public class InputManager : MonoBehaviour{
     private Queue<char> inputBuffer = new Queue<char>();
     private char _inputString;

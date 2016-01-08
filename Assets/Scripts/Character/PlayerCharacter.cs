@@ -3,16 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class PlayerCharacter : Character {
+/*<<<<<<< HEAD
     private List<Character> knownCharacters = new List<Character>();
     
     public void AddToList()
     {
 
-
-    }
+    
+    }*/
 	/*
 	public Directory dirPrefab;
 	public File filePrefab;
+=======
+	public Transfer.System.Directory dirPrefab;
+	public Transfer.System.File filePrefab;
+>>>>>>> 21d4ac06ddc2f6d8fc52faeb1932239001c9bf4e
 	public Character currentlyEngaged;
 	public CharacterMananger charManager;
 	//<Character Name, Character ID>; use character manager to find out other info about the character in question
