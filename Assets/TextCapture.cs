@@ -409,6 +409,9 @@ public class TextCapture : MonoBehaviour {
             display.historyLines[0].GetComponent<TextMesh>().text = "TRANSFER COMPLETED WITH ERRORS";
             yield return new WaitForSeconds(1.0f);
             display.historyLines[0].GetComponent<TextMesh>().text = "WELCOME TO oneirOS v 0.9.9.3";
+            yield return new WaitForSeconds(.5f);
+            display.historyLines[1].GetComponent<TextMesh>().text = "WELCOME TO oneirOS v 0.9.9.3";
+            display.historyLines[0].GetComponent<TextMesh>().text = "INPUT HELP FOR MORE OPTIONS";
         }
         
         display.canType = true;

@@ -11,9 +11,9 @@ public class CharacterGenerator : MonoBehaviour {
     public Character playerCharacterPrefab;
     public Character nonPlayerCharacterPrefab;
     // Use this for initialization
-    void CharacterInitialization() {
-        
-
+    public Character CharacterInitialization() {
+        //Character newCharacter;
+        return nonPlayerCharacterPrefab;
     }
 
 

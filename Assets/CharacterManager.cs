@@ -8,6 +8,12 @@ public class CharacterManager : MonoBehaviour {
     //generated in character generator
     void Start() {
         generator = gameObject.GetComponent<CharacterGenerator>();
+        for(int i = 0; i < generator.characterIDs.Length; i++)
+        {
+            characters.Add(generator.CharacterInitialization());
+            Instantiate(characters[i]);
+            characters[i].transform.parent = gameObject.transform;
+        }
     }
 
 
