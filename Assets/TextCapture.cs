@@ -189,7 +189,7 @@ public class TextCapture : MonoBehaviour {
                     break;
                 
                 default:
-                    effects.StartScreenShake();
+                    effects.StartScreenShake(7);
                     display.historyLines[0].GetComponent<TextMesh>().color = Color.red;
                     display.historyLines[0].GetComponent<TextMesh>().text = "NO DEFINITION FOR COMMAND '" + display.command +"' FOUND"; 
                     break;
