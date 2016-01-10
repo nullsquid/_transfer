@@ -9,9 +9,11 @@ public class TextCapture : MonoBehaviour {
     bool isSleeping;
     TextDisplay display;
     HelpMenu helpMenu;
+    EffectManager effects;
     void Start()
     {
-        
+
+        effects = GetComponent<EffectManager>();
         display = GetComponent<TextDisplay>();
         helpMenu = GetComponent<HelpMenu>();
     }
@@ -187,6 +189,7 @@ public class TextCapture : MonoBehaviour {
                     break;
                 
                 default:
+                    effects.StartScreenShake();
                     display.historyLines[0].GetComponent<TextMesh>().color = Color.red;
                     display.historyLines[0].GetComponent<TextMesh>().text = "NO DEFINITION FOR COMMAND '" + display.command +"' FOUND"; 
                     break;
