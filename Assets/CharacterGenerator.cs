@@ -82,7 +82,9 @@ public class CharacterGenerator : MonoBehaviour {
         string newName;
         newName = nameBits[Random.Range(0, nameBits.Length)] + nameBits[Random.Range(0, nameBits.Length)] + nameBits[Random.Range(0, nameBits.Length)] + nameBits[Random.Range(0, nameBits.Length)];
         if (names.Contains(newName)) {
+            Debug.Log("retry");
             GenerateName(character);
+            
         }
         else {
             character.Name = newName;
