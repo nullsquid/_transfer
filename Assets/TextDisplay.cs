@@ -16,6 +16,7 @@ public class TextDisplay : MonoBehaviour {
     public bool gameHasStarted = false;
 
     private int promptLength;
+
     void OnEnable() {
         EventManager.StartListening("uiSetup", UISetup);
     }
