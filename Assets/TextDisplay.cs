@@ -16,15 +16,18 @@ public class TextDisplay : MonoBehaviour {
     public bool gameHasStarted = false;
 
     private int promptLength;
-
-    void Start()
-    {
-
+    void OnEnable() {
+        EventManager.StartListening("uiSetup", UISetup);
+    }
+    void OnDisable() {
+        EventManager.StopListening("uiSetup", UISetup);
+    }
+    
+    void UISetup() {
         commandPrompt = userName + prompt;
         promptLength = commandPrompt.Length;
         commandText.text = commandPrompt;
-        for(int i = 0; i < historyLines.Length; i++)
-        {
+        for (int i = 0; i < historyLines.Length; i++) {
             historyLines[i].GetComponent<TextMesh>().color = Color.gray;
         }
         DisplayStartText();
