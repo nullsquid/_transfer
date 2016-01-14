@@ -8,6 +8,8 @@ public class CharacterGenerator : MonoBehaviour {
     //public string[] playableCharacterIDs;
     public List<string> characterIDs = new List<string>();
     public List<string> playableCharacterIDs = new List<string>();
+    public string[] nameBits;
+    public List<string> names = new List<string>();
     public string[] genders;
     public string playerCharacterID;
 
@@ -33,6 +35,7 @@ public class CharacterGenerator : MonoBehaviour {
         playerCharacter = Instantiate(playerCharacterPrefab, transform.position, transform.rotation) as Character;
         playerCharacter.name = playerCharacterID;
         GenerateGenders(playerCharacter);
+        GenerateName(playerCharacter);
         playerCharacter.transform.parent = gameObject.transform;
         for(int i = 0; i < characterIDs.Count; i++) {
             if(characterIDs[i] == playerCharacterID) {
@@ -54,6 +57,7 @@ public class CharacterGenerator : MonoBehaviour {
             newCharacter.name = characterIDs[i];
             newCharacter.ID = characterIDs[i];
             GenerateGenders(newCharacter);
+            GenerateName(newCharacter);
             newCharacter.transform.parent = gameObject.transform;
         }
     }
@@ -72,16 +76,29 @@ public class CharacterGenerator : MonoBehaviour {
     }
 
 
-    void PopulateAttributes() {
+    
 
-    }
-
-    void GenerateNames(Character character) {
-
+    void GenerateName(Character character) {
+        string newName;
+        newName = nameBits[Random.Range(0, nameBits.Length)] + nameBits[Random.Range(0, nameBits.Length)] + nameBits[Random.Range(0, nameBits.Length)] + nameBits[Random.Range(0, nameBits.Length)];
+        if (names.Contains(newName)) {
+            GenerateName(character);
+        }
+        else {
+            character.Name = newName;
+            names.Add(newName);
+        }
+        if (names.Contains("MEMM")) {
+            Debug.Log("It's MEMM!");
+        }
     }
 
     void GenerateGenders(Character character) {
         character.Gender = genders[Random.Range(0, genders.Length)];
+    }
+
+    void PopulateAttributes() {
+
     }
 
 }
