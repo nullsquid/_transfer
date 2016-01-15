@@ -20,19 +20,25 @@ public class ConvNode : MonoBehaviour {
 
 	public List<ConvNode> children = new List<ConvNode>();
 
-	void Awake(){
-		foreach(Transform child in transform){
-			children.Add(child.gameObject.GetComponent<ConvNode>());
-		}
-	}
+	
 	void OnEnable(){
-		//register an event to trigger a function that 
-		//creates the tree
-		//making a child for each response and nests it
-		//might need to play with the JSON structure a bit
+        //register an event to trigger a function that 
+        //creates the tree
+        //making a child for each response and nests it
+        //might need to play with the JSON structure a bit
+        EventManager.StartListening("getNodes", GetChildNodes);
 
 	}
 
+    void OnDisable() {
+        EventManager.StopListening("getNodes", GetChildNodes);
+    }
+
+    void GetChildNodes() {
+        foreach(Transform child in transform){
+            children.Add(child.gameObject.GetComponent<ConvNode>());
+        }
+    }
 	public string LinkToNode(){
 		return null;
 	}

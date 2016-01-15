@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class ConvTreeSearch : MonoBehaviour {
-
+    
     ConvTree startTree;
 
     void OnEnable() {
@@ -18,4 +18,5 @@ public class ConvTreeSearch : MonoBehaviour {
         Character playerCharacter = GameObject.FindObjectOfType<PlayerCharacter>();
         startTree = GameObject.Find("9" + playerCharacter.name + "_Tree").GetComponent<ConvTree>();
     }
+    
 }

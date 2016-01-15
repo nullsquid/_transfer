@@ -9,10 +9,12 @@ public class CharacterGenerator : MonoBehaviour {
     public List<string> characterIDs = new List<string>();
     public List<string> playableCharacterIDs = new List<string>();
     public string[] nameBits;
+    private List<string> vowels = new List<string>();
+    private List<string> consonants = new List<string>();
     public List<string> names = new List<string>();
     public string[] genders;
     public string playerCharacterID;
-
+    
     public Character playerCharacterPrefab;
     public Character nonPlayerCharacterPrefab;
     void OnEnable() {
@@ -24,6 +26,7 @@ public class CharacterGenerator : MonoBehaviour {
         EventManager.StopListening("makePlayer", MakePlayer);
         EventManager.StopListening("makeNonPlayers", MakeNonPlayers);
     }
+    
     public void CharacterInit() {
         MakeNonPlayers();
         
@@ -48,7 +51,7 @@ public class CharacterGenerator : MonoBehaviour {
         
         
     }
-
+    
     void MakeNonPlayers() {
         
         Character newCharacter;
@@ -77,12 +80,20 @@ public class CharacterGenerator : MonoBehaviour {
 
 
     
-
+    
     void GenerateName(Character character) {
+        for(int i = 0; i < nameBits.Length; i++) {
+            if(nameBits[i] == "A" || nameBits[i] == "E" || nameBits[i] == "I" || nameBits[i] == "O" || nameBits[i] == "U") {
+                vowels.Add(nameBits[i]);
+            }
+            else {
+                consonants.Add(nameBits[i]);
+            }
+        }
         string newName;
-        newName = nameBits[Random.Range(0, nameBits.Length)] + nameBits[Random.Range(0, nameBits.Length)] + nameBits[Random.Range(0, nameBits.Length)] + nameBits[Random.Range(0, nameBits.Length)];
+        newName = consonants[Random.Range(0, consonants.Count)] + vowels[Random.Range(0, vowels.Count)] + consonants[Random.Range(0, consonants.Count)] + consonants[Random.Range(0, consonants.Count)];
         if (names.Contains(newName)) {
-            Debug.Log("retry");
+            Debug.LogError("retry");
             GenerateName(character);
             
         }
