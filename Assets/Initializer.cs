@@ -10,6 +10,7 @@ public class Initializer : MonoBehaviour {
         EventManager.TriggerEvent("makeCharacters");
         EventManager.TriggerEvent("findStartTree");
         EventManager.TriggerEvent("uiSetup");
+        EventManager.TriggerEvent("uiImageInit");
         EventManager.TriggerEvent("getNodes");
 
 	}

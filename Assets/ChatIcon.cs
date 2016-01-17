@@ -5,14 +5,14 @@ public class ChatIcon : Icon {
 
 
     float duration = 1;
-    public Sprite chatImage;
+    public SpriteRenderer chatImage;
     void NewChatMessage() {
 
     }
     float alpha;
     void Start() {
-        alpha = GetComponent<SpriteRenderer>().material.color.a;
-        chatImage = GetComponent<SpriteRenderer>().sprite;
+        alpha = GetComponentInChildren<SpriteRenderer>().material.color.a;
+        chatImage = GetComponentInChildren<SpriteRenderer>();
         StartCoroutine(FadeOut());
         StartCoroutine(FadeIn());
         
@@ -25,7 +25,7 @@ public class ChatIcon : Icon {
         float d = 0.3f / duration;
         while (alpha < 1) {
             alpha += Time.deltaTime * d;
-            gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1, 1, 1, alpha);
+            gameObject.GetComponentInChildren<SpriteRenderer>().material.color = new Color(1, 1, 1, alpha);
             yield return null;
             //yield return new WaitForEndOfFrame();
         }
@@ -36,7 +36,7 @@ public class ChatIcon : Icon {
         float d = 0.3f / duration;
         while (alpha >= 1) {
             alpha -= Time.deltaTime * d;
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, alpha);
+            gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(1, 1, 1, alpha);
 
             yield return null;
         }
