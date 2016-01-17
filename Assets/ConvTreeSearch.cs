@@ -13,10 +13,27 @@ public class ConvTreeSearch : MonoBehaviour {
         EventManager.StopListening("findStartTree", FindStartTree);
     }
 
-
+    
     void FindStartTree() {
         Character playerCharacter = GameObject.FindObjectOfType<PlayerCharacter>();
         startTree = GameObject.Find("9" + playerCharacter.name + "_Tree").GetComponent<ConvTree>();
+    }
+
+    void IncomingConversation() {
+
+    }
+
+    void DisplayResponses() {
+
+    }
+
+    void DisplayPrompt() {
+
+    }
+
+    IEnumerator FirstConversation(){
+        yield return new WaitForSeconds(1.0f);
+
     }
     
 }

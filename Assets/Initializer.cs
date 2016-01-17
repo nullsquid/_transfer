@@ -11,6 +11,7 @@ public class Initializer : MonoBehaviour {
         EventManager.TriggerEvent("findStartTree");
         EventManager.TriggerEvent("uiSetup");
         EventManager.TriggerEvent("uiImageInit");
+        EventManager.TriggerEvent("audioSetup");
         EventManager.TriggerEvent("getNodes");
 
 	}
