@@ -8,6 +8,7 @@ public class TextDisplay : MonoBehaviour {
     public string prompt;
     public string startupText_1;
     public string startupText_2;
+    public string versionNumber;
     public string commandError = "ERROR: INPUT NOT RECGOGNIZED";
     public bool canType = true;
     public GameObject[] historyLines;
