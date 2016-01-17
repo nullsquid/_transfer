@@ -24,4 +24,7 @@ public class AudioManager : MonoBehaviour {
 	void Update () {
 	
 	}
+    void PlaySound(string soundName) {
+        
+    }
 }
