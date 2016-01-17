@@ -24,8 +24,12 @@ public class TextDisplay : MonoBehaviour {
     void OnDisable() {
         EventManager.StopListening("uiSetup", UISetup);
     }
-    
+    void GetUserName() {
+        userName = GameObject.FindObjectOfType<PlayerCharacter>().Name;
+    }
     void UISetup() {
+        GetUserName();
+        EventManager.TriggerEvent("setupResponses");
         commandPrompt = userName + prompt;
         promptLength = commandPrompt.Length;
         commandText.text = commandPrompt;

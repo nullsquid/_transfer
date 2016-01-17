@@ -3,22 +3,25 @@ using System.Collections;
 
 public class EffectManager : MonoBehaviour {
     Camera cameraMain;
-	// Use this for initialization
-	void Start () {
 
-        cameraMain = Camera.main;
-        Debug.Log(cameraMain);
-	}
 	
-	// Update is called once per frame
-	void Update () {
 	
-	}
+	void OnEnable() {
+        EventManager.StartListening("setupCamera", SetupCamera);
+    }
+    void OnDisable() {
+        EventManager.StopListening("setupCamera", SetupCamera);
+    }
 
     public void StartScreenShake(int numShakes)
     {
         StartCoroutine(ScreenShake(numShakes));
         StopCoroutine(ScreenShake(numShakes));
+    }
+
+    void SetupCamera() {
+        cameraMain = Camera.main;
+        //Debug.Log(cameraMain);
     }
 
     IEnumerator ScreenShake(int numOfShakes)
