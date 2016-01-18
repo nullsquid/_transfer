@@ -8,7 +8,7 @@ public class TreeTraversal : MonoBehaviour {
 	//temporary until we can get the tree automatically
 	public ConvTree curTree;
 	public string lastChoice;
-	public CharacterMananger cManager;
+	public CharacterManager cManager;
 
 
 	//some way of getting the current conversation tree

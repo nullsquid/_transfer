@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class ConvTreeManager : MonoBehaviour {
 
-	public CharacterMananger characterM;
+	public CharacterManager characterM;
 	public Init initializer;
 	public TextReader reader;
 	public ConvTree treePrefab;

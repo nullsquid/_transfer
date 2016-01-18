@@ -28,7 +28,7 @@ public class InterfaceImageManager : MonoBehaviour {
         //HACK
         //chat.gameObject.SetActive(false);
         TurnOffIcon(chat);
-        Debug.Log(chatImageRenderer.color);
+        //Debug.Log(chatImageRenderer.color);
         
         //chat.GetComponentInChildren<SpriteRenderer>().color = Color.gray;//imageOff;
         //mail.GetComponentInChildren<SpriteRenderer>().color = imageOff;

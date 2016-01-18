@@ -13,7 +13,7 @@ public class TextDisplay : MonoBehaviour {
     public bool canType = true;
     public GameObject[] historyLines;
     public TextMesh commandText;
-
+    public GameObject treeManager;
     public bool gameHasStarted = false;
 
     private int promptLength;
@@ -33,6 +33,7 @@ public class TextDisplay : MonoBehaviour {
         commandPrompt = userName + prompt;
         promptLength = commandPrompt.Length;
         commandText.text = commandPrompt;
+        treeManager = GameObject.Find("ConvTreeManager");
         for (int i = 0; i < historyLines.Length; i++) {
             historyLines[i].GetComponent<TextMesh>().color = Color.gray;
         }
@@ -117,6 +118,7 @@ public class TextDisplay : MonoBehaviour {
             historyLines[0].GetComponent<TextMesh>().color = Color.green;
             historyLines[0].GetComponent<TextMesh>().text = startupText_2;
         }
+        
     }
 
     

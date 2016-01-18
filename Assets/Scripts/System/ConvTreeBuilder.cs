@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ConvTreeBuilder : MonoBehaviour {
-	public CharacterMananger cManager;
+	public CharacterManager cManager;
 	public TextManager tManager;
 
 	public TextReader reader;

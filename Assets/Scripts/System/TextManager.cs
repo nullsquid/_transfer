@@ -11,7 +11,7 @@ public class TextManager : MonoBehaviour {
 	public InputManager input;
 	public Canvas canvas;
 	public string playerName;
-	public CharacterMananger character;
+	public CharacterManager character;
 
 	//IEnumerator TextDisplay(){
 
