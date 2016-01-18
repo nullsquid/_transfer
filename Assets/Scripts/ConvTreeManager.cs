@@ -31,7 +31,7 @@ public class ConvTreeManager : MonoBehaviour {
 	 * moves to that node and displays data
 	 * 
 	 */
-
+	/*
 	public string player;
 	// Use this for initialization
 	void Start () {
@@ -54,4 +54,5 @@ public class ConvTreeManager : MonoBehaviour {
 				break;
 		}
 	}
+	*/
 }

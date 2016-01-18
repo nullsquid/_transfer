@@ -15,7 +15,7 @@ public class ConvTreeBuilder : MonoBehaviour {
 	// Update is called once per frame
 	void Start () {
 		if(player == null){
-			player = cManager.GetComponent<CharacterMananger>().charPlayer;
+			//player = cManager.GetComponent<CharacterMananger>().charPlayer;
 
 		}
 

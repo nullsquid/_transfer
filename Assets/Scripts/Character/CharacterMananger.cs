@@ -1,11 +1,125 @@
 using UnityEngine;
+using UnityEngine.Events;
+//using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Events;
+
+
 //TODO: add more specific control for who a player can be (for the prototype)
 //TODO: Get functionality out of start and into its own function(s) :: modularize and genericize if possible
 //TODO: restructure how i find player => return a string rather than an index integer? So that i can control what characters come out
 public class CharacterMananger : MonoBehaviour {
+	private UnityAction generateCharacterListener;
+	private static CharacterMananger _instance;
+    public Character nonPlayerCharacterPrefab;
+    public Character playerCharacterPrefab;
+
+    public static CharacterMananger Instance{
+		get{
+			if(_instance == null){
+				_instance = GameObject.FindObjectOfType<CharacterMananger>();
+				DontDestroyOnLoad(_instance.gameObject);
+			}
+			return _instance;
+		}
+	}
+
+	
+	void OnEnable(){
+		EventManager.StartListening("genCharacter", generateCharacterListener);
+	}
+
+	void OnDisable(){
+		EventManager.StopListening("genCharacter", generateCharacterListener);
+	}
+
+	void Awake(){
+		generateCharacterListener = new UnityAction(AddCharacter);
+
+		if(_instance == null){
+			_instance = this;
+			DontDestroyOnLoad(this);
+		}
+
+		else{
+			if(this != _instance){
+				Destroy(this.gameObject);
+			}
+		}
+
+
+	}
+	//TODO figure out where player character gen goes and how to deal with it in a not clunky manner
+	public void AddCharacter(){
+       
+		string[] identifiers = new string[10]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "0"};
+        string playerCharacterIdentifier = GenPlayerCharacter(identifiers);
+        for (int i = 0; i < identifiers.Length; i++){
+            Character newCharacter;
+            if (identifiers[i] == playerCharacterIdentifier) {
+                newCharacter = Instantiate(playerCharacterPrefab, transform.position, transform.rotation) as Character;
+                newCharacter.ID = identifiers[i];
+                newCharacter.Name = GenCharacterName();
+                newCharacter.Gender = GenCharacterGender();
+                newCharacter.Pronoun = GenCharacterPronoun(newCharacter.Gender);
+
+                newCharacter.transform.parent = gameObject.transform;
+            }
+            else if (identifiers[i] != playerCharacterIdentifier) {
+                
+                newCharacter = Instantiate(nonPlayerCharacterPrefab, transform.position, transform.rotation) as Character;
+                newCharacter.ID = identifiers[i];
+                newCharacter.Name = GenCharacterName();
+                newCharacter.Gender = GenCharacterGender();
+                newCharacter.Pronoun = GenCharacterPronoun(newCharacter.Gender);
+                newCharacter.transform.parent = gameObject.transform;
+            }
+		}
+	}
+
+	public string GenPlayerCharacter(string[] identifiers){
+        return identifiers[Random.Range(0, identifiers.Length)];
+        
+	}
+
+	private string GenCharacterName(){
+
+		return null;
+	}
+
+	private string GenCharacterGender(){
+		int randNum = Random.Range(0, 4);
+		switch(randNum){
+		case 0:
+			return "M";
+		case 1:
+			return "F";
+		case 2:
+			return "Q";
+		case 3:
+			return "A";
+		}
+        
+        return null;
+        
+	}
+
+	private string GenCharacterPronoun(string gender){
+		switch(gender){
+		case "M":
+			return "he";
+		case "F":
+			return "she";
+		case "Q":
+			return "they";
+		case "A":
+			return "it";
+		}
+
+		return null;
+	}
+
+	/*
 	public Init init;
 	public TextManager textM;
 	public InputManager inputM;
@@ -48,7 +162,7 @@ public class CharacterMananger : MonoBehaviour {
 
 	private UnityAction sendCharacterListener;
 
-	void Awake () {//switch back to start if this doesn't work
+	void Start () {//switch back to start if this doesn't work
 
 		nameA = init.nameA;
 		nameB = init.nameB;
@@ -90,9 +204,7 @@ public class CharacterMananger : MonoBehaviour {
 			case 3:
 				playerIndex = 9;
 				break;
-			/*case 4:
-
-				break;*/
+		
 			}
 			//playerIndex = Random.Range (0, characters.Length);
 		}
@@ -163,5 +275,6 @@ public class CharacterMananger : MonoBehaviour {
 		return null;
 	}
 
+	*/
 
 }
