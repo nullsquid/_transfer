@@ -14,10 +14,12 @@ public class ConvTreeSearch : MonoBehaviour {
 
     void OnEnable() {
         EventManager.StartListening("findStartTree", FindStartTree);
+        EventManager.StartListening("getCharacterInfo", GetCharacterInfoFromManager);
     }
 
     void OnDisable() {
         EventManager.StopListening("findStartTree", FindStartTree);
+        EventManager.StopListening("getCharacterInfo", GetCharacterInfoFromManager);
     }
 
     void GetCharacterInfoFromManager()
@@ -46,6 +48,7 @@ public class ConvTreeSearch : MonoBehaviour {
             
         }
         GetCurrentNode(firstNode);
+        GetCharacterInfoFromManager();
     }
 
     void IncomingConversation() {
@@ -64,6 +67,7 @@ public class ConvTreeSearch : MonoBehaviour {
     {
         curNode = node;
         GetNextNodes(curNode);
+        GetSpeakerName();
     }
 
     void GetNextNodes(ConvNode curNode)
@@ -74,20 +78,25 @@ public class ConvTreeSearch : MonoBehaviour {
         }
     }
     
-    public string GetSpeakerName()
+    public void GetSpeakerName()
     {
         string character = curNode.characterTalking;
         string speakerName;
-        
+        string speakerID;
+        Debug.Log("this is working");
+        Debug.Log(characterNames.Keys);
         foreach(KeyValuePair<string, string> entry in characterNames)
         {
-            if(entry.Key == character)
+            Debug.Log(entry);
+            speakerID = entry.Key;
+
+            if(speakerID == character)
             {
                 Debug.Log("key is " + entry.Key);
-                return entry.Key;
+                //return entry.Key;
             }
         }
-        return null;
+        //return null;
     }
     IEnumerator FirstConversation(){
         yield return new WaitForSeconds(1.0f);
