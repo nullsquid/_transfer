@@ -11,7 +11,7 @@ public class ConvTreeSearch : MonoBehaviour {
     public ConvNode firstNode;
     ConvNode curNode;
     public List<ConvNode> nextNodes = new List<ConvNode>();
-
+    public GameObject[] responseLines;
     void OnEnable() {
         EventManager.StartListening("findStartTree", FindStartTree);
         EventManager.StartListening("getCharacterInfo", GetCharacterInfoFromManager);
@@ -21,7 +21,9 @@ public class ConvTreeSearch : MonoBehaviour {
         EventManager.StopListening("findStartTree", FindStartTree);
         EventManager.StopListening("getCharacterInfo", GetCharacterInfoFromManager);
     }
-
+    void Start()
+    {
+    }
     void GetCharacterInfoFromManager()
     {
         characterManager = GameObject.Find("CharacterManager");
@@ -49,6 +51,10 @@ public class ConvTreeSearch : MonoBehaviour {
         }
         GetCurrentNode(firstNode);
         GetCharacterInfoFromManager();
+        //TEST
+        //StartCoroutine(ConversationState());
+        
+
     }
 
     void IncomingConversation() {
@@ -68,8 +74,12 @@ public class ConvTreeSearch : MonoBehaviour {
         curNode = node;
         GetNextNodes(curNode);
         GetSpeakerName();
+        ConversationState();
     }
-
+    void SetNextNode(int choice)
+    {
+        curNode = nextNodes[choice];
+    }
     void GetNextNodes(ConvNode curNode)
     {
         foreach(Transform child in curNode.GetComponent<Transform>())
@@ -97,6 +107,24 @@ public class ConvTreeSearch : MonoBehaviour {
             }
         }
         //return null;
+    }
+    public void ConversationState()
+    {
+        DisplayPrompt();
+        for(int i = 0; i < responseLines.Length; i++)
+        {
+            Debug.Log("working");
+            //responseLines[i].GetComponent<TextMesh>().text = curNode.responses[i];
+
+            if (i < curNode.responses.Count) {
+                responseLines[i].GetComponent<TextMesh>().text = i + ". " + curNode.responses[i];
+            }
+            else
+            {
+                responseLines[i].GetComponent<TextMesh>().text = "";
+            }
+        }
+        //yield return new WaitForEndOfFrame();
     }
     IEnumerator FirstConversation(){
         yield return new WaitForSeconds(1.0f);

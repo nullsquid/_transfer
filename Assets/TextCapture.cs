@@ -38,7 +38,6 @@ public class TextCapture : MonoBehaviour {
 
 	void InputGet()
     {
-
         //display.historyLines[0].GetComponent<TextMesh>().text = display.commandText.text;
 
         commands = display.command.Split(' ');
@@ -56,7 +55,9 @@ public class TextCapture : MonoBehaviour {
             //Make
             //Help
         CheckRootComand(rootCommand);
+        
         display.command = "";
+        
         display.commandText.text = display.commandPrompt;
         
 

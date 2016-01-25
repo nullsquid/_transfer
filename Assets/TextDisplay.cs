@@ -69,6 +69,16 @@ public class TextDisplay : MonoBehaviour {
                         commandText.text += e.keyCode;
                         command += e.keyCode;
                     }
+                    //TEST
+                    /*
+                    if(e.keyCode == KeyCode.Alpha0)
+                    {
+                        commandText.text += "0";
+                        command += "0";
+                        Debug.Log(prompt);
+
+                    }
+                    */
 
                 }
                 else if (e.keyCode == KeyCode.Space)
