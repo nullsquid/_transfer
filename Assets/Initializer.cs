@@ -14,8 +14,10 @@ public class Initializer : MonoBehaviour {
         //EventManager.TriggerEvent("getCharacterInfo");
         EventManager.TriggerEvent("uiImageInit");
         EventManager.TriggerEvent("audioSetup");
+        EventManager.TriggerEvent("setUpResponses");
         EventManager.TriggerEvent("getNodes");
-
+        
 	}
+    
 	
 }

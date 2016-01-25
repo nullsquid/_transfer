@@ -9,9 +9,9 @@ public class ConvTreeSearch : MonoBehaviour {
     Dictionary<string, string> characterNames = new Dictionary<string, string>();
 
     public ConvNode firstNode;
-    ConvNode curNode;
+    public ConvNode curNode;
     public List<ConvNode> nextNodes = new List<ConvNode>();
-    public GameObject[] responseLines;
+   
     void OnEnable() {
         EventManager.StartListening("findStartTree", FindStartTree);
         EventManager.StartListening("getCharacterInfo", GetCharacterInfoFromManager);
@@ -66,7 +66,7 @@ public class ConvTreeSearch : MonoBehaviour {
     }
 
     public string DisplayPrompt() {
-        Debug.Log(curNode.prompt);
+        //Debug.Log(curNode.prompt);
         return curNode.prompt;
     }
     void GetCurrentNode(ConvNode node)
@@ -93,7 +93,7 @@ public class ConvTreeSearch : MonoBehaviour {
         string character = curNode.characterTalking;
         string speakerName;
         string speakerID;
-        Debug.Log("this is working");
+        //Debug.Log("this is working");
         Debug.Log(characterNames.Keys);
         foreach(KeyValuePair<string, string> entry in characterNames)
         {
@@ -110,11 +110,15 @@ public class ConvTreeSearch : MonoBehaviour {
     }
     public void ConversationState()
     {
+        //TEST
+        //THIS SHOULD'T FIRE AT START
         DisplayPrompt();
-        for(int i = 0; i < responseLines.Length; i++)
+        EventManager.TriggerEvent("setCurResponses");
+        /*for(int i = 0; i < responseLines.Length; i++)
         {
             Debug.Log("working");
             //responseLines[i].GetComponent<TextMesh>().text = curNode.responses[i];
+            /*
 
             if (i < curNode.responses.Count) {
                 responseLines[i].GetComponent<TextMesh>().text = i + ". " + curNode.responses[i];
@@ -123,7 +127,8 @@ public class ConvTreeSearch : MonoBehaviour {
             {
                 responseLines[i].GetComponent<TextMesh>().text = "";
             }
-        }
+            
+        }*/
         //yield return new WaitForEndOfFrame();
     }
     IEnumerator FirstConversation(){
