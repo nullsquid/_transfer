@@ -14,13 +14,19 @@ public class ConvTreeSearch : MonoBehaviour {
     public List<ConvNode> nextNodes = new List<ConvNode>();
    
     void OnEnable() {
+        EventManager.StartListening("TESTNodeTraversal", TestNodeTraversal);
         EventManager.StartListening("findStartTree", FindStartTree);
         EventManager.StartListening("getCharacterInfo", GetCharacterInfoFromManager);
     }
 
     void OnDisable() {
+        EventManager.StopListening("TESTNodeTraversal", TestNodeTraversal);
         EventManager.StopListening("findStartTree", FindStartTree);
         EventManager.StopListening("getCharacterInfo", GetCharacterInfoFromManager);
+    }
+    void TestNodeTraversal()
+    {
+        TraverseToNextNode(0);
     }
     void Start()
     {
@@ -39,24 +45,17 @@ public class ConvTreeSearch : MonoBehaviour {
         //bool first = true;
         Character playerCharacter = GameObject.FindObjectOfType<PlayerCharacter>();
         startTree = GameObject.Find("9" + playerCharacter.name + "_Tree").GetComponent<ConvTree>();
-        /*Transform tree = startTree.GetComponent<Transform>();
-        foreach(Transform child in tree)
-        {
-            
-            if(first == true)
-            {
-                firstNode = child.GetComponent<ConvNode>();
-                first = false;
-            }
-            
-        }*/
+        
         GetCurrentTree(startTree);
         GetCurrentNode(firstNode);
         GetCharacterInfoFromManager();
         //TEST
         //StartCoroutine(ConversationState());
-        
-
+        //TraverseToNextNode(0);
+    }
+    void Update()
+    {
+        Debug.Log(curNode);
     }
 
     void GetCurrentTree(ConvTree newTree)
@@ -152,17 +151,19 @@ public class ConvTreeSearch : MonoBehaviour {
         }*/
         //yield return new WaitForEndOfFrame();
     }
+    
     void TraverseToNextNode(int choice)
     {
+        Debug.Log("traversing");
         for(int i = 0; i < nextNodes.Count; i++)
         {
             if(nextNodes.Count > 0)
             {
-                curNode = nextNodes[choice];
+                GetCurrentNode(nextNodes[choice]);
             }
             else if (curNode.outLinkedTrees.Count > 0)
             {
-                
+                GetCurrentTree(curNode.outLinkedTrees[choice]);
             }
         }
     }
