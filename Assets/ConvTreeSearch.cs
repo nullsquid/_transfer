@@ -74,7 +74,7 @@ public class ConvTreeSearch : MonoBehaviour {
         curNode = node;
         GetNextNodes(curNode);
         GetSpeakerName();
-        ConversationState();
+        //ConversationState();
     }
     void SetNextNode(int choice)
     {
