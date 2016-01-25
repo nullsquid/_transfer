@@ -5,6 +5,7 @@ using System.Linq;
 public class ConvTreeSearch : MonoBehaviour {
     GameObject characterManager;
     ConvTree startTree;
+    public ConvTree curTree;
     ConvTree nextTree;
     Dictionary<string, string> characterNames = new Dictionary<string, string>();
 
@@ -35,10 +36,10 @@ public class ConvTreeSearch : MonoBehaviour {
 
     }
     void FindStartTree() {
-        bool first = true;
+        //bool first = true;
         Character playerCharacter = GameObject.FindObjectOfType<PlayerCharacter>();
         startTree = GameObject.Find("9" + playerCharacter.name + "_Tree").GetComponent<ConvTree>();
-        Transform tree = startTree.GetComponent<Transform>();
+        /*Transform tree = startTree.GetComponent<Transform>();
         foreach(Transform child in tree)
         {
             
@@ -48,12 +49,32 @@ public class ConvTreeSearch : MonoBehaviour {
                 first = false;
             }
             
-        }
+        }*/
+        GetCurrentTree(startTree);
         GetCurrentNode(firstNode);
         GetCharacterInfoFromManager();
         //TEST
         //StartCoroutine(ConversationState());
         
+
+    }
+
+    void GetCurrentTree(ConvTree newTree)
+    {
+        curTree = newTree;
+        bool first = true; 
+
+        Transform tree = startTree.GetComponent<Transform>();
+        foreach (Transform child in tree)
+        {
+
+            if (first == true)
+            {
+                firstNode = child.GetComponent<ConvNode>();
+                first = false;
+            }
+
+        }
 
     }
 
@@ -130,6 +151,20 @@ public class ConvTreeSearch : MonoBehaviour {
             
         }*/
         //yield return new WaitForEndOfFrame();
+    }
+    void TraverseToNextNode(int choice)
+    {
+        for(int i = 0; i < nextNodes.Count; i++)
+        {
+            if(nextNodes.Count > 0)
+            {
+                curNode = nextNodes[choice];
+            }
+            else if (curNode.outLinkedTrees.Count > 0)
+            {
+                
+            }
+        }
     }
     IEnumerator FirstConversation(){
         yield return new WaitForSeconds(1.0f);
