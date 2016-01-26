@@ -16,7 +16,7 @@ public class Initializer : MonoBehaviour {
         EventManager.TriggerEvent("audioSetup");
         EventManager.TriggerEvent("setUpResponses");
         EventManager.TriggerEvent("getNodes");
-        
+        //EventManager.TriggerEvent("TESTNodeTraversal");        
 	}
     
 	

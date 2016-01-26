@@ -55,6 +55,7 @@ public class ConvTreeSearch : MonoBehaviour {
     }
     void Update()
     {
+        
         Debug.Log(curNode);
     }
 
@@ -152,7 +153,7 @@ public class ConvTreeSearch : MonoBehaviour {
         //yield return new WaitForEndOfFrame();
     }
     
-    void TraverseToNextNode(int choice)
+    public void TraverseToNextNode(int choice)
     {
         Debug.Log("traversing");
         for(int i = 0; i < nextNodes.Count; i++)
