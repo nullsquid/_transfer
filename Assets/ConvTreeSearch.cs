@@ -55,7 +55,9 @@ public class ConvTreeSearch : MonoBehaviour {
     }
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.LeftAlt)) {
+            SetNextNode(0);
+        }
         Debug.Log(curNode);
     }
 
@@ -99,10 +101,24 @@ public class ConvTreeSearch : MonoBehaviour {
     }
     void SetNextNode(int choice)
     {
-        curNode = nextNodes[choice];
+        if (nextNodes.Count > 0)
+        {
+            curNode = nextNodes[choice];
+
+            GetNextNodes(curNode);
+        }
+        else if (nextNodes.Count == 0)
+        {
+            GetCurrentTree(curNode.outLinkedTrees[choice]);
+            GetNextNodes(firstNode);
+            curNode = firstNode;
+            
+        }
+
     }
     void GetNextNodes(ConvNode curNode)
     {
+        nextNodes.Clear();
         foreach(Transform child in curNode.GetComponent<Transform>())
         {
             nextNodes.Add(child.GetComponent<ConvNode>());
