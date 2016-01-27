@@ -14,20 +14,17 @@ public class ConvTreeSearch : MonoBehaviour {
     public List<ConvNode> nextNodes = new List<ConvNode>();
    
     void OnEnable() {
-        EventManager.StartListening("TESTNodeTraversal", TestNodeTraversal);
+        //EventManager.StartListening("TESTNodeTraversal", TestNodeTraversal);
         EventManager.StartListening("findStartTree", FindStartTree);
         EventManager.StartListening("getCharacterInfo", GetCharacterInfoFromManager);
     }
 
     void OnDisable() {
-        EventManager.StopListening("TESTNodeTraversal", TestNodeTraversal);
+        //EventManager.StopListening("TESTNodeTraversal", TestNodeTraversal);
         EventManager.StopListening("findStartTree", FindStartTree);
         EventManager.StopListening("getCharacterInfo", GetCharacterInfoFromManager);
     }
-    void TestNodeTraversal()
-    {
-        TraverseToNextNode(0);
-    }
+    
     void Start()
     {
     }
@@ -87,9 +84,10 @@ public class ConvTreeSearch : MonoBehaviour {
     void DisplayResponses() {
 
     }
-
+    
     public string DisplayPrompt() {
         //Debug.Log(curNode.prompt);
+        
         return curNode.prompt;
     }
     void GetCurrentNode(ConvNode node)
@@ -99,14 +97,23 @@ public class ConvTreeSearch : MonoBehaviour {
         GetSpeakerName();
         //ConversationState();
     }
-    void SetNextNode(int choice)
+    public void SetNextNode(int choice)
     {
         if (nextNodes.Count > 0)
         {
-            curNode = nextNodes[choice];
+            if (GameObject.Find("TextManager").GetComponent<ResponseDisplay>().curResponses.Count > nextNodes.Count)
+            {
+                curNode = nextNodes[0];
+                GetNextNodes(curNode);
+            }
+            else {
+                curNode = nextNodes[choice];
 
-            GetNextNodes(curNode);
+                GetNextNodes(curNode);
+            }
+            
         }
+
         else if (nextNodes.Count == 0)
         {
             GetCurrentTree(curNode.outLinkedTrees[choice]);

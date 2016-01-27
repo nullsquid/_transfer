@@ -15,6 +15,7 @@ public class TextDisplay : MonoBehaviour {
     public TextMesh commandText;
     public GameObject treeManager;
     public bool gameHasStarted = false;
+    public bool isChatting = false;
 
     private int promptLength;
 
@@ -26,6 +27,18 @@ public class TextDisplay : MonoBehaviour {
     }
     void GetUserName() {
         userName = GameObject.FindObjectOfType<PlayerCharacter>().Name;
+    }
+    void Update()
+    {
+        if (isChatting)
+        {
+            historyLines[0].GetComponent<TextMesh>().text = treeManager.GetComponent<ConvTreeSearch>().DisplayPrompt();
+            EventManager.TriggerEvent("setCurResponses");
+        }
+        else if(isChatting == false)
+        {
+            historyLines[0].GetComponent<TextMesh>().text = "";
+        }
     }
     void UISetup() {
         GetUserName();

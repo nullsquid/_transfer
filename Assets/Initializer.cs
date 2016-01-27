@@ -9,7 +9,7 @@ public class Initializer : MonoBehaviour {
         EventManager.TriggerEvent("setupCamera");
         EventManager.TriggerEvent("makeCharacters");
         EventManager.TriggerEvent("uiSetup");
-
+        EventManager.TriggerEvent("setupTextCapture");
         EventManager.TriggerEvent("findStartTree");
         //EventManager.TriggerEvent("getCharacterInfo");
         EventManager.TriggerEvent("uiImageInit");

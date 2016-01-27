@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 public class TextCapture : MonoBehaviour {
@@ -10,7 +12,18 @@ public class TextCapture : MonoBehaviour {
     TextDisplay display;
     HelpMenu helpMenu;
     EffectManager effects;
-    void Start()
+    
+    void OnEnable()
+    {
+        EventManager.StartListening("setupTextCapture", SetupTextCapture);
+    }
+    void OnDisable()
+    {
+        EventManager.StopListening("setupTextCapture", SetupTextCapture);
+    }
+       
+
+    void SetupTextCapture()
     {
 
         effects = GetComponent<EffectManager>();
@@ -120,6 +133,19 @@ public class TextCapture : MonoBehaviour {
     }
     void CheckRootComand(string rootToCheck)
     {
+
+        //The whole choice command thing is hacky as fuck
+        if(rootCommand == "0" || rootCommand == "1" || rootCommand == "2" || rootCommand == "3" || rootCommand == "4" || rootCommand == "5" || rootCommand == "6" || rootCommand == "7" || rootCommand == "8" || rootCommand == "9" || rootCommand == "10" || rootCommand == "11" || rootCommand == "12")
+        {
+            if(display.isChatting == true)
+            {
+                GameObject.Find("ConvTreeManager").GetComponent<ConvTreeSearch>().SetNextNode(Int32.Parse(rootCommand));
+            }
+            else
+            {
+                Debug.Log("is not in chat mode");
+            }
+        }
         for (int n = 0; n < display.historyLines.Length; n++)
         {
             display.historyLines[n].GetComponent<TextMesh>().color = Color.gray;
@@ -370,12 +396,12 @@ public class TextCapture : MonoBehaviour {
                 else if (display.historyLines[j] == display.historyLines[2])
                 {
                     display.historyLines[j].GetComponent<TextMesh>().text = "PATH://oneirOS%MEMORY: ERROR";
-                    yield return new WaitForSeconds(Random.Range(.5f, 1.0f));
+                    yield return new WaitForSeconds(UnityEngine.Random.Range(.5f, 1.0f));
                 }
                 else if (display.historyLines[j] == display.historyLines[3])
                 {
                     display.historyLines[j].GetComponent<TextMesh>().text = "PATH://oneirOS%APPLICATION: ERROR";
-                    yield return new WaitForSeconds(Random.Range(1f, 1.5f));
+                    yield return new WaitForSeconds(UnityEngine.Random.Range(1f, 1.5f));
                 }
                 else if (display.historyLines[j] == display.historyLines[4])
                 {

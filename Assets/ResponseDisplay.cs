@@ -25,6 +25,8 @@ public class ResponseDisplay : MonoBehaviour {
 
     }
     void SetCurResponses() {
+        SetUpResponses();
+        curResponses.Clear();
         curNode = treeSearcher.GetComponent<ConvTreeSearch>().curNode;
         for (int j = 0; j < curNode.responses.Count; j++) {
             curResponses.Add(curNode.responses[j]);
