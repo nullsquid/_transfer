@@ -66,7 +66,7 @@ public class ConvTreeSearch : MonoBehaviour {
         curTree = newTree;
         bool first = true; 
 
-        Transform tree = startTree.GetComponent<Transform>();
+        Transform tree = curTree.GetComponent<Transform>();
         foreach (Transform child in tree)
         {
 
