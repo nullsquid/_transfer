@@ -16,6 +16,8 @@ public class TextDisplay : MonoBehaviour {
     public GameObject treeManager;
     public bool gameHasStarted = false;
     public bool isChatting = false;
+    public int lineLength;
+    
 
     private int promptLength;
 
