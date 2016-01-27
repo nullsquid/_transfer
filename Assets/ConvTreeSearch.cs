@@ -126,11 +126,14 @@ public class ConvTreeSearch : MonoBehaviour {
             else
             {
                 Debug.Log("end");
+                GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = false;
+                EventManager.TriggerEvent("startEndSequence");
             }
             
         }
 
     }
+
     void GetNextNodes(ConvNode curNode)
     {
         nextNodes.Clear();

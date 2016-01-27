@@ -21,9 +21,11 @@ public class TextDisplay : MonoBehaviour {
 
     void OnEnable() {
         EventManager.StartListening("uiSetup", UISetup);
+        EventManager.StartListening("startEndSequence", StartEndSequence);
     }
     void OnDisable() {
         EventManager.StopListening("uiSetup", UISetup);
+        EventManager.StopListening("startEndSequence", StartEndSequence);
     }
     void GetUserName() {
         userName = GameObject.FindObjectOfType<PlayerCharacter>().Name;
@@ -187,6 +189,61 @@ public class TextDisplay : MonoBehaviour {
             historyLines[0].GetComponent<TextMesh>().text = startupText_2;
         }
         
+    }
+    void StartEndSequence()
+    {
+        StartCoroutine(EndSequence());
+    }
+    IEnumerator EndSequence()
+    {
+        yield return new WaitForSeconds(2.0f);
+        for (int i = 0; i < historyLines.Length; i++)
+        {
+            historyLines[i].GetComponent<TextMesh>().color = Color.gray;
+
+            if (historyLines[i] == historyLines[0])
+            {
+                historyLines[i].GetComponent<TextMesh>().text = "oneirOS PATH TRANSFER UNLOCKED";
+                yield return new WaitForSeconds(.02f);
+            }
+            else if (historyLines[i] == historyLines[1])
+            {
+                historyLines[i].GetComponent<TextMesh>().text = "PATH://oneirOS%ROOT/INIT";
+                yield return new WaitForSeconds(.02f);
+            }
+            else if (historyLines[i] == historyLines[2])
+            {
+                historyLines[i].GetComponent<TextMesh>().text = "ESTABLISHING REMOTE CONNECTION";
+                yield return new WaitForSeconds(.02f);
+            }
+            else if (historyLines[i] == historyLines[3])
+            {
+                historyLines[i].GetComponent<TextMesh>().text = "PATH://oneirOS%DATA/MASK";
+                yield return new WaitForSeconds(.02f);
+            }
+            else if (historyLines[i] == historyLines[4])
+            {
+                historyLines[i].GetComponent<TextMesh>().text = "MASK RECONSTRUCTION COMPLETE";
+                yield return new WaitForSeconds(.02f);
+            }
+            else if (historyLines[i] == historyLines[5])
+            {
+                historyLines[i].GetComponent<TextMesh>().text = "SYNCING CHANGELOG";
+                yield return new WaitForSeconds(.02f);
+            }
+            else if (historyLines[i] == historyLines[6])
+            {
+                historyLines[i].GetComponent<TextMesh>().text = "PATH://oneirOS%ROOT/LOG";
+                yield return new WaitForSeconds(.02f);
+            }
+            else if (historyLines[i] == historyLines[7])
+            {
+                historyLines[i].GetComponent<TextMesh>().text = "WELCOME HOME";
+                yield return new WaitForSeconds(.02f);
+            }
+            yield return new WaitForSeconds(1.0f);
+            Application.Quit();
+        }
     }
 
     
