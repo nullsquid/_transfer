@@ -32,7 +32,7 @@ public class ResponseDisplay : MonoBehaviour {
             curResponses.Add(curNode.responses[j]);
         }
         for(int i = 0; i < responses.Length; i++) {
-            if (i <= curNode.responses.Count) {
+            if (i < curNode.responses.Count) {
                 responses[i].GetComponent<TextMesh>().text = i + ". " + curResponses[i];
             }
             else {
