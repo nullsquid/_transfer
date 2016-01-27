@@ -111,15 +111,22 @@ public class ConvTreeSearch : MonoBehaviour {
 
                 GetNextNodes(curNode);
             }
-            
+
         }
 
         else if (nextNodes.Count == 0)
         {
-            GetCurrentTree(curNode.outLinkedTrees[choice]);
+            if (curNode.outLinkedTrees.Count > 0)
+            {
+                GetCurrentTree(curNode.outLinkedTrees[choice]);
 
-            GetNextNodes(firstNode);
-            curNode = firstNode;
+                GetNextNodes(firstNode);
+                curNode = firstNode;
+            }
+            else
+            {
+                Debug.Log("end");
+            }
             
         }
 
