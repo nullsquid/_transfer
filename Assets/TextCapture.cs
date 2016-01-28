@@ -212,13 +212,43 @@ public class TextCapture : MonoBehaviour {
                 case "CLEAR":
                     Clear();
                     break;
+                    //HACK
+                case "0":
+                    break;
+                case "1":
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    break;
+                case "4":
+                    break;
+                case "5":
+                    break;
+                case "6":
+                    break;
+                case "7":
+                    break;
+                case "8":
+                    break;
+                case "9":
+                    break;
+                case "10":
+                    break;
+                case "11":
+                    break;
+                case "12":
+                    break;
                 case "":
                     break;
                 
                 default:
-                    effects.StartScreenShake(7);
-                    display.historyLines[0].GetComponent<TextMesh>().color = Color.red;
-                    display.historyLines[0].GetComponent<TextMesh>().text = "NO DEFINITION FOR COMMAND '" + display.command +"' FOUND"; 
+                    if (display.isChatting == false)
+                    {
+                        effects.StartScreenShake(7);
+                        display.historyLines[0].GetComponent<TextMesh>().color = Color.red;
+                        display.historyLines[0].GetComponent<TextMesh>().text = "NO DEFINITION FOR COMMAND '" + display.command + "' FOUND";
+                    }
                     break;
 
             }

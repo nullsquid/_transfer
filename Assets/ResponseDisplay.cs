@@ -7,6 +7,7 @@ public class ResponseDisplay : MonoBehaviour {
     public List<string> curResponses;
     public List<int> responseNumbers = new List<int>();
     public ConvNode curNode;
+    public int lineLength;
     // Use this for initialization
     void OnEnable() {
         EventManager.StartListening("setupResponses", SetUpResponses);
@@ -34,12 +35,28 @@ public class ResponseDisplay : MonoBehaviour {
         for(int i = 0; i < responses.Length; i++) {
             if (i < curNode.responses.Count) {
                 responses[i].GetComponent<TextMesh>().text = i + ". " + curResponses[i];
+                /*if(curNode.responses.Count == 0)
+                {
+                    responses[i].GetComponent<TextMesh>().text = i + ".";
+                }*/
             }
             else {
                 responses[i].GetComponent<TextMesh>().text = "";
             }
+
+            
         }
     }
+
+    /*string FormatResponse(string inText)
+    {
+        string formattedText;
+        int countToLineBreak;
+        for(int i = 0; i < inText.Length; i++)
+        {
+
+        }
+    }*/
 
     int NumberResponses() {
         

@@ -37,7 +37,7 @@ public class TextDisplay : MonoBehaviour {
         if (isChatting)
         {
             //historyLines[0].GetComponent<TextMesh>().text = treeManager.GetComponent<ConvTreeSearch>().DisplayPrompt();
-            historyLines[0].GetComponent<TextMesh>().text = FormatText(treeManager.GetComponent<ConvTreeSearch>().DisplayPrompt());
+            historyLines[0].GetComponent<TextMesh>().text = FormatText(treeManager.GetComponent<ConvTreeSearch>().GetSpeakerName() + ": " + treeManager.GetComponent<ConvTreeSearch>().DisplayPrompt());
             EventManager.TriggerEvent("setCurResponses");
         }
         else if(isChatting == false)
@@ -87,12 +87,20 @@ public class TextDisplay : MonoBehaviour {
                 countToLinebreak += 1;
                 formattedString += inText[i];
             }
-            else
+            else if(countToLinebreak > lineLength)
             {
-                formattedString += inText[i];
-                formattedString += "\n";
-                historyLines[0].GetComponent<Transform>().position += new Vector3(0, 1, 0);
-                countToLinebreak = 0;
+                if (inText[i] == ' ')
+                {
+                    formattedString += inText[i];
+                    formattedString += "\n";
+                    historyLines[0].GetComponent<Transform>().position += new Vector3(0, 1.7f, 0);
+                    countToLinebreak = 0;
+                }
+                else
+                {
+                    //countToLinebreak += 1;
+                    formattedString += inText[i];
+                }
             }
             //Debug.Log(formattedString);    
         }
@@ -226,6 +234,10 @@ public class TextDisplay : MonoBehaviour {
     IEnumerator EndSequence()
     {
         yield return new WaitForSeconds(2.0f);
+        for (int j = 0; j < historyLines.Length; j++)
+        {
+            historyLines[j].GetComponent<TextMesh>().text = "";
+        }
         for (int i = 0; i < historyLines.Length; i++)
         {
             historyLines[i].GetComponent<TextMesh>().color = Color.gray;

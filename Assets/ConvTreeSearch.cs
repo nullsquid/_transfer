@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TOZ;
 public class ConvTreeSearch : MonoBehaviour {
     GameObject characterManager;
     ConvTree startTree;
@@ -94,7 +95,7 @@ public class ConvTreeSearch : MonoBehaviour {
     {
         curNode = node;
         GetNextNodes(curNode);
-        GetSpeakerName();
+        //GetSpeakerName();
         //ConversationState();
     }
     public void SetNextNode(int choice)
@@ -118,6 +119,7 @@ public class ConvTreeSearch : MonoBehaviour {
         {
             if (curNode.outLinkedTrees.Count > 0)
             {
+                StartCoroutine(TreeShift());
                 GetCurrentTree(curNode.outLinkedTrees[choice]);
 
                 GetNextNodes(firstNode);
@@ -143,12 +145,27 @@ public class ConvTreeSearch : MonoBehaviour {
         }
     }
     
-    public void GetSpeakerName()
+    public string GetSpeakerName()
     {
+        Debug.Log("name is working");
         string character = curNode.characterTalking;
         string speakerName;
         string speakerID;
+        CharacterManager charManager = GameObject.Find("CharacterManager").GetComponent<CharacterManager>();
+        foreach(Transform child in characterManager.GetComponent<Transform>())
+        {
+            Debug.Log(child.name);
+            if(child.name == character)
+            {
+                speakerName = child.GetComponent<Character>().Name;
+                Debug.Log("name is " + speakerName);
+                return speakerName;
+            }
+            //return null;
+        }
+        return null;
         //Debug.Log("this is working");
+        /*
         Debug.Log(characterNames.Keys);
         foreach(KeyValuePair<string, string> entry in characterNames)
         {
@@ -158,10 +175,12 @@ public class ConvTreeSearch : MonoBehaviour {
             if(speakerID == character)
             {
                 Debug.Log("key is " + entry.Key);
-                //return entry.Key;
+                return entry.Key;
             }
+            return null;
         }
-        //return null;
+        return null;
+        */
     }
     public void ConversationState()
     {
@@ -205,6 +224,15 @@ public class ConvTreeSearch : MonoBehaviour {
     IEnumerator FirstConversation(){
         yield return new WaitForSeconds(1.0f);
 
+    }
+    IEnumerator TreeShift()
+    {
+
+        Camera.main.GetComponent<TOZ.ImageEffects.PP_Pixelated>().enabled = true;
+        GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = false;
+        yield return new WaitForSeconds(.5f);
+        Camera.main.GetComponent<TOZ.ImageEffects.PP_Pixelated>().enabled = false;
+        GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = true;
     }
     
 }
