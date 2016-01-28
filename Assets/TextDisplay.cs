@@ -17,7 +17,7 @@ public class TextDisplay : MonoBehaviour {
     public bool gameHasStarted = false;
     public bool isChatting = false;
     public int lineLength;
-    
+    public Vector3 speakerLinePosition;
 
     private int promptLength;
 
@@ -36,7 +36,8 @@ public class TextDisplay : MonoBehaviour {
     {
         if (isChatting)
         {
-            historyLines[0].GetComponent<TextMesh>().text = treeManager.GetComponent<ConvTreeSearch>().DisplayPrompt();
+            //historyLines[0].GetComponent<TextMesh>().text = treeManager.GetComponent<ConvTreeSearch>().DisplayPrompt();
+            historyLines[0].GetComponent<TextMesh>().text = FormatText(treeManager.GetComponent<ConvTreeSearch>().DisplayPrompt());
             EventManager.TriggerEvent("setCurResponses");
         }
         else if(isChatting == false)
@@ -50,6 +51,7 @@ public class TextDisplay : MonoBehaviour {
         commandPrompt = userName + prompt;
         promptLength = commandPrompt.Length;
         commandText.text = commandPrompt;
+        //speakerLineTransform = historyLines[0].transform.position;
         treeManager = GameObject.Find("ConvTreeManager");
         for (int i = 0; i < historyLines.Length; i++) {
             historyLines[i].GetComponent<TextMesh>().color = Color.gray;
@@ -72,6 +74,31 @@ public class TextDisplay : MonoBehaviour {
         
 
     }
+    public string FormatText(string inText)
+    {
+
+        int countToLinebreak = 0;
+        historyLines[0].GetComponent<Transform>().position = new Vector3(-28.6f, -8f, 0f);
+        string formattedString = "";
+        for(int i = 0; i < inText.Length; i++)
+        {
+            
+            if(countToLinebreak <= lineLength) {
+                countToLinebreak += 1;
+                formattedString += inText[i];
+            }
+            else
+            {
+                formattedString += inText[i];
+                formattedString += "\n";
+                historyLines[0].GetComponent<Transform>().position += new Vector3(0, 1, 0);
+                countToLinebreak = 0;
+            }
+            //Debug.Log(formattedString);    
+        }
+        return formattedString;
+    }
+
     void ChangeText(Event e)
     {
         if (canType == true)
