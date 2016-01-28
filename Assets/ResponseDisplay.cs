@@ -8,6 +8,7 @@ public class ResponseDisplay : MonoBehaviour {
     public List<int> responseNumbers = new List<int>();
     public ConvNode curNode;
     public int lineLength;
+    public int lineBreaks;
     // Use this for initialization
     void OnEnable() {
         EventManager.StartListening("setupResponses", SetUpResponses);
@@ -33,8 +34,11 @@ public class ResponseDisplay : MonoBehaviour {
             curResponses.Add(curNode.responses[j]);
         }
         for(int i = 0; i < responses.Length; i++) {
+            
             if (i < curNode.responses.Count) {
-                responses[i].GetComponent<TextMesh>().text = i + ". " + curResponses[i];
+                responses[i].GetComponent<TextMesh>().text = i + ". " + FormatResponse(curResponses[i]);
+                //responses[i].GetComponent<Transform>().position += new Vector3(0, lineBreaks, 0);
+                //responses[i].GetComponent<Transform>().position = new Vector3(responses[i].transform.position.x, responses[i].transform.position.y + lineBreaks, responses[i].transform.position.z);
                 /*if(curNode.responses.Count == 0)
                 {
                     responses[i].GetComponent<TextMesh>().text = i + ".";
@@ -44,19 +48,44 @@ public class ResponseDisplay : MonoBehaviour {
                 responses[i].GetComponent<TextMesh>().text = "";
             }
 
-            
+
+
         }
     }
 
-    /*string FormatResponse(string inText)
+    string FormatResponse(string inText)
     {
-        string formattedText;
-        int countToLineBreak;
+        lineBreaks = 0;
+        string formattedText = "";
+        int countToLineBreak = 0;
         for(int i = 0; i < inText.Length; i++)
         {
-
+            if(countToLineBreak <= lineLength)
+            {
+                countToLineBreak += 1;
+                formattedText += inText[i];
+            }
+            else if(countToLineBreak > lineLength)
+            {
+                if (inText[i] == ' ')
+                {
+                    formattedText += inText[i];
+                    formattedText += "\n";
+                    lineBreaks += 1;
+                    
+                    //curResponses[i].GetComponent<Transform>().position += new Vector3(0, 1.7f, 0);
+                    countToLineBreak = 0;
+                }
+                else
+                {
+                    //countToLinebreak += 1;
+                    formattedText += inText[i];
+                }
+            }
         }
-    }*/
+        return formattedText;
+
+    }
 
     int NumberResponses() {
         

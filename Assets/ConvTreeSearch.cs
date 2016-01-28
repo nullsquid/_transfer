@@ -147,14 +147,14 @@ public class ConvTreeSearch : MonoBehaviour {
     
     public string GetSpeakerName()
     {
-        Debug.Log("name is working");
+        //Debug.Log("name is working");
         string character = curNode.characterTalking;
         string speakerName;
         string speakerID;
         CharacterManager charManager = GameObject.Find("CharacterManager").GetComponent<CharacterManager>();
         foreach(Transform child in characterManager.GetComponent<Transform>())
         {
-            Debug.Log(child.name);
+            //Debug.Log(child.name);
             if(child.name == character)
             {
                 speakerName = child.GetComponent<Character>().Name;

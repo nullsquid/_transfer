@@ -175,15 +175,22 @@ public class TextCapture : MonoBehaviour {
                 case "CHAT":
                     if(commands.Length <= 1)
                     {
-                        display.historyLines[1].GetComponent<TextMesh>().color = Color.red;
-                        display.historyLines[1].GetComponent<TextMesh>().text = "NO OVERLOAD OF COMMAND 'CHAT' FOUND.";
-                        display.historyLines[0].GetComponent<TextMesh>().color = Color.red;
-                        display.historyLines[0].GetComponent<TextMesh>().text = "DID YOU MEAN TO ENTER A NETWORK ID?";
+                        if (display.isChatting != true)
+                        {
+                            /*
+                            display.historyLines[1].GetComponent<TextMesh>().color = Color.red;
+                            display.historyLines[1].GetComponent<TextMesh>().text = "NO OVERLOAD OF COMMAND 'CHAT' FOUND.";
+                            display.historyLines[0].GetComponent<TextMesh>().color = Color.red;
+                            display.historyLines[0].GetComponent<TextMesh>().text = "DID YOU MEAN TO ENTER A NETWORK ID?";
+                            */
+                            Clear();
+                            display.isChatting = true;
+                        }
                     }
                     else if(commands.Length == 2)
                     {
                         Debug.Log("works");
-                        display.historyLines[0].GetComponent<TextMesh>().text = "CONNECTED";
+                        //display.historyLines[0].GetComponent<TextMesh>().text = "CONNECTED";
 
                     }
                     else if(commands.Length > 2)
@@ -470,8 +477,8 @@ public class TextCapture : MonoBehaviour {
             yield return new WaitForSeconds(1.0f);
             display.historyLines[0].GetComponent<TextMesh>().text = "WELCOME TO oneirOS v 0.9.9.3";
             yield return new WaitForSeconds(.5f);
-            display.historyLines[1].GetComponent<TextMesh>().text = "WELCOME TO oneirOS v " + GetComponent<TextDisplay>().versionNumber;
-            display.historyLines[0].GetComponent<TextMesh>().text = "INPUT HELP FOR MORE OPTIONS";
+            display.historyLines[2].GetComponent<TextMesh>().text = "WELCOME TO oneirOS v " + GetComponent<TextDisplay>().versionNumber;
+            display.historyLines[1].GetComponent<TextMesh>().text = "INPUT HELP FOR MORE OPTIONS";
         }
         
         display.canType = true;
