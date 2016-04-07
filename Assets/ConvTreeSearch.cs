@@ -227,7 +227,7 @@ public class ConvTreeSearch : MonoBehaviour {
     }
     IEnumerator TreeShift()
     {
-
+        //TODO Move this into effects manager
         Camera.main.GetComponent<TOZ.ImageEffects.PP_Pixelated>().enabled = true;
         GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = false;
         yield return new WaitForSeconds(.5f);
