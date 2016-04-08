@@ -22,11 +22,15 @@ public class TextDisplay : MonoBehaviour {
     private int promptLength;
 
     void OnEnable() {
+        //Setup
         EventManager.StartListening("uiSetup", UISetup);
+        //During Play
         EventManager.StartListening("startEndSequence", StartEndSequence);
     }
     void OnDisable() {
+        //Setup
         EventManager.StopListening("uiSetup", UISetup);
+        //During Play
         EventManager.StopListening("startEndSequence", StartEndSequence);
     }
     void GetUserName() {
@@ -36,7 +40,6 @@ public class TextDisplay : MonoBehaviour {
     {
         if (isChatting)
         {
-            //historyLines[0].GetComponent<TextMesh>().text = treeManager.GetComponent<ConvTreeSearch>().DisplayPrompt();
             historyLines[0].GetComponent<TextMesh>().text = FormatText(treeManager.GetComponent<ConvTreeSearch>().GetSpeakerName() + ": " + treeManager.GetComponent<ConvTreeSearch>().DisplayPrompt());
             EventManager.TriggerEvent("setCurResponses");
         }
@@ -51,7 +54,6 @@ public class TextDisplay : MonoBehaviour {
         commandPrompt = userName + prompt;
         promptLength = commandPrompt.Length;
         commandText.text = commandPrompt;
-        //speakerLineTransform = historyLines[0].transform.position;
         treeManager = GameObject.Find("ConvTreeManager");
         for (int i = 0; i < historyLines.Length; i++) {
             historyLines[i].GetComponent<TextMesh>().color = Color.gray;
