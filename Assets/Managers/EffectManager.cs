@@ -7,10 +7,16 @@ public class EffectManager : MonoBehaviour {
 	
 	
 	void OnEnable() {
+        //Startup
         EventManager.StartListening("setupCamera", SetupCamera);
+        //Through Play
+        EventManager.StartListening("pixelate", PixelateTrigger);
     }
     void OnDisable() {
+        //Startup
         EventManager.StopListening("setupCamera", SetupCamera);
+        //Through Play
+        EventManager.StopListening("pixelate", PixelateTrigger);
     }
 
     public void StartScreenShake(int numShakes)
@@ -36,5 +42,17 @@ public class EffectManager : MonoBehaviour {
         Camera.main.orthographicSize = 20;
         cameraMain.transform.position = new Vector3(0, 0, -10);
 
+    }
+    void PixelateTrigger() {
+        StartCoroutine(Pixelate());
+    }
+
+    IEnumerator Pixelate() {
+        //TODO Move this into effects manager
+        Camera.main.GetComponent<TOZ.ImageEffects.PP_Pixelated>().enabled = true;
+        GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = false;
+        yield return new WaitForSeconds(.5f);
+        Camera.main.GetComponent<TOZ.ImageEffects.PP_Pixelated>().enabled = false;
+        GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = true;
     }
 }

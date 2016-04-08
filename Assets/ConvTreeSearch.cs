@@ -119,7 +119,8 @@ public class ConvTreeSearch : MonoBehaviour {
         {
             if (curNode.outLinkedTrees.Count > 0)
             {
-                StartCoroutine(TreeShift());
+                EventManager.TriggerEvent("pixelate");
+                //StartCoroutine(TreeShift());
                 GetCurrentTree(curNode.outLinkedTrees[choice]);
 
                 GetNextNodes(firstNode);
@@ -224,15 +225,6 @@ public class ConvTreeSearch : MonoBehaviour {
     IEnumerator FirstConversation(){
         yield return new WaitForSeconds(1.0f);
 
-    }
-    IEnumerator TreeShift()
-    {
-        //TODO Move this into effects manager
-        Camera.main.GetComponent<TOZ.ImageEffects.PP_Pixelated>().enabled = true;
-        GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = false;
-        yield return new WaitForSeconds(.5f);
-        Camera.main.GetComponent<TOZ.ImageEffects.PP_Pixelated>().enabled = false;
-        GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = true;
     }
     
 }
