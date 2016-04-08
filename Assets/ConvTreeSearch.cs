@@ -130,6 +130,7 @@ public class ConvTreeSearch : MonoBehaviour {
             {
                 Debug.Log("end");
                 GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = false;
+
                 EventManager.TriggerEvent("startEndSequence");
             }
             

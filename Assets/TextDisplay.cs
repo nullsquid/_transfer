@@ -233,11 +233,15 @@ public class TextDisplay : MonoBehaviour {
     }
     IEnumerator EndSequence()
     {
+        isChatting = false;
+        canType = false;
         yield return new WaitForSeconds(2.0f);
         for (int j = 0; j < historyLines.Length; j++)
         {
             historyLines[j].GetComponent<TextMesh>().text = "";
+            Debug.Log(historyLines[j].name);
         }
+        //yield return new WaitForEndOfFrame();
         for (int i = 0; i < historyLines.Length; i++)
         {
             historyLines[i].GetComponent<TextMesh>().color = Color.gray;
