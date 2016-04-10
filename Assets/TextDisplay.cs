@@ -74,7 +74,7 @@ public class TextDisplay : MonoBehaviour {
             //RemoveText(e);
             
             
-            Debug.Log(commandText.text);
+            
 
         }
         
@@ -95,13 +95,13 @@ public class TextDisplay : MonoBehaviour {
             {
 
                 nameText = inText[i].ToString() + inText[i + 1].ToString();
-                Debug.Log(nameText);
+                
                 //nameText.Replace(nameText, GameObject.Find("CharacterManager").GetComponent
                 for (int j = 0; j < GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters.Count; j++)
                 {
                     if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == inText[i + 1].ToString())
                     {
-                        Debug.Log("id replace?");
+                        
                         //formattedString.Remove(i, 2);
 
                         replacementName = GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].Name;
@@ -128,16 +128,15 @@ public class TextDisplay : MonoBehaviour {
                 }
                 else
                 {
-                    //countToLinebreak += 1;
+                    
                     formattedString += inText[i];
                 }
             }
-            //Debug.Log(formattedString);    
+                
         }
         if (formattedString.Contains("%"))
         {
-            Debug.Log(nameText);
-            Debug.Log(replacementName);
+            
             return formattedString.Replace(nameText, replacementName);
         }
         return formattedString;
@@ -163,7 +162,7 @@ public class TextDisplay : MonoBehaviour {
                     {
                         commandText.text += "0";
                         command += "0";
-                        Debug.Log(prompt);
+                        
 
                     }
                     else if ( e.keyCode == KeyCode.Alpha1)
@@ -255,7 +254,7 @@ public class TextDisplay : MonoBehaviour {
 
         if(gameHasStarted == false)
         {
-            Debug.Log("hello");
+            
             historyLines[1].GetComponent<TextMesh>().color = Color.green;
             historyLines[1].GetComponent<TextMesh>().text = startupText_1;
             historyLines[0].GetComponent<TextMesh>().color = Color.green;
@@ -275,7 +274,7 @@ public class TextDisplay : MonoBehaviour {
         for (int j = 0; j < historyLines.Length; j++)
         {
             historyLines[j].GetComponent<TextMesh>().text = "";
-            Debug.Log(historyLines[j].name);
+            
         }
         //yield return new WaitForEndOfFrame();
         for (int i = 0; i < historyLines.Length; i++)

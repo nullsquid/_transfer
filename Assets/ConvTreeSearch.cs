@@ -40,23 +40,21 @@ public class ConvTreeSearch : MonoBehaviour {
 
     }
     void FindStartTree() {
-        //bool first = true;
+        
         Character playerCharacter = GameObject.FindObjectOfType<PlayerCharacter>();
         startTree = GameObject.Find("9" + playerCharacter.name + "_Tree").GetComponent<ConvTree>();
         
         GetCurrentTree(startTree);
         GetCurrentNode(firstNode);
         GetCharacterInfoFromManager();
-        //TEST
-        //StartCoroutine(ConversationState());
-        //TraverseToNextNode(0);
+        
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftAlt)) {
             SetNextNode(0);
         }
-        Debug.Log(curNode);
+       
     }
 
     void GetCurrentTree(ConvTree newTree)
@@ -87,7 +85,7 @@ public class ConvTreeSearch : MonoBehaviour {
     }
     
     public string DisplayPrompt() {
-        //Debug.Log(curNode.prompt);
+        
         
         return curNode.prompt;
     }
@@ -95,8 +93,7 @@ public class ConvTreeSearch : MonoBehaviour {
     {
         curNode = node;
         GetNextNodes(curNode);
-        //GetSpeakerName();
-        //ConversationState();
+        
     }
     public void SetNextNode(int choice)
     {
@@ -120,7 +117,6 @@ public class ConvTreeSearch : MonoBehaviour {
             if (curNode.outLinkedTrees.Count > 0)
             {
                 EventManager.TriggerEvent("pixelate");
-                //StartCoroutine(TreeShift());
                 GetCurrentTree(curNode.outLinkedTrees[choice]);
 
                 GetNextNodes(firstNode);
@@ -128,7 +124,7 @@ public class ConvTreeSearch : MonoBehaviour {
             }
             else
             {
-                Debug.Log("end");
+                
                 GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = false;
 
                 EventManager.TriggerEvent("startEndSequence");
@@ -149,68 +145,36 @@ public class ConvTreeSearch : MonoBehaviour {
     
     public string GetSpeakerName()
     {
-        //Debug.Log("name is working");
+        
         string character = curNode.characterTalking;
         string speakerName;
         string speakerID;
         CharacterManager charManager = GameObject.Find("CharacterManager").GetComponent<CharacterManager>();
         foreach(Transform child in characterManager.GetComponent<Transform>())
         {
-            //Debug.Log(child.name);
+            
             if(child.name == character)
             {
                 speakerName = child.GetComponent<Character>().Name;
-                Debug.Log("name is " + speakerName);
+                
                 return speakerName;
             }
             //return null;
         }
         return null;
-        //Debug.Log("this is working");
-        /*
-        Debug.Log(characterNames.Keys);
-        foreach(KeyValuePair<string, string> entry in characterNames)
-        {
-            Debug.Log(entry);
-            speakerID = entry.Key;
-
-            if(speakerID == character)
-            {
-                Debug.Log("key is " + entry.Key);
-                return entry.Key;
-            }
-            return null;
-        }
-        return null;
-        */
+        
     }
     public void ConversationState()
     {
-        //TEST
-        //THIS SHOULD'T FIRE AT START
+        
         DisplayPrompt();
         EventManager.TriggerEvent("setCurResponses");
-        /*for(int i = 0; i < responseLines.Length; i++)
-        {
-            Debug.Log("working");
-            //responseLines[i].GetComponent<TextMesh>().text = curNode.responses[i];
-            /*
-
-            if (i < curNode.responses.Count) {
-                responseLines[i].GetComponent<TextMesh>().text = i + ". " + curNode.responses[i];
-            }
-            else
-            {
-                responseLines[i].GetComponent<TextMesh>().text = "";
-            }
-            
-        }*/
-        //yield return new WaitForEndOfFrame();
+        
     }
     
     public void TraverseToNextNode(int choice)
     {
-        Debug.Log("traversing");
+        
         for(int i = 0; i < nextNodes.Count; i++)
         {
             if(nextNodes.Count > 0)
