@@ -4,9 +4,7 @@ using System.Collections.Generic;
 
 public class ConvNode : MonoBehaviour {
 
-	//TODO make prompt a list
-	//TODO make each sentence an item in that list
-	//TODO loop over and split on period to dynamically parse
+	
 	public string prompt;
 	public bool hasVisited;
 	public List<string> responses = new List<string>();
@@ -16,6 +14,11 @@ public class ConvNode : MonoBehaviour {
 	public string characterTalking;
 	public int level;
 	public int decision;
+
+    //i have to be able to determine that a given node has a specific sort of event associated with it
+    //such as a sound effect, or starting a battle, or special camera movement, etc.......
+    //will design a system to do this
+
 
 
 	public List<ConvNode> children = new List<ConvNode>();

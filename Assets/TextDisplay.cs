@@ -17,6 +17,8 @@ public class TextDisplay : MonoBehaviour {
     public bool gameHasStarted = false;
     public bool isChatting = false;
     public int lineLength;
+    public float charDelay = 0.5f;
+    public float charTimer;
     public Vector3 speakerLinePosition;
 
     private int promptLength;
@@ -76,6 +78,7 @@ public class TextDisplay : MonoBehaviour {
         
 
     }
+    
     public string FormatText(string inText)
     {
 
@@ -84,10 +87,29 @@ public class TextDisplay : MonoBehaviour {
         string formattedString = "";
         for(int i = 0; i < inText.Length; i++)
         {
+            //doesn't work
+            if(inText[i] == '%')
+            {
+                
+                string nameText = inText[i].ToString() + inText[i + 1].ToString();
+                Debug.Log(nameText);
+                //nameText.Replace(nameText, GameObject.Find("CharacterManager").GetComponent
+                for(int j = 0; j < GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters.Count; j++)
+                {
+                    if(GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == inText[i + 1].ToString())
+                    {
+                        Debug.Log("id replace?");
+                        formattedString.Remove(i, 2);
+                        formattedString += nameText.Replace(nameText, GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].Name);
+                        
+                    }
+                }
+            }
             
             if(countToLinebreak <= lineLength) {
                 countToLinebreak += 1;
                 formattedString += inText[i];
+                
             }
             else if(countToLinebreak > lineLength)
             {
