@@ -21,6 +21,8 @@ public class TextDisplay : MonoBehaviour {
     public float charTimer;
     public Vector3 speakerLinePosition;
 
+    private string replacementName;
+    private string nameText;
     private int promptLength;
 
     void OnEnable() {
@@ -85,33 +87,37 @@ public class TextDisplay : MonoBehaviour {
         int countToLinebreak = 0;
         historyLines[0].GetComponent<Transform>().position = new Vector3(-28.6f, -8f, 0f);
         string formattedString = "";
-        for(int i = 0; i < inText.Length; i++)
+        for (int i = 0; i < inText.Length; i++)
         {
+            //inText[i].ToString();
             //doesn't work
-            if(inText[i] == '%')
+            if (inText[i] == '%')
             {
-                
-                string nameText = inText[i].ToString() + inText[i + 1].ToString();
+
+                nameText = inText[i].ToString() + inText[i + 1].ToString();
                 Debug.Log(nameText);
                 //nameText.Replace(nameText, GameObject.Find("CharacterManager").GetComponent
-                for(int j = 0; j < GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters.Count; j++)
+                for (int j = 0; j < GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters.Count; j++)
                 {
-                    if(GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == inText[i + 1].ToString())
+                    if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == inText[i + 1].ToString())
                     {
                         Debug.Log("id replace?");
-                        formattedString.Remove(i, 2);
-                        formattedString += nameText.Replace(nameText, GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].Name);
-                        
+                        //formattedString.Remove(i, 2);
+
+                        replacementName = GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].Name;
+                        //formattedString = formattedString.Replace("%" + GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID, GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].Name);
+
                     }
                 }
             }
-            
-            if(countToLinebreak <= lineLength) {
+
+            if (countToLinebreak <= lineLength)
+            {
                 countToLinebreak += 1;
                 formattedString += inText[i];
-                
+
             }
-            else if(countToLinebreak > lineLength)
+            else if (countToLinebreak > lineLength)
             {
                 if (inText[i] == ' ')
                 {
@@ -127,6 +133,12 @@ public class TextDisplay : MonoBehaviour {
                 }
             }
             //Debug.Log(formattedString);    
+        }
+        if (formattedString.Contains("%"))
+        {
+            Debug.Log(nameText);
+            Debug.Log(replacementName);
+            return formattedString.Replace(nameText, replacementName);
         }
         return formattedString;
     }
