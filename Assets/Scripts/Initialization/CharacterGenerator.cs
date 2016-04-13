@@ -14,7 +14,7 @@ public class CharacterGenerator : MonoBehaviour {
     public List<string> names = new List<string>();
     public string[] genders;
     public string playerCharacterID;
-    
+    public List<Color> npcColors = new List<Color>();
     public Character playerCharacterPrefab;
     public Character nonPlayerCharacterPrefab;
     void OnEnable() {
@@ -108,6 +108,11 @@ public class CharacterGenerator : MonoBehaviour {
 
     void GenerateGenders(Character character) {
         character.Gender = genders[Random.Range(0, genders.Length)];
+    }
+
+    void GenerateColors(Character characters)
+    {
+
     }
 
     void PopulateAttributes() {

@@ -23,6 +23,9 @@ public class TextDisplay : MonoBehaviour {
 
     private string replacementName;
     private string nameText;
+    private string replacementPronoun;
+    private string pronounText;
+
     private int promptLength;
 
     void OnEnable() {
@@ -110,6 +113,15 @@ public class TextDisplay : MonoBehaviour {
                     }
                 }
             }
+            else if (inText[i] == '#')
+            {
+                pronounText = inText[i].ToString() + inText[i + 1].ToString();
+
+                for (int k = 0; k < GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters.Count; k++)
+                {
+
+                }
+            }
 
             if (countToLinebreak <= lineLength)
             {
@@ -137,7 +149,11 @@ public class TextDisplay : MonoBehaviour {
         if (formattedString.Contains("%"))
         {
             
-            return formattedString.Replace(nameText, replacementName);
+            return formattedString.Replace(nameText, "<color=#00ff00ff>"+replacementName+"</color>");
+        }
+        if (formattedString.Contains("#"))
+        {
+
         }
         return formattedString;
     }

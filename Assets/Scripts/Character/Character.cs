@@ -9,6 +9,7 @@ public abstract class Character : MonoBehaviour {
 	private string _id;
 	private string _gender;
 	private string _pronoun;
+    private Color _color;
 	private bool _isPlayer;
 	#endregion
 
@@ -67,6 +68,17 @@ public abstract class Character : MonoBehaviour {
 			_isPlayer = value;
 		}
 	}
+    public Color Color
+    {
+        get
+        {
+            return _color;
+        }
+        set
+        {
+            _color = value;
+        }
+    }
 
 	public float DispositionTowardsPlayer{
 		get{
