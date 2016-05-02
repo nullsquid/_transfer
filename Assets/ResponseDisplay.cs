@@ -37,12 +37,7 @@ public class ResponseDisplay : MonoBehaviour {
             
             if (i < curNode.responses.Count) {
                 responses[i].GetComponent<TextMesh>().text = i + ". " + FormatResponse(curResponses[i]);
-                //responses[i].GetComponent<Transform>().position += new Vector3(0, lineBreaks, 0);
-                //responses[i].GetComponent<Transform>().position = new Vector3(responses[i].transform.position.x, responses[i].transform.position.y + lineBreaks, responses[i].transform.position.z);
-                /*if(curNode.responses.Count == 0)
-                {
-                    responses[i].GetComponent<TextMesh>().text = i + ".";
-                }*/
+          
             }
             else {
                 responses[i].GetComponent<TextMesh>().text = "";
