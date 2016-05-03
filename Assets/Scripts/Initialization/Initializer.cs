@@ -5,7 +5,7 @@ public class Initializer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        var AM = AudioManager.Instance;
         EventManager.TriggerEvent("setupCamera");
         EventManager.TriggerEvent("makeCharacters");
         EventManager.TriggerEvent("uiSetup");
@@ -17,6 +17,7 @@ public class Initializer : MonoBehaviour {
         EventManager.TriggerEvent("setUpResponses");
         EventManager.TriggerEvent("getNodes");
         //EventManager.TriggerEvent("TESTNodeTraversal");        
+        
 	}
     
 	
