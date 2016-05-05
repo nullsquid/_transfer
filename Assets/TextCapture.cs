@@ -29,6 +29,8 @@ public class TextCapture : MonoBehaviour {
         effects = GetComponent<EffectManager>();
         display = GetComponent<TextDisplay>();
         helpMenu = GetComponent<HelpMenu>();
+        //var AM = AudioManager.Instance;
+
     }
     void Update()
     {
@@ -266,7 +268,12 @@ public class TextCapture : MonoBehaviour {
             switch (rootToCheck)
             {
                 case "START":
+                    
+                    //AudioManager.Instance.FadeMusic();
                     StartGame();
+                    
+                    //AM.FadeMusic():
+                    
                     break;
                 case "EXIT":
                     ExitGame();
