@@ -26,9 +26,6 @@ public class ConvTreeSearch : MonoBehaviour {
         EventManager.StopListening("getCharacterInfo", GetCharacterInfoFromManager);
     }
     
-    void Start()
-    {
-    }
     void GetCharacterInfoFromManager()
     {
         characterManager = GameObject.Find("CharacterManager");
@@ -43,7 +40,7 @@ public class ConvTreeSearch : MonoBehaviour {
         
         Character playerCharacter = GameObject.FindObjectOfType<PlayerCharacter>();
         startTree = GameObject.Find("9" + playerCharacter.name + "_Tree").GetComponent<ConvTree>();
-        
+        Debug.Log("start tree is " + startTree);
         GetCurrentTree(startTree);
         GetCurrentNode(firstNode);
         GetCharacterInfoFromManager();
@@ -59,9 +56,10 @@ public class ConvTreeSearch : MonoBehaviour {
 
     void GetCurrentTree(ConvTree newTree)
     {
+        
         curTree = newTree;
-        bool first = true; 
-
+        bool first = true;
+        Debug.Log("cur tree is" + curTree);
         Transform tree = curTree.GetComponent<Transform>();
         foreach (Transform child in tree)
         {

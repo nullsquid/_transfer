@@ -12,7 +12,9 @@ public class TextCapture : MonoBehaviour {
     TextDisplay display;
     HelpMenu helpMenu;
     EffectManager effects;
-    
+    AudioManager AM;
+
+
     void OnEnable()
     {
         EventManager.StartListening("setupTextCapture", SetupTextCapture);
@@ -22,14 +24,18 @@ public class TextCapture : MonoBehaviour {
         EventManager.StopListening("setupTextCapture", SetupTextCapture);
     }
        
-
+    void Start()
+    {
+        //AM = AudioManager.Instance;
+    }
     void SetupTextCapture()
     {
 
         effects = GetComponent<EffectManager>();
         display = GetComponent<TextDisplay>();
         helpMenu = GetComponent<HelpMenu>();
-        //var AM = AudioManager.Instance;
+        
+
 
     }
     void Update()
@@ -268,10 +274,11 @@ public class TextCapture : MonoBehaviour {
             switch (rootToCheck)
             {
                 case "START":
-                    
+
                     //AudioManager.Instance.FadeMusic();
+                    AM.FadeMusic();
                     StartGame();
-                    
+                    //AM.FadeMusic();
                     //AM.FadeMusic():
                     
                     break;
