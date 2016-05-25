@@ -2,11 +2,12 @@
 using System.Collections;
 
 public class Initializer : MonoBehaviour {
-    public AudioClip ambientDrone; 
+    public AudioClip ambientDrone;
+    public AudioClip startDrone;
 	// Use this for initialization
 	void Start () {
         var AM = AudioManager.Instance;
-        AM.PlayMusic(ambientDrone, 0.5f);
+        AM.PlayMusic(startDrone, 0.5f);
         EventManager.TriggerEvent("setupCamera");
         EventManager.TriggerEvent("makeCharacters");
         EventManager.TriggerEvent("uiSetup");
