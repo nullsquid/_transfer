@@ -6,13 +6,13 @@ public class Initializer : MonoBehaviour {
     public AudioClip startDrone;
 	// Use this for initialization
 	void Start () {
-        var AM = AudioManager.Instance;
-        AM.PlayMusic(startDrone, 0.5f);
+        EventManager.TriggerEvent("audioInit");
         EventManager.TriggerEvent("setupCamera");
         EventManager.TriggerEvent("makeCharacters");
         EventManager.TriggerEvent("uiSetup");
         EventManager.TriggerEvent("setupTextCapture");
         EventManager.TriggerEvent("findStartTree");
+        //
         //EventManager.TriggerEvent("getCharacterInfo");
         EventManager.TriggerEvent("uiImageInit");
         EventManager.TriggerEvent("audioSetup");

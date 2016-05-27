@@ -500,6 +500,7 @@ public class TextCapture : MonoBehaviour {
     void StartGame()
     {
         StartCoroutine("StartupRoutine");
+        EventManager.TriggerEvent("changeAudio");
         display.gameHasStarted = true;
     }
 
