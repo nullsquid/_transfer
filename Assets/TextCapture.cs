@@ -489,6 +489,7 @@ public class TextCapture : MonoBehaviour {
         }
         
         display.canType = true;
+        EventManager.TriggerEvent("stopAllAudio");
         yield return null;
 
     }

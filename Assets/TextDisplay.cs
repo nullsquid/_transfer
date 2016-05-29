@@ -42,12 +42,18 @@ public class TextDisplay : MonoBehaviour {
     }
     void GetUserName() {
         userName = GameObject.FindObjectOfType<PlayerCharacter>().Name;
+
     }
     void Update()
     {
         if (isChatting)
         {
-            historyLines[0].GetComponent<TextMesh>().text = FormatText(treeManager.GetComponent<ConvTreeSearch>().GetSpeakerName() + ": " + treeManager.GetComponent<ConvTreeSearch>().DisplayPrompt());
+            if (treeManager.GetComponent<ConvTreeSearch>().GetSpeakerName() != null) {
+                historyLines[0].GetComponent<TextMesh>().text = "<color=" + treeManager.GetComponent<ConvTreeSearch>().GetSpeakerColor() + ">" + FormatText(treeManager.GetComponent<ConvTreeSearch>().GetSpeakerName() + "</color>" + ": " + treeManager.GetComponent<ConvTreeSearch>().DisplayPrompt());
+            }
+            else {
+                historyLines[0].GetComponent<TextMesh>().text = treeManager.GetComponent<ConvTreeSearch>().DisplayPrompt();
+            }
             EventManager.TriggerEvent("setCurResponses");
         }
         else if(isChatting == false)
@@ -108,6 +114,44 @@ public class TextDisplay : MonoBehaviour {
                         //formattedString.Remove(i, 2);
 
                         replacementName = GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].Name;
+                        if(GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "A") {
+                            
+                        }
+                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "B") {
+
+                        }
+
+                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "C") {
+
+                        }
+                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "D") {
+
+                        }
+
+                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "E") {
+
+                        }
+                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "F") {
+
+                        }
+                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "G") {
+
+                        }
+                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "H") {
+
+                        }
+                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "I") {
+
+                        }
+                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "0") {
+
+                        }
+
+
+
+
+
+
                         //formattedString = formattedString.Replace("%" + GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID, GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].Name);
 
                     }
@@ -148,7 +192,7 @@ public class TextDisplay : MonoBehaviour {
         }
         if (formattedString.Contains("%"))
         {
-            
+           
             return formattedString.Replace(nameText, "<color=#00ff00ff>"+replacementName+"</color>");
         }
         if (formattedString.Contains("#"))

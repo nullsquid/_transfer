@@ -164,6 +164,31 @@ public class ConvTreeSearch : MonoBehaviour {
         return null;
         
     }
+
+    public string GetSpeakerColor() {
+        string character = curNode.characterTalking;
+        Color32 speakerColor;
+        string speakerID;
+        CharacterManager charManager = GameObject.Find("CharacterManager").GetComponent<CharacterManager>();
+        foreach (Transform child in characterManager.GetComponent<Transform>()) {
+            if(child.name == character) {
+                speakerColor = child.GetComponent<Character>().Color;
+                //Debug.Log(speakerColor);
+                //string hex;
+                //hex = string.Format("#{0:X4}{1:X4}{2:X4}{3:X4}", speakerColor.b, speakerColor.g, speakerColor.r, speakerColor.a);
+                string hex = "#" + (speakerColor.r).ToString("x2") + (speakerColor.g).ToString("x2") + (speakerColor.b).ToString("x2");
+                //Debug.Log(hex);
+                return hex;
+
+            }
+              
+        }
+        return null;
+        
+        
+        
+        
+    }
     public void ConversationState()
     {
         

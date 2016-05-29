@@ -13,6 +13,7 @@ public class CharacterGenerator : MonoBehaviour {
     private List<string> consonants = new List<string>();
     public List<string> names = new List<string>();
     public string[] genders;
+    public List<Color> nameColors = new List<Color>();
     public string playerCharacterID;
     public List<Color> npcColors = new List<Color>();
     public Character playerCharacterPrefab;
@@ -37,6 +38,7 @@ public class CharacterGenerator : MonoBehaviour {
         playerCharacterID = ChoosePlayer();
         playerCharacter = Instantiate(playerCharacterPrefab, transform.position, transform.rotation) as Character;
         playerCharacter.name = playerCharacterID;
+        GenerateColors(playerCharacter);
         GenerateGenders(playerCharacter);
         GenerateName(playerCharacter);
         playerCharacter.transform.parent = gameObject.transform;
@@ -59,6 +61,7 @@ public class CharacterGenerator : MonoBehaviour {
             newCharacter = Instantiate(nonPlayerCharacterPrefab, transform.position, transform.rotation) as Character;
             newCharacter.name = characterIDs[i];
             newCharacter.ID = characterIDs[i];
+            GenerateColors(newCharacter);
             GenerateGenders(newCharacter);
             GenerateName(newCharacter);
             newCharacter.transform.parent = gameObject.transform;
@@ -105,15 +108,17 @@ public class CharacterGenerator : MonoBehaviour {
             Debug.Log("It's MEMM!");
         }
     }
+    void GenerateColors(Character character) {
+        int colorIndex = Random.Range(0, nameColors.Count);
+        character.Color = nameColors[colorIndex];
+        nameColors.RemoveAt(colorIndex);
+
+    }
 
     void GenerateGenders(Character character) {
         character.Gender = genders[Random.Range(0, genders.Length)];
     }
 
-    void GenerateColors(Character characters)
-    {
-
-    }
 
     void PopulateAttributes() {
 
