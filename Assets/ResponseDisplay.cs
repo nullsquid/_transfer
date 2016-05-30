@@ -94,10 +94,12 @@ public class ResponseDisplay : MonoBehaviour {
                 }
                 
             }
-            if (formattedText.Contains("%")) {
+            
+        }
+        if (formattedText.Contains("%"))
+        {
 
-                return formattedText.Replace(nameText, "<color=#ff0000ff>" + replacementName + "</color>");
-            }
+            return formattedText.Replace(nameText, "<color=#" + replacementColor.r.ToString("x2") + replacementColor.g.ToString("x2") + replacementColor.b.ToString("x2") + ">" + replacementName + "</color>");
         }
         return formattedText;
 

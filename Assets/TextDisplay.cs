@@ -22,6 +22,7 @@ public class TextDisplay : MonoBehaviour {
     public Vector3 speakerLinePosition;
 
     private string replacementName;
+    private Color32 replacementColor;
     private string nameText;
     private string replacementPronoun;
     private string pronounText;
@@ -114,7 +115,8 @@ public class TextDisplay : MonoBehaviour {
                         //formattedString.Remove(i, 2);
 
                         replacementName = GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].Name;
-                        if(GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "A") {
+                        replacementColor = GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].Color;
+                        if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "A") {
                             
                         }
                         else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "B") {
@@ -191,9 +193,9 @@ public class TextDisplay : MonoBehaviour {
                 
         }
         if (formattedString.Contains("%"))
-        {
-           
-            return formattedString.Replace(nameText, "<color=#00ff00ff>"+replacementName+"</color>");
+        { 
+            return formattedString.Replace(nameText, "<color=#"+replacementColor.r.ToString("x2") + replacementColor.g.ToString("x2") + replacementColor.b.ToString("x2")+">"+replacementName+"</color>");
+
         }
         if (formattedString.Contains("#"))
         {
