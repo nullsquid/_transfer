@@ -4,11 +4,15 @@ using System.Collections.Generic;
 public class ResponseDisplay : MonoBehaviour {
     public GameObject[] responses;
     public ConvTreeSearch treeSearcher;
+    public CharacterManager characterManager;
     public List<string> curResponses;
     public List<int> responseNumbers = new List<int>();
     public ConvNode curNode;
     public int lineLength;
     public int lineBreaks;
+    private string nameText;
+    private string replacementName;
+    private Color32 replacementColor;
     // Use this for initialization
     void OnEnable() {
         EventManager.StartListening("setupResponses", SetUpResponses);
@@ -55,6 +59,17 @@ public class ResponseDisplay : MonoBehaviour {
         int countToLineBreak = 0;
         for(int i = 0; i < inText.Length; i++)
         {
+            if(inText[i] == '%') {
+                for (int j = 0; j < characterManager.characters.Count; j++) {
+                    if (characterManager.characters[j].ID == inText[i + 1].ToString()) {
+                        replacementName = characterManager.characters[j].Name;
+                        replacementColor = characterManager.characters[j].Color;
+                        Debug.Log(replacementName);
+                    }
+                }
+                nameText = inText[i].ToString() + inText[i + 1].ToString();
+                Debug.Log(nameText);
+            }
             if(countToLineBreak <= lineLength)
             {
                 countToLineBreak += 1;
@@ -71,11 +86,17 @@ public class ResponseDisplay : MonoBehaviour {
                     //curResponses[i].GetComponent<Transform>().position += new Vector3(0, 1.7f, 0);
                     countToLineBreak = 0;
                 }
+                
                 else
                 {
                     //countToLinebreak += 1;
                     formattedText += inText[i];
                 }
+                
+            }
+            if (formattedText.Contains("%")) {
+
+                return formattedText.Replace(nameText, "<color=#ff0000ff>" + replacementName + "</color>");
             }
         }
         return formattedText;

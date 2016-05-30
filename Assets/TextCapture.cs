@@ -154,112 +154,103 @@ public class TextCapture : MonoBehaviour {
         }
         if (display.gameHasStarted == true)
         {
-            switch (rootToCheck)
-            {
-                case "EXIT":
-                    Application.Quit();
-                    break;
-                case "SLEEP":
-                    if (isSleeping == false)
-                    {
-                        if (commands.Length == 1)
-                        {
-                            Sleep(true);
+            if (display.isChatting != true) {
+                switch (rootToCheck) {
+                    case "EXIT":
+                        Application.Quit();
+                        break;
+                    case "SLEEP":
+                        if (isSleeping == false) {
+                            if (commands.Length == 1) {
+                                Sleep(true);
+                            }
+                            else {
+                                display.historyLines[0].GetComponent<TextMesh>().color = Color.red;
+                                display.historyLines[0].GetComponent<TextMesh>().text = "NO APPROPRIATE OVERLOAD FOR COMMAND 'SLEEP' FOUND";
+                            }
                         }
-                        else
-                        {
+
+                        break;
+                    case "CHAT":
+                        if (commands.Length <= 1) {
+                            if (display.isChatting != true) {
+                                /*
+                                display.historyLines[1].GetComponent<TextMesh>().color = Color.red;
+                                display.historyLines[1].GetComponent<TextMesh>().text = "NO OVERLOAD OF COMMAND 'CHAT' FOUND.";
+                                display.historyLines[0].GetComponent<TextMesh>().color = Color.red;
+                                display.historyLines[0].GetComponent<TextMesh>().text = "DID YOU MEAN TO ENTER A NETWORK ID?";
+                                */
+                                Clear();
+                                display.isChatting = true;
+                            }
+                        }
+                        else if (commands.Length == 2) {
+                            Debug.Log("works");
+                            //display.historyLines[0].GetComponent<TextMesh>().text = "CONNECTED";
+
+                        }
+                        else if (commands.Length > 2) {
+                            //if(commands[1] == something)
                             display.historyLines[0].GetComponent<TextMesh>().color = Color.red;
-                            display.historyLines[0].GetComponent<TextMesh>().text = "NO APPROPRIATE OVERLOAD FOR COMMAND 'SLEEP' FOUND";
+                            display.historyLines[0].GetComponent<TextMesh>().text = "NO OVERLOAD OF COMMAND 'CHAT' FOUND.";
+
                         }
-                    }
-                    
-                    break;
-                case "CHAT":
-                    if(commands.Length <= 1)
-                    {
-                        if (display.isChatting != true)
-                        {
-                            /*
-                            display.historyLines[1].GetComponent<TextMesh>().color = Color.red;
-                            display.historyLines[1].GetComponent<TextMesh>().text = "NO OVERLOAD OF COMMAND 'CHAT' FOUND.";
+                        Debug.Log("Connect");
+                        break;
+                    case "HELP":
+                        if (commands.Length == 1) {
+                            StartCoroutine(DisplayHelpMenu());
+                        }
+                        else {
+                            Debug.Log("error");
+                            display.historyLines[0].GetComponent<TextMesh>().text = display.commandError;
                             display.historyLines[0].GetComponent<TextMesh>().color = Color.red;
-                            display.historyLines[0].GetComponent<TextMesh>().text = "DID YOU MEAN TO ENTER A NETWORK ID?";
-                            */
-                            Clear();
-                            display.isChatting = true;
+                            // display.historyLines[0].GetComponent<TextMesh>().color = Color.Lerp(Color.red, Color.gray, Time.time);
+
                         }
-                    }
-                    else if(commands.Length == 2)
-                    {
-                        Debug.Log("works");
-                        //display.historyLines[0].GetComponent<TextMesh>().text = "CONNECTED";
-
-                    }
-                    else if(commands.Length > 2)
-                    {
-                        //if(commands[1] == something)
-                        display.historyLines[0].GetComponent<TextMesh>().color = Color.red;
-                        display.historyLines[0].GetComponent<TextMesh>().text = "NO OVERLOAD OF COMMAND 'CHAT' FOUND.";
-
-                    }
-                    Debug.Log("Connect");
-                    break;
-                case "HELP":
-                    if (commands.Length == 1)
-                    {
-                        StartCoroutine(DisplayHelpMenu());
-                    }
-                    else
-                    {
-                        Debug.Log("error");
-                        display.historyLines[0].GetComponent<TextMesh>().text = display.commandError;
-                        display.historyLines[0].GetComponent<TextMesh>().color = Color.red;
-                        // display.historyLines[0].GetComponent<TextMesh>().color = Color.Lerp(Color.red, Color.gray, Time.time);
-
-                    }
-                    break;
-                case "CLEAR":
-                    Clear();
-                    break;
+                        break;
+                    case "CLEAR":
+                        Clear();
+                        break;
                     //HACK
-                case "0":
-                    break;
-                case "1":
-                    break;
-                case "2":
-                    break;
-                case "3":
-                    break;
-                case "4":
-                    break;
-                case "5":
-                    break;
-                case "6":
-                    break;
-                case "7":
-                    break;
-                case "8":
-                    break;
-                case "9":
-                    break;
-                case "10":
-                    break;
-                case "11":
-                    break;
-                case "12":
-                    break;
-                case "":
-                    break;
-                
-                default:
-                    if (display.isChatting == false)
-                    {
-                        effects.StartScreenShake(7);
-                        display.historyLines[0].GetComponent<TextMesh>().color = Color.red;
-                        display.historyLines[0].GetComponent<TextMesh>().text = "NO DEFINITION FOR COMMAND '" + display.command + "' FOUND";
-                    }
-                    break;
+                    case "0":
+                        break;
+                    case "1":
+                        break;
+                    case "2":
+                        break;
+                    case "3":
+                        break;
+                    case "4":
+                        break;
+                    case "5":
+                        break;
+                    case "6":
+                        break;
+                    case "7":
+                        break;
+                    case "8":
+                        break;
+                    case "9":
+                        break;
+                    case "10":
+                        break;
+                    case "11":
+                        break;
+                    case "12":
+                        break;
+                    case "":
+                        break;
 
+                    default:
+                        if (display.isChatting == false) {
+                            effects.StartScreenShake(7);
+                            display.historyLines[0].GetComponent<TextMesh>().color = Color.red;
+                            display.historyLines[0].GetComponent<TextMesh>().text = "NO DEFINITION FOR COMMAND '" + display.command + "' FOUND";
+                        }
+                        break;
+
+                }
             }
 
         }
@@ -286,6 +277,7 @@ public class TextCapture : MonoBehaviour {
                     break;
             }
         }
+
     }
     
     IEnumerator DisplayHelpMenu()
