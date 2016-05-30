@@ -11,7 +11,9 @@ public class ResponseDisplay : MonoBehaviour {
     public int lineLength;
     public int lineBreaks;
     private string nameText;
+    private string pronounText;
     private string replacementName;
+    private string replacementPronoun;
     private Color32 replacementColor;
     // Use this for initialization
     void OnEnable() {
@@ -59,6 +61,20 @@ public class ResponseDisplay : MonoBehaviour {
         int countToLineBreak = 0;
         for(int i = 0; i < inText.Length; i++)
         {
+            if (inText[i] == '#')
+            {
+                for(int p = 0; p < characterManager.characters.Count; p++)
+                {
+                    if(characterManager.characters[p].ID == inText[i + 1].ToString())
+                    {
+                        replacementPronoun = characterManager.characters[p].Pronoun;
+                        Debug.Log(replacementPronoun);
+
+                    }
+                    pronounText = inText[i].ToString() + inText[i + 1].ToString();
+                    Debug.Log(pronounText);
+                }
+            }
             if(inText[i] == '%') {
                 for (int j = 0; j < characterManager.characters.Count; j++) {
                     if (characterManager.characters[j].ID == inText[i + 1].ToString()) {
@@ -95,6 +111,10 @@ public class ResponseDisplay : MonoBehaviour {
                 
             }
             
+        }
+        if (formattedText.Contains("#"))
+        {
+            return formattedText.Replace(pronounText, replacementPronoun);
         }
         if (formattedText.Contains("%"))
         {

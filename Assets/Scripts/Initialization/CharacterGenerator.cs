@@ -117,6 +117,26 @@ public class CharacterGenerator : MonoBehaviour {
 
     void GenerateGenders(Character character) {
         character.Gender = genders[Random.Range(0, genders.Length)];
+        if(character.Gender == "Male")
+        {
+            character.Pronoun = "him";
+        }
+        else if(character.Gender == "Female")
+        {
+            character.Pronoun = "her";
+        }
+        else if (character.Gender == "Queer")
+        {
+            character.Pronoun = "them";
+        }
+        else if (character.Gender == "Agender")
+        {
+            character.Pronoun = "it";
+        }
+
+
+
+
     }
 
 
