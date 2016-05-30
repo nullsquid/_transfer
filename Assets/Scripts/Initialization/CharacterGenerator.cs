@@ -18,6 +18,9 @@ public class CharacterGenerator : MonoBehaviour {
     public List<Color> npcColors = new List<Color>();
     public Character playerCharacterPrefab;
     public Character nonPlayerCharacterPrefab;
+
+    public float reGlitchTime;
+    string newGlitchName;
     void OnEnable() {
         EventManager.StartListening("makePlayer", MakePlayer);
         EventManager.StartListening("makeNonPlayers", MakeNonPlayers);
@@ -83,7 +86,18 @@ public class CharacterGenerator : MonoBehaviour {
 
 
     
-    
+    public string GenerateGlitchName() {
+        
+        for (int j = 0; j < 4; j++) {
+            for (int i = 0; i < nameBits.Length; i++) {
+                if (reGlitchTime > .3f) {
+                    newGlitchName += nameBits[i];
+
+                }
+            }
+        }
+        return newGlitchName;
+    }
     void GenerateName(Character character) {
         for(int i = 0; i < nameBits.Length; i++) {
             if(nameBits[i] == "A" || nameBits[i] == "E" || nameBits[i] == "I" || nameBits[i] == "O" || nameBits[i] == "U") {

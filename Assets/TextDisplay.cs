@@ -20,6 +20,7 @@ public class TextDisplay : MonoBehaviour {
     public float charDelay = 0.5f;
     public float charTimer;
     public Vector3 speakerLinePosition;
+    public float timeBetweenLetters;
 
     private string replacementName;
     private Color32 replacementColor;
@@ -50,6 +51,7 @@ public class TextDisplay : MonoBehaviour {
         if (isChatting)
         {
             if (treeManager.GetComponent<ConvTreeSearch>().GetSpeakerName() != null) {
+                
                 historyLines[0].GetComponent<TextMesh>().text = "<color=" + treeManager.GetComponent<ConvTreeSearch>().GetSpeakerColor() + ">" + FormatText(treeManager.GetComponent<ConvTreeSearch>().GetSpeakerName() + "</color>" + ": " + treeManager.GetComponent<ConvTreeSearch>().DisplayPrompt());
             }
             else {
@@ -116,43 +118,6 @@ public class TextDisplay : MonoBehaviour {
 
                         replacementName = GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].Name;
                         replacementColor = GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].Color;
-                        if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "A") {
-                            
-                        }
-                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "B") {
-
-                        }
-
-                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "C") {
-
-                        }
-                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "D") {
-
-                        }
-
-                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "E") {
-
-                        }
-                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "F") {
-
-                        }
-                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "G") {
-
-                        }
-                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "H") {
-
-                        }
-                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "I") {
-
-                        }
-                        else if (GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID == "0") {
-
-                        }
-
-
-
-
-
 
                         //formattedString = formattedString.Replace("%" + GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].ID, GameObject.Find("CharacterManager").GetComponent<CharacterManager>().characters[j].Name);
 
@@ -174,6 +139,7 @@ public class TextDisplay : MonoBehaviour {
                 countToLinebreak += 1;
                 formattedString += inText[i];
 
+
             }
             else if (countToLinebreak > lineLength)
             {
@@ -186,8 +152,10 @@ public class TextDisplay : MonoBehaviour {
                 }
                 else
                 {
-                    
                     formattedString += inText[i];
+                    timeBetweenLetters += Time.deltaTime;
+                    
+
                 }
             }
                 

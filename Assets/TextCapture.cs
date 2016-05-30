@@ -333,6 +333,7 @@ public class TextCapture : MonoBehaviour {
     }
     IEnumerator StartupRoutine()
     {
+        GameObject.Find("transferHome_0").GetComponent<SpriteRenderer>().enabled = true;
         display.canType = false;
         if (display.gameHasStarted == false)
         {
@@ -482,6 +483,8 @@ public class TextCapture : MonoBehaviour {
         
         display.canType = true;
         EventManager.TriggerEvent("stopAllAudio");
+        GameObject.Find("transferHome_0").GetComponent<SpriteRenderer>().enabled = false;
+
         yield return null;
 
     }

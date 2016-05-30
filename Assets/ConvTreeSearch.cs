@@ -97,6 +97,7 @@ public class ConvTreeSearch : MonoBehaviour {
     }
     public void SetNextNode(int choice)
     {
+        
         if (nextNodes.Count > 0)
         {
             if (GameObject.Find("TextManager").GetComponent<ResponseDisplay>().curResponses.Count > nextNodes.Count)
@@ -199,6 +200,7 @@ public class ConvTreeSearch : MonoBehaviour {
     
     public void TraverseToNextNode(int choice)
     {
+        //might cause bugs
         
         for(int i = 0; i < nextNodes.Count; i++)
         {
@@ -216,5 +218,17 @@ public class ConvTreeSearch : MonoBehaviour {
         yield return new WaitForSeconds(1.0f);
 
     }
-    
+
+    IEnumerator WaitForLoad() {
+        GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = false;
+        GameObject.Find("transferLoadingGlitch_0").GetComponent<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(Random.Range(0.1f, 1.0f));
+        GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = false;
+
+        GameObject.Find("transferLoadingGlitch_0").GetComponent<SpriteRenderer>().enabled = true;
+
+        yield return null;
+
+    }
+
 }
