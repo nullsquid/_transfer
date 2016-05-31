@@ -13,7 +13,8 @@ public class ConvTreeSearch : MonoBehaviour {
     public ConvNode firstNode;
     public ConvNode curNode;
     public List<ConvNode> nextNodes = new List<ConvNode>();
-   
+
+    public float loadTimer;
     void OnEnable() {
         //EventManager.StartListening("TESTNodeTraversal", TestNodeTraversal);
         EventManager.StartListening("findStartTree", FindStartTree);
@@ -85,9 +86,19 @@ public class ConvTreeSearch : MonoBehaviour {
     }
     
     public string DisplayPrompt() {
-        
+
         
         return curNode.prompt;
+
+
+    }
+    IEnumerator WaitForLoad() {
+        GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = false;
+        GameObject.Find("transferLoadingGlitch_0").GetComponent<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(1.0f);
+        GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = true;
+        GameObject.Find("transferLoadingGlitch_0").GetComponent<SpriteRenderer>().enabled = false;
+        //yield return curNode.prompt;
     }
     void GetCurrentNode(ConvNode node)
     {
@@ -192,7 +203,9 @@ public class ConvTreeSearch : MonoBehaviour {
     }
     public void ConversationState()
     {
-        
+        //StartCoroutine(WaitForLoad());
+        //bad idea
+        //WaitForLoad();
         DisplayPrompt();
         EventManager.TriggerEvent("setCurResponses");
         
@@ -219,16 +232,6 @@ public class ConvTreeSearch : MonoBehaviour {
 
     }
 
-    IEnumerator WaitForLoad() {
-        GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = false;
-        GameObject.Find("transferLoadingGlitch_0").GetComponent<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(Random.Range(0.1f, 1.0f));
-        GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = false;
-
-        GameObject.Find("transferLoadingGlitch_0").GetComponent<SpriteRenderer>().enabled = true;
-
-        yield return null;
-
-    }
+  
 
 }
