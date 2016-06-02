@@ -152,13 +152,14 @@ public class TextCapture : MonoBehaviour {
         {
             display.historyLines[n].GetComponent<TextMesh>().color = Color.gray;
         }
-        if (display.gameHasStarted == true)
-        {
+        if (display.gameHasStarted == true) {
+            if (rootToCheck == "EXIT") {
+                Application.Quit();
+            }
+
             if (display.isChatting != true) {
                 switch (rootToCheck) {
-                    case "EXIT":
-                        Application.Quit();
-                        break;
+                    
                     case "SLEEP":
                         if (isSleeping == false) {
                             if (commands.Length == 1) {
