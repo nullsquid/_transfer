@@ -144,16 +144,17 @@ public class TextDisplay : MonoBehaviour {
             else if (countToLinebreak > lineLength)
             {
                 if (inText[i] == ' ')
-                {
-                    formattedString += inText[i];
-                    formattedString += "\n";
-                    historyLines[0].GetComponent<Transform>().position += new Vector3(0, 1.7f, 0);
-                    countToLinebreak = 0;
+                { 
+                        formattedString += inText[i];
+                        formattedString += "\n";
+                        historyLines[0].GetComponent<Transform>().position += new Vector3(0, 1.7f, 0);
+                        countToLinebreak = 0;
+                    
                 }
                 else
                 {
                     formattedString += inText[i];
-                    timeBetweenLetters += Time.deltaTime;
+                    //timeBetweenLetters += Time.deltaTime;
                     
 
                 }
