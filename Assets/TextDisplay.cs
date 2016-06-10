@@ -93,6 +93,7 @@ public class TextDisplay : MonoBehaviour {
 
     }
     
+    
     public string FormatText(string inText)
     {
 
