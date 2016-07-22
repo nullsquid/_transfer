@@ -92,14 +92,7 @@ public class ConvTreeSearch : MonoBehaviour {
 
 
     }
-    IEnumerator WaitForLoad() {
-        GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = false;
-        GameObject.Find("transferLoadingGlitch_0").GetComponent<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(1.0f);
-        GameObject.Find("TextManager").GetComponent<TextDisplay>().canType = true;
-        GameObject.Find("transferLoadingGlitch_0").GetComponent<SpriteRenderer>().enabled = false;
-        //yield return curNode.prompt;
-    }
+   
     void GetCurrentNode(ConvNode node)
     {
         curNode = node;
@@ -203,9 +196,8 @@ public class ConvTreeSearch : MonoBehaviour {
     }
     public void ConversationState()
     {
-        //StartCoroutine(WaitForLoad());
-        //bad idea
-        //WaitForLoad();
+        //Get this out of this class
+
         DisplayPrompt();
         EventManager.TriggerEvent("setCurResponses");
         
