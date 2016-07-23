@@ -6,6 +6,16 @@ public class ChatState : ITerminalState {
 
     public ChatState(StatePatternTerminal statePatternTerminal) {
         terminal = statePatternTerminal;
+
+
+    }
+
+    public void DisplayGraph() {
+
+    }
+
+    public void UpdateGraph() {
+
     }
 
     public void UpdateState() {
