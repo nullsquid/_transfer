@@ -46,6 +46,7 @@ public class TextDisplay : MonoBehaviour {
         userName = GameObject.FindObjectOfType<PlayerCharacter>().Name;
 
     }
+
     void Update()
     {
         if (isChatting)
