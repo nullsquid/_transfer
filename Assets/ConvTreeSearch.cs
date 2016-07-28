@@ -50,13 +50,7 @@ public class ConvTreeSearch : MonoBehaviour {
         GetCharacterInfoFromManager();
         
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftAlt)) {
-            SetNextNode(0);
-        }
-       
-    }
+    
 
     void GetCurrentTree(ConvTree newTree)
     {
