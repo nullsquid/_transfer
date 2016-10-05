@@ -83,7 +83,6 @@ public class TextDisplay : MonoBehaviour {
         {
 
             ChangeText(e);
-            //RemoveText(e);
             
             
             
