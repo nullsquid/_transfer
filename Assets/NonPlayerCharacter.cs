@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class NonPlayerCharacter : Character, IEncounterable {
+public class NonPlayerCharacter : Character {
     
     private bool _haveEncounteredPlayer = false;
     //TODO add event to trigger this from the player character class
