@@ -46,6 +46,7 @@ namespace TransferDisplay
 
         IEnumerator TypeWriter(string text, float time)
         {
+			
             
                 for (int i = 0; i < text.Length; i++)
                 {
@@ -56,17 +57,22 @@ namespace TransferDisplay
                         
                         if (wordsInLine > wordsPerLine)
                         {
-                            text.Remove(i, 1).ToString();
+							
+							
+
+                            //text.Remove(i, 1);
                             Debug.Log(text);
                             typewriterText += "\n";
                             wordsInLine = 0;
-                            
+                         
 
 
                         }
                 }
-                    
+					
                     typewriterText += text[i];
+					
+					Debug.Log (typewriterText);
                     yield return new WaitForSeconds(time);
 
             }
