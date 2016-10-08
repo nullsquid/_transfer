@@ -3,6 +3,13 @@ using System.Collections;
 
 public class ConnectedState : ITerminalState {
 
+    private readonly StatePatternTerminal terminal;
+
+    public ConnectedState(StatePatternTerminal statePatternTerminal)
+    {
+        terminal = statePatternTerminal;
+    }
+
 	public void UpdateState()
     {
 

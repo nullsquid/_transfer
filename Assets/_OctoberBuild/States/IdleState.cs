@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SleepState : MonoBehaviour {
+public class IdleState : ITerminalState {
 
     private readonly StatePatternTerminal terminal;
 
-    public SleepState(StatePatternTerminal statePatternTerminal)
+    public IdleState(StatePatternTerminal statePatternTerminal)
     {
         terminal = statePatternTerminal;
     }
 
     public void UpdateState()
     {
-
+        //What the state does
     }
 
     public void OnCommandReceived(string command)
