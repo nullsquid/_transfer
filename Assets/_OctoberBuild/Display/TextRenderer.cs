@@ -41,13 +41,12 @@ namespace TransferDisplay
             style.fontSize = fontSize;
             style.normal.textColor = mainTextColor;
 
-            GUI.Label(new Rect(xPadding, yPadding, 500, 30), typewriterText.ToUpper(), style);
+            GUI.Label(new Rect(xPadding, yPadding, 500, 30), " " + typewriterText.ToUpper(), style);
         }
 
         IEnumerator TypeWriter(string text, float time)
         {
-			
-            
+
                 for (int i = 0; i < text.Length; i++)
                 {
                     if(text[i] == ' ')
@@ -58,15 +57,8 @@ namespace TransferDisplay
                         if (wordsInLine > wordsPerLine)
                         {
 							
-							
-
-                            //text.Remove(i, 1);
-                            Debug.Log(text);
                             typewriterText += "\n";
                             wordsInLine = 0;
-                         
-
-
                         }
                 }
 					
