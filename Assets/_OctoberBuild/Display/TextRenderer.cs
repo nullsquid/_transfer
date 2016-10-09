@@ -41,15 +41,15 @@ namespace TransferDisplay
             style.fontSize = fontSize;
             style.normal.textColor = mainTextColor;
 
-            GUI.Label(new Rect(xPadding, yPadding, 500, 30), " " + typewriterText.ToUpper(), style);
+            GUI.Label(new Rect(xPadding, yPadding, 500, 30),typewriterText.ToUpper(), style);
         }
 
-        IEnumerator TypeWriter(string text, float time)
+        IEnumerator IterateThroughCharactersToPrint(string text, float time)
         {
 
                 for (int i = 0; i < text.Length; i++)
                 {
-                    if(text[i] == ' ')
+                    if(i > 0 && text[i - 1] == ' ')
                     {
                         
                         wordsInLine++;
@@ -58,21 +58,20 @@ namespace TransferDisplay
                         {
 							
                             typewriterText += "\n";
+                            typewriterText.Remove(i - 1, 1);
                             wordsInLine = 0;
                         }
                 }
 					
                     typewriterText += text[i];
-					
-					Debug.Log (typewriterText);
-                    yield return new WaitForSeconds(time);
+					yield return new WaitForSeconds(time);
 
             }
         }
 
         public void PrintText(string newText, float time)
         {
-            StartCoroutine(TypeWriter(newText, time));
+            StartCoroutine(IterateThroughCharactersToPrint(newText, time));
         }
 
 
