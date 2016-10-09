@@ -26,30 +26,32 @@ namespace TransferDisplay
         public Font mainFont;
         public int fontSize;
         public Color32 mainTextColor = Color.white;
+        [HideInInspector]
+        public GUIStyle style;
         #endregion
 
         #region Private Variables
-        GUIStyle style;
+
 
         private int wordsInLine;
         private int linesInChunk;
         #endregion
 
+        #region Constructor
+        public TextRenderer()
+        {
+            
+        }
+        #endregion
+
+        #region Main Methods
         void Start()
         {
             style = new GUIStyle();
-            PrintText(entityText, timeBetweenLetters);
 
         }
 
-        void OnGUI()
-        {
-            style.font = mainFont;
-            style.fontSize = fontSize;
-            style.normal.textColor = mainTextColor;
 
-            GUI.Label(new Rect(xPadding, yPadding, 500, 30),typewriterText.ToUpper(), style);
-        }
 
         IEnumerator IterateThroughCharactersToPrint(string text, float time)
         {
@@ -58,11 +60,11 @@ namespace TransferDisplay
                 {
                     if (text[i] == '.')
                     {
-                        time += punctuationTimeModifier;
+                        time += punctuationTimeModifier/Random.Range(1, 1.5f);
                     }
                     else if (text[i] == ',')
                     {
-                        time += punctuationTimeModifier / 3;
+                        time += punctuationTimeModifier / Random.Range(2.5f, 4f);
                     }
                     else
                     {
@@ -94,12 +96,16 @@ namespace TransferDisplay
 
             }
         }
+        #endregion
 
+        #region Utility Methods
         public void PrintText(string newText, float time)
         {
             StartCoroutine(IterateThroughCharactersToPrint(newText, time));
         }
+        #endregion
 
 
     }
+
 }
