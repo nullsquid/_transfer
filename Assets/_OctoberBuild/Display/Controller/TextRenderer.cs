@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 namespace TransferDisplay
 {
-    public class TextRenderer : MonoBehaviour
+    public class TextRenderer
     {
-        #region Pulbic Variables
+        #region Public Variables
         //Descriptor variables
         [HideInInspector]
         public string entityName;
@@ -49,13 +49,12 @@ namespace TransferDisplay
         #region Main Methods
         void Start()
         {
-            style = new GUIStyle();
-
+            
         }
 
 
 
-        IEnumerator IterateThroughCharactersToPrint(string text, float time)
+        public IEnumerator IterateThroughCharactersToPrint(string text, float time)
         {
             float normalTime = time;
                 for (int i = 0; i < text.Length; i++)
@@ -101,13 +100,15 @@ namespace TransferDisplay
         #endregion
 
         #region Utility Methods
+        /*
         public void PrintText(string newText, float time)
         {
             StartCoroutine(IterateThroughCharactersToPrint(newText, time));
-        }
+        }*/
+
+        
         #endregion
-
-
+        
     }
 
 }
