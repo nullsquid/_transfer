@@ -5,17 +5,13 @@ namespace TransferDisplay
 {
     public class UserInterface : MonoBehaviour
     {
-        TextRenderer display;
-
+        TextRenderer display = new TextRenderer();
+      
 
         void OnGUI()
         {
-            if(display == null)
-            {
-                display = new TextRenderer();
-            }
 
-            //use a facade for all this initialization garbage
+            //use a facade for all this initialization garbage?
             Debug.Log(display);
             display.style.font = display.mainFont;
             display.style.fontSize = display.fontSize;

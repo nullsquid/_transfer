@@ -26,6 +26,8 @@ namespace TransferDisplay
         public Font mainFont;
         public int fontSize;
         public Color32 mainTextColor = Color.white;
+
+        //Style Reference
         [HideInInspector]
         public GUIStyle style;
         #endregion
