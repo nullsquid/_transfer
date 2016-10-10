@@ -16,7 +16,7 @@ namespace TransferDisplay
         
         void OnGUI()
         {
-            if(display == null)
+            /*if(display == null)
             {
                 display = new TextRenderer();
             }
@@ -28,6 +28,7 @@ namespace TransferDisplay
             display.style.fontSize = display.fontSize;
             display.style.normal.textColor = display.mainTextColor;
             display.entityText = "Lorem ipsum";
+            */
 
             //GUI.Label(new Rect(display.xPadding, display.yPadding, 500, 30), display.typewriterText.ToUpper(), display.style);
         }

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class UIMain : TransferDisplay.UserInterface {
 
-    #region Public Variables
+    #region Public Styling Variables
     //Style//Text//
     public Font mainFont;
     public int mainFontSize;
@@ -35,10 +35,17 @@ public class UIMain : TransferDisplay.UserInterface {
     [HideInInspector]
     public string entityTextContent;
 
+    #endregion
 
+    #region Private Variables
 
+    #endregion
 
-    
+    #region Main Methods
+
+    #endregion
+
+    #region Utility Methods
 
     #endregion
 }

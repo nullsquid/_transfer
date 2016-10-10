@@ -42,15 +42,11 @@ namespace TransferDisplay
         #region Constructor
         public TextRenderer()
         {
-            
+            style = new GUIStyle();
         }
         #endregion
 
         #region Main Methods
-        void Start()
-        {
-            
-        }
 
 
 
