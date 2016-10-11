@@ -1,39 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using TransferDisplay;
 public class UIMain : TransferDisplay.UserInterface {
 
     #region Public Styling Variables
-    //Style//Text//
-    public Font mainFont;
-    public int mainFontSize;
-    public Color32 mainFontColor = Color.white;
-    
-    
-    //Style//Positioning//
-    public float xPadding;
-    public float yPadding;
 
-    public enum DisplayPosition
-    {
-        botLeft,
-        topLeft,
-        botRight,
-        topRight
-    };
-    public DisplayPosition Position;
-
-    //Style//LineLengths
-    public float timeBetweenLetters = .1f;
-    public float punctuationTimeModifier;
-    public int maxLineLength;
-    public int maxChunkLength;
-
+    public bool useDummyText;
     //Content//
     [HideInInspector]
     public string entityTextName;
     [HideInInspector]
-    public string entityTextContent;
+    public string textContent;
+    [HideInInspector]
+    public string dummyTextContent = 
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus accumsan consectetur urna id dignissim. Duis ut lectus efficitur, laoreet justo et, hendrerit nulla. Aenean ultricies molestie lorem ac scelerisque. Fusce sollicitudin, dui vitae mattis accumsan, leo dolor maximus ligula, in auctor magna velit at magna. Nulla vitae semper lectus. Sed convallis dui ut nibh scelerisque ullamcorper. Phasellus at ante et metus venenatis congue. Sed sapien erat, dapibus quis pellentesque rutrum, lacinia nec enim. Nullam vel imperdiet lorem. Sed erat eros, fringilla eget convallis et, venenatis et mi. Curabitur vulputate odio a dictum dapibus.";
 
     #endregion
 
@@ -46,6 +26,44 @@ public class UIMain : TransferDisplay.UserInterface {
     #endregion
 
     #region Utility Methods
+
+    #endregion
+
+    #region Unity Callbacks
+    void Start()
+    {
+
+        //none of these should happen in this start method
+
+        if (useDummyText)
+        {
+            textContent = dummyTextContent;
+        }
+
+        InitializeUserInterface();
+        PrintText(textContent, maxLineLength, maxChunkLength, timeBetweenLetters, punctuationTimeModifier);
+    }
+
+    
+
+    void OnGUI()
+    {
+        if(display == null)
+        {
+            display = new TextRenderer();
+        }
+        //temp
+        display.style.font = mainFont;
+        display.style.fontSize = mainFontSize;
+        display.style.normal.textColor = mainFontColor;
+        PrintToScreen();
+    }
+
+    public override void PrintText(string newText, int lineLength, int chunkLength, float time, float punctTimeMod)
+    {
+
+        StartCoroutine(display.IterateThroughCharactersToPrint(newText, lineLength, chunkLength, time, punctTimeMod));
+    }
 
     #endregion
 }

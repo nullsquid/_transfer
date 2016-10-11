@@ -5,27 +5,22 @@ namespace TransferDisplay
 {
     public class TextRenderer
     {
-        #region Public Variables
-        //Descriptor variables
-        [HideInInspector]
-        public string entityName;
 
-        //Varibles that will change over time
-        [HideInInspector]
-        public string entityText;
+        #region Public Variables
+
+
+
+        //System Variables
         [HideInInspector]
         public string typewriterText;
 
-        //System Variables
-        public float timeBetweenLetters = .1f;
-        public float punctuationTimeModifier;
-        public int maxLineLength;
-        public int maxChunkLength;
-        public float xPadding = 100f;
-        public float yPadding = 100f;
-        public Font mainFont;
-        public int fontSize;
-        public Color32 mainTextColor = Color.white;
+
+        //public float xPadding = 100f;
+        //public float yPadding = 100f;
+
+        //public Font mainFont;
+        //public int fontSize;
+        //public Color32 mainTextColor = Color.white;
 
         //Style Reference
         [HideInInspector]
@@ -38,7 +33,7 @@ namespace TransferDisplay
         private int wordsInLine;
         private int linesInChunk;
         #endregion
-
+        
         #region Constructor
         public TextRenderer()
         {
@@ -50,18 +45,18 @@ namespace TransferDisplay
 
 
 
-        public IEnumerator IterateThroughCharactersToPrint(string text, float time)
+        public IEnumerator IterateThroughCharactersToPrint(string text, int lineLength, int chunkLength, float time, float punctTime)
         {
             float normalTime = time;
                 for (int i = 0; i < text.Length; i++)
                 {
                     if (text[i] == '.')
                     {
-                        time += punctuationTimeModifier/Random.Range(1, 1.5f);
+                        time += punctTime/Random.Range(1, 1.5f);
                     }
                     else if (text[i] == ',')
                     {
-                        time += punctuationTimeModifier / Random.Range(2.5f, 4f);
+                        time += punctTime / Random.Range(2.5f, 4f);
                     }
                     else
                     {
@@ -73,14 +68,14 @@ namespace TransferDisplay
                         
                         wordsInLine++;
                         
-                        if (wordsInLine > maxLineLength)
+                        if (wordsInLine >= lineLength)
                         {
                             linesInChunk++;
                             typewriterText += "\n";
                             typewriterText.Remove(i - 1, 1);
                             wordsInLine = 0;
 
-                            if(linesInChunk >= maxChunkLength)
+                            if(linesInChunk >= chunkLength)
                             {
                                 //event to call the next chunk
                                 break;
