@@ -17,6 +17,16 @@ public class UIMain : TransferDisplay.UserInterface {
 
     #endregion
 
+    #region Public Display Variables
+    [Range(0.001f, 0.1f)]
+    public float timeBetweenLetters;
+    [Range(0.1f, 0.5f)]
+    public float punctuationTimeModifier;
+    [Range(1, 50)]
+    public int maxLineLength;
+    [Range(1, 50)]
+    public int maxChunkLength;
+    #endregion
     #region Private Variables
 
     #endregion

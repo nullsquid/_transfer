@@ -33,14 +33,7 @@ namespace TransferDisplay
         #region Public System Variables
         //Style//LineLengths
         //[Range()]
-        [Range(0.001f, 0.1f)]
-        public float timeBetweenLetters;
-        [Range(0.1f, 0.5f)]
-        public float punctuationTimeModifier;
-        [Range(1, 50)]
-        public int maxLineLength;
-        [Range(1, 50)]
-        public int maxChunkLength;
+
 
         #endregion
 
