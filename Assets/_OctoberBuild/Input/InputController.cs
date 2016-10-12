@@ -2,19 +2,13 @@
 using System.Collections;
 namespace TransferInput
 {
-    public class InputControllerB
+    public class InputController
     {
-
-        // Use this for initialization
-        void Start()
+        public string UpdateInput(Event e)
         {
-
+            Debug.Log(e);
+            return e.ToString();
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        
     }
 }
