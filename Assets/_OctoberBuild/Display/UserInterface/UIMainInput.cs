@@ -9,10 +9,10 @@ public class UIMainInput :  UserInterface{
     void Start()
     {
         
-        Debug.Log(display);
+
         //facade this out
         InitializeUserInterface();
-        
+
     }
 
     void OnGUI()
@@ -20,13 +20,9 @@ public class UIMainInput :  UserInterface{
         if (inputDisplay == null)
         {
             
-            inputDisplay = new TextRenderer();
-            //facade this out
-            inputDisplay.style.font = mainFont;
-            inputDisplay.style.fontSize = mainFontSize;
-            inputDisplay.style.normal.textColor = mainFontColor;
+            inputDisplay = new TextRenderer(mainFont, mainFontSize, mainFontColor);
+            
         }
-        Debug.Log("input display is " + inputDisplay);
 
         GUI.Label(new Rect(xPos, yPos, 500, 30), initText, inputDisplay.style);
     }

@@ -13,14 +13,9 @@ namespace TransferDisplay
         //System Variables
         [HideInInspector]
         public string typewriterText;
+        public string singleWordText;
 
 
-        //public float xPadding = 100f;
-        //public float yPadding = 100f;
-
-        //public Font mainFont;
-        //public int fontSize;
-        //public Color32 mainTextColor = Color.white;
 
         //Style Reference
         [HideInInspector]
@@ -35,15 +30,49 @@ namespace TransferDisplay
         #endregion
         
         #region Constructor
-        public TextRenderer()
+        public TextRenderer(Font newFont, int newFontSize, Color32 newFontColor)
         {
             style = new GUIStyle();
+            style.font = newFont;
+            style.fontSize = newFontSize;
+            style.normal.textColor = newFontColor;
         }
         #endregion
 
         #region Main Methods
 
-
+        
+        public IEnumerator IterateThroughWordToPrint(string text, int lineLength, int chunkLength, float time)
+        {
+            string currentWord = "";
+            for(int i = 0; i < text.Length; i++)
+            {
+                currentWord += text[i];
+                Debug.Log(currentWord);
+                
+                if (i > 0 && text[i] == ' ')
+                {
+                    singleWordText += currentWord;
+                    currentWord = "";
+                    wordsInLine++;
+                    if (wordsInLine >= lineLength)
+                    {
+                        singleWordText += "\n";
+                        linesInChunk++;
+                        wordsInLine = 0;
+                    }
+                }
+                if(linesInChunk >= chunkLength)
+                {
+                    break;
+                }
+                
+                
+                
+                typewriterText = singleWordText;
+                yield return new WaitForSeconds(time);
+            }
+        }
 
         public IEnumerator IterateThroughCharactersToPrint(string text, int lineLength, int chunkLength, float time, float punctTime)
         {

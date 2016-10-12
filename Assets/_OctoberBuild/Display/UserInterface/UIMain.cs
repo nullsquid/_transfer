@@ -36,7 +36,7 @@ public class UIMain : TransferDisplay.UserInterface {
     #endregion
 
     #region Public Display Variables
-    [Range(0.0001f, 0.1f)]
+    [Range(0.0000f, 0.1f)]
     public float timeBetweenLetters;
     [Range(0.0f, 0.5f)]
     public float punctuationTimeModifier;
@@ -44,6 +44,8 @@ public class UIMain : TransferDisplay.UserInterface {
     public int maxLineLength;
     [Range(1, 50)]
     public int maxChunkLength;
+    public PrintType Type;
+
     #endregion
     #region Private Variables
 
@@ -67,9 +69,9 @@ public class UIMain : TransferDisplay.UserInterface {
         {
             textContent = dummyTextContent;
         }
-
+        //facade this out
         InitializeUserInterface();
-        PrintText(textContent, maxLineLength, maxChunkLength, timeBetweenLetters, punctuationTimeModifier);
+        PrintText(textContent, maxLineLength, maxChunkLength, timeBetweenLetters, punctuationTimeModifier, Type);
     }
 
     
@@ -78,20 +80,32 @@ public class UIMain : TransferDisplay.UserInterface {
     {
         if(display == null)
         {
-            display = new TextRenderer();
+            display = new TextRenderer(mainFont, mainFontSize, mainFontColor);
         }
-        //temp
-        display.style.font = mainFont;
-        display.style.fontSize = mainFontSize;
-        display.style.normal.textColor = mainFontColor;
+
         PrintToScreen();
+        
     }
 
-    public override void PrintText(string newText, int lineLength, int chunkLength, float time, float punctTimeMod)
+    public override void PrintText(string newText, int lineLength, int chunkLength, float time, float punctTimeMod, PrintType type)
+    {
+        if (type == PrintType.character)
+        {
+            StartCoroutine(display.IterateThroughCharactersToPrint(newText, lineLength, chunkLength, time, punctTimeMod));
+        }
+        else if(type == PrintType.word)
+        {
+            StartCoroutine(display.IterateThroughWordToPrint(newText, lineLength, chunkLength, time));
+        }
+    }
+
+    /*public override void PrintText(string newText, int lineLength, int chunkLength, float time)
     {
 
-        StartCoroutine(display.IterateThroughCharactersToPrint(newText, lineLength, chunkLength, time, punctTimeMod));
-    }
+        StartCoroutine(display.IterateThroughLineToPrint(newText, lineLength, chunkLength, time));
+    }*/
+
+
 
     #endregion
 }

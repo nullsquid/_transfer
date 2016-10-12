@@ -5,6 +5,7 @@ namespace TransferDisplay
 {
     public abstract class UserInterface : MonoBehaviour
     {
+        
         protected TextRenderer display;
         #region Public Style Variables        
         //Style//Text//
@@ -27,6 +28,12 @@ namespace TransferDisplay
             topRight,
             center
         };
+        public enum PrintType
+        {
+            character,
+            word,
+            line
+        }
         public DisplayPosition Position = DisplayPosition.topLeft;
         #endregion
 
@@ -42,18 +49,16 @@ namespace TransferDisplay
         protected float xPos;
         protected float yPos;
         #endregion
-        void Start()
-        {
- 
-        }
 
-
+        //might want to make this into a facade
+        //the display variable in this class might be better only in children classes
 
         protected void InitializeUserInterface()
         {
+            
             if (display == null)
             {
-                display = new TextRenderer();
+                display = new TextRenderer(mainFont, mainFontSize, mainFontColor);
             }
             PositionUI();
 
@@ -64,10 +69,12 @@ namespace TransferDisplay
         {
             switch (Position)
             {
+
                 case DisplayPosition.botLeft:
                     xPos = 0 + xPadding;
                     yPos = Screen.height - yPadding;
                     break;
+
                 case DisplayPosition.botRight:
                     xPos = Screen.width - xPadding;
                     yPos = Screen.height - yPadding;
@@ -82,6 +89,7 @@ namespace TransferDisplay
                     xPos = Screen.width - xPadding;
                     yPos = 0 + yPadding;
                     break;
+
                 case DisplayPosition.center:
                     xPos = Screen.width / 2;
                     yPos = Screen.height / 2;
@@ -89,11 +97,12 @@ namespace TransferDisplay
             }
         }
         
-        public virtual void PrintText(string newText, int lineLength, int chunkLength, float time, float punctTimeMod)
+        public virtual void PrintText(string newText, int lineLength, int chunkLength, float time, float punctTimeMod, PrintType type)
         {
             
-            StartCoroutine(display.IterateThroughCharactersToPrint(newText, lineLength, chunkLength, time, punctTimeMod));
         }
+
+        
 
         protected virtual void PrintToScreen()
         {
