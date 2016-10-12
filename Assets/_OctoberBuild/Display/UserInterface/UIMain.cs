@@ -36,6 +36,8 @@ public class UIMain : TransferDisplay.UserInterface {
     #endregion
 
     #region Public Display Variables
+    public PrintType PrintType;
+
     [Range(0.0000f, 0.1f)]
     public float timeBetweenLetters;
     [Range(0.0f, 0.5f)]
@@ -44,7 +46,7 @@ public class UIMain : TransferDisplay.UserInterface {
     public int maxLineLength;
     [Range(1, 50)]
     public int maxChunkLength;
-    public PrintType Type;
+    
 
     #endregion
     #region Private Variables
@@ -71,7 +73,7 @@ public class UIMain : TransferDisplay.UserInterface {
         }
         //facade this out
         InitializeUserInterface();
-        PrintText(textContent, maxLineLength, maxChunkLength, timeBetweenLetters, punctuationTimeModifier, Type);
+        PrintText(textContent, maxLineLength, maxChunkLength, timeBetweenLetters, punctuationTimeModifier, PrintType);
     }
 
     
@@ -86,7 +88,7 @@ public class UIMain : TransferDisplay.UserInterface {
         PrintToScreen();
         
     }
-
+    //logic for typewriter effect
     public override void PrintText(string newText, int lineLength, int chunkLength, float time, float punctTimeMod, PrintType type)
     {
         if (type == PrintType.character)
@@ -103,11 +105,7 @@ public class UIMain : TransferDisplay.UserInterface {
         }
     }
 
-    /*public override void PrintText(string newText, int lineLength, int chunkLength, float time)
-    {
 
-        StartCoroutine(display.IterateThroughLineToPrint(newText, lineLength, chunkLength, time));
-    }*/
 
 
 

@@ -47,7 +47,6 @@ namespace TransferDisplay
         //SUPER NEEDS OPTIMIZATION
         public IEnumerator IterateThroughLineToPrint(string text, int lineLength, int chunkLength, float newTime)
         {
-            Debug.Log(newTime);
             string currentLine = "";
             string currentWord = "";
             for(int i = 0; i < text.Length; i++)
@@ -75,6 +74,7 @@ namespace TransferDisplay
                 yield return new WaitForSeconds(newTime);
             }
         }
+
         public IEnumerator IterateThroughWordToPrint(string text, int lineLength, int chunkLength, float time)
         {
             string currentWord = "";
