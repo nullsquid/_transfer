@@ -36,9 +36,9 @@ public class UIMain : TransferDisplay.UserInterface {
     #endregion
 
     #region Public Display Variables
-    [Range(0.001f, 0.1f)]
+    [Range(0.0001f, 0.1f)]
     public float timeBetweenLetters;
-    [Range(0.1f, 0.5f)]
+    [Range(0.0f, 0.5f)]
     public float punctuationTimeModifier;
     [Range(1, 50)]
     public int maxLineLength;
