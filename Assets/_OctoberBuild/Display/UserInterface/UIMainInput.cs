@@ -3,14 +3,14 @@ using System.Collections;
 using TransferDisplay;
 public class UIMainInput :  UserInterface{
     [HideInInspector]
-    private string promptText = "$>> ";
+    private string initText = "$>> ";
     TextRenderer inputDisplay;
     //testing
     void Start()
     {
         
         Debug.Log(display);
-        Debug.Log(promptText);
+        //facade this out
         InitializeUserInterface();
         
     }
@@ -19,13 +19,15 @@ public class UIMainInput :  UserInterface{
     {
         if (inputDisplay == null)
         {
+            
             inputDisplay = new TextRenderer();
+            //facade this out
             inputDisplay.style.font = mainFont;
             inputDisplay.style.fontSize = mainFontSize;
             inputDisplay.style.normal.textColor = mainFontColor;
         }
         Debug.Log("input display is " + inputDisplay);
 
-        GUI.Label(new Rect(xPos, yPos, 500, 30), promptText, inputDisplay.style);
+        GUI.Label(new Rect(xPos, yPos, 500, 30), initText, inputDisplay.style);
     }
 }
