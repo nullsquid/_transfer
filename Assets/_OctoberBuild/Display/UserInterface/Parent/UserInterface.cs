@@ -55,7 +55,13 @@ namespace TransferDisplay
             {
                 display = new TextRenderer();
             }
+            PositionUI();
 
+            
+        }
+
+        public virtual void PositionUI()
+        {
             switch (Position)
             {
                 case DisplayPosition.botLeft:

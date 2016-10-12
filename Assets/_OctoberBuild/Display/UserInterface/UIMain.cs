@@ -13,7 +13,25 @@ public class UIMain : TransferDisplay.UserInterface {
     public string textContent;
     [HideInInspector]
     public string dummyTextContent = 
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus accumsan consectetur urna id dignissim. Duis ut lectus efficitur, laoreet justo et, hendrerit nulla. Aenean ultricies molestie lorem ac scelerisque. Fusce sollicitudin, dui vitae mattis accumsan, leo dolor maximus ligula, in auctor magna velit at magna. Nulla vitae semper lectus. Sed convallis dui ut nibh scelerisque ullamcorper. Phasellus at ante et metus venenatis congue. Sed sapien erat, dapibus quis pellentesque rutrum, lacinia nec enim. Nullam vel imperdiet lorem. Sed erat eros, fringilla eget convallis et, venenatis et mi. Curabitur vulputate odio a dictum dapibus.";
+        "Lorem ipsum dolor sit amet, "
+        + "consectetur adipiscing elit. "
+        + "Vivamus accumsan consectetur "
+        + "urna id dignissim. Duis ut "
+        + "lectus efficitur, laoreet "
+        + "justo et, hendrerit nulla. "
+        + "Aenean ultricies molestie lorem "
+        + "ac scelerisque. Fusce sollicitudin, "
+        + "dui vitae mattis accumsan, leo dolor "
+        + "maximus ligula, in auctor magna velit "
+        + "at magna. Nulla vitae semper lectus. "
+        + "Sed convallis dui ut nibh scelerisque "
+        + "ullamcorper. Phasellus at ante et metus "
+        + "venenatis congue. Sed sapien erat, dapibus "
+        + "quis pellentesque rutrum, lacinia nec enim. "
+        + "Nullam vel imperdiet lorem. Sed erat "
+        + "eros, fringilla eget convallis et, "
+        + "venenatis et mi. Curabitur vulputate "
+        + "odio a dictum dapibus.";
 
     #endregion
 
