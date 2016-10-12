@@ -13,6 +13,6 @@ public class InputMain : MonoBehaviour {
         }
         Debug.Log(input);
         Debug.Log(Event.current);
-        input.UpdateInput(Event.current);
+        input.PrintInput();
 	}
 }

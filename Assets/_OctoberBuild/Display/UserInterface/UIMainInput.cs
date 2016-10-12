@@ -32,7 +32,7 @@ public class UIMainInput :  UserInterface{
         {
             input = new InputController();
         }
-        
+
         GUI.Label(new Rect(xPos, yPos, 500, 30), initText, inputDisplay.style);
     }
 }
