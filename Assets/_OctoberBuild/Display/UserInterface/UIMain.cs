@@ -97,6 +97,10 @@ public class UIMain : TransferDisplay.UserInterface {
         {
             StartCoroutine(display.IterateThroughWordToPrint(newText, lineLength, chunkLength, time));
         }
+        else if(type == PrintType.line)
+        {
+            StartCoroutine(display.IterateThroughLineToPrint(newText, lineLength, chunkLength, time));
+        }
     }
 
     /*public override void PrintText(string newText, int lineLength, int chunkLength, float time)

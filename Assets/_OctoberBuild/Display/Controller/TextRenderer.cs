@@ -13,7 +13,7 @@ namespace TransferDisplay
         //System Variables
         [HideInInspector]
         public string typewriterText;
-        public string singleWordText;
+
 
 
 
@@ -27,8 +27,11 @@ namespace TransferDisplay
 
         private int wordsInLine;
         private int linesInChunk;
+
+        private string singleWordText;
+        private string singleLineText;
         #endregion
-        
+
         #region Constructor
         public TextRenderer(Font newFont, int newFontSize, Color32 newFontColor)
         {
@@ -41,14 +44,43 @@ namespace TransferDisplay
 
         #region Main Methods
 
-        
+        //SUPER NEEDS OPTIMIZATION
+        public IEnumerator IterateThroughLineToPrint(string text, int lineLength, int chunkLength, float newTime)
+        {
+            Debug.Log(newTime);
+            string currentLine = "";
+            string currentWord = "";
+            for(int i = 0; i < text.Length; i++)
+            {
+                currentWord += text[i];
+                
+                if(i > 0 && text[i] == ' ')
+                {
+                    currentLine += currentWord;
+                    currentWord = "";
+                    wordsInLine++;
+                    if(wordsInLine >= lineLength)
+                    {
+                        typewriterText = currentLine;
+                        currentLine += "\n";
+                        linesInChunk++;
+                        wordsInLine = 0;
+                    }
+                }
+                if (linesInChunk >= chunkLength)
+                {
+                    break;
+                }
+
+                yield return new WaitForSeconds(newTime);
+            }
+        }
         public IEnumerator IterateThroughWordToPrint(string text, int lineLength, int chunkLength, float time)
         {
             string currentWord = "";
             for(int i = 0; i < text.Length; i++)
             {
                 currentWord += text[i];
-                Debug.Log(currentWord);
                 
                 if (i > 0 && text[i] == ' ')
                 {
