@@ -70,7 +70,7 @@ namespace TransferDisplay
                 {
                     break;
                 }
-
+                
                 yield return new WaitForSeconds(newTime);
             }
         }
@@ -98,9 +98,7 @@ namespace TransferDisplay
                 {
                     break;
                 }
-                
-                
-                
+
                 typewriterText = singleWordText;
                 yield return new WaitForSeconds(time);
             }

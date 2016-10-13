@@ -5,14 +5,11 @@ public class InputMain : MonoBehaviour {
 
 
     InputController input;
+    Event e;
 	// Update is called once per frame
 	void OnGUI () {
-	    if(input == null)
-        {
-            input = new InputController();
-        }
-        Debug.Log(input);
-        Debug.Log(Event.current);
-        input.PrintInput();
-	}
+        
+
+
+    }
 }
