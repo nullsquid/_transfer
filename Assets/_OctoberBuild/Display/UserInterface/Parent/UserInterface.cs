@@ -5,7 +5,9 @@ namespace TransferDisplay
 {
     public abstract class UserInterface : MonoBehaviour
     {
-        
+
+        private TextMesh displayText;
+        public bool use3dText;
         protected TextRenderer display;
         #region Public Style Variables        
         //Style//Text//
@@ -108,7 +110,18 @@ namespace TransferDisplay
         {
             if (display.typewriterText != null)
             {
-                GUI.Label(new Rect(xPos, yPos, 500, 30), display.typewriterText.ToUpper(), display.style);
+                if (use3dText)
+                {
+                    displayText = GetComponent<TextMesh>();
+                    displayText.font = mainFont;
+                    displayText.color = mainFontColor;
+                    displayText.fontSize = mainFontSize;
+                    displayText.text = display.typewriterText;
+                }
+
+                else {
+                    GUI.Label(new Rect(xPos, yPos, 500, 30), display.typewriterText.ToUpper(), display.style);
+                }
             }
         }
 

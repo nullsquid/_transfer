@@ -26,6 +26,7 @@ namespace TransferManager
         void InitializeGame()
         {
 
+
             //initialize all the things
 
         }

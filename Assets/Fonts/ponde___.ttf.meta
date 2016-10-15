@@ -3,18 +3,17 @@ guid: 1e5f4483533093b43b49904c616109d6
 timeCreated: 1475980285
 licenseType: Free
 TrueTypeFontImporter:
-  serializedVersion: 4
+  serializedVersion: 2
   fontSize: 16
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontNames:
-  - Ponderosa
+  use2xBehaviour: 0
+  fontNames: []
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 0
-  ascentCalculationMode: 1
+  fontRenderingMode: 2
   userData: 
   assetBundleName: 
   assetBundleVariant: 
