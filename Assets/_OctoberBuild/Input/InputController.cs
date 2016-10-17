@@ -78,6 +78,7 @@ namespace TransferInput
                 commands[i].TrimEnd();
             }
             inputText = "";
+            
         }
 
         public string GetInputText()
