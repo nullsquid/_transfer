@@ -1,10 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ConnectCommandExecute : MonoBehaviour {
+public class ConnectCommandExecute : Command {
 
     IReceiver terminalDevice;
-    string nameToConnect;
+
+    //default. need a way to update this at runtime
+    string _nameToConnect = "MEMM";
+
+    public string NameToConnect{
+        set
+        {
+            _nameToConnect = value;
+        }
+    }
 
     public ConnectCommandExecute(IReceiver newTerminal)
     {
@@ -13,6 +22,6 @@ public class ConnectCommandExecute : MonoBehaviour {
 
     public void Execute()
     {
-        terminalDevice.Connect(nameToConnect);
+        terminalDevice.Connect(_nameToConnect);
     }
 }
