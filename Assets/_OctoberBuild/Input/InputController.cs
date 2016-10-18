@@ -8,9 +8,24 @@ namespace TransferInput
         private List<string> args = new List<string>();
 
         private bool canRecordInput = true;
-        private string inputText = "";
+        private string _inputText = "";
         private string wordsInCommand;
         private List<string> commands = new List<string>();
+
+        public string CommandRoot
+        {
+            get
+            {
+                if (commands.Count > 0)
+                {
+                    return GetCommand();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
         //need to figure out the architecture for how to link all this together
         public string UpdateInput(Event e)
         {
@@ -43,27 +58,27 @@ namespace TransferInput
         }
         private string AddText(Event e)
         {
-            return inputText += e.keyCode;
+            return _inputText += e.keyCode;
         }
 
         private void AddSpace()
         {
-            inputText += " ";
+            _inputText += " ";
             
         }
 
         private void RemoveText()
         {
-            if (inputText.Length > 0)
+            if (_inputText.Length > 0)
             {
-                inputText = inputText.Remove(inputText.Length - 1);
+                _inputText = _inputText.Remove(_inputText.Length - 1);
             }
         }
 
         private void EnterCommand()
         {
-            inputText += " ";
-            foreach(char character in inputText)
+            _inputText += " ";
+            foreach(char character in _inputText)
             {
                 wordsInCommand += character;
                 if(character == ' ')
@@ -77,13 +92,16 @@ namespace TransferInput
             {
                 commands[i].TrimEnd();
             }
-            inputText = "";
             
+
+            _inputText = "";
+            
+
         }
 
         public string GetInputText()
         {
-            return inputText;
+            return _inputText;
         }
         public string GetCommand(int index)
         {
@@ -91,9 +109,13 @@ namespace TransferInput
             {
                 if (index <= commands.Count)
                 {
-                    if (i == index)
+                    if (commands.Count > 0)
                     {
-                        return commands[i];
+                        Debug.Log(commands[i]);
+                        if (i == index)
+                        {
+                            return commands[i];
+                        }
                     }
                 }
             }
@@ -106,12 +128,14 @@ namespace TransferInput
         {
             for(int i = 1; i < args.Count; i++)
             {
+                
                 if (commands.Count > 0)
                 {
                     args.Add(commands[i]);
                 }
             }
             return commands[0];
+            
         }
 
 

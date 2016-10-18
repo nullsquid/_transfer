@@ -36,6 +36,7 @@ public class UIMainInput :  UserInterface{
         if (e.type == EventType.keyDown)
         {
             input.UpdateInput(e);
+
         }
         GUI.Label(new Rect(xPos, yPos, 500, 30), initText + input.GetInputText(), inputDisplay.style);
 
