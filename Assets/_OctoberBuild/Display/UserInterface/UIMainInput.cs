@@ -7,7 +7,7 @@ public class UIMainInput :  UserInterface{
     private string initText = "$>>";
     private string newText = "";
     TextRenderer inputDisplay;
-    InputController input;
+    public InputController input;
     //testing
     void Start()
     {
@@ -38,7 +38,13 @@ public class UIMainInput :  UserInterface{
             input.UpdateInput(e);
 
         }
-        GUI.Label(new Rect(xPos, yPos, 500, 30), initText + input.GetInputText(), inputDisplay.style);
+        newText = input.GetInputText();
+        GUI.Label(new Rect(xPos, yPos, 500, 30), initText + newText, inputDisplay.style);
 
+    }
+
+    public string GetNewText()
+    {
+        return newText;
     }
 }

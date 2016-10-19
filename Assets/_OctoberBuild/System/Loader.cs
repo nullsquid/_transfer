@@ -7,6 +7,7 @@ namespace TransferManager
     {
 
         public GameManager gameManager;
+
         // Use this for initialization
         void Awake()
         {

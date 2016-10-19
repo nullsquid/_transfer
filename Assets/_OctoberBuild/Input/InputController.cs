@@ -10,29 +10,11 @@ namespace TransferInput
         private bool canRecordInput = true;
         private string _inputText = "";
         private string wordsInCommand;
-        public List<string> commands = new List<string>();
+        private List<string> commands = new List<string>();
         //shouldn't be responsible for any parsing
-        public string CommandRoot
 
-        {
-            get
-            {
-                return commands[0];
-            }
-            /*
-            get
-            {
-                if (commands.Count > 0)
-                {
-                    return GetCommand();
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            */
-        }
+        public delegate void ReturnAction();
+        public static event ReturnAction OnReturnPressed;
         //need to figure out the architecture for how to link all this together
         public string UpdateInput(Event e)
         {
@@ -85,6 +67,8 @@ namespace TransferInput
         private void EnterCommand()
         {
             _inputText += " ";
+            OnReturnPressed.Invoke();
+            /*
             foreach(char character in _inputText)
             {
                 wordsInCommand += character;
@@ -99,10 +83,10 @@ namespace TransferInput
             {
                 commands[i].TrimEnd();
             }
-            
-
+            */
             _inputText = "";
-            
+
+
 
         }
 
@@ -110,6 +94,9 @@ namespace TransferInput
         {
             return _inputText;
         }
+
+        //move these to parser
+        /*
         public string GetCommand(int index)
         {
             for(int i = 0; i < commands.Count; i++)
@@ -129,8 +116,10 @@ namespace TransferInput
             return null;
 
         }
+        */
 
         //this doesn't work yet
+        /*
         public string GetCommand()
         {
             for(int i = 1; i < args.Count; i++)
@@ -144,6 +133,7 @@ namespace TransferInput
             return commands[0];
             
         }
+        */
 
 
     }
