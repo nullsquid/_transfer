@@ -8,7 +8,8 @@ public class TerminalCommandParser : MonoBehaviour {
     List<string> _commandArgs = new List<string>();
 
     InputController input;
-
+    //might need to seperate the data being submitted from the keys being pressed?
+    //not sure how
     void Awake()
     {
         
@@ -21,6 +22,14 @@ public class TerminalCommandParser : MonoBehaviour {
             input = new InputController();
             Debug.Log(input);
 
+        }
+        for(int i = 0; i < input.commands.Count; i++)
+        {
+            Debug.Log("commands are " + input.commands[i]);
+        }
+        if (input.commands.Count > 0) {
+            
+            Debug.Log(input.CommandRoot);
         }
 
         

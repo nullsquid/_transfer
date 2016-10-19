@@ -10,10 +10,16 @@ namespace TransferInput
         private bool canRecordInput = true;
         private string _inputText = "";
         private string wordsInCommand;
-        private List<string> commands = new List<string>();
-
+        public List<string> commands = new List<string>();
+        //shouldn't be responsible for any parsing
         public string CommandRoot
+
         {
+            get
+            {
+                return commands[0];
+            }
+            /*
             get
             {
                 if (commands.Count > 0)
@@ -25,6 +31,7 @@ namespace TransferInput
                     return null;
                 }
             }
+            */
         }
         //need to figure out the architecture for how to link all this together
         public string UpdateInput(Event e)
