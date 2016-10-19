@@ -7,13 +7,17 @@ namespace TransferManager
     {
 
         public GameManager gameManager;
-
+        public TerminalCommandParser commandParser;
         // Use this for initialization
         void Awake()
         {
             if (GameManager.instance == null)
             {
                 Instantiate(gameManager);
+            }
+            if(TerminalCommandParser.instance == null)
+            {
+                Instantiate(commandParser);
             }
         }
 

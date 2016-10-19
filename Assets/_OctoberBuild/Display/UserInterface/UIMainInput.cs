@@ -5,7 +5,7 @@ using TransferInput;
 public class UIMainInput :  UserInterface{
     [HideInInspector]
     private string initText = "$>>";
-    private string newText = "";
+    public string newText = "";
     TextRenderer inputDisplay;
     public InputController input;
     //testing
@@ -42,7 +42,10 @@ public class UIMainInput :  UserInterface{
         GUI.Label(new Rect(xPos, yPos, 500, 30), initText + newText, inputDisplay.style);
 
     }
-
+    void Update()
+    {
+        Debug.Log("new text is " + newText);
+    }
     public string GetNewText()
     {
         return newText;

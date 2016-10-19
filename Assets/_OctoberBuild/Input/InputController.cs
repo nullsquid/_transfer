@@ -8,7 +8,7 @@ namespace TransferInput
         private List<string> args = new List<string>();
 
         private bool canRecordInput = true;
-        private string _inputText = "";
+        public string _inputText = "";
         private string wordsInCommand;
         private List<string> commands = new List<string>();
         //shouldn't be responsible for any parsing
@@ -16,6 +16,7 @@ namespace TransferInput
         public delegate void ReturnAction();
         public static event ReturnAction OnReturnPressed;
         //need to figure out the architecture for how to link all this together
+        
         public string UpdateInput(Event e)
         {
 
