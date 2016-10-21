@@ -49,8 +49,8 @@ public class TerminalCommandParser : MonoBehaviour {
         else
         {
             
-            _newText = input.GetInputText();
-            Debug.Log("converted new text is " + input._inputText);
+            _newText = input.ReturnText;
+            Debug.Log("converted new text is " + _newText);
         }
         //not getting the uimaininput class?
         /*if (uiInput == null)
@@ -71,11 +71,16 @@ public class TerminalCommandParser : MonoBehaviour {
         Debug.Log(_newText);
         */
     }
+
+    //ISSUE::this isn't gettin the proper data from InputController
     void CaptureCommand()
     {
-        _rawCommand = _newText;
-        Debug.Log("event invoked");
-        Debug.Log("Raw text is " + _rawCommand);
+        Debug.Log("Input is " + input);
+        Debug.Log("Raw text is " + input.ReturnText);
+        //_rawCommand = _newText;
+        //Debug.Log("event invoked");
+        //Debug.Log("Raw text is " + input.ReturnText);
+
         //Debug.Log("command is " + uiInput.newText);
     }
 

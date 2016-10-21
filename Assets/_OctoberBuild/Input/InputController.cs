@@ -5,18 +5,33 @@ namespace TransferInput
 {
     public class InputController
     {
-        private List<string> args = new List<string>();
+        #region Private Variables
+        //private List<string> args = new List<string>();
 
         private bool canRecordInput = true;
         public string _inputText = "";
-        private string wordsInCommand;
-        private List<string> commands = new List<string>();
+        private string returnText;
+        public string ReturnText
+        {
+            get
+            {
+                return returnText;
+            }
+            set
+            {
+                returnText = value;
+            }
+        }
+        #endregion
+        //private string wordsInCommand;
+        //private List<string> commands = new List<string>();
         //shouldn't be responsible for any parsing
-
+        #region Public Events
         public delegate void ReturnAction();
         public static event ReturnAction OnReturnPressed;
+        #endregion
         //need to figure out the architecture for how to link all this together
-        
+
         public string UpdateInput(Event e)
         {
 
@@ -41,6 +56,8 @@ namespace TransferInput
                     else if(e.keyCode == KeyCode.Return || e.keyCode == KeyCode.KeypadEnter)
                     {
                         EnterCommand();
+                        ReturnText = ReturnInputText(_inputText);
+                        
                     }
                 }
             }
@@ -67,8 +84,10 @@ namespace TransferInput
 
         private void EnterCommand()
         {
-            _inputText += " ";
+
             OnReturnPressed.Invoke();
+
+            
             /*
             foreach(char character in _inputText)
             {
@@ -85,10 +104,17 @@ namespace TransferInput
                 commands[i].TrimEnd();
             }
             */
-            _inputText = "";
+            ///////////
+            ///////////
+            //_inputText = "";
 
 
 
+        }
+        private string ReturnInputText(string inputText)
+        {
+            inputText += " ";
+            return inputText;
         }
 
         public string GetInputText()

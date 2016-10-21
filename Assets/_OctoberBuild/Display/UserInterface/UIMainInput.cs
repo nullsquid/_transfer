@@ -42,10 +42,7 @@ public class UIMainInput :  UserInterface{
         GUI.Label(new Rect(xPos, yPos, 500, 30), initText + newText, inputDisplay.style);
 
     }
-    void Update()
-    {
-        Debug.Log("new text is " + newText);
-    }
+
     public string GetNewText()
     {
         return newText;
