@@ -22,16 +22,22 @@ namespace TransferInput
             {
                 return _returnText;
             }
-           
-            
 
+        }
+
+        public string InputText
+        {
+            get
+            {
+                return _inputText;
+            }
         }
         #endregion
         //private string wordsInCommand;
         //private List<string> commands = new List<string>();
         //shouldn't be responsible for any parsing
         #region Public Events
-        
+
         public delegate void ReturnAction();
         public static event ReturnAction OnReturnPressed;
         #endregion
@@ -130,10 +136,7 @@ namespace TransferInput
             return inputText;
         }
 
-        public string GetInputText()
-        {
-            return _inputText;
-        }
+       
 
         
 

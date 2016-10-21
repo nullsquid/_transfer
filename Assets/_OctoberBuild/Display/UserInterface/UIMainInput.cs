@@ -38,7 +38,7 @@ public class UIMainInput :  UserInterface{
             input.UpdateInput(e);
 
         }
-        newText = input.GetInputText();
+        newText = input.InputText;
         GUI.Label(new Rect(xPos, yPos, 500, 30), initText + newText, inputDisplay.style);
 
     }
