@@ -11,7 +11,7 @@ public class TerminalCommandParser : MonoBehaviour {
     string _newText;
     List<string> _commandArgs = new List<string>();
 
-    InputController input;
+    InputController inputC;
     UIMainInput uiInput;
 
     void Awake()
@@ -24,7 +24,12 @@ public class TerminalCommandParser : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        
+
+        if (inputC == null)
+        {
+            inputC = new InputController();
+        }
+
         DontDestroyOnLoad(gameObject);
     }
 
@@ -41,17 +46,14 @@ public class TerminalCommandParser : MonoBehaviour {
     //not sure how
     void Update()
     {
-        if(input == null)
-        {
-            input = new InputController();
-            Debug.Log(input);
-        }
+
+        /*
         else
         {
             
             _newText = input.ReturnText;
             Debug.Log("converted new text is " + _newText);
-        }
+        }*/
         //not getting the uimaininput class?
         /*if (uiInput == null)
         {
@@ -70,13 +72,16 @@ public class TerminalCommandParser : MonoBehaviour {
         _newText = uiInput.GetNewText();
         Debug.Log(_newText);
         */
+        
+        Debug.Log("test 1: " + inputC.ReturnText);
+        
     }
 
     //ISSUE::this isn't gettin the proper data from InputController
     void CaptureCommand()
     {
-        Debug.Log("Input is " + input);
-        Debug.Log("Raw text is " + input.ReturnText);
+        
+        //_rawCommand = input.ReturnText;
         //_rawCommand = _newText;
         //Debug.Log("event invoked");
         //Debug.Log("Raw text is " + input.ReturnText);

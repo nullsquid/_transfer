@@ -7,7 +7,7 @@ public class UIMainInput :  UserInterface{
     private string initText = "$>>";
     public string newText = "";
     TextRenderer inputDisplay;
-    public InputController input;
+    InputController input;
     //testing
     void Start()
     {
@@ -27,12 +27,12 @@ public class UIMainInput :  UserInterface{
             inputDisplay = new TextRenderer(mainFont, mainFontSize, mainFontColor);
             
         }
-        //might have to do this slightly differently
-        e = Event.current;
         if (input == null)
         {
             input = new InputController();
         }
+        Debug.Log("test 2 " + input.ReturnText);
+
         if (e.type == EventType.keyDown)
         {
             input.UpdateInput(e);

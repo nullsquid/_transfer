@@ -8,34 +8,40 @@ namespace TransferInput
         #region Private Variables
         //private List<string> args = new List<string>();
 
-        private bool canRecordInput = true;
-        public string _inputText = "";
-        private string returnText;
+        private bool _canRecordInput = true;
+        private string _inputText = "";
+        private string _returnText;
+        
+
+        #endregion
+
+        #region Public Accessors
         public string ReturnText
         {
             get
             {
-                return returnText;
+                return _returnText;
             }
-            set
-            {
-                returnText = value;
-            }
+           
+            
+
         }
         #endregion
         //private string wordsInCommand;
         //private List<string> commands = new List<string>();
         //shouldn't be responsible for any parsing
         #region Public Events
+        
         public delegate void ReturnAction();
         public static event ReturnAction OnReturnPressed;
         #endregion
         //need to figure out the architecture for how to link all this together
-
+        
+        //might want to make an accessor for this
         public string UpdateInput(Event e)
         {
 
-            if (canRecordInput)
+            if (_canRecordInput)
             {
                 if (e.keyCode != KeyCode.None)
                 {
@@ -55,9 +61,12 @@ namespace TransferInput
                     }
                     else if(e.keyCode == KeyCode.Return || e.keyCode == KeyCode.KeypadEnter)
                     {
+
+                        //_returnText = ReturnInputText(_inputText);
                         EnterCommand();
-                        ReturnText = ReturnInputText(_inputText);
-                        
+
+
+
                     }
                 }
             }
@@ -84,10 +93,14 @@ namespace TransferInput
 
         private void EnterCommand()
         {
+            //_returnText = ReturnInputText(_inputText);
+            _returnText = ReturnInputText(_inputText);
 
+            Debug.Log("test 3: " + ReturnText);
             OnReturnPressed.Invoke();
 
-            
+
+
             /*
             foreach(char character in _inputText)
             {
@@ -106,7 +119,7 @@ namespace TransferInput
             */
             ///////////
             ///////////
-            //_inputText = "";
+            _inputText = "";
 
 
 
@@ -121,6 +134,8 @@ namespace TransferInput
         {
             return _inputText;
         }
+
+        
 
         //move these to parser
         /*
