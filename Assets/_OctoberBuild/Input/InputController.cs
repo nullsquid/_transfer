@@ -134,7 +134,7 @@ namespace TransferInput
         }
         private string ReturnInputText(string inputText)
         {
-            //inputText += " ";
+            inputText += " ";
             return inputText;
         }
 

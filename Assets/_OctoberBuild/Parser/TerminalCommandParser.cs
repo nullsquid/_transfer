@@ -13,7 +13,8 @@ public class TerminalCommandParser : MonoBehaviour {
     string _rawCommand;
     string _newText;
 	//if this is public, it is for testing purposes
-	public string [] _commandArgs;
+	//public string [] _commandArgs;
+	public List<string> _commandArgs = new List<string>();
 	string _text;
 	#endregion
 
@@ -56,14 +57,16 @@ public class TerminalCommandParser : MonoBehaviour {
 			_rawCommand = uiInput.ReturnText;
 			Debug.Log (_rawCommand);
 		}
-		ParseCommand (_rawCommand);
+
+
+
 
 	}
 
     void CaptureCommand()
     {
 		//ideally I would like this to come from InputController
-
+		ParseCommand(_rawCommand);
 
 
 
@@ -71,7 +74,7 @@ public class TerminalCommandParser : MonoBehaviour {
     }
 
 	void ParseCommand(string commandToParse){
-		
+		/*
 		char[] delimiterChars = {' '};
 
 		_text = commandToParse;
@@ -83,7 +86,19 @@ public class TerminalCommandParser : MonoBehaviour {
 				Debug.Log (s);
 			}
 		}
+		*/
+		string word = "";
+		for (int i = 0; i < commandToParse.Length; i++) {
+			if (commandToParse [i] == ' ') {
+				word.TrimEnd ();
+				_commandArgs.Add (word);
+				word = "";
+			} 
+			else {
+				word += commandToParse [i];
+			}
 
+		}
 
 		/*foreach (string s in _commandArgs) {
 			Debug.Log (s);
