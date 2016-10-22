@@ -3,11 +3,26 @@ using System.Collections;
 using TransferDisplay;
 using TransferInput;
 public class UIMainInput :  UserInterface{
-    [HideInInspector]
+	#region Private Data Variables
     private string initText = "$>>";
+	[HideInInspector]
     public string newText = "";
+	[HideInInspector]
+	private string _returnText;
+	#endregion
+
+	#region Public Accessors
+	public string ReturnText{
+		get{
+			return _returnText;
+		}
+	}
+	#endregion
+
+	#region Private References
     TextRenderer inputDisplay;
     InputController input;
+	#endregion
     //testing
     void Start()
     {
@@ -31,18 +46,18 @@ public class UIMainInput :  UserInterface{
         {
             input = new InputController();
         }
-        Debug.Log("test 2 " + input.ReturnText);
 
         if (e.type == EventType.keyDown)
         {
             input.UpdateInput(e);
 
         }
+		_returnText = input.ReturnText;
         newText = input.InputText;
         GUI.Label(new Rect(xPos, yPos, 500, 30), initText + newText, inputDisplay.style);
 
     }
-
+	//make an accessor parameter?
     public string GetNewText()
     {
         return newText;

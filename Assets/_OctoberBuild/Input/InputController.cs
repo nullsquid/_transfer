@@ -70,6 +70,7 @@ namespace TransferInput
 
                         //_returnText = ReturnInputText(_inputText);
                         EnterCommand();
+						_inputText = "";
 
 
 
@@ -100,10 +101,11 @@ namespace TransferInput
         private void EnterCommand()
         {
             //_returnText = ReturnInputText(_inputText);
-            _returnText = ReturnInputText(_inputText);
+			_returnText = ReturnInputText(_inputText);
+			if (OnReturnPressed != null) {
+				OnReturnPressed();
+			}
 
-            Debug.Log("test 3: " + ReturnText);
-            OnReturnPressed.Invoke();
 
 
 
@@ -125,14 +127,14 @@ namespace TransferInput
             */
             ///////////
             ///////////
-            _inputText = "";
+            
 
 
 
         }
         private string ReturnInputText(string inputText)
         {
-            inputText += " ";
+            //inputText += " ";
             return inputText;
         }
 

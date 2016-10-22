@@ -4,15 +4,22 @@ using System.Collections.Generic;
 using TransferInput;
 public class TerminalCommandParser : MonoBehaviour {
 
+	#region Instance Variable
     public static TerminalCommandParser instance;
+	#endregion
 
+	#region Private Data Variables
     string _terminalCommand;
     string _rawCommand;
     string _newText;
-    List<string> _commandArgs = new List<string>();
+	//if this is public, it is for testing purposes
+	public string [] _commandArgs;
+	string _text;
+	#endregion
 
-    InputController inputC;
+	#region Private References
     UIMainInput uiInput;
+	#endregion
 
     void Awake()
     {
@@ -24,11 +31,7 @@ public class TerminalCommandParser : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-
-        if (inputC == null)
-        {
-            inputC = new InputController();
-        }
+			
 
         DontDestroyOnLoad(gameObject);
     }
@@ -42,52 +45,52 @@ public class TerminalCommandParser : MonoBehaviour {
     {
         InputController.OnReturnPressed -= CaptureCommand;
     }
-    //might need to seperate the data being submitted from the keys being pressed?
-    //not sure how
-    void Update()
-    {
 
-        /*
-        else
-        {
-            
-            _newText = input.ReturnText;
-            Debug.Log("converted new text is " + _newText);
-        }*/
-        //not getting the uimaininput class?
-        /*if (uiInput == null)
-        {
-            uiInput = new UIMainInput();
-            Debug.Log(uiInput);
-        }
-        if (uiInput != null)
-        {
-            Debug.Log("The sent new text is " + uiInput.newText);
-        }*/
-        /*
-        if(uiInput == null)
-        {
-            uiInput = new UIMainInput();
-        }
-        _newText = uiInput.GetNewText();
-        Debug.Log(_newText);
-        */
-        
-        Debug.Log("test 1: " + inputC.ReturnText);
-        
-    }
+	void Update(){
+		if (uiInput == null) {
+			uiInput = GameObject.Find ("MainInput").GetComponent<UIMainInput> ();
+		}
+		Debug.Log (uiInput);
 
-    //ISSUE::this isn't gettin the proper data from InputController
+		if (uiInput != null) {
+			_rawCommand = uiInput.ReturnText;
+			Debug.Log (_rawCommand);
+		}
+		ParseCommand (_rawCommand);
+
+	}
+
     void CaptureCommand()
     {
-        
-        //_rawCommand = input.ReturnText;
-        //_rawCommand = _newText;
-        //Debug.Log("event invoked");
-        //Debug.Log("Raw text is " + input.ReturnText);
+		//ideally I would like this to come from InputController
 
-        //Debug.Log("command is " + uiInput.newText);
+
+
+
+
     }
+
+	void ParseCommand(string commandToParse){
+		
+		char[] delimiterChars = {' '};
+
+		_text = commandToParse;
+		Debug.Log(_text);
+		if (_text != null) {
+			Debug.Log (_text);
+			string[] _commandArgs = _text.Split (delimiterChars);
+			foreach (string s in _commandArgs) {
+				Debug.Log (s);
+			}
+		}
+
+
+		/*foreach (string s in _commandArgs) {
+			Debug.Log (s);
+		}*/
+
+		
+	}
 
 
 
