@@ -88,7 +88,7 @@ public class TerminalCommandParser : MonoBehaviour {
 		}
 		*/
 		string word = "";
-		for (int i = 0; i < commandToParse.Length; i++) {
+		for (int i = 0; i < _rawCommand.Length; i++) {
 			if (commandToParse [i] == ' ') {
 				word.TrimEnd ();
 				_commandArgs.Add (word);
