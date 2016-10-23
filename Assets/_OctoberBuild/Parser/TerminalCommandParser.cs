@@ -12,13 +12,21 @@ public class TerminalCommandParser : MonoBehaviour {
     string _terminalCommand;
     string _rawCommand;
     string _newText;
-	//if this is public, it is for testing purposes
-	//public string [] _commandArgs;
-	public List<string> _commandArgs = new List<string>();
+	List<string> _commandArgs = new List<string>();
 	string _text;
-	#endregion
+    #endregion
 
-	#region Private References
+    #region Public Accessors
+    public string RootCommand
+    {
+        get
+        {
+            return _commandArgs[0];
+        }
+    }
+    #endregion
+
+    #region Private References
     UIMainInput uiInput;
 	#endregion
 
@@ -39,12 +47,12 @@ public class TerminalCommandParser : MonoBehaviour {
 
     void OnEnable()
     {
-        Transfer.System.EventManager.StartListening("CaptureCommand", CaptureCommandWrapper);
+        Transfer.System.EventManager.StartListening("ProcessCommand", ProcessCommandWrapper);
     }
 
     void OnDisable()
     {
-        Transfer.System.EventManager.StopListening("CaptureCommand", CaptureCommandWrapper);
+        Transfer.System.EventManager.StopListening("ProcessCommand", ProcessCommandWrapper);
     }
 
 	void Update(){
@@ -59,7 +67,7 @@ public class TerminalCommandParser : MonoBehaviour {
 
 	}
 
-    IEnumerator CaptureCommand()
+    IEnumerator ProcessCommand()
     {
         yield return new WaitForFixedUpdate();
         _commandArgs.Clear();
@@ -89,9 +97,9 @@ public class TerminalCommandParser : MonoBehaviour {
 	}
 
     #region Utility Methods
-    void CaptureCommandWrapper()
+    void ProcessCommandWrapper()
     {
-        StartCoroutine(CaptureCommand());
+        StartCoroutine(ProcessCommand());
     }
     #endregion
 

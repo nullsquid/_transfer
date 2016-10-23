@@ -36,17 +36,13 @@ namespace Transfer.Input
             }
         }
         #endregion
-        //private string wordsInCommand;
-        //private List<string> commands = new List<string>();
-        //shouldn't be responsible for any parsing
+
         #region Public Events
 
         public delegate void ReturnAction();
         public static event ReturnAction OnReturnPressed;
         #endregion
-        //need to figure out the architecture for how to link all this together
-        
-        //might want to make an accessor for this
+
         public string UpdateInput(Event e)
         {
 
@@ -70,12 +66,8 @@ namespace Transfer.Input
                     }
                     else if(e.keyCode == KeyCode.Return || e.keyCode == KeyCode.KeypadEnter)
                     {
-
-                        //_returnText = ReturnInputText(_inputText);
                         EnterCommand();
 						_inputText = "";
-
-
 
                     }
                 }
@@ -103,89 +95,16 @@ namespace Transfer.Input
 
         private void EnterCommand()
         {
-            //_returnText = ReturnInputText(_inputText);
+            
             _returnText = ReturnInputText(_inputText);
-            Transfer.System.EventManager.TriggerEvent("CaptureCommand");
-            /*if (OnReturnPressed != null) {
-				OnReturnPressed();
-			}*/
-
-
-
-
-            /*
-            foreach(char character in _inputText)
-            {
-                wordsInCommand += character;
-                if(character == ' ')
-                {
-                    commands.Add(wordsInCommand);
-                    wordsInCommand = "";
-                }
-                
-            }
-            for(int i = 0; i < commands.Count; i++)
-            {
-                commands[i].TrimEnd();
-            }
-            */
-            ///////////
-            ///////////
-
-
-
-
+            Transfer.System.EventManager.TriggerEvent("ProcessCommand");
+            
         }
         private string ReturnInputText(string inputText)
         {
             inputText += " ";
             return inputText;
         }
-
-       
-
-        
-
-        //move these to parser
-        /*
-        public string GetCommand(int index)
-        {
-            for(int i = 0; i < commands.Count; i++)
-            {
-                if (index <= commands.Count)
-                {
-                    if (commands.Count > 0)
-                    {
-                        Debug.Log(commands[i]);
-                        if (i == index)
-                        {
-                            return commands[i];
-                        }
-                    }
-                }
-            }
-            return null;
-
-        }
-        */
-
-        //this doesn't work yet
-        /*
-        public string GetCommand()
-        {
-            for(int i = 1; i < args.Count; i++)
-            {
-                
-                if (commands.Count > 0)
-                {
-                    args.Add(commands[i]);
-                }
-            }
-            return commands[0];
-            
-        }
-        */
-
 
     }
 }
