@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-namespace TransferInput
+using Transfer.System;
+namespace Transfer.Input
 {
     public class InputController
     {
@@ -22,6 +23,8 @@ namespace TransferInput
             {
                 return _returnText;
             }
+
+
 
         }
 
@@ -101,10 +104,11 @@ namespace TransferInput
         private void EnterCommand()
         {
             //_returnText = ReturnInputText(_inputText);
-			_returnText = ReturnInputText(_inputText);
-			if (OnReturnPressed != null) {
+            _returnText = ReturnInputText(_inputText);
+            Transfer.System.EventManager.TriggerEvent("CaptureCommand");
+            /*if (OnReturnPressed != null) {
 				OnReturnPressed();
-			}
+			}*/
 
 
 
@@ -127,7 +131,7 @@ namespace TransferInput
             */
             ///////////
             ///////////
-            
+
 
 
 

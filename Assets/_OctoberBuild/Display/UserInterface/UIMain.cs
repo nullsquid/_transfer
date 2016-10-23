@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using TransferDisplay;
-public class UIMain : TransferDisplay.UserInterface {
+using Transfer.Display;
+public class UIMain : Transfer.Display.UserInterface {
 
     #region Public Styling Variables
 

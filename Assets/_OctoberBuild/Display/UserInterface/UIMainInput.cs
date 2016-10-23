@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using TransferDisplay;
-using TransferInput;
+using Transfer.Display;
+using Transfer.Input;
 public class UIMainInput :  UserInterface{
 	#region Private Data Variables
     private string initText = "$>>";

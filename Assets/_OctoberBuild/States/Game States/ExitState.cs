@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace TransferManager
+namespace Transfer.System
 {
     public class ExitState : IGameState
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace TransferDisplay
+namespace Transfer.Display
 {
     public abstract class UserInterface : MonoBehaviour
     {

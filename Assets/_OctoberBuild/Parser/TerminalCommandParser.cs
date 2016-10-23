@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using TransferInput;
+using Transfer.Input;
 public class TerminalCommandParser : MonoBehaviour {
 
 	#region Instance Variable
@@ -39,56 +39,40 @@ public class TerminalCommandParser : MonoBehaviour {
 
     void OnEnable()
     {
-        InputController.OnReturnPressed += CaptureCommand;
+        Transfer.System.EventManager.StartListening("CaptureCommand", CaptureCommandWrapper);
     }
 
     void OnDisable()
     {
-        InputController.OnReturnPressed -= CaptureCommand;
+        Transfer.System.EventManager.StopListening("CaptureCommand", CaptureCommandWrapper);
     }
 
 	void Update(){
 		if (uiInput == null) {
-			uiInput = GameObject.Find ("MainInput").GetComponent<UIMainInput> ();
+            //ideally I would like this to come from InputController
+            uiInput = GameObject.Find ("MainInput").GetComponent<UIMainInput> ();
 		}
-		Debug.Log (uiInput);
 
-		if (uiInput != null) {
-			_rawCommand = uiInput.ReturnText;
-			Debug.Log (_rawCommand);
-		}
 
 
 
 
 	}
 
-    void CaptureCommand()
+    IEnumerator CaptureCommand()
     {
-		//ideally I would like this to come from InputController
-		ParseCommand(_rawCommand);
-
-
+        yield return new WaitForFixedUpdate();
+        _commandArgs.Clear();
+        _rawCommand = uiInput.ReturnText;
+        ParseCommand(_rawCommand);
 
 
     }
 
 	void ParseCommand(string commandToParse){
-		/*
-		char[] delimiterChars = {' '};
-
-		_text = commandToParse;
-		Debug.Log(_text);
-		if (_text != null) {
-			Debug.Log (_text);
-			string[] _commandArgs = _text.Split (delimiterChars);
-			foreach (string s in _commandArgs) {
-				Debug.Log (s);
-			}
-		}
-		*/
+        
 		string word = "";
-		for (int i = 0; i < _rawCommand.Length; i++) {
+		for (int i = 0; i < commandToParse.Length; i++) {
 			if (commandToParse [i] == ' ') {
 				word.TrimEnd ();
 				_commandArgs.Add (word);
@@ -100,12 +84,16 @@ public class TerminalCommandParser : MonoBehaviour {
 
 		}
 
-		/*foreach (string s in _commandArgs) {
-			Debug.Log (s);
-		}*/
 
 		
 	}
+
+    #region Utility Methods
+    void CaptureCommandWrapper()
+    {
+        StartCoroutine(CaptureCommand());
+    }
+    #endregion
 
 
 

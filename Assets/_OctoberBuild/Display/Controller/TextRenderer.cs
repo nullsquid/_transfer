@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-namespace TransferDisplay
+namespace Transfer.Display
 {
     public class TextRenderer
     {
@@ -150,11 +150,7 @@ namespace TransferDisplay
         #endregion
 
         #region Utility Methods
-        /*
-        public void PrintText(string newText, float time)
-        {
-            StartCoroutine(IterateThroughCharactersToPrint(newText, time));
-        }*/
+       
 
         
         #endregion

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace TransferManager
+namespace Transfer.System
 {
     public class StatePatternOverlord : MonoBehaviour
     {
@@ -9,7 +9,7 @@ namespace TransferManager
         [HideInInspector]
         IGameState currentState;
         [HideInInspector]
-        TransferManager.IdleState idleState;
+        IdleState idleState;
         [HideInInspector]
         RunningState runningState;
         [HideInInspector]
