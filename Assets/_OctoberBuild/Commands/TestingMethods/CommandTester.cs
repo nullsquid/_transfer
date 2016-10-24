@@ -15,8 +15,6 @@ public class CommandTester  : MonoBehaviour{
 
         TerminalCommandInvoker connectInvoked = new TerminalCommandInvoker(connectCommand);
 
-        
-
         connectInvoked.InvokeCommand();
 	}
 }
