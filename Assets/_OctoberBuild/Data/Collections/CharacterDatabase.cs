@@ -7,7 +7,7 @@ namespace Transfer.Data
     {
         private static Dictionary<string, Character> characterDictionary = new Dictionary<string, Character>();
 
-        public 
+        
        
     }
 }
