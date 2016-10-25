@@ -32,6 +32,7 @@ namespace Transfer.System
 
         #region Private References
         UIMainInput uiInput;
+        TerminalCommandWrapper wrapper;
         #endregion
 
         #region Unity Callbacks
@@ -68,6 +69,11 @@ namespace Transfer.System
                 uiInput = GameObject.Find("MainInput").GetComponent<UIMainInput>();
             }
 
+            if(wrapper == null)
+            {
+                wrapper = new TerminalCommandWrapper();
+            }
+
 
         }
         #endregion
@@ -95,11 +101,30 @@ namespace Transfer.System
                     word.TrimEnd();
                     _commandArgs.Add(word);
                     word = "";
+                    SearchCommand();
                 }
                 else
                 {
                     word += commandToParse[i];
                 }
+
+                
+
+            }
+        }
+
+        void SearchCommand()
+        {
+            switch (_commandArgs[0])
+            {
+                case "CONNECT":
+                    if (_commandArgs.Count > 1)
+                    {
+                        //search based on _commandArgs
+
+                        wrapper.Connect(_commandArgs[1]);
+                    }
+                    break;
 
             }
         }

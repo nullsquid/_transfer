@@ -11,6 +11,7 @@ public class Terminal : IReceiver {
     public void Connect(string ID)
     {
         Debug.Log("Connected to " + ID);
+        //Connect to ID via tree search
     }
 
     public void Run(string programID)

@@ -12,7 +12,7 @@ public class ConnectedState : ITerminalState {
 
 	public void UpdateState()
     {
-
+        //traversal algorithm
     }
 
     public void OnCommandReceived(string command)
