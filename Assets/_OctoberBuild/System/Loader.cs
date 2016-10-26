@@ -7,6 +7,7 @@ namespace Transfer.System
     {
 
         public GameManager gameManager;
+        public CharacterManager characterManager;
         public TerminalCommandParser commandParser;
         // Use this for initialization
         void Awake()
@@ -18,6 +19,10 @@ namespace Transfer.System
             if(TerminalCommandParser.instance == null)
             {
                 Instantiate(commandParser);
+            }
+            if(CharacterManager.instance == null)
+            {
+                Instantiate(characterManager);
             }
         }
 
