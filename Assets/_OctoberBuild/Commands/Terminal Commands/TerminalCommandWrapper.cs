@@ -18,6 +18,9 @@ public class TerminalCommandWrapper {
         //Following Code to set the name for lookup
         //connectCommand.NameToConnect = Character.Name;
         //the name might also come from a getter somewhere else that will have a list of all of the names
+
+        //responsible for setting the FSM to switch to connected state
+        
         connectCommand.NameToConnect = identifier;
         TerminalCommandInvoker connectInvoked = new TerminalCommandInvoker(connectCommand);
         connectInvoked.InvokeCommand();

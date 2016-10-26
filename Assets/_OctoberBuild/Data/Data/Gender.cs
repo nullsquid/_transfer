@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Gender : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+namespace Transfer.Data
+{
+    public enum Gender
+    {
+        Masculine,
+        Feminine,
+        Androgynous,
+        Neutral
+    };
 }
