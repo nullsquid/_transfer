@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Transfer.Data
 {
-    public class Character
+    public abstract class Character
     {
         private string _identifier;
         private string _name;
