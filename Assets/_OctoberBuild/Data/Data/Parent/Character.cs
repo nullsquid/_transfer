@@ -9,6 +9,9 @@ namespace Transfer.Data
         private string _name;
         private Gender _gender;
 
+
+        
+
         public string Identifier
         {
             get
