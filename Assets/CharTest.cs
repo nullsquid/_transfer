@@ -12,12 +12,12 @@ public class CharTest : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (init == null)
+        /*if (init == null)
         {
             init = new CharacterInitializer();
             init.GenerateCharacters(true);
             Debug.Log(init.playerID);
             Debug.Log(CharacterDatabase.GetCharacterGender(init.playerID));
-        }
+        }*/
     }
 }

@@ -16,6 +16,13 @@ namespace Transfer.Data
     {
         private static Dictionary<string, Character> characterDictionary = new Dictionary<string, Character>();
         
+		public static string GetCharacterID(string ID){
+			if (characterDictionary.ContainsKey (ID)) {
+				return characterDictionary [ID].Identifier;
+			}
+			return null;
+		}
+
         public static string GetCharacterName(string ID)
         {
             if (characterDictionary.ContainsKey(ID))

@@ -47,18 +47,20 @@ namespace Transfer.System
             return gender;
         }
 
-        public Data.Character GenerateCharacters(bool useShortCharacters)
+		public Data.Character GenerateCharacters(bool useShortCharacters)
         {
-
-
-            for (int i = 0; i < characterIDs.Length; i++)
+			GeneratePlayerID (useShortCharacters);
+			Debug.Log ("player ID is " + playerID);
+			for(int i = 0; i < characterIDs.Length; i++)
             {
+				string newID = characterIDs[Random.Range(0, characterIDs.Length)];
+				Debug.Log ("new id is " + newID);
                 Data.Character newCharacter;
-                string newID = characterIDs[Random.Range(0, characterIDs.Length)];
                 if (newID == playerID)
                 {
-                    newCharacter = GeneratePlayerCharacter(GeneratePlayerID(useShortCharacters), "MEMM", SetRandomCharacterGender());
+					newCharacter = GeneratePlayerCharacter(playerID, "MEMM", SetRandomCharacterGender());
                     CharacterDatabase.AddCharacter(newCharacter);
+
                     return newCharacter;
                 }
                 else
