@@ -49,17 +49,30 @@ namespace Transfer.System
 			return playerID;
 		}
 		//make independent loops for both PC and NPC object lists
-        Data.PlayerCharacter GeneratePlayerCharacter(string playerID, string playerName, Gender playerGender){
+        //might not need to return anything?
+        void GeneratePlayerCharacter(string playerID, string playerName, Gender playerGender){
+            
             Transfer.Data.PlayerCharacter newPlayer = new Transfer.Data.PlayerCharacter(playerID, playerName, playerGender);
-
-            return newPlayer;
+            CharacterDatabase.AddCharacter(newPlayer);
+            for(int i = 0; i < characterIDs.Count; i++)
+            {
+                if(characterIDs[i] == playerID)
+                {
+                    characterIDs.Remove(characterIDs[i]);
+                }
+            }
+            
 
         }
 
-        Data.NonPlayerCharacter GenerateCharacter(string charID, string charName, Gender charGender)
+        void GenerateCharacters(string charName, Gender charGender)
         {
-            Data.NonPlayerCharacter newCharacter = new Data.NonPlayerCharacter(charID, charName, charGender);
-            return newCharacter;
+            Data.NonPlayerCharacter newCharacter;
+            for (int i = 0; i < characterIDs.Count; i++)
+            {
+                newCharacter = new Data.NonPlayerCharacter(characterIDs[i], charName, charGender);
+                CharacterDatabase.AddCharacter(newCharacter);
+            }
         }
 
         
@@ -72,11 +85,13 @@ namespace Transfer.System
 
 
 
-		public Data.Character GenerateCharacters(bool useShortCharacters)
+		public void PopulateCharacterDatabase(bool useShortCharacters)
         {
 			AddCharacterIdentifiers ();
 			playerID = GeneratePlayerID (useShortCharacters);
-			Debug.Log ("player ID is " + playerID);
+            GeneratePlayerCharacter(playerID, "MEMM", SetRandomCharacterGender());
+            GenerateCharacters("Not MEMM", SetRandomCharacterGender());
+            /*
 			for(int i = 0; i < characterIDs.Count; i++)
             {
 				string newID = characterIDs[Random.Range(0, characterIDs.Count)];
@@ -91,13 +106,14 @@ namespace Transfer.System
                 }
                 else
                 {
-                    newCharacter = GenerateCharacter(characterIDs[i], "MEMM", SetRandomCharacterGender());
-                    CharacterDatabase.AddCharacter(newCharacter);
-                    return GenerateCharacter(characterIDs[i], "name " + characterIDs[i], Gender.Masculine);
+                    //newCharacter = GenerateCharacter(characterIDs[i], "MEMM", SetRandomCharacterGender());
+                    //CharacterDatabase.AddCharacter(newCharacter);
+                    //return GenerateCharacter(characterIDs[i], "name " + characterIDs[i], Gender.Masculine);
                 }
 
             }
             return null;
+            */
         }
 
 
