@@ -5,8 +5,6 @@ namespace Transfer.System
 {
     public class CharacterManager : MonoBehaviour
     {
-		public PlayerCharacter pcPrefab;
-		public NonPlayerCharacter npcPrefab;
         public static CharacterManager instance;
         private CharacterInitializer charInit;
         void Awake()
@@ -30,7 +28,7 @@ namespace Transfer.System
         void InitializeCharacters()
         {
 			charInit.PopulateCharacterDatabase(true);
-            /*
+            
 			Debug.Log(CharacterDatabase.GetCharacterID("A") + " " + CharacterDatabase.GetCharacterName("A"));
 			Debug.Log(CharacterDatabase.GetCharacterID("B") + " " + CharacterDatabase.GetCharacterName("B"));
 			Debug.Log(CharacterDatabase.GetCharacterID("C") + " " + CharacterDatabase.GetCharacterName("C"));
@@ -41,7 +39,7 @@ namespace Transfer.System
 			Debug.Log(CharacterDatabase.GetCharacterID("H") + " " + CharacterDatabase.GetCharacterName("H"));
 			Debug.Log(CharacterDatabase.GetCharacterID("I") + " " + CharacterDatabase.GetCharacterName("I"));
             Debug.Log(CharacterDatabase.GetCharacterID("0") + " " + CharacterDatabase.GetCharacterName("0"));
-            */
+            
 
         }
     }

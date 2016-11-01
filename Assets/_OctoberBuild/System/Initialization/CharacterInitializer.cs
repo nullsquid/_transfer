@@ -9,12 +9,17 @@ namespace Transfer.System
     {
         
 
-        public string playerID;
-        //public string[] characterIDs = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "0" };
-		public List<string> characterIDs = new List<string>();
-        //public string[] shortCharacterIDs = { "A", "E", "I", "0" };
-		public List<string> shortCharacterIDs = new List<string>();
-        
+        private string playerID;
+		private List<string> characterIDs = new List<string>();
+		private List<string> shortCharacterIDs = new List<string>();
+
+        //name generation collections
+        private string[] nameBits = { "A", "B", "C", "D", "E", "F",
+            "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q",
+            "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+        private List<string> vowels = new List<string>();
+        private List<string> consonants = new List<string>();
+        private List<string> names = new List<string>();
 
 		void AddCharacterIdentifiers(){
 			characterIDs.Add ("A");
@@ -65,12 +70,12 @@ namespace Transfer.System
 
         }
 
-        void GenerateCharacters(string charName, Gender charGender)
+        void GenerateCharacters(Gender charGender)
         {
             Data.NonPlayerCharacter newCharacter;
             for (int i = 0; i < characterIDs.Count; i++)
             {
-                newCharacter = new Data.NonPlayerCharacter(characterIDs[i], charName, charGender);
+                newCharacter = new Data.NonPlayerCharacter(characterIDs[i], GenerateName(), charGender);
                 CharacterDatabase.AddCharacter(newCharacter);
             }
         }
@@ -89,8 +94,8 @@ namespace Transfer.System
         {
 			AddCharacterIdentifiers ();
 			playerID = GeneratePlayerID (useShortCharacters);
-            GeneratePlayerCharacter(playerID, "MEMM", SetRandomCharacterGender());
-            GenerateCharacters("Not MEMM", SetRandomCharacterGender());
+            GeneratePlayerCharacter(playerID, GenerateName(), SetRandomCharacterGender());
+            GenerateCharacters(SetRandomCharacterGender());
             /*
 			for(int i = 0; i < characterIDs.Count; i++)
             {
@@ -101,8 +106,7 @@ namespace Transfer.System
                 {
 					newCharacter = GeneratePlayerCharacter(playerID, "MEMM", SetRandomCharacterGender());
                     CharacterDatabase.AddCharacter(newCharacter);
-
-                    return newCharacter;
+                                        return newCharacter;
                 }
                 else
                 {
@@ -116,7 +120,41 @@ namespace Transfer.System
             */
         }
 
+        ////////////////////////////////
 
+        string GenerateName()
+        {
+            for (int i = 0; i < nameBits.Length; i++)
+            {
+                if (nameBits[i] == "A" || nameBits[i] == "E" || nameBits[i] == "I" || nameBits[i] == "O" || nameBits[i] == "U")
+                {
+                    vowels.Add(nameBits[i]);
+                }
+                else
+                {
+                    consonants.Add(nameBits[i]);
+                }
+            }
+            string newName;
+            newName = consonants[Random.Range(0, consonants.Count)] + vowels[Random.Range(0, vowels.Count)] + consonants[Random.Range(0, consonants.Count)] + consonants[Random.Range(0, consonants.Count)];
+            if (names.Contains(newName))
+            {
+                Debug.LogError("retry");
+                GenerateName();
+
+            }
+            else
+            {
+                
+                names.Add(newName);
+                return newName;
+            }
+            if (names.Contains("MEMM"))
+            {
+                Debug.Log("It's MEMM!");
+            }
+            return null;
+        }
 
 
 
