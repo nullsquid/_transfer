@@ -49,6 +49,7 @@ public class UIMain : Transfer.Display.UserInterface {
     
 
     #endregion
+
     #region Private Variables
 
     #endregion

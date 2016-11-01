@@ -20,10 +20,17 @@ public class TerminalCommandWrapper {
         //the name might also come from a getter somewhere else that will have a list of all of the names
 
         //responsible for setting the FSM to switch to connected state
+        if (CharacterDatabase.ContainsName(identifier))
+        {
+            connectCommand.NameToConnect = identifier;
+            TerminalCommandInvoker connectInvoked = new TerminalCommandInvoker(connectCommand);
+            connectInvoked.InvokeCommand();
+        }
+        else
+        {
+            Debug.LogError("No Name Found");
+        }
         
-        connectCommand.NameToConnect = identifier;
-        TerminalCommandInvoker connectInvoked = new TerminalCommandInvoker(connectCommand);
-        connectInvoked.InvokeCommand();
     }
 
 }

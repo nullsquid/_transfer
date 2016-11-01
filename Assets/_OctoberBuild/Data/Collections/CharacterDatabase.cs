@@ -23,6 +23,23 @@ namespace Transfer.Data
 			return null;
 		}
 
+        public static bool ContainsName(string _name)
+        {
+            foreach(KeyValuePair<string, Character> entry in characterDictionary)
+            {
+                if(entry.Value.Name == _name)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+
+        }
+
         public static string GetCharacterName(string ID)
         {
             if (characterDictionary.ContainsKey(ID))
