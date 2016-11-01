@@ -27,14 +27,13 @@ namespace Transfer.Data
         {
             foreach(KeyValuePair<string, Character> entry in characterDictionary)
             {
-                if(entry.Value.Name == _name)
+                Debug.Log("name is " + entry.Value.Name);
+                if (entry.Value.Name == _name)
                 {
+                    
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
+                
             }
             return false;
 
