@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using Transfer.System;
 public class Terminal : IReceiver {
 
+   
 	public void Exit()
     {
         Debug.Log("Returning to idle state");
@@ -10,6 +11,7 @@ public class Terminal : IReceiver {
 
     public void Connect(string ID)
     {
+        
         Debug.Log("Connected to " + ID);
         //Connect to ID via tree search
     }

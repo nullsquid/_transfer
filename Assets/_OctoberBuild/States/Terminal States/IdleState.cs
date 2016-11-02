@@ -17,7 +17,10 @@ public class IdleState : ITerminalState {
 
     public void OnCommandReceived(string command)
     {
-
+        if(command == "CONNECT")
+        {
+            ToConnectState();
+        }
     }
 
     public void OnCommandReceived(string command, string[] args)
@@ -27,7 +30,7 @@ public class IdleState : ITerminalState {
 
     public void ToConnectState()
     {
-
+        terminal.currentState = terminal.connectState;
     }
 
     public void ToRunState()

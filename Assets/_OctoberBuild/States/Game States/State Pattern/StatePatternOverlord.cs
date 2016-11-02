@@ -7,17 +7,17 @@ namespace Transfer.System
     {
 
         [HideInInspector]
-        IGameState currentState;
+        public IGameState currentState;
         [HideInInspector]
-        IdleState idleState;
+        public IdleState idleState;
         [HideInInspector]
-        RunningState runningState;
+        public RunningState runningState;
         [HideInInspector]
-        PauseState pauseState;
+        public PauseState pauseState;
         [HideInInspector]
-        CutsceneState cutsceneState;
+        public CutsceneState cutsceneState;
         [HideInInspector]
-        ExitState exitState;
+        public ExitState exitState;
 
         void Awake()
         {

@@ -4,15 +4,15 @@ using System.Collections;
 public class StatePatternTerminal : MonoBehaviour {
 
     [HideInInspector]
-    ITerminalState currentState;
+    public ITerminalState currentState;
     [HideInInspector]
-    IdleState idleState;
+    public IdleState idleState;
     [HideInInspector]
-    ConnectedState connectState;
+    public ConnectedState connectState;
     [HideInInspector]
-    RunState runState;
+    public RunState runState;
     [HideInInspector]
-    SleepState sleepState; 
+    public SleepState sleepState; 
 
     void Awake()
     {

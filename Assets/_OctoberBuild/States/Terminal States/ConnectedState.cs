@@ -17,7 +17,7 @@ public class ConnectedState : ITerminalState {
 
     public void OnCommandReceived(string command)
     {
-
+        
     }
 
     public void OnCommandReceived(string command, string[] args)
