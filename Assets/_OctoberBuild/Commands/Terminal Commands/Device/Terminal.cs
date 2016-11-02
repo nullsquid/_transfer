@@ -3,7 +3,7 @@ using System.Collections;
 using Transfer.System;
 public class Terminal : IReceiver {
 
-   
+    
 	public void Exit()
     {
         Debug.Log("Returning to idle state");
