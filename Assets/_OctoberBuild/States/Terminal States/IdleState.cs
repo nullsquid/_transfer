@@ -42,4 +42,9 @@ public class IdleState : ITerminalState {
     {
 
     }
+
+    public void ToIdleState()
+    {
+
+    }
 }

@@ -39,4 +39,9 @@ public class RunState : ITerminalState {
     {
 
     }
+
+    public void ToIdleState()
+    {
+
+    }
 }

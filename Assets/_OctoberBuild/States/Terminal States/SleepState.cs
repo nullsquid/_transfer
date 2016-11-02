@@ -39,4 +39,9 @@ public class SleepState : ITerminalState {
     {
 
     }
+
+    public void ToIdleState()
+    {
+
+    }
 }

@@ -3,15 +3,31 @@ using System.Collections;
 using Transfer.System;
 public class Terminal : IReceiver {
 
-    
+    StatePatternTerminal terminalState;
 	public void Exit()
     {
+        if(terminalState == null)
+        {
+            terminalState = GameObject.Find("Terminal(Clone)").GetComponent<StatePatternTerminal>();
+        }
+        if(terminalState.currentState != terminalState.idleState)
+        {
+            
+        }
         Debug.Log("Returning to idle state");
     }
 
     public void Connect(string ID)
     {
         
+        if(terminalState == null)
+        {
+            terminalState = GameObject.Find("Terminal(Clone)").GetComponent<StatePatternTerminal>();
+        }
+        if (terminalState.currentState == terminalState.idleState)
+        {
+            terminalState.idleState.ToConnectState();
+        }
         Debug.Log("Connected to " + ID);
         //Connect to ID via tree search
     }

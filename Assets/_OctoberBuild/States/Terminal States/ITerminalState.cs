@@ -9,6 +9,8 @@ public interface ITerminalState {
 
     void OnCommandReceived(string command, string[] args);
 
+    void ToIdleState();
+
     void ToConnectState();
 
     void ToRunState();

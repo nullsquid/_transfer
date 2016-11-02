@@ -40,4 +40,9 @@ public class ConnectedState : ITerminalState {
 
     }
 
+    public void ToIdleState()
+    {
+
+    }
+
 }
