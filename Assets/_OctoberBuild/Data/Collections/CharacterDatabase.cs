@@ -46,6 +46,29 @@ namespace Transfer.Data
             return null;
         }
 
+        public static string GetPlayerName()
+        {
+            foreach(KeyValuePair<string, Character> entry in characterDictionary)
+            {
+                if(entry.Value.IsPlayer == true)
+                {
+                    return entry.Value.Name;
+                }
+            }
+            return null;
+        }
+
+        public static string GetPlayerID()
+        {
+            foreach(KeyValuePair<string, Character> entry in characterDictionary){
+                if(entry.Value.IsPlayer == true)
+                {
+                    return entry.Value.Identifier;
+                }
+            }
+            return null;
+        }
+
         public static Gender GetCharacterGender(string ID)
         {
             

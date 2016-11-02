@@ -8,6 +8,7 @@ namespace Transfer.Data
         private string _identifier;
         private string _name;
         private Gender _gender;
+        private bool _isPlayer;
 
 
         
@@ -47,6 +48,17 @@ namespace Transfer.Data
             }
         }
         
+        public bool IsPlayer
+        {
+            get
+            {
+                return _isPlayer;
+            }
+            set
+            {
+                _isPlayer = value;
+            }
+        }
 
     }
 }

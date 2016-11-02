@@ -9,6 +9,7 @@ namespace Transfer.Data
             this.Identifier = ID;
             this.Name = newName;
             this.Gender = newGender;
+            this.IsPlayer = false;
         }
     }
 }

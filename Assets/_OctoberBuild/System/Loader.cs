@@ -25,7 +25,7 @@ namespace Transfer.System
                 Instantiate(characterManager);
             }
         }
-
+        
         // Update is called once per frame
         void Update()
         {
