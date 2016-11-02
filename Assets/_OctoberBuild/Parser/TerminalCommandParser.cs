@@ -8,9 +8,7 @@ namespace Transfer.System
     public class TerminalCommandParser : MonoBehaviour
     {
 
-        #region Instance
-        public static TerminalCommandParser instance;
-        #endregion
+
 
         #region Private Data Variables
         string _terminalCommand;
@@ -36,20 +34,6 @@ namespace Transfer.System
         #endregion
 
         #region Unity Callbacks
-        void Awake()
-        {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            if (instance != this)
-            {
-                Destroy(gameObject);
-            }
-
-
-            DontDestroyOnLoad(gameObject);
-        }
 
         void OnEnable()
         {
@@ -123,6 +107,12 @@ namespace Transfer.System
                         //search based on _commandArgs
 
                         wrapper.Connect(_commandArgs[1]);
+                    }
+                    break;
+                case "SCAN":
+                    if(_commandArgs.Count > 1)
+                    {
+                        wrapper.Scan(_commandArgs[1]);
                     }
                     break;
 

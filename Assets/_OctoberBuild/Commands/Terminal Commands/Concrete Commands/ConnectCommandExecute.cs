@@ -5,7 +5,6 @@ public class ConnectCommandExecute : Command {
 
     IReceiver terminalDevice;
 
-    //default. need a way to update this at runtime
     string _nameToConnect = "MEMM";
 
     public string NameToConnect{

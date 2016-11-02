@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SleepState : MonoBehaviour {
+public class SleepState : ITerminalState {
 
     private readonly StatePatternTerminal terminal;
 

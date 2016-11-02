@@ -9,5 +9,7 @@ public interface IReceiver {
 
     void Run(string programID);
 
+    void Scan(string place);
+
     void Sleep();
 }

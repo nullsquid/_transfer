@@ -30,6 +30,7 @@ public class StatePatternTerminal : MonoBehaviour {
 
     void Update()
     {
+        Debug.Log("current state is " + currentState);
         currentState.UpdateState();
     }
 

@@ -33,4 +33,9 @@ public class TerminalCommandWrapper {
         
     }
 
+    public void Scan(string place)
+    {
+
+    }
+
 }

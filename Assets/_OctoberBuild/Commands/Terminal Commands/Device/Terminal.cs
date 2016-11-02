@@ -19,6 +19,11 @@ public class Terminal : IReceiver {
         Debug.Log("Running program " + programID);
     }
 
+    public void Scan(string place)
+    {
+        Debug.Log("Scanning " + place);
+    }
+
     public void Sleep()
     {
         Debug.Log("Is sleeping");
