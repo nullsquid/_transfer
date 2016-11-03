@@ -45,6 +45,11 @@ public class Terminal : IReceiver {
     public void Scan(string place)
     {
         Debug.Log("Scanning " + place);
+        if (terminalState == null)
+        {
+            terminalState = GameObject.Find("Terminal(Clone)").GetComponent<StatePatternTerminal>();
+        }
+        //if(terminalState.currentState != terminalState.scanState)
     }
 
     public void Sleep()
