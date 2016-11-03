@@ -42,6 +42,7 @@ public class ConnectedState : ITerminalState {
 
     public void ToIdleState()
     {
+        terminal.currentState = terminal.idleState;
 
     }
 

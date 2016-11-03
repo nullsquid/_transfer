@@ -115,6 +115,13 @@ namespace Transfer.System
                         wrapper.Scan(_commandArgs[1]);
                     }
                     break;
+                case "EXIT":
+                    //if (_commandArgs.Count > 1)
+                    //{
+                        Debug.Log("exit");
+                        wrapper.Exit();
+                    //}
+                    break;
 
             }
         }

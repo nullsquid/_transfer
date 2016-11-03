@@ -42,6 +42,6 @@ public class SleepState : ITerminalState {
 
     public void ToIdleState()
     {
-
+        terminal.currentState = terminal.idleState;
     }
 }

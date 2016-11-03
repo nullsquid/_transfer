@@ -11,6 +11,7 @@ public class ConnectCommandExecute : Command {
         set
         {
             _nameToConnect = value;
+
         }
     }
 

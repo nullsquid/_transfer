@@ -6,14 +6,19 @@ public class Terminal : IReceiver {
     StatePatternTerminal terminalState;
 	public void Exit()
     {
-        if(terminalState == null)
+        if (terminalState == null)
         {
             terminalState = GameObject.Find("Terminal(Clone)").GetComponent<StatePatternTerminal>();
         }
-        if(terminalState.currentState != terminalState.idleState)
+        if (terminalState.currentState != terminalState.idleState)
         {
-            
+                terminalState.currentState.ToIdleState();
         }
+        else
+        {
+                Debug.Log("Already Idle");
+        }
+        
         Debug.Log("Returning to idle state");
     }
 

@@ -5,11 +5,13 @@ using Transfer.Data;
 public class TerminalCommandWrapper {
 
     ConnectCommandExecute connectCommand;
+    ExitCommandExecute exitCommand;
 
     public TerminalCommandWrapper()
     {
         IReceiver newDevice = DeviceGetter.GetDevice();
         connectCommand = new ConnectCommandExecute(newDevice);
+        exitCommand = new ExitCommandExecute(newDevice);
     }
 
     public void Connect(string identifier)
@@ -36,6 +38,12 @@ public class TerminalCommandWrapper {
     public void Scan(string place)
     {
 
+    }
+
+    public void Exit()
+    {
+        TerminalCommandInvoker exitInvoked = new TerminalCommandInvoker(exitCommand);
+        exitInvoked.InvokeCommand();
     }
 
 }
