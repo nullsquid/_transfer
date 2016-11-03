@@ -107,11 +107,13 @@ namespace Transfer.Display
         public IEnumerator IterateThroughCharactersToPrint(string text, int lineLength, int chunkLength, float time, float punctTime)
         {
             float normalTime = time;
+            if (text != null)
+            {
                 for (int i = 0; i < text.Length; i++)
                 {
                     if (text[i] == '.')
                     {
-                        time += punctTime/Random.Range(1, 1.5f);
+                        time += punctTime / Random.Range(1, 1.5f);
                     }
                     else if (text[i] == ',')
                     {
@@ -122,11 +124,11 @@ namespace Transfer.Display
                         time = normalTime;
                     }
 
-                    if(i > 0 && text[i - 1] == ' ')
+                    if (i > 0 && text[i - 1] == ' ')
                     {
-                        
+
                         wordsInLine++;
-                        
+
                         if (wordsInLine >= lineLength)
                         {
                             linesInChunk++;
@@ -134,17 +136,18 @@ namespace Transfer.Display
                             typewriterText.Remove(i - 1, 1);
                             wordsInLine = 0;
 
-                            if(linesInChunk >= chunkLength)
+                            if (linesInChunk >= chunkLength)
                             {
                                 //event to call the next chunk
                                 break;
                             }
                         }
-                }
-					
-                    typewriterText += text[i];
-					yield return new WaitForSeconds(time);
+                    }
 
+                    typewriterText += text[i];
+                    yield return new WaitForSeconds(time);
+
+                }
             }
         }
         #endregion

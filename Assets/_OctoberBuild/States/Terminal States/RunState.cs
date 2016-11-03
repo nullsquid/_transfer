@@ -33,6 +33,12 @@ public class RunState : ITerminalState {
     public void ToRunState()
     {
 
+
+    }
+
+    public void ToScanState()
+    {
+
     }
 
     public void ToSleepState()

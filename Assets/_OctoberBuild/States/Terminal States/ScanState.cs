@@ -17,7 +17,7 @@ public class ScanState : ITerminalState {
 
     public void ToIdleState()
     {
-
+        terminal.currentState = terminal.idleState;
     }
 
     public void ToConnectState()
@@ -30,7 +30,7 @@ public class ScanState : ITerminalState {
 
     }
 
-    public void ToScanState(string place)
+    public void ToScanState()
     {
 
     }

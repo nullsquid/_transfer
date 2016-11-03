@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Transfer.System;
+using Transfer.Data;
 public class Terminal : IReceiver {
 
     StatePatternTerminal terminalState;
+    CharacterDatabase database;
 	public void Exit()
     {
         if (terminalState == null)
@@ -49,7 +51,30 @@ public class Terminal : IReceiver {
         {
             terminalState = GameObject.Find("Terminal(Clone)").GetComponent<StatePatternTerminal>();
         }
-        //if(terminalState.currentState != terminalState.scanState)
+        if(terminalState.currentState != terminalState.scanState)
+        {
+            terminalState.currentState.ToScanState();
+        }
+        //test
+        if(database == null)
+        {
+            database = new CharacterDatabase();
+        }
+        
+        UIMain.SetTextContent(CharacterDatabase.GetCharacterName("A") + "\n"
+            + CharacterDatabase.GetCharacterName("B") + "\n"
+            + CharacterDatabase.GetCharacterName("C") + "\n"
+            + CharacterDatabase.GetCharacterName("D") + "\n"
+            + CharacterDatabase.GetCharacterName("E") + "\n"
+            + CharacterDatabase.GetCharacterName("F") + "\n"
+            + CharacterDatabase.GetCharacterName("G") + "\n"
+            + CharacterDatabase.GetCharacterName("H") + "\n"
+            + CharacterDatabase.GetCharacterName("I") + "\n"
+            + CharacterDatabase.GetCharacterName("0") + "\n");
+        
+
+
+        Transfer.System.EventManager.TriggerEvent("TriggerPrint");
     }
 
     public void Sleep()

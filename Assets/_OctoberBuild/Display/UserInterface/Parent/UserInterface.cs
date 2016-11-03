@@ -7,6 +7,7 @@ namespace Transfer.Display
     {
 
         private TextMesh displayText;
+        private int colleagueCode;
         public bool use3dText;
         protected TextRenderer display;
         #region Public Style Variables        
@@ -40,8 +41,7 @@ namespace Transfer.Display
         #endregion
 
         #region Public System Variables
-        //Style//LineLengths
-        //[Range()]
+
 
 
         #endregion
@@ -108,6 +108,7 @@ namespace Transfer.Display
 
         protected virtual void PrintToScreen()
         {
+            
             if (display.typewriterText != null)
             {
                 if (use3dText)
@@ -134,7 +135,11 @@ namespace Transfer.Display
         {
 
         }
+
+        #region Public Style Methods
         
+        #endregion
+
 
     }
 }

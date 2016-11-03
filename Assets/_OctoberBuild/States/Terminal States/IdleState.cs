@@ -38,6 +38,11 @@ public class IdleState : ITerminalState {
 
     }
 
+    public void ToScanState()
+    {
+        terminal.currentState = terminal.scanState;
+    }
+
     public void ToSleepState()
     {
 

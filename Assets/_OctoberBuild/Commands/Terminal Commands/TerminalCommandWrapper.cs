@@ -6,12 +6,14 @@ public class TerminalCommandWrapper {
 
     ConnectCommandExecute connectCommand;
     ExitCommandExecute exitCommand;
+    ScanCommandExecute scanCommand;
 
     public TerminalCommandWrapper()
     {
         IReceiver newDevice = DeviceGetter.GetDevice();
         connectCommand = new ConnectCommandExecute(newDevice);
         exitCommand = new ExitCommandExecute(newDevice);
+        scanCommand = new ScanCommandExecute(newDevice);
     }
 
     public void Connect(string identifier)
@@ -37,7 +39,8 @@ public class TerminalCommandWrapper {
 
     public void Scan(string place)
     {
-
+        TerminalCommandInvoker scanInvoked  = new TerminalCommandInvoker(scanCommand);
+        scanInvoked.InvokeCommand();
     }
 
     public void Exit()

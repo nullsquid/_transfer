@@ -9,8 +9,8 @@ public class UIMain : Transfer.Display.UserInterface {
     //Content//
     [HideInInspector]
     public string entityTextName;
-    [HideInInspector]
-    public string textContent;
+    private static string textContent;
+    
     [HideInInspector]
     public string dummyTextContent = 
         "Lorem ipsum dolor sit amet, "
@@ -55,7 +55,16 @@ public class UIMain : Transfer.Display.UserInterface {
     #endregion
 
     #region Main Methods
+    public static void SetTextContent(string newContent)
+    {
+        textContent = newContent;
+    }
 
+    public void PrintTextTrigger()
+    {
+        PrintText(textContent, maxLineLength, maxChunkLength, timeBetweenLetters, punctuationTimeModifier, PrintType);
+
+    }
     #endregion
 
     #region Utility Methods
@@ -63,6 +72,15 @@ public class UIMain : Transfer.Display.UserInterface {
     #endregion
 
     #region Unity Callbacks
+    void OnEnable()
+    {
+        Transfer.System.EventManager.StartListening("TriggerPrint", PrintTextTrigger);
+    }
+
+    void OnDisable()
+    {
+        Transfer.System.EventManager.StopListening("TriggerPrint", PrintTextTrigger);
+    }
     void Start()
     {
 
@@ -78,9 +96,11 @@ public class UIMain : Transfer.Display.UserInterface {
     }
 
     
+    
 
     void OnGUI()
     {
+        Debug.Log(textContent);
         if(display == null)
         {
             display = new TextRenderer(mainFont, mainFontSize, mainFontColor);

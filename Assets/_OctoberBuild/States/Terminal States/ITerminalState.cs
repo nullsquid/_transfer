@@ -15,5 +15,7 @@ public interface ITerminalState {
 
     void ToRunState();
 
+    void ToScanState();
+
     void ToSleepState();
 }

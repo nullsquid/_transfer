@@ -35,6 +35,11 @@ public class SleepState : ITerminalState {
 
     }
 
+    public void ToScanState()
+    {
+        terminal.currentState = terminal.scanState;
+    }
+
     public void ToSleepState()
     {
 
