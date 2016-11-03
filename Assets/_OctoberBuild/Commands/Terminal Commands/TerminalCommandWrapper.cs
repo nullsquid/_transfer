@@ -39,6 +39,8 @@ public class TerminalCommandWrapper {
 
     public void Scan(string place)
     {
+
+        scanCommand.PlaceToScan = place;
         TerminalCommandInvoker scanInvoked  = new TerminalCommandInvoker(scanCommand);
         scanInvoked.InvokeCommand();
     }

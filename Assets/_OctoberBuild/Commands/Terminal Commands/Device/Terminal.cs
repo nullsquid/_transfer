@@ -55,26 +55,39 @@ public class Terminal : IReceiver {
         {
             terminalState.currentState.ToScanState();
         }
-        //test
-        if(database == null)
+        
+
+        if (place == "HOME")
         {
-            database = new CharacterDatabase();
+            Transfer.System.EventManager.TriggerEvent("TriggerClear");
+            UIMain.SetTextContent(CharacterDatabase.GetCharacterName("A") + "\n"
+                + CharacterDatabase.GetCharacterName("B") + "\n"
+                + CharacterDatabase.GetCharacterName("C") + "\n"
+                + CharacterDatabase.GetCharacterName("D") + "\n"
+                + CharacterDatabase.GetCharacterName("E") + "\n"
+                + CharacterDatabase.GetCharacterName("F") + "\n"
+                + CharacterDatabase.GetCharacterName("G") + "\n"
+                + CharacterDatabase.GetCharacterName("H") + "\n"
+                + CharacterDatabase.GetCharacterName("I") + "\n"
+                + CharacterDatabase.GetCharacterName("0") + "\n");
+
+
+
+            Transfer.System.EventManager.TriggerEvent("TriggerPrint");
         }
-        
-        UIMain.SetTextContent(CharacterDatabase.GetCharacterName("A") + "\n"
-            + CharacterDatabase.GetCharacterName("B") + "\n"
-            + CharacterDatabase.GetCharacterName("C") + "\n"
-            + CharacterDatabase.GetCharacterName("D") + "\n"
-            + CharacterDatabase.GetCharacterName("E") + "\n"
-            + CharacterDatabase.GetCharacterName("F") + "\n"
-            + CharacterDatabase.GetCharacterName("G") + "\n"
-            + CharacterDatabase.GetCharacterName("H") + "\n"
-            + CharacterDatabase.GetCharacterName("I") + "\n"
-            + CharacterDatabase.GetCharacterName("0") + "\n");
-        
 
-
-        Transfer.System.EventManager.TriggerEvent("TriggerPrint");
+        else if (place == "ROOM")
+        {
+            Transfer.System.EventManager.TriggerEvent("TriggerClear");
+            UIMain.SetTextContent("YOU SEE NOTHING");
+            Transfer.System.EventManager.TriggerEvent("TriggerPrint");
+        }
+        else
+        {
+            Transfer.System.EventManager.TriggerEvent("TriggerClear");
+            UIMain.SetTextContent("ERROR");
+            Transfer.System.EventManager.TriggerEvent("TriggerPrint");
+        }
     }
 
     public void Sleep()

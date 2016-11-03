@@ -104,8 +104,10 @@ namespace Transfer.Display
             
         }
 
-        
-
+        protected virtual void ClearScreen()
+        {
+            display.typewriterText = "";
+        }
         protected virtual void PrintToScreen()
         {
             

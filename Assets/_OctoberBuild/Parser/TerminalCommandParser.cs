@@ -112,6 +112,7 @@ namespace Transfer.System
                 case "SCAN":
                     if(_commandArgs.Count > 1)
                     {
+                        
                         wrapper.Scan(_commandArgs[1]);
                     }
                     break;

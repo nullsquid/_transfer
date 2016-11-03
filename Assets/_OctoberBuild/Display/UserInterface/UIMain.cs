@@ -75,11 +75,13 @@ public class UIMain : Transfer.Display.UserInterface {
     void OnEnable()
     {
         Transfer.System.EventManager.StartListening("TriggerPrint", PrintTextTrigger);
+        Transfer.System.EventManager.StartListening("TriggerClear", ClearScreen);
     }
 
     void OnDisable()
     {
         Transfer.System.EventManager.StopListening("TriggerPrint", PrintTextTrigger);
+        Transfer.System.EventManager.StopListening("TriggerClear", ClearScreen);
     }
     void Start()
     {

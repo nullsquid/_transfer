@@ -7,6 +7,14 @@ public class ScanCommandExecute : Command {
 
     string _placeToScan;
 
+    public string PlaceToScan
+    {
+        set
+        {
+            _placeToScan = value;
+        }
+    }
+
     public ScanCommandExecute(IReceiver newTerminal)
     {
         terminalDevice = newTerminal;
