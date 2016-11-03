@@ -85,7 +85,7 @@ public class Terminal : IReceiver {
         else
         {
             Transfer.System.EventManager.TriggerEvent("TriggerClear");
-            UIMain.SetTextContent("ERROR");
+            UIMain.SetTextContent("EXCEPTION: did you mean to pass a different argument?\n\nInput help for more options");
             Transfer.System.EventManager.TriggerEvent("TriggerPrint");
         }
     }
