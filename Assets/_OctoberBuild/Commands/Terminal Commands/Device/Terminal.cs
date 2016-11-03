@@ -55,12 +55,17 @@ public class Terminal : IReceiver {
         {
             terminalState.currentState.ToScanState();
         }
-        
+        if(database == null)
+        {
+            database = new CharacterDatabase();
+        }
 
         if (place == "HOME")
         {
+            
             Transfer.System.EventManager.TriggerEvent("TriggerClear");
-            UIMain.SetTextContent(CharacterDatabase.GetCharacterName("A") + "\n"
+            UIMain.SetTextContent(
+                  CharacterDatabase.GetCharacterName("A") + "\n"
                 + CharacterDatabase.GetCharacterName("B") + "\n"
                 + CharacterDatabase.GetCharacterName("C") + "\n"
                 + CharacterDatabase.GetCharacterName("D") + "\n"
@@ -70,7 +75,7 @@ public class Terminal : IReceiver {
                 + CharacterDatabase.GetCharacterName("H") + "\n"
                 + CharacterDatabase.GetCharacterName("I") + "\n"
                 + CharacterDatabase.GetCharacterName("0") + "\n");
-
+            
 
 
             Transfer.System.EventManager.TriggerEvent("TriggerPrint");
@@ -79,7 +84,7 @@ public class Terminal : IReceiver {
         else if (place == "ROOM")
         {
             Transfer.System.EventManager.TriggerEvent("TriggerClear");
-            UIMain.SetTextContent("YOU SEE NOTHING");
+            UIMain.SetTextContent("the room is empty");
             Transfer.System.EventManager.TriggerEvent("TriggerPrint");
         }
         else
