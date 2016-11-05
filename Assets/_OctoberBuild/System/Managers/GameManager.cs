@@ -7,6 +7,17 @@ namespace Transfer.System
         public static GameManager instance;
 		public StatePatternOverlord overlord;
 
+		private bool _gameHasStarted;
+		public bool GameHasStarted{
+			get{
+				return _gameHasStarted;
+			}
+
+			set{
+				_gameHasStarted = value;
+			}
+		}
+
         void Awake()
         {
             if(instance == null)

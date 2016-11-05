@@ -102,7 +102,6 @@ public class UIMain : Transfer.Display.UserInterface {
 
     void OnGUI()
     {
-        Debug.Log(textContent);
         if(display == null)
         {
             display = new TextRenderer(mainFont, mainFontSize, mainFontColor);
