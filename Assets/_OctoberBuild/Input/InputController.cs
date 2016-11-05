@@ -35,6 +35,12 @@ namespace Transfer.Input
                 return _inputText;
             }
         }
+
+		public bool CanRecordInput{
+			set{
+				_canRecordInput = value;
+			}
+		}
         #endregion
 
         #region Public Events
