@@ -2,9 +2,11 @@
 using System.Collections;
 using Transfer.Display;
 using Transfer.Input;
+using Transfer.Data;
 public class UIMainInput :  UserInterface{
 	#region Private Data Variables
-    private string initText = "$>>";
+
+	private string initText;
 	[HideInInspector]
     public string newText = "";
 	[HideInInspector]
@@ -30,6 +32,7 @@ public class UIMainInput :  UserInterface{
 
         //facade this out
         InitializeUserInterface();
+		initText = "TERMINAL@" + CharacterDatabase.GetPlayerName() + "$>>";
 
     }
 

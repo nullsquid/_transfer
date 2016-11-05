@@ -5,6 +5,7 @@ namespace Transfer.System
     public class GameManager : MonoBehaviour
     {
         public static GameManager instance;
+		public StatePatternOverlord overlord;
 
         void Awake()
         {
@@ -25,10 +26,24 @@ namespace Transfer.System
         
         void InitializeGame()
         {
-
-
-            //initialize all the things
-
+			if (overlord == null) {
+				overlord = GetComponent<StatePatternOverlord> ();
+			}
+			overlord.currentState.ToIdleState ();
         }
+
+		public void StartGame(){
+			overlord.currentState.ToRunningState ();
+		}
+
+		public void PauseGame(){
+			overlord.currentState.ToPauseState ();
+		}
+
+		public void StartCutscene(){
+			overlord.currentState.ToCutsceneState ();
+		}
+
+
     }
 }

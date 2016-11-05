@@ -41,6 +41,9 @@ public class Terminal : IReceiver {
 
     public void Run(string programID)
     {
+		if (terminalState == null) {
+			terminalState = GameObject.Find("Terminal(Clone)").GetComponent<StatePatternTerminal>();
+		}
         Debug.Log("Running program " + programID);
     }
 
