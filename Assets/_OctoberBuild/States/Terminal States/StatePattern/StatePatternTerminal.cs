@@ -14,7 +14,9 @@ public class StatePatternTerminal : MonoBehaviour {
     [HideInInspector]
     public ScanState scanState;
     [HideInInspector]
-    public SleepState sleepState; 
+    public SleepState sleepState;
+    [HideInInspector]
+    public HelpState helpState;
 
     void Awake()
     {
@@ -23,6 +25,7 @@ public class StatePatternTerminal : MonoBehaviour {
         sleepState = new SleepState(this);
         connectState = new ConnectedState(this);
         scanState = new ScanState(this);
+        helpState = new HelpState(this);
     }
 
     //will figure out later if this should be in start or in the initializer
