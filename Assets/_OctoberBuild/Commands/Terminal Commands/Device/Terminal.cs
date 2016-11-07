@@ -6,6 +6,19 @@ public class Terminal : IReceiver {
 
     StatePatternTerminal terminalState;
     CharacterDatabase database;
+
+    public void Help(string request)
+    {
+        if(terminalState == null)
+        {
+            terminalState = GameObject.Find("Terminal(Clone)").GetComponent<StatePatternTerminal>();
+        }
+        if(terminalState.currentState == terminalState.idleState)
+        {
+            terminalState.currentState.ToHelpState();
+        }
+    }
+
 	public void Exit()
     {
         if (terminalState == null)

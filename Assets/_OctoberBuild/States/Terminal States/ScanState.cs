@@ -50,5 +50,10 @@ public class ScanState : ITerminalState {
 
     }
 
+    public void ToHelpState()
+    {
+        terminal.currentState = terminal.helpState;
+    }
+
     
 }

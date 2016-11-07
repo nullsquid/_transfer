@@ -49,4 +49,9 @@ public class SleepState : ITerminalState {
     {
         terminal.currentState = terminal.idleState;
     }
+
+    public void ToHelpState()
+    {
+        terminal.currentState = terminal.helpState;
+    }
 }

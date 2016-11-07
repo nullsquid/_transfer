@@ -12,4 +12,6 @@ public interface IReceiver {
     void Scan(string place);
 
     void Sleep();
+
+    void Help(string request);
 }

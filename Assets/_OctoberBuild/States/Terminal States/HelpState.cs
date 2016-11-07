@@ -16,6 +16,11 @@ public class HelpState : ITerminalState {
 
     }
 
+    public void ToHelpState()
+    {
+        terminal.currentState = terminal.helpState;
+    }
+
     public void ToIdleState()
     {
 

@@ -51,4 +51,9 @@ public class ConnectedState : ITerminalState {
 
     }
 
+    public void ToHelpState()
+    {
+        terminal.currentState = terminal.helpState;
+    }
+
 }

@@ -7,6 +7,8 @@ public interface ITerminalState {
 
     void ToIdleState();
 
+    void ToHelpState();
+
     void ToConnectState();
 
     void ToRunState();
