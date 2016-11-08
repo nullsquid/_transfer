@@ -7,6 +7,7 @@ public class TerminalCommandWrapper {
     ConnectCommandExecute connectCommand;
     ExitCommandExecute exitCommand;
     ScanCommandExecute scanCommand;
+    HelpCommandExecute helpCommand;
 
     public TerminalCommandWrapper()
     {
@@ -14,6 +15,15 @@ public class TerminalCommandWrapper {
         connectCommand = new ConnectCommandExecute(newDevice);
         exitCommand = new ExitCommandExecute(newDevice);
         scanCommand = new ScanCommandExecute(newDevice);
+        helpCommand = new HelpCommandExecute(newDevice);
+    }
+
+    public void Help(string request)
+    {
+        helpCommand.HelpRequest = request;
+        TerminalCommandInvoker helpInvoked = new TerminalCommandInvoker(helpCommand);
+        helpInvoked.InvokeCommand();
+        
     }
 
     public void Connect(string identifier)

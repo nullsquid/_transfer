@@ -5,17 +5,32 @@ using Transfer.Data;
 public class Terminal : IReceiver {
 
     StatePatternTerminal terminalState;
+    //Data
     CharacterDatabase database;
-
+    Transfer.Data.HelpMenu helpMenu;
     public void Help(string request)
     {
         if(terminalState == null)
         {
             terminalState = GameObject.Find("Terminal(Clone)").GetComponent<StatePatternTerminal>();
         }
-        if(terminalState.currentState == terminalState.idleState)
+        if (terminalState != null)
         {
-            terminalState.currentState.ToHelpState();
+            if (terminalState.currentState == terminalState.idleState)
+            {
+                terminalState.currentState.ToHelpState();
+            }
+            if(helpMenu == null)
+            {
+                helpMenu = new Transfer.Data.HelpMenu();
+                helpMenu.InitializeHelpMenu();
+            }
+            if (helpMenu != null)
+            {
+                Transfer.System.EventManager.TriggerEvent("TriggerClear");
+                UIMain.SetTextContent(helpMenu.helpContents[request]);
+                Transfer.System.EventManager.TriggerEvent("TriggerPrint");
+            }
         }
     }
 

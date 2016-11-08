@@ -13,7 +13,7 @@ public class HelpState : ITerminalState {
 
 	public void UpdateState()
     {
-
+        Debug.Log("help");
     }
 
     public void ToHelpState()
@@ -48,7 +48,7 @@ public class HelpState : ITerminalState {
 
     public void ToScanState()
     {
-        throw new NotImplementedException();
+        terminal.currentState = terminal.scanState;
     }
 
     public void ToSleepState()

@@ -18,9 +18,13 @@ namespace Transfer.System
 			if (manager == null) {
 				GameObject.Find ("GameManager(Clone)").GetComponent<GameManager> ();
 			}
-			if (manager.GameHasStarted != false) {
-				manager.GameHasStarted = false;
-			}
+            if (manager != null)
+            {
+                if (manager.GameHasStarted != false)
+                {
+                    manager.GameHasStarted = false;
+                }
+            }
         }
 
         public void OnCommandRecieved(string command)

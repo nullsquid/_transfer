@@ -9,6 +9,10 @@ public class HelpCommandExecute : Command {
 
     public string HelpRequest
     {
+        get
+        {
+            return _helpRequest;
+        }
         set
         {
             _helpRequest = value;
