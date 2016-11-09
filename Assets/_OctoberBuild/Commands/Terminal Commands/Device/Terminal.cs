@@ -20,17 +20,18 @@ public class Terminal : IReceiver {
             {
                 terminalState.currentState.ToHelpState();
             }
-            if(helpMenu == null)
-            {
-                helpMenu = new Transfer.Data.HelpMenu();
-                helpMenu.InitializeHelpMenu();
-            }
-            if (helpMenu != null)
-            {
-                Transfer.System.EventManager.TriggerEvent("TriggerClear");
-                UIMain.SetTextContent(helpMenu.helpContents[request]);
-                Transfer.System.EventManager.TriggerEvent("TriggerPrint");
-            }
+            
+            
+        }
+        if (helpMenu == null)
+        {
+            helpMenu = new Transfer.Data.HelpMenu();
+        }
+        if (helpMenu != null)
+        {
+            Transfer.System.EventManager.TriggerEvent("TriggerClear");
+            UIMain.SetTextContent(helpMenu.helpContents[request]);
+            Transfer.System.EventManager.TriggerEvent("TriggerPrint");
         }
     }
 
@@ -106,8 +107,6 @@ public class Terminal : IReceiver {
                 + CharacterDatabase.GetCharacterName("H") + "\n"
                 + CharacterDatabase.GetCharacterName("I") + "\n"
                 + CharacterDatabase.GetCharacterName("0") + "\n");
-            
-
 
             Transfer.System.EventManager.TriggerEvent("TriggerPrint");
         }

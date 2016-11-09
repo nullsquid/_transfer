@@ -18,6 +18,7 @@ public class TerminalCommandWrapper {
         helpCommand = new HelpCommandExecute(newDevice);
     }
 
+    //is the problem here?
     public void Help(string request)
     {
         helpCommand.HelpRequest = request;

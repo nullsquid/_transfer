@@ -119,7 +119,20 @@ namespace Transfer.System
                 case "HELP":
                     if(_commandArgs.Count > 1)
                     {
-                        wrapper.Help(_commandArgs[1]);
+                        switch (_commandArgs[1])
+                        {
+                            case "CONNECT":
+                                wrapper.Help("CONNECT");
+                                break;
+                            case "SCAN":
+                                wrapper.Help("SCAN");
+                                break;
+                            case "RUN":
+                                wrapper.Help("RUN");
+                                break;
+                                    
+                            
+                        }
                     }
                     else
                     {
