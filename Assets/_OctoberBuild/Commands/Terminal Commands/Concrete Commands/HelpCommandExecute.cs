@@ -5,7 +5,7 @@ public class HelpCommandExecute : Command {
 
     IReceiver terminalDevice;
 
-    string _helpRequest = "DEFAULT";
+    string _helpRequest = "";
 
     public string HelpRequest
     {

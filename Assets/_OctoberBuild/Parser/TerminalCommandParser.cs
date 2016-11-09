@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Transfer.Input;
@@ -66,10 +67,12 @@ namespace Transfer.System
 
         IEnumerator ProcessCommand()
         {
+            
             yield return new WaitForFixedUpdate();
             _commandArgs.Clear();
             _rawCommand = uiInput.ReturnText;
             ParseCommand(_rawCommand);
+            
 
 
         }
@@ -101,7 +104,9 @@ namespace Transfer.System
         {
             switch (_commandArgs[0])
             {
+                
                 case "CONNECT":
+                    Debug.Log("args from Connect" + _commandArgs.Count);
                     if (_commandArgs.Count > 1)
                     {
                         //search based on _commandArgs
@@ -117,8 +122,42 @@ namespace Transfer.System
                     }
                     break;
                 case "HELP":
-                    if(_commandArgs.Count > 1)
+                    Debug.Log(_commandArgs.Count);
+                    switch (_commandArgs.Count)
                     {
+                        case 1:
+                            //wrapper.Help("DEFAULT");
+                            break;
+                        case 2:
+                            switch (_commandArgs[1])
+                            {
+                                
+                                case "CONNECT":
+                                    Debug.Log("command args " + _commandArgs.Count);
+                                    wrapper.Help("CONNECT");
+                                    break;
+                                case "SCAN":
+                                    wrapper.Help("SCAN");
+                                    break;
+                                case "RUN":
+                                    wrapper.Help("RUN");
+                                    break;
+                            }
+                            break;
+                        default:
+                            throw new NotImplementedException();
+                    }
+                            
+                    /*
+                    if(_commandArgs.Count == 1 && _commandArgs.Count < 2)
+                    {
+                        Debug.Log(_commandArgs.Count);
+                        //wrapper.Help("DEFAULT");
+                    }
+                    else if(_commandArgs.Count == 2)
+                    {
+
+                        Debug.Log(_commandArgs.Count);
                         switch (_commandArgs[1])
                         {
                             case "CONNECT":
@@ -130,15 +169,22 @@ namespace Transfer.System
                             case "RUN":
                                 wrapper.Help("RUN");
                                 break;
+                                
+                            default:
+                                wrapper.Help("DEFAULT");
+                                break;
+                                
                                     
                             
                         }
-                    }
-                    else
+                    }*//*
+                    else if(_commandArgs.Count == 1)
                     {
+                        Debug.Log(_commandArgs[0]);
                         wrapper.Help("DEFAULT");
-                    }
+                    }*/
                     break;
+                    
                 case "EXIT":
                     
                         Debug.Log("exit");
