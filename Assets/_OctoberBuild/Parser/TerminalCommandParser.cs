@@ -20,20 +20,20 @@ namespace Transfer.System
         #endregion
 
         #region Public Accessors
-        public string RootCommand
+        /*public string RootCommand
         {
             get
             {
                 return _commandArgs[0];
             }
-        }
+        }*/
         #endregion
 
         #region Private References
         UIMainInput uiInput;
         TerminalCommandWrapper wrapper;
         #endregion
-
+        
         #region Unity Callbacks
 
         void OnEnable()
@@ -67,12 +67,11 @@ namespace Transfer.System
 
         IEnumerator ProcessCommand()
         {
-            
             yield return new WaitForFixedUpdate();
             _commandArgs.Clear();
             _rawCommand = uiInput.ReturnText;
             ParseCommand(_rawCommand);
-            
+
 
 
         }
@@ -94,10 +93,8 @@ namespace Transfer.System
                 {
                     word += commandToParse[i];
                 }
-
-                
-
             }
+
         }
 
         void SearchCommand()
