@@ -105,7 +105,6 @@ namespace Transfer.System
             {
                 
                 case "CONNECT":
-                    Debug.Log("args from Connect" + _commandArgs.Count);
                     if (_commandArgs.Count > 1)
                     {
                         //search based on _commandArgs
@@ -141,10 +140,14 @@ namespace Transfer.System
                                 case "RUN":
                                     wrapper.Help("RUN");
                                     break;
+                                default:
+                                    wrapper.Help("ERROR");
+                                    break;
                             }
                             break;
                         default:
-                            throw new NotImplementedException();
+                            wrapper.Help("ERROR");
+                            break;
                     }
                             
                     

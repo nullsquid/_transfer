@@ -17,6 +17,7 @@ namespace Transfer.Data
             helpContents.Add("SCAN", "to check on who's home, input scan followed by home\nto scan room, input scan followed by room");
             helpContents.Add("CONNECT", "to connect to an entity, input connect followed by the entity's identifier");
             helpContents.Add("RUN", "to run an installed program, input run followed by the program identifier");
+            helpContents.Add("ERROR", "could not find appropriate help request");
 
         }
         
