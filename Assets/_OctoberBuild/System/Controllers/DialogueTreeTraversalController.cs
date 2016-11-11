@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Transfer.Data;
@@ -8,7 +9,7 @@ namespace Transfer.System
     public class DialogueTreeTraversalController : MonoBehaviour
     {
         ConvTree curTree;
-        ConvNode nextTree;
+        ConvTree nextTree;
         //
         ConvNode curNode;
         List<ConvNode> nextNodes = new List<ConvNode>();
@@ -58,10 +59,34 @@ namespace Transfer.System
             }
         }
 
+        public void GetNextTree(int index)
+        {
+            if (curNode.outLinkedTrees.Count > 0)
+            {
+                nextTree = curNode.outLinkedTrees[index];
+            }
+        }
+
         public void TraverseToNextNode(int index)
         {
-
+            if(curNode.children.Count > 0)
+            {
+                curNode = nextNodes[index];
+                GetNextNodes();
+            }
+            else if(curNode.children.Count == 0 && curNode.outLinkedTrees.Count > 0)
+            {
+                GetNextTree(index);
+                curTree = nextTree;
+                curNode = curTree.branches[0].GetComponent<ConvNode>();
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
+
+        
 
         public void GetSpeaker()
         {
