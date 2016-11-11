@@ -8,26 +8,23 @@ namespace Transfer.System
     public class DialogueTreeTraversalController : MonoBehaviour
     {
         ConvTree curTree;
+        ConvNode nextTree;
+        //
         ConvNode curNode;
-        ///
+        List<ConvNode> nextNodes = new List<ConvNode>();
         #region Unity Callbacks
         void OnEnable()
         {
-
+            EventManager.StartListening("getStartTree", GetStartTree);
         }
         void OnDisable()
         {
-
-        }
-
-        void Update()
-        {
-
+            EventManager.StartListening("getStartTree", GetStartTree);
         }
         
         void Start()
         {
-            GetStartTree();
+            
         }
         #endregion
 
@@ -51,6 +48,14 @@ namespace Transfer.System
         {
             curNode = curTree.GetComponent<Transform>().GetChild(0).GetComponent<ConvNode>();
             Debug.Log(curNode);
+        }
+
+        void GetNextNodes()
+        {
+            foreach(Transform child in curNode.GetComponent<Transform>())
+            {
+                nextNodes.Add(child.GetComponent<ConvNode>());
+            }
         }
 
         public void TraverseToNextNode(int index)
