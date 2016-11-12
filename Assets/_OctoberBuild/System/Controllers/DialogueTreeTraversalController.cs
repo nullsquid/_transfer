@@ -8,10 +8,10 @@ namespace Transfer.System
 {
     public class DialogueTreeTraversalController : MonoBehaviour
     {
-        ConvTree curTree;
-        ConvTree nextTree;
+        ConvTree _curTree;
+        ConvTree _nextTree;
         //
-        ConvNode curNode;
+        ConvNode _curNode;
         List<ConvNode> nextNodes = new List<ConvNode>();
         #region Unity Callbacks
         void OnEnable()
@@ -23,13 +23,21 @@ namespace Transfer.System
             EventManager.StartListening("getStartTree", GetStartTree);
         }
         
-        void Start()
-        {
-            
-        }
+        
         #endregion
 
+		#region Initialization Methods
+		public void InitializeTree(){
+			GetStartTree ();
+			GetStartNode ();
+			GetNextNodes ();
+		}
+		#endregion
+
         #region Main Methods
+
+
+
         void GetStartTree()
         {
             ConvTree startTree;
@@ -47,13 +55,13 @@ namespace Transfer.System
 
         void GetStartNode()
         {
-            curNode = curTree.GetComponent<Transform>().GetChild(0).GetComponent<ConvNode>();
-            Debug.Log(curNode);
+            _curNode = _curTree.GetComponent<Transform>().GetChild(0).GetComponent<ConvNode>();
+            Debug.Log(_curNode);
         }
 
         void GetNextNodes()
         {
-            foreach(Transform child in curNode.GetComponent<Transform>())
+            foreach(Transform child in _curNode.GetComponent<Transform>())
             {
                 nextNodes.Add(child.GetComponent<ConvNode>());
             }
@@ -61,24 +69,24 @@ namespace Transfer.System
 
         public void GetNextTree(int index)
         {
-            if (curNode.outLinkedTrees.Count > 0)
+            if (_curNode.outLinkedTrees.Count > 0)
             {
-                nextTree = curNode.outLinkedTrees[index];
+                _nextTree = _curNode.outLinkedTrees[index];
             }
         }
 
         public void TraverseToNextNode(int index)
         {
-            if(curNode.children.Count > 0)
+            if(_curNode.children.Count > 0)
             {
-                curNode = nextNodes[index];
+                _curNode = nextNodes[index];
                 GetNextNodes();
             }
-            else if(curNode.children.Count == 0 && curNode.outLinkedTrees.Count > 0)
+            else if(_curNode.children.Count == 0 && _curNode.outLinkedTrees.Count > 0)
             {
                 GetNextTree(index);
-                curTree = nextTree;
-                curNode = curTree.branches[0].GetComponent<ConvNode>();
+                _curTree = _nextTree;
+                _curNode = _curTree.branches[0].GetComponent<ConvNode>();
             }
             else
             {
@@ -86,17 +94,22 @@ namespace Transfer.System
             }
         }
 
-        
+
 
         public void GetSpeaker()
         {
             string speaker;
-            speaker = curNode.characterTalking;
+            speaker = _curNode.characterTalking;
             CharacterDatabase.GetCharacterName(speaker);
         }
 
-        
+		public string GetPrompt(){
+			return _curNode.prompt;
+		}
 
+		/*public string GetResponses(){
+			
+		}*/
 
         #endregion
 

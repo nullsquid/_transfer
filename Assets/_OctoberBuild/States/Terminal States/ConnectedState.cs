@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using Transfer.System;
+using Transfer.Display;
 public class ConnectedState : ITerminalState {
 
     private readonly StatePatternTerminal terminal;
+	DialogueTreeTraversalController dialogController;
 
     public ConnectedState(StatePatternTerminal statePatternTerminal)
     {
@@ -12,7 +14,13 @@ public class ConnectedState : ITerminalState {
 
 	public void UpdateState()
     {
+		if (dialogController == null) {
+			dialogController = GameObject.Find ("DialogueTreeManager").GetComponent<DialogueTreeTraversalController>();
+			dialogController.InitializeTree ();
+		}
         //traversal algorithm
+
+
     }
 
     public void OnCommandReceived(string command)

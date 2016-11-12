@@ -24,7 +24,7 @@ public class TerminalCommandWrapper {
         helpCommand.HelpRequest = request;
         TerminalCommandInvoker helpInvoked = new TerminalCommandInvoker(helpCommand);
         helpInvoked.InvokeCommand();
-        
+
     }
 
     public void Connect(string identifier)
