@@ -33,14 +33,15 @@ namespace Transfer.System
 
             InitializeGame();
         }
-
+        
         
         void InitializeGame()
         {
 			if (overlord == null) {
-				overlord = GetComponent<StatePatternOverlord> ();
-			}
-			overlord.currentState.ToIdleState ();
+                overlord = GetComponent<StatePatternOverlord>();
+
+            }
+            overlord.currentState.ToIdleState ();
         }
 
 		public void StartGame(){

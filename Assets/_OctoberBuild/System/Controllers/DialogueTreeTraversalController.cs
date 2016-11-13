@@ -10,9 +10,12 @@ namespace Transfer.System
     {
         ConvTree _curTree;
         ConvTree _nextTree;
+        ConvTree _startTree;
         //
         ConvNode _curNode;
         List<ConvNode> nextNodes = new List<ConvNode>();
+
+
         #region Unity Callbacks
         void OnEnable()
         {
@@ -40,16 +43,19 @@ namespace Transfer.System
 
         void GetStartTree()
         {
-            ConvTree startTree;
             string startTreeName;
             startTreeName = "9" + CharacterDatabase.GetPlayerID() + "_Tree";
             foreach(Transform child in transform)
             {
                 if(child.name == startTreeName)
                 {
-                    startTree = child.GetComponent<ConvTree>();
-                    Debug.Log(startTree + " " + startTreeName);
+                    _startTree = child.GetComponent<ConvTree>();
+                    Debug.Log(_startTree + " " + startTreeName);
                 }
+            }
+            if(_curTree == null)
+            {
+                _curTree = _startTree;
             }
         }
 
@@ -107,6 +113,15 @@ namespace Transfer.System
 			return _curNode.prompt;
 		}
 
+        public bool GetVisitedState()
+        {
+            return _curNode.hasVisited;
+        }
+
+        public void SetHasVisited()
+        {
+            _curNode.hasVisited = true;
+        }
 		/*public string GetResponses(){
 			
 		}*/

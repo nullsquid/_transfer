@@ -14,13 +14,19 @@ public class ConnectedState : ITerminalState {
 
 	public void UpdateState()
     {
+        Debug.Log("CONNECTED");
 		if (dialogController == null) {
 			dialogController = GameObject.Find ("DialogueTreeManager").GetComponent<DialogueTreeTraversalController>();
 			dialogController.InitializeTree ();
 		}
         //traversal algorithm
-
-
+        if (dialogController.GetVisitedState() == false)
+        {
+            UIMain.SetTextContent(dialogController.GetPrompt());
+            Transfer.System.EventManager.TriggerEvent("TriggerClear");
+            Transfer.System.EventManager.TriggerEvent("TriggerPrint");
+            dialogController.SetHasVisited();
+        }
     }
 
     public void OnCommandReceived(string command)

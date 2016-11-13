@@ -22,7 +22,7 @@ public class ScanState : ITerminalState {
 
     public void ToConnectState()
     {
-
+        terminal.currentState = terminal.connectState;
     }
 
     public void ToSleepState()

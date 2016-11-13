@@ -60,11 +60,14 @@ public class Terminal : IReceiver {
         {
             terminalState = GameObject.Find("Terminal(Clone)").GetComponent<StatePatternTerminal>();
         }
-        if (terminalState.currentState == terminalState.idleState)
+        if (terminalState != null)
         {
-            terminalState.idleState.ToConnectState();
+            if (terminalState.currentState == terminalState.idleState)
+            {
+                terminalState.idleState.ToConnectState();
+            }
         }
-        Debug.Log("Connected to " + ID);
+        //Debug.Log("Connected to " + ID);
         //Connect to ID via tree search
     }
 
