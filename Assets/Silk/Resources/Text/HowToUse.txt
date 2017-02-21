@@ -1,0 +1,69 @@
+﻿:: Start Here!
+Welcome to Silk, a twine interpreter for Unity
+
+This documentation is a work in progress, so bear with me!
+<<DummyTag="hello", "world">>
+[[Move onto the next section | Setting the tool up]]
+
+
+::  Setting the tool up
+If you're reading this, you probably know what Twine and Unity both are so you don't need me to tell you.
+
+However, as it stands now there are a few hoops to jump through in order to set Silk up so that it works.
+
+First, you need to download the tool. It seems like you nailed this part!
+
+Next, you need to extract and install it. Use your favorite archive program to stick it wherever on your computer and then either-
+
+--double click the Unity Cube that says SILK_0.x.unitypackage and it will run it in whatever Unity project you currently have open
+
+OR
+
+--inside unity, go to Assets>Import>Import Custom Package and find SILK_0.x in the popup that comes up
+
+The final step is maybe the most important--there should be a Resources folder in the top level of the tool's heirarchy with a folder inside of it called Text. That's where you should be reading this, in fact. That folder is where all of your stories should go.
+
+[[Exporting from Twine]]
+
+
+:: Exporting from Twine
+Now, to get the actual narrative stuff from Twine also takes a tiny bit of doing.
+
+Silk can only read .txt files because it converts everything to a TextAsset on the Unity end.
+
+With that in mind, it is important to remember to export all of your Twee files (File>Export>Twee Source Code) as .txt.
+
+This is as simple as adding .txt to the end of the filename after you write it.
+
+Then, stick the newly exported Twee file into that Resources/Text folder.
+
+[[Other considerations!]]
+
+
+:: Other considerations!
+There are a few other things to talk about if you'd like.
+
+First, there isn't an API yet so in order to actually DO anything with the text after it's parsed you'll have to write your own code to do that. I'm working on this part of the tool as it will make it way more useful.
+
+Second, it does contain a means to add custom tags. The format that I settled on to parse them are as follows
+
+I'm working on writing a manager class/event system for these so that developers can get creative with how they're used. That will come next
+
+[[Future developments]]
+
+
+:: StoryTitle
+Silk Docs
+
+
+
+:: Future developments
+This concludes our primer on how to use Silk
+
+This will change as the tool gets larger, but thanks for trying it out!
+
+
+:: StoryAuthor
+Hyacinth Nil
+
+
