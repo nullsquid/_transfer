@@ -1,0 +1,12 @@
+﻿:: Start
+I am 9A
+
+
+:: StoryTitle
+Untitled Story
+
+
+:: StoryAuthor
+Anonymous
+
+

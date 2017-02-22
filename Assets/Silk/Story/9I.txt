@@ -1,0 +1,12 @@
+﻿:: Start
+I Am 9I
+
+
+:: StoryTitle
+Untitled Story
+
+
+:: StoryAuthor
+Anonymous
+
+

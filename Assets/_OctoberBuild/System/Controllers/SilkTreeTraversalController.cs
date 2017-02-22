@@ -19,14 +19,19 @@ namespace Transfer.System
         
 
         #region Unity Callbacks
+        void Start()
+        {
+            GetFirstTree();
+        }
+
         void OnEnable()
         {
-            EventManager.StartListening("getFirstTree", GetFirstTree);
+            //EventManager.StartListening("getFirstTree", GetFirstTree);
         }
 
         void OnDisable()
         {
-            EventManager.StopListening("getFirstTree", GetFirstTree);
+            //EventManager.StopListening("getFirstTree", GetFirstTree);
         }
         #endregion
 
@@ -42,7 +47,9 @@ namespace Transfer.System
                 {
                     _startingTree = _story.Value;
                 }
+                
             }
+            Debug.Log("first tree is " + startingTreeName);
         }
         
         #endregion
@@ -68,7 +75,7 @@ namespace Transfer.System
             _curTree = _nextTree;
             _nextTree = null;
         }
-
+        //HACK should abstract all tags/put into manager class
         void SetNextTree()
         {
             for(int i = 0; i < _curNode.silkTags.Count; i++)

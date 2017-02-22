@@ -1,0 +1,12 @@
+﻿:: Start
+I Am 90
+
+
+:: StoryTitle
+Untitled Story
+
+
+:: StoryAuthor
+Anonymous
+
+
