@@ -8,6 +8,8 @@ namespace Silk
 {
     public class Parser : MonoBehaviour
     {
+        //HACK need to hide this variable
+        public SilkMotherGraph mother;
         #region Private Variables
         TagFactory tagFactory;
         Importer importer;
@@ -23,7 +25,7 @@ namespace Silk
             tagFactory = new TagFactory();
             importer = GetComponent<Silk.Importer>();
             List<string> filenames = new List<string>();
-            SilkMotherGraph mother = new SilkMotherGraph();
+            mother = new SilkMotherGraph();
             foreach (TextAsset currentTweeFile in importer.rawTweeFiles)
             {
                 SilkGraph newSilkGraph = new SilkGraph();
