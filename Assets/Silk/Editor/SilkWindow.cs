@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System.Collections;
 
-public class SilkWindow : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+namespace Silk.Editor {
+    public class SilkWindow : MonoBehaviour {
+        [MenuItem("Silk/Create New Silk")]
+        private static void CreateNewSilk()
+        {
+            GameObject newSilkInstance;
+            newSilkInstance = new GameObject("Silk");
+            newSilkInstance.AddComponent<Parser>();
+            newSilkInstance.AddComponent<Importer>();
+        }
+    }
 }

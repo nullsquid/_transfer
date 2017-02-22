@@ -18,6 +18,12 @@ namespace Silk{
                 return newDummyTag;
 
             }
+            else if(tagName == "nexttree")
+            {
+                NextTreeTag newNextTreeTag = new NextTreeTag(tagName, args);
+                return newNextTreeTag;
+
+            }
 
             //else if(tagName == "..."){
             //

@@ -7,7 +7,7 @@ namespace Silk
     public abstract class SilkTagBase
     {
         protected string _tagName;
-        List<string> _silkTagArgs = new List<string>();
+        protected List<string> _silkTagArgs = new List<string>();
 
 
         public string TagName

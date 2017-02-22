@@ -5,6 +5,7 @@ namespace Silk
 {
     public class SilkMotherGraph
     {
+
         #region Data
         //need to make this string, SilkGraph
         private Dictionary<string, SilkGraph> motherGraph = new Dictionary<string, SilkGraph>();
@@ -17,13 +18,14 @@ namespace Silk
             }
         }
         #endregion
-
+        
         #region Data Manipulation Methods
         public void AddToMother(string storyName, SilkGraph story)
         {
             motherGraph.Add(storyName, story);
         }
         #endregion
+        
         //public void AddToMotherGraph()
         //public loadStory
     }

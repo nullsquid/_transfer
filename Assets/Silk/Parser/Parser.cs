@@ -18,7 +18,7 @@ namespace Silk
 
         #region Unity Callbacks
         //TODO get most of the code out of the Start method!!!
-        void Start()
+        void Awake()
         {
             tagFactory = new TagFactory();
             importer = GetComponent<Silk.Importer>();
@@ -66,7 +66,7 @@ namespace Silk
                     }
                     SilkNode newNode = new SilkNode();
                     AssignDataToNodes(newSilkGraph, newNode, tweeNodesToInterpret[i], promptContainer.ToString(), fileName);
-                    //Debug.Log(newNode.nodeName);
+                    Debug.Log(newNode.nodeName);
                     
                 }
                 mother.AddToMother(fileName, newSilkGraph);
@@ -149,7 +149,7 @@ namespace Silk
                     }
                     foreach(SilkTagBase _tag in node.Value.silkTags)
                     {
-                        //Debug.Log(_tag.TagName);
+                        Debug.Log(_tag.TagName);
 
                     }
                     foreach(SilkLink _link in node.Value.silkLinks)

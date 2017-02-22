@@ -39,7 +39,6 @@ namespace Transfer.System
         {
 			if (overlord == null) {
                 overlord = GetComponent<StatePatternOverlord>();
-
             }
             overlord.currentState.ToIdleState ();
         }
