@@ -3,8 +3,7 @@ I Am 9E
 
 
 :: StoryTitle
-Untitled Story
-
+9E
 
 :: StoryAuthor
 Anonymous

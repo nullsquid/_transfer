@@ -45,9 +45,44 @@ namespace Silk
         {
             storyName = name;
         }
+
+        public SilkNode GetNodeByTitle(string nodeName)
+        {
+            
+            SilkNode newSilkNode = new SilkNode();
+            string modNodeName = storyName + "_" + nodeName;
+            foreach(KeyValuePair<string, SilkNode> _node in story)
+            {
+                if(_node.Value.nodeName == modNodeName)
+                {
+                    newSilkNode = _node.Value;
+                    return newSilkNode;
+                }
+            }
+            return null;
+        }
+
         public SilkNode GetNodeByName(string nodeName)
         {
-            return story[nodeName];
+            SilkNode newSilkNode = new SilkNode();
+            string newSilkNodeName;
+            newSilkNodeName = nodeName.Remove(0, storyName.Length + 1);
+            newSilkNode.nodeName = newSilkNodeName;
+            newSilkNode.nodePassage = story[nodeName].nodePassage;
+            newSilkNode.silkLinks = story[nodeName].silkLinks;
+            newSilkNode.silkTags = story[nodeName].silkTags;
+            newSilkNode.tags = story[nodeName].tags;
+            newSilkNode.links = story[nodeName].links;
+
+
+            Debug.Log("node name is " + newSilkNode.nodeName);
+            return newSilkNode;
+            
+        }
+
+        public SilkNode GetNodeByRawName(string rawNodeName)
+        {
+            return story[rawNodeName];
         }
 
         public SilkNode GetNodeByLink(SilkNode curNode, SilkLink link)
@@ -76,33 +111,24 @@ namespace Silk
                 return storyName;
             }
         }
-        /*public string GetStoryName()
+        
+        public string GetNodePassageByTitle(string nodeName)
         {
-            
-        }
-        */
-        /*
-        public SilkNode GetNodeByLink(string linkText)
-        {
-            
-        }
-        */
-
-        //this needs some work
-        /*
-        public SilkNode GetNodeByLink(SilkLink link)
-        {
-            foreach(KeyValuePair<string, SilkNode> node in story)
+            string modNodeName = storyName + "_" + nodeName;
+            foreach(KeyValuePair<string, SilkNode> _node in story)
             {
-                if(node.Value.nodeName == link.LinkedNode)
+                if(_node.Value.nodeName == modNodeName)
                 {
-                    return node.Value;
+                    return _node.Value.nodePassage;
                 }
-                
             }
             return null;
         }
-        */
+
+        public string GetNodePassage(SilkNode node)
+        {
+            return node.nodePassage;
+        }
 
         public string GetNodePassage(string nodeName)
         {
@@ -116,8 +142,8 @@ namespace Silk
             return linkKeys;
         }
 
-        public string GetNodeName(string nodeName)
-        {
+        public string GetRawNodeName(string nodeName)
+        { 
             return story[nodeName].nodeName;
         }
 

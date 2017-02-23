@@ -14,6 +14,7 @@ namespace Transfer.System
         SilkGraph _nextTree;
         SilkGraph _curTree;
 
+        SilkNode _firstNode;
         SilkNode _curNode;
 
         //HACK Need to figure out a better way to get the parser's data into this class
@@ -25,6 +26,7 @@ namespace Transfer.System
         void Start()
         {
             GetFirstTree();
+            
         }
 
         void OnEnable()
@@ -50,30 +52,34 @@ namespace Transfer.System
             startingTreeName = "9" + CharacterDatabase.GetPlayerID();
             foreach(KeyValuePair<string, SilkGraph> _story in _parser.mother.MotherGraph)
             {
-                //Debug.Log(_story);
+
                 if(_story.Key == startingTreeName)
                 {
                     _startingTree = _story.Value;
-                    Debug.Log("hey");
+                    //_firstNode = _startingTree.GetNodeByName(_startingTree.StoryName + "_Start");
+                    //need to append onto the node name the tree name because that's how it's recorded
+                    //in the story dictionary
+                    _firstNode = _startingTree.GetNodeByTitle("Start");
+                    
+                    
                 }
-                foreach (KeyValuePair<string, SilkNode> _node in _story.Value.Story)
-                {
-                    Debug.Log("node name is " + TrimTreenameOffNode(_node.Value, _startingTree.StoryName).nodeName);
-                }
+                
+                
             }
-            
-            Debug.Log(_startingTree.GetNodeByName("Start").nodePassage);
-
         }
-        
-        //TODO argument out of range exception
+
+        /*
         SilkNode TrimTreenameOffNode(SilkNode _rawNode, string _rawTreeName)
         {
+            //Debug.Log("raw tree is " + _rawTreeName);
+            //Debug.Log(_rawNode.nodeName);
             SilkNode newSilkNode = _rawNode;
-            newSilkNode.nodeName = _rawNode.nodeName.Remove(0, (_rawTreeName.Length) + 1);
+            newSilkNode.nodeName = _rawNode.nodeName.Remove(0, (_rawTreeName.Length + 1)).TrimStart(' ').TrimEnd(' ');
+            Debug.Log(newSilkNode.nodeName);
             return newSilkNode;
 
         }
+        */
         
         #endregion
 
