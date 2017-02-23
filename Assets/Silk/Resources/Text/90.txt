@@ -5,6 +5,8 @@ I Am 90
 :: StoryTitle
 90
 
+:: MetaData
+<<connect="0">>
 
 :: StoryAuthor
 Anonymous

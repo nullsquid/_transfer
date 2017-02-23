@@ -5,6 +5,9 @@ I Am 9E
 :: StoryTitle
 9E
 
+:: MetaData
+<<connect="E">>
+
 :: StoryAuthor
 Anonymous
 

@@ -39,9 +39,17 @@ namespace Transfer.Data
 
         public static string GetCharacterName(string ID)
         {
+            if(ID == null)
+            {
+                Debug.LogWarning("What?");
+            }
             if (characterDictionary.ContainsKey(ID))
             {
                 return characterDictionary[ID].Name;
+            }
+            else
+            {
+                Debug.LogWarning("No Character with that ID found");
             }
             return null;
         }

@@ -5,6 +5,8 @@ I Am 9I
 :: StoryTitle
 9I
 
+:: MetaData
+<<connect="I">>
 
 :: StoryAuthor
 Anonymous

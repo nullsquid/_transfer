@@ -53,6 +53,12 @@ namespace Silk
 
                             newSilkGraph.SetStoryName(ReturnStoryTitle(tweeNodesToInterpret[i]));
                         }
+                        //transfer specific addition
+                        else if(storyTitleCheck == "MetaData")
+                        {
+                            //don't know if this is useful just yet
+
+                        }
                         else {
                             promptContainer.Replace(ReturnTitle(tweeNodesToInterpret[i]), string.Empty, 0, ReturnTitle(tweeNodesToInterpret[i]).Length);
                         }
@@ -136,14 +142,15 @@ namespace Silk
                 }
             }
 
+            
+            
             foreach(KeyValuePair<string, SilkGraph> graph in mother.MotherGraph)
             {
                 //for testing
                 foreach(KeyValuePair<string, SilkNode> node in graph.Value.Story)
                 {
                     //for testing
-                    //Debug.Log(node.Value.silkTags[0]);
-                    //Debug.Log(node.Value.silkTags.Count);
+
                     foreach(KeyValuePair<string,string[]> tagName in node.Value.tags)
                     {
                         //Debug.Log(tagName.Key);
@@ -151,7 +158,7 @@ namespace Silk
                     }
                     foreach(SilkTagBase _tag in node.Value.silkTags)
                     {
-                        Debug.Log(_tag.TagName);
+                        //Debug.Log(">" + _tag.TagName + "<");
 
                     }
                     foreach(SilkLink _link in node.Value.silkLinks)
@@ -160,9 +167,44 @@ namespace Silk
                     }
                 }
             }
+
+            //
+            
+
         }
         #endregion
+        void Start()
+        {
+            //transfer specific MetaData parser
+            //
+            //TODO Move out of Parser
+            //TODO Make this its own method
+            //HACK Is there a cleaner way to make the connect and level tags work?
+            foreach (KeyValuePair<string, SilkGraph> story in mother.MotherGraph)
+            {
 
+                foreach (KeyValuePair<string, SilkNode> node in story.Value.Story)
+                {
+                    if (node.Value.nodeName == story.Value.StoryName + "_" + "MetaData")
+                    {
+                        
+                        foreach (SilkTagBase tag in node.Value.silkTags)
+                        {
+                            if (tag.TagName == "connect")
+                            {
+                                ConnectTag newConnectTag = tag as ConnectTag;
+                                story.Value.SetConnectTargetName(newConnectTag.ConnectTarget);
+                            }
+                            else if(tag.TagName == "level")
+                            {
+                                //TODO write the level to the tree
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
         void AssignDataToNodes(SilkGraph newSilkGraph, SilkNode newNode, string newTweeData, string newPassage, string graphTitle)
         {
             

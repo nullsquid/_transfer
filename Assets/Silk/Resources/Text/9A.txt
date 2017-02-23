@@ -6,6 +6,9 @@ I am 9A
 9A
 
 
+:: MetaData
+<<connect="A">>
+
 :: StoryAuthor
 Anonymous
 

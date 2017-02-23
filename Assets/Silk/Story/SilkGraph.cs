@@ -13,6 +13,9 @@ namespace Silk
         {
             storyName = name;
         }*/
+
+        //transfer specific
+        
         
         #endregion
 
@@ -25,6 +28,29 @@ namespace Silk
             {
                 return story;
             }
+        }
+
+        //transfer specific
+        string connectTargetID;
+        string connectTargetName;
+
+        public string ConnectTargetID
+        {
+            //for testing
+            get
+            {
+                return connectTargetName;
+            }
+            set
+            {
+                connectTargetID = value;
+            }
+        }
+
+        //HACK decouple this from datastructure?
+        public void SetConnectTargetName(string id)
+        {
+            connectTargetName = Transfer.Data.CharacterDatabase.GetCharacterName(id);
         }
         #endregion
 

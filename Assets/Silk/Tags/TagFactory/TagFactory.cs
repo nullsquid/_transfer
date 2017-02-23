@@ -24,6 +24,11 @@ namespace Silk{
                 return newNextTreeTag;
 
             }
+            else if(tagName == "connect")
+            {
+                ConnectTag newConnectTag = new ConnectTag(tagName, args);
+                return newConnectTag;
+            }
 
             //else if(tagName == "..."){
             //
