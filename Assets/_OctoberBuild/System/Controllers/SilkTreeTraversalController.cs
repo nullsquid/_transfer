@@ -56,11 +56,10 @@ namespace Transfer.System
                 if(_story.Key == startingTreeName)
                 {
                     _startingTree = _story.Value;
-                    //_firstNode = _startingTree.GetNodeByName(_startingTree.StoryName + "_Start");
                     //need to append onto the node name the tree name because that's how it's recorded
                     //in the story dictionary
                     _firstNode = _startingTree.GetNodeByTitle("Start");
-                    
+                    Debug.Log(_firstNode.nodePassage);
                     
                 }
                 
@@ -68,18 +67,7 @@ namespace Transfer.System
             }
         }
 
-        /*
-        SilkNode TrimTreenameOffNode(SilkNode _rawNode, string _rawTreeName)
-        {
-            //Debug.Log("raw tree is " + _rawTreeName);
-            //Debug.Log(_rawNode.nodeName);
-            SilkNode newSilkNode = _rawNode;
-            newSilkNode.nodeName = _rawNode.nodeName.Remove(0, (_rawTreeName.Length + 1)).TrimStart(' ').TrimEnd(' ');
-            Debug.Log(newSilkNode.nodeName);
-            return newSilkNode;
 
-        }
-        */
         
         #endregion
 
