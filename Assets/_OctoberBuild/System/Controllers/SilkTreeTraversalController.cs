@@ -56,6 +56,7 @@ namespace Transfer.System
                 if(_story.Key == startingTreeName)
                 {
                     _startingTree = _story.Value;
+                    //NOTE
                     //need to append onto the node name the tree name because that's how it's recorded
                     //in the story dictionary
                     _firstNode = _startingTree.GetNodeByTitle("Start");
@@ -66,9 +67,6 @@ namespace Transfer.System
                 
             }
         }
-
-
-        
         #endregion
 
 
