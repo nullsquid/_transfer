@@ -84,15 +84,16 @@ namespace Silk
         {
             
             SilkNode newSilkNode = new SilkNode();
-            string modNodeName = storyName + "_" + nodeName;
             
             foreach(KeyValuePair<string, SilkNode> _node in story)
             {
+                string modNodeName = storyName + "_" + nodeName;
+
                 StringBuilder newNodeName = new StringBuilder();
                 newNodeName.Append(_node.Value.nodeName);
                 Debug.Log(modNodeName == newNodeName.ToString());
                 //Debug.Log(modNodeName == _node.Value.nodeName);
-                if (newNodeName.ToString() == modNodeName)
+                if (newNodeName.ToString() == modNodeName.ToString())
                 {
                     Debug.Log("hey");
                     newSilkNode = _node.Value;

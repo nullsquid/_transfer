@@ -85,7 +85,11 @@ namespace Transfer.System
                     Debug.Log("the node should be called >" + _curTree.StoryName + "_Start");
                     //Debug.Log(_curTree.Story[_curTree.StoryName + "_Start"].nodeName);
                     Debug.Log("the node " + _curNode);
-                    Debug.Log(_curNode.nodePassage);
+                    Debug.Log("CUR >" + _curTree.Story.Count);
+                    foreach(KeyValuePair<string, SilkNode> _node in _story.Value.Story)
+                    {
+                        Debug.Log("XXX " + _node.Value.nodeName);
+                    }
                     
                 }
                 
