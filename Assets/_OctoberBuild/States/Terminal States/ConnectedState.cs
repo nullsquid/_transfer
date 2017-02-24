@@ -5,7 +5,9 @@ using Transfer.Display;
 public class ConnectedState : ITerminalState {
 
     private readonly StatePatternTerminal terminal;
-	DialogueTreeTraversalController dialogController;
+    SilkTreeTraversalController silkTreeController;
+    //TODO extricate old dialogue controller
+    DialogueTreeTraversalController dialogController;
 
     public ConnectedState(StatePatternTerminal statePatternTerminal)
     {
@@ -15,6 +17,19 @@ public class ConnectedState : ITerminalState {
 	public void UpdateState()
     {
         Debug.Log("CONNECTED");
+        if(silkTreeController == null)
+        { 
+            silkTreeController = GameObject.Find("DialogueTaverser").GetComponent<SilkTreeTraversalController>();
+        }
+        Debug.LogWarning(silkTreeController);
+        if (silkTreeController.CurNode.HasVisited == false)
+        {
+            UIMain.SetTextContent(silkTreeController.CurNode.NodePassage);
+            Transfer.System.EventManager.TriggerEvent("TriggerClear");
+            Transfer.System.EventManager.TriggerEvent("TriggerPrint");
+            silkTreeController.CurNode.HasVisited = true;
+        }
+        /*
 		if (dialogController == null) {
 			dialogController = GameObject.Find ("DialogueTreeManager").GetComponent<DialogueTreeTraversalController>();
 			dialogController.InitializeTree ();
@@ -27,6 +42,7 @@ public class ConnectedState : ITerminalState {
             Transfer.System.EventManager.TriggerEvent("TriggerPrint");
             dialogController.SetHasVisited();
         }
+        */
     }
 
     public void OnCommandReceived(string command)

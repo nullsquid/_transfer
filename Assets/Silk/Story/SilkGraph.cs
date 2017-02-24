@@ -33,13 +33,20 @@ namespace Silk
         //transfer specific
         string connectTargetID;
         string connectTargetName;
+        public string ConnectTargetName
+        {
+            get
+            {
+                return connectTargetName;
+            }
+        }
 
         public string ConnectTargetID
         {
             //for testing
             get
             {
-                return connectTargetName;
+                return connectTargetID;
             }
             set
             {

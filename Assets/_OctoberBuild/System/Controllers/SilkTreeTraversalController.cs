@@ -75,6 +75,8 @@ namespace Transfer.System
                     //need to append onto the node name the tree name because that's how it's recorded
                     //in the story dictionary
                     _firstNode = _curTree.GetNodeByTitle("Start");
+                    _curNode = _firstNode;
+                    
                     Debug.Log(_firstNode.nodePassage);
                     
                 }

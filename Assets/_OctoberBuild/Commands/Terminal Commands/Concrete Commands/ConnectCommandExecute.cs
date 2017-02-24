@@ -27,7 +27,10 @@ public class ConnectCommandExecute : Command {
         {
             silkTree = GameObject.Find("DialogueTaverser").GetComponent<SilkTreeTraversalController>();
         }
-        if(silkTree)
-        terminalDevice.Connect(_nameToConnect);
+        if (_nameToConnect == silkTree.CurTree.ConnectTargetName)
+        {
+            Debug.Log("sup");
+            terminalDevice.Connect(_nameToConnect);
+        }
     }
 }

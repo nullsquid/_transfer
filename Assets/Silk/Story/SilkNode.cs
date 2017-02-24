@@ -23,9 +23,21 @@ namespace Silk
         public Dictionary<string, string[]> tags = new Dictionary<string, string[]>();
         public List<SilkLink> silkLinks = new List<SilkLink>();
         public List<SilkTagBase> silkTags = new List<SilkTagBase>();
+        bool _hasVisited = false;
         #endregion
 
         #region Accessor Methods
+        public bool HasVisited
+        {
+            get
+            {
+                return _hasVisited;
+            }
+            set
+            {
+                _hasVisited = value;
+            }
+        }
         public void AddLinkName(string linkText, string linkPointer)
         {
             links.Add(linkText, linkPointer);
@@ -57,6 +69,13 @@ namespace Silk
             }
         }
 
+        public string NodePassage
+        {
+            get
+            {
+                return nodePassage;
+            }
+        }
         #endregion
 
         #region Data Manipulation Methods
