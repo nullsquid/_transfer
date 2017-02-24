@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 namespace Silk
 {
     public class SilkGraph
@@ -84,10 +85,16 @@ namespace Silk
             
             SilkNode newSilkNode = new SilkNode();
             string modNodeName = storyName + "_" + nodeName;
+            
             foreach(KeyValuePair<string, SilkNode> _node in story)
             {
-                if(_node.Value.nodeName == modNodeName)
+                StringBuilder newNodeName = new StringBuilder();
+                newNodeName.Append(_node.Value.nodeName);
+                Debug.Log(modNodeName == newNodeName.ToString());
+                //Debug.Log(modNodeName == _node.Value.nodeName);
+                if (newNodeName.ToString() == modNodeName)
                 {
+                    Debug.Log("hey");
                     newSilkNode = _node.Value;
                     return newSilkNode;
                 }
