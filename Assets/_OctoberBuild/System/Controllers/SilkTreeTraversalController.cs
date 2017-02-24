@@ -59,6 +59,9 @@ namespace Transfer.System
         #region Initialization Methods
         void GetFirstTree()
         {
+            //_curNode = new SilkNode();
+            _firstNode = new SilkNode();
+
             _parser = GameObject.Find("Silk").GetComponent<Parser>();
             //_startingTree = new SilkGraph();
 
@@ -66,7 +69,10 @@ namespace Transfer.System
             startingTreeName = "9" + CharacterDatabase.GetPlayerID();
             foreach(KeyValuePair<string, SilkGraph> _story in _parser.mother.MotherGraph)
             {
-
+                foreach(KeyValuePair<string, SilkNode> _node in _story.Value.Story)
+                {
+                    Debug.Log(_node.Key);
+                }
                 if(_story.Key == startingTreeName)
                 {
                     _startingTree = _story.Value;
@@ -76,8 +82,10 @@ namespace Transfer.System
                     //in the story dictionary
                     _firstNode = _curTree.GetNodeByTitle("Start");
                     _curNode = _firstNode;
-                    
-                    Debug.Log(_firstNode.nodePassage);
+                    Debug.Log("the node should be called >" + _curTree.StoryName + "_Start");
+                    //Debug.Log(_curTree.Story[_curTree.StoryName + "_Start"].nodeName);
+                    Debug.Log("the node " + _curNode);
+                    Debug.Log(_curNode.nodePassage);
                     
                 }
                 
