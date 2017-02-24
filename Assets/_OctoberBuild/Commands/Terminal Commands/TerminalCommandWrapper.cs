@@ -37,7 +37,6 @@ public class TerminalCommandWrapper {
         //responsible for setting the FSM to switch to connected state
         if (CharacterDatabase.ContainsName(identifier))
         {
-            //TODO add tree search here
             connectCommand.NameToConnect = identifier;
             TerminalCommandInvoker connectInvoked = new TerminalCommandInvoker(connectCommand);
             connectInvoked.InvokeCommand();

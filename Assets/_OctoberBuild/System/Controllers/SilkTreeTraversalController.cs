@@ -20,7 +20,21 @@ namespace Transfer.System
         //HACK Need to figure out a better way to get the parser's data into this class
         Parser _parser;
         
+        public SilkGraph CurTree
+        {
+            get
+            {
+                return _curTree;
+            }
+        }
 
+        public SilkNode CurNode
+        {
+            get
+            {
+                return _curNode;
+            }
+        }
         #region Unity Callbacks
         //TODO Get Start method out of this class and into an initialization class
         void Start()
@@ -56,10 +70,11 @@ namespace Transfer.System
                 if(_story.Key == startingTreeName)
                 {
                     _startingTree = _story.Value;
+                    _curTree = _startingTree;
                     //NOTE
                     //need to append onto the node name the tree name because that's how it's recorded
                     //in the story dictionary
-                    _firstNode = _startingTree.GetNodeByTitle("Start");
+                    _firstNode = _curTree.GetNodeByTitle("Start");
                     Debug.Log(_firstNode.nodePassage);
                     
                 }

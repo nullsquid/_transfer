@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using Transfer.System;
 public class ConnectCommandExecute : Command {
-
+    //TODO add connect 
+    SilkTreeTraversalController silkTree;
     IReceiver terminalDevice;
 
     string _nameToConnect = "MEMM";
@@ -22,6 +23,11 @@ public class ConnectCommandExecute : Command {
 
     public void Execute()
     {
+        if(silkTree == null)
+        {
+            silkTree = GameObject.Find("DialogueTaverser").GetComponent<SilkTreeTraversalController>();
+        }
+        if(silkTree)
         terminalDevice.Connect(_nameToConnect);
     }
 }
