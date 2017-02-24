@@ -22,11 +22,13 @@ public class ConnectedState : ITerminalState {
             silkTreeController = GameObject.Find("DialogueTaverser").GetComponent<SilkTreeTraversalController>();
         }
         Debug.LogWarning(silkTreeController);
+
         if (silkTreeController.CurNode.HasVisited == false)
         {
             UIMain.SetTextContent(silkTreeController.CurNode.NodePassage);
             Transfer.System.EventManager.TriggerEvent("TriggerClear");
             Transfer.System.EventManager.TriggerEvent("TriggerPrint");
+            //TODO write catch for when the player exits out of a conversation and then comes back
             silkTreeController.CurNode.HasVisited = true;
         }
         /*
