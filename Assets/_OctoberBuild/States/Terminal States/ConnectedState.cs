@@ -21,7 +21,7 @@ public class ConnectedState : ITerminalState {
         { 
             silkTreeController = GameObject.Find("DialogueTaverser").GetComponent<SilkTreeTraversalController>();
         }
-        Debug.LogWarning(silkTreeController);
+        //Debug.LogWarning(silkTreeController);
 
         if (silkTreeController.CurNode.HasVisited == false)
         {
