@@ -43,7 +43,8 @@ public class Terminal : IReceiver {
         }
         if (terminalState.currentState != terminalState.idleState)
         {
-                terminalState.currentState.ToIdleState();
+            Transfer.System.EventManager.TriggerEvent("TriggerClear");
+            terminalState.currentState.ToIdleState();
         }
         else
         {
@@ -66,6 +67,15 @@ public class Terminal : IReceiver {
             {
                 terminalState.idleState.ToConnectState();
             }
+            else if(terminalState.currentState == terminalState.helpState)
+            {
+                terminalState.helpState.ToConnectState();
+            }
+            else if(terminalState.currentState == terminalState.scanState)
+            {
+                terminalState.scanState.ToConnectState();
+            }
+            //TODO Add other possible states here
         }
         //Debug.Log("Connected to " + ID);
         //Connect to ID via tree search

@@ -25,7 +25,7 @@ public class ConnectCommandExecute : Command {
     {
         if(silkTree == null)
         {
-            silkTree = GameObject.Find("DialogueTaverser").GetComponent<SilkTreeTraversalController>();
+            silkTree = GameObject.Find("DialogueTraverser").GetComponent<SilkTreeTraversalController>();
         }
         if (_nameToConnect == silkTree.CurTree.ConnectTargetName)
         {
