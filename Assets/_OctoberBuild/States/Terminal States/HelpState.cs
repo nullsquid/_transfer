@@ -23,7 +23,7 @@ public class HelpState : ITerminalState {
 
     public void ToIdleState()
     {
-
+        terminal.currentState = terminal.idleState;
     }
 
     public void OnCommandReceived(string command)
@@ -38,7 +38,7 @@ public class HelpState : ITerminalState {
 
     public void ToConnectState()
     {
-
+        terminal.currentState = terminal.connectState;
     }
 
     public void ToRunState()

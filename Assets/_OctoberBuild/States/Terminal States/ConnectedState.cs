@@ -19,7 +19,7 @@ public class ConnectedState : ITerminalState {
         Debug.Log("CONNECTED");
         if(silkTreeController == null)
         { 
-            silkTreeController = GameObject.Find("DialogueTaverser").GetComponent<SilkTreeTraversalController>();
+            silkTreeController = GameObject.Find("DialogueTraverser").GetComponent<SilkTreeTraversalController>();
         }
         //Debug.LogWarning(silkTreeController);
 

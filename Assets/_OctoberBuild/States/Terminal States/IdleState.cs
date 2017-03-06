@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using Transfer.System;
 public class IdleState : ITerminalState {
 
     private readonly StatePatternTerminal terminal;
@@ -12,6 +12,7 @@ public class IdleState : ITerminalState {
 
     public void UpdateState()
     {
+        //Transfer.System.EventManager.TriggerEvent("TriggerClear");
         //What the state does
     }
 
